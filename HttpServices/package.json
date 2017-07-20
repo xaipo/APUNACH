@@ -8,15 +8,16 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
+    "aes-js": "^3.1.0",
     "bcryptjs": "*",
-    "cors": "*",
-    "jsonwebtoken": "*",
     "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "node-restful": "*",
     "passport": "*",
-    "passport-jwt": "*",
-    "node-restful": "*"
+    "passport-jwt": "*"
   },
   "author": "RioBytes Inc",
   "license": "ISC"

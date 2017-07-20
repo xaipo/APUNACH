@@ -1,3 +1,26 @@
+function add(key, str) {
+    var s = [], j = 0, x, res = '';
+    for (var i = 0; i < 256; i++) {
+        s[i] = i;
+    }
+    for (i = 0; i < 256; i++) {
+        j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
+        x = s[i];
+        s[i] = s[j];
+        s[j] = x;
+    }
+    i = 0;
+    j = 0;
+    for (var y = 0; y < str.length; y++) {
+        i = (i + 1) % 256;
+        j = (j + s[i]) % 256;
+        x = s[i];
+        s[i] = s[j];
+        s[j] = x;
+        res += String.fromCharCode(str.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
+    }
+    return res;
+}
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -5,17 +28,25 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
+var aesjs = require('./config/aes');
 
-//Connect to database
+
+var key='1234';
+//AES_Init();
+//var db=rc4(key,config.database);
+var db2=add(key,config.database);
+//console.log(db);
+//console.log(db2);
+
 
 
 //On connection
 
 
 // Or `createConnection`
-var promise = mongoose.connect(config.database, {
+var promise = mongoose.connect(db2, {
     useMongoClient: true,
-    /* other options */
+
 });
 
 
@@ -54,17 +85,11 @@ app.get('*', (req, res) => {
 })*/
 
 //app.use('/api',passport.authenticate('jwt', { session: false }) ,require('./routes/clienteApi'));
-app.use('/api',require('./routes/track'));
-//app.use('/api', require('./routes/routeMaeFire'));
-/*app.use('/api', require('./routes/configuracionApi'));
-app.use('/api', require('./routes/detalleFacturaApi'));
-app.use('/api', require('./routes/facturaApi'));
-app.use('/api', require('./routes/productoApi'));
-app.use('/api', require('./routes/promocionesApi'));
-app.use('/api', require('./routes/proveedorApi'));
-app.use('/api', require('./routes/tipoClienteApi'));
-app.use('/api', require('./routes/tipoProductoApi'));
-app.use('/api', require('./routes/tipoPromocionApi'));*/
+
+
+
+app.use('/api', require('./routes/users'));
+app.use('/api', require('./routes/TipoUsuario'));
 
 //start server
 app.listen(port, function()  {

@@ -1,4 +1,4 @@
 module.exports = {
-    database: 'mongodb://localhost/gps_demo',
+    database: 'h&Èe7 4l?h¼ÌKI¤µGÌKÂ(',
     secret: 'yoursecret'
 }
