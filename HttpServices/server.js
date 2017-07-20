@@ -55,7 +55,7 @@ const app = express();
 const users = require('./routes/users');
 
 //Port number
-const port = 3001;
+const port = 3000;
 
 //cors middleware
 app.use(cors());
@@ -90,6 +90,19 @@ app.get('*', (req, res) => {
 
 app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/TipoUsuario'));
+app.use('/api', require('./routes/TipoContrato'));
+app.use('/api', require('./routes/Facultad'));
+app.use('/api', require('./routes/Docente'));
+app.use('/api', require('./routes/CreditoEmergente'));
+app.use('/api', require('./routes/Cuentas'));
+app.use('/api', require('./routes/CuentasGasto'));
+app.use('/api', require('./routes/Ingreso'));
+app.use('/api', require('./routes/Gastos'));
+app.use('/api', require('./routes/Parametro'));
+app.use('/api', require('./routes/Locales'));
+app.use('/api', require('./routes/Carrera'));
+app.use('/api', require('./routes/CatalogoDescuentos'));
+app.use('/api', require('./routes/Descuentos'));
 
 //start server
 app.listen(port, function()  {

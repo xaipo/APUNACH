@@ -7,6 +7,10 @@ const UserSchema = mongoose.Schema({
     name: {
         type: String
     },
+    tipoUsuario: {
+        type: mongoose.Schema.ObjectId,
+        required: true
+    },
     email: {
         type: String,
         required: true
