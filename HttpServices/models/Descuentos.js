@@ -10,7 +10,7 @@ var mongoose = restful.mongoose;
 var Descuentos = new mongoose.Schema({
 
     "ci_docente": {
-        type: Number,
+        type: String,
         required: true
     }, "id_catalogo": {
         type: mongoose.Schema.ObjectId,
@@ -39,7 +39,7 @@ var Descuentos = new mongoose.Schema({
         required: true
     }
     ,
-    "estad": {
+    "estado": {
         type: String,
         required: true
     }
