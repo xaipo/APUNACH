@@ -12,7 +12,8 @@ router.post('/register', function (req, res, next)  {
         email: req.body.email,
         tipoUsuario: req.body.tipoUsuario,
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        estado:req.body.estado,
     });
     User.addUser(newUser, function(err, user)  {
         if (err) {
@@ -22,6 +23,8 @@ router.post('/register', function (req, res, next)  {
         }
     });
 });
+//Todos los usuario
+
 
 //Authenticate
 router.post('/authenticate',function (req, res, next)  {

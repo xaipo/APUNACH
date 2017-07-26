@@ -52,7 +52,7 @@ var promise = mongoose.connect(db2, {
 
 const app = express();
 
-const users = require('./routes/users');
+const users = require('./routes/login');
 
 //Port number
 const port = 3000;
@@ -88,7 +88,7 @@ app.get('*', (req, res) => {
 
 
 
-app.use('/api', require('./routes/users'));
+app.use('/api', require('./routes/login'));
 app.use('/api', require('./routes/TipoUsuario'));
 app.use('/api', require('./routes/TipoContrato'));
 app.use('/api', require('./routes/Facultad'));
@@ -103,6 +103,7 @@ app.use('/api', require('./routes/Locales'));
 app.use('/api', require('./routes/Carrera'));
 app.use('/api', require('./routes/CatalogoDescuentos'));
 app.use('/api', require('./routes/Descuentos'));
+app.use('/api', require('./routes/Usuarios'));
 
 //start server
 app.listen(port, function()  {

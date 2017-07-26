@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
+var restful = require("node-restful");
 
 //User schema
 const UserSchema = mongoose.Schema({
@@ -22,10 +23,18 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    estado: {
+        type: String,
+        required: true
     }
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
+
+module.exports = restful.model('user', UserSchema);
+
+
 
 module.exports.getUserById = function (id, callback) {
     User.findById(id, callback);

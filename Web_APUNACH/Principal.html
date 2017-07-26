@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
+    //alertas
+    <link rel="stylesheet" type="text/css" href="alertas/sweetalert.css">
+    <script src="alertas/sweetalert.min.js"></script>
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -42,6 +46,9 @@
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
 
+    //Scripts
+    <script src="js/SH.js"></script>
+
     //Angular
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular/angular-route.js"></script>
@@ -49,6 +56,8 @@
 
 
     <script src="app.js"></script>
+    <script src="controller/ControllerUsuarios.js"></script>
+
 
 </head>
 
@@ -159,14 +168,39 @@
         </div><!-- /.sidebar-shortcuts -->
 
         <ul class="nav nav-list">
-            <li class="active">
-                <a href="index.html">
-                    <i class="menu-icon fa fa-tachometer"></i>
-                    <span class="menu-text"> Usuarios </span>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">
+								Usuarios
+							</span>
+
+                    <b class="arrow fa fa-angle-down"></b>
                 </a>
 
                 <b class="arrow"></b>
-            </li>
+
+                <ul class="submenu">
+
+                    <li class="">
+                        <a href="" ng-click="navegacion('/IngresoUsuarios')">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Ingreso
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="" ng-click="navegacion('/ListaUsuarios')">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Lista de usuarios
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                </ul>
+                </li>
             </ul>
 
 
