@@ -4,9 +4,9 @@
 var express= require('express');
 var router= express.Router();
 
-var TipoUsuario = require('../models/Locales');
+var Locales = require('../models/Locales');
 
-TipoUsuario.methods(['get','put','post','delete','search']);
-TipoUsuario.register(router,'/locales');
+Locales.methods(['get','put','post','delete','search']);
+Locales.register(router,'/locales');
 
 module.exports=router;

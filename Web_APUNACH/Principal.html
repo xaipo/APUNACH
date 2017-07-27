@@ -57,6 +57,7 @@
 
     <script src="app.js"></script>
     <script src="controller/ControllerUsuarios.js"></script>
+    <script src="controller/ControllerLocales.js"></script>
 
 
 </head>
@@ -185,7 +186,7 @@
                     <li class="">
                         <a href="" ng-click="navegacion('/IngresoUsuarios')">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            Ingreso
+                            Ingreso usuarios
                         </a>
 
                         <b class="arrow"></b>
@@ -201,7 +202,42 @@
 
                 </ul>
                 </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">
+								Locales
+							</span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+
+                    <li class="">
+                        <a href="" ng-click="navegacion('/IngresoLocales')">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Ingreso locales
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="" ng-click="navegacion('/ListaLocales')">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Lista de locales
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                </ul>
+            </li>
             </ul>
+
 
 
 
@@ -279,6 +315,19 @@
 <script src="assets/js/ace.min.js"></script>
 
 <!-- inline scripts related to this page -->
+
+//tablas
+
+<!-- page specific plugin scripts -->
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="assets/js/dataTables.buttons.min.js"></script>
+<script src="assets/js/buttons.flash.min.js"></script>
+<script src="assets/js/buttons.html5.min.js"></script>
+<script src="assets/js/buttons.print.min.js"></script>
+<script src="assets/js/buttons.colVis.min.js"></script>
+<script src="assets/js/dataTables.select.min.js"></script>
+
 
 </body>
 </html>

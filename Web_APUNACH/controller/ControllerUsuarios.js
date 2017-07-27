@@ -1,4 +1,4 @@
-app.controller('usuariosController', ['$scope', '$http', '$location','myProvider','$localStorage',  function ($scope,$http,$location,myProvider,$localStorage) {
+app.controller('usuariosController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
 
 
     $scope.initUsuarios=function(){
@@ -62,6 +62,17 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
             alert('error al realizar Ingreso');
 
         });
+
+        $timeout(function(){
+
+            $('#datatableuser').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 1500, false);
 
 
     }
@@ -225,49 +236,64 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
     }
 
     $scope.eliminarUsuario=function(usuario){
-        console.log(usuario);
 
-        $http({
-            method: 'PUT',
-            url: myProvider.putSaveUser()+"/"+usuario._id,
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
+
+        swal({
+                title: "Eliminar Usuario",
+                text: "Estas seguro que quieres eliminar el usuario?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, estoy de acuerdo!",
+                cancelButtonText: "No, cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
             },
-            data: {
+            function(isConfirm){
+                if (isConfirm) {
 
-              estado:"1"
+                    $http({
+                        method: 'PUT',
+                        url: myProvider.putSaveUser()+"/"+usuario._id,
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
 
-
-
-            }
-
-
-        }).then(function successCallback(response) {
-            console.log(response.data);
-
-            if (response.data.length == 0) {
-
-                swal("Error!", "No se ingreso el usuario!", "error");
-            } else {
-
-                swal("Exito!", "Usuario ingresado correctamente!", "success");
-                $scope.name="";
-                $scope.username="";
-                $scope.password1="";
-                $scope.password2="";
-                $scope.id_usuario = "59765a7c4fda492a70d68a9b";
-                $scope.correo = "";
+                            estado:"1"
 
 
-            }
+
+                        }
 
 
-        }, function errorCallback(response) {
+                    }).then(function successCallback(response) {
+                        console.log(response.data);
 
-            alert('error al realizar Ingreso');
+                        if (response.data.length == 0) {
 
-        });
+                            swal("Error!", "No se ingreso el usuario!", "error");
+                        } else {
+                            swal("Exito!", "El usuario se elimino!", "success");
+                            $scope.initListar();
+
+                        }
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+                } else {
+
+
+                }
+            });
+
 
 
 

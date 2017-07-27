@@ -23,6 +23,13 @@ function ApiUrl(){
     this.putSaveUser=function(){
         return direccion+'user';
     }
+    //Locales
+    this.postSaveLocal=function(){
+        return direccion+'locales';
+    }
+    this.getLocales=function(){
+        return direccion+'locales';
+    }
     
 }
 
@@ -39,6 +46,9 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/IngresoUsuarios",{templateUrl:"pages/IngresoUsuarios.html", controller:'usuariosController'});
     $routeProvider.when("/ListaUsuarios",{templateUrl:"pages/ListaUsuarios.html", controller:'usuariosController'});
     $routeProvider.when("/ModificarUsuarios",{templateUrl:"pages/ModificarUsuarios.html", controller:'usuariosController'});
+    //Locales
+    $routeProvider.when("/IngresoLocales",{templateUrl:"pages/IngresoLocales.html", controller:'localesController'});
+    $routeProvider.when("/ListaLocales",{templateUrl:"pages/ListaLocales.html", controller:'localesController'});
     
 
 });
