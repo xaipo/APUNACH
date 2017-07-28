@@ -1,16 +1,13 @@
-app.controller('usuariosController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
+app.controller('docentesController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
 
 
-    $scope.initUsuarios=function(){
+    $scope.initDocentes=function(){
 
-        $scope.id_usuario = "59765a7c4fda492a70d68a9b";
-
-        //inicializar los tipos de usuarios
         $http({
             method: 'GET',
-            url: myProvider.getAllTipoUsuario(),
+            url: myProvider.getCarrera_Facultad(),
             headers: {
-               // 'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
                 //'Authorization': token
             },
 
@@ -19,10 +16,11 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen tipo de usuarios en la BD!", "warning");
+                swal("Advertencia!", "No existen carreras en la BD!", "warning");
             } else {
 
-                $scope.listTipoUsuarios = response.data;
+                $scope.listCarrera_Facultad = response.data;
+
             }
 
 
@@ -31,6 +29,52 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
             alert('error al realizar Ingreso');
 
         });
+
+        $http({
+            method: 'GET',
+            url: myProvider.getTipo_Contrato(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen carreras en la BD!", "warning");
+            } else {
+
+                $scope.listTipo_contrato= response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $('#idfecha_naci').datepicker({
+            autoclose: true,
+            changeMonth: true,
+            changeYear: true,
+            format: 'yyyy-mm-dd', //Se especifica como deseamos representarla
+            firstDay: 1
+
+        });
+
+        $('#idfecha_afiliacion').datepicker({
+            autoclose: true,
+            changeMonth: true,
+            changeYear: true,
+            format: 'yyyy-mm-dd', //Se especifica como deseamos representarla
+            firstDay: 1
+
+        });
+
 
     }
     $scope.initListar=function(){
@@ -90,69 +134,27 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
     }
 
 
-    $scope.registrarUser=function(){
+    $scope.registrarDocente=function(){
 
-        var name = $scope.name;
-        var username = $scope.username;
-        var pass = $scope.password1;
-        var repass = $scope.password2;
-        var tipoUser=$scope.id_usuario;
-        var email = $scope.correo;
+       console.log($scope.cedula);
+        console.log($scope.nombres);
+        console.log($scope.apellidos);
 
-        if (pass == repass) {
-            pass = SHA1(pass);
-            console.log('encriptado');
+        console.log($('#idfecha_naci').val());
+        console.log($scope.direccion);
+        console.log($scope.telefono);
+        console.log($scope.celular);
+        console.log($scope.correo_electronico);
+        console.log($scope.id_carrera);
+        console.log($scope.id_tipo_contrato);
+        console.log($scope.pregrado);
+        console.log($scope.postgrado);
+        console.log($scope.miembro_asociacion);
+        console.log($('#idfecha_afiliacion').val());
 
-            $http({
-                method: 'POST',
-                url: myProvider.postSaveUser(),
-                headers: {
-                    // 'Content-Type': 'application/json',
-                    //'Authorization': token
-                },
-                data: {
-
-                    name: name,
-                    tipoUsuario: tipoUser,
-                    email:email,
-                    username: username,
-                    password:pass,
-                    estado:"0"
+        console.log($scope.valor_cuota);
 
 
-
-                }
-
-
-            }).then(function successCallback(response) {
-                console.log(response.data);
-
-                if (response.data.length == 0) {
-
-                    swal("Error!", "No se ingreso el usuario!", "error");
-                } else {
-
-                    swal("Exito!", "Usuario ingresado correctamente!", "success");
-                    $scope.name="";
-                    $scope.username="";
-                    $scope.password1="";
-                    $scope.password2="";
-                    $scope.id_usuario = "59765a7c4fda492a70d68a9b";
-                    $scope.correo = "";
-
-
-                }
-
-
-            }, function errorCallback(response) {
-
-                alert('error al realizar Ingreso');
-
-            });
-        }else {
-
-            alert('Las claves no coinciden');
-        }
 
 
 

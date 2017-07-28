@@ -1,12 +1,12 @@
 
-    <div class="breadcrumbs ace-save-state" id="breadcrumbs" >
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs" ng-init="initModificarLocales()">
         <ul class="breadcrumb">
             <li>
                 <i class="ace-icon fa fa-home home-icon"></i>
                 <a href="Principal.html#!/">Inicio</a>
             </li>
             <li class="active">Locales</li>
-            <li class="active">Ingreso locales</li>
+            <li class="active">Modificar locales</li>
 
         </ul><!-- /.breadcrumb -->
 
@@ -19,10 +19,10 @@
 
         <div class="page-header">
             <h1>
-                Ingreso de locales
+                Modificar locales
                 <small>
                     <i class="ace-icon fa fa-angle-double-right"></i>
-                    Locales afiliados
+                    Permite modificar los datos del local
                 </small>
             </h1>
         </div><!-- /.page-header -->
@@ -30,17 +30,17 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
-                <form class="form-horizontal" role="form" ng-submit="registrarLocales()">
+                <form class="form-horizontal" role="form" ng-submit="modiLocales()">
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idnamelocal"> Nombre: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idnamelocal"  ng-model="nombre" placeholder="Nombre" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idnamelocal"  ng-model="local.nombre" placeholder="Nombre" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idruc"> Ruc: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idruc"  ng-model="ruc" placeholder="Ruc" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idruc"  ng-model="local.ruc" placeholder="Ruc" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
 
@@ -50,35 +50,35 @@
                         <label class="col-md-4 col-sm-4 col-xs-12  control-label no-padding-right" for="iddireccion"> Direccion:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="iddireccion" ng-model="direccion" placeholder="Direccion" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="iddireccion" ng-model="local.direccion" placeholder="Direccion" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idcreditomax"> Credito max:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="number" id="idcreditomax" step="0.01" ng-model="creditomax" placeholder="Credito maximo" required class="col-md-7 col-xs-12" />
+                            <input type="number" id="idcreditomax" step="0.01" ng-model="local.credito_max" placeholder="Credito maximo" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idfechaacuerdo"> Fecha de inicio de acuerdo:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idfechaacuerdo" ng-model="fecha_acuerdo" placeholder="Fecha de inicio de acuerdo" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idfechaacuerdo" ng-model="local.fecha_inicio_acuerdo" placeholder="Fecha de inicio de acuerdo" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idtelefono"> Telefono:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idtelefono" ng-model="telefono" placeholder="Ingrese telefono" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idtelefono" ng-model="local.telefono" placeholder="Ingrese telefono" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idporcentage"> % de ganancia:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="number" id="idporcentage" step="0.01" ng-model="porcentage" placeholder="Porcentage de ganancia" required class="col-md-7 col-xs-12" />
+                            <input type="number" id="idporcentage" step="0.01" ng-model="local.porcentaje_ganancia" placeholder="Porcentage de ganancia" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
 
@@ -87,13 +87,13 @@
                         <div class="col-md-offset-3 col-md-9">
                             <button class="btn btn-info" type="submit">
                                 <i class="ace-icon fa fa-check bigger-110"></i>
-                                Aceptar
+                                Modificar
                             </button>
 
                             &nbsp; &nbsp; &nbsp;
-                            <button class="btn" type="reset">
+                            <button class="btn" type="button" ng-click="cancelarModificarLocales()">
                                 <i class="ace-icon fa fa-undo bigger-110"></i>
-                                Reset
+                                Cancelar
                             </button>
                         </div>
                     </div>

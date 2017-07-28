@@ -65,11 +65,11 @@
                              <td class=" " >{{x.porcentaje_ganancia}} </td>
                              <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
 
-                                 <a class="green" ng-click="modificarUsuario(x)">
+                                 <a class="green" ng-click="modificarLocal(x)">
                                      <i class="ace-icon fa fa-pencil bigger-130"></i>
                                  </a>
 
-                                 <a class="red" ng-click="eliminarUsuario(x)">
+                                 <a class="red" ng-click="eliminarLocal(x)">
                                      <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                  </a>
                              </div>
@@ -83,15 +83,15 @@
                                          <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 
                                              <li>
-                                                 <a   class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                 <a   class="tooltip-success" data-rel="tooltip" title="Edit" ng-click="modificarLocal(x)">
 																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																					<i class="ace-icon fa fa-pencil-square-o bigger-120" ></i>
 																				</span>
                                                  </a>
                                              </li>
 
                                              <li>
-                                                 <a  class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                 <a  class="tooltip-error" data-rel="tooltip" title="Delete" ng-click="eliminarLocal(x)">
 																				<span class="red">
 																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																				</span>

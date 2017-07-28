@@ -7,9 +7,30 @@
 var express= require('express');
 var router= express.Router();
 
-var TipoUsuario = require('../models/Carrera');
+var Carreras = require('../models/Carrera');
 
-TipoUsuario.methods(['get','put','post','delete','search']);
-TipoUsuario.register(router,'/carrera');
+Carreras.methods(['get','put','post','delete','search']);
+Carreras.register(router,'/carrera');
+
+router.get('/carrera_facultad', function (req, res, next)  {
+    Carreras.aggregate(
+
+        [
+            { "$match": { "estado": "0" } },
+            {"$lookup": {
+                "from": "facultad",
+                "localField": "id_facultad",
+                "foreignField": "_id",
+                "as": "R"
+            }}
+
+        ],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
+    )
+
+
+});
 
 module.exports=router;

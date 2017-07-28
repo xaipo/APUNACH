@@ -1,0 +1,161 @@
+<div class="main-content-inner" ng-init="initDocentes()">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="Principal.html#!/">Inicio</a>
+            </li>
+            <li class="active">Docentes</li>
+            <li class="active">Ingreso docentes</li>
+
+        </ul><!-- /.breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+
+        </div><!-- /.nav-search -->
+    </div>
+
+    <div class="page-content">
+
+        <div class="page-header">
+            <h1>
+                Ingreso de docentes
+                <small>
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    Docentes que podran usar el sistema
+                </small>
+            </h1>
+        </div><!-- /.page-header -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <form class="form-horizontal" role="form" ng-submit="registrarDocente()">
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idcedulado"> Cedula: </label>
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idcedulado"  ng-model="cedula" placeholder="Cedula de identidad" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idnombres"> Nombres: </label>
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idnombres"  ng-model="nombres" placeholder="Nombre" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idapellidos"> Apellidos:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idapellidos" ng-model="apellidos" placeholder="Apellidos" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idfecha_naci"> Fecha de nacimiento:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idfecha_naci" ng-model="fecha_nacimiento" placeholder="Fecha de nacimiento" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="iddireccion"> Direccion:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="iddireccion" ng-model="direccion" placeholder="Direccion" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idtelefono"> Telefono:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idtelefono" ng-model="telefono" placeholder="Telefono"  class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idcelular"> Celular:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idcelular" ng-model="celular" placeholder="Celular" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idemail"> Email:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idemail" ng-model="correo_electronico" placeholder="Correo electronico" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Carrera</label>
+                        <div class="col-md-3 col-sm-6 col-xs-10">
+
+                            <select class="form-control "  ng-model="id_carrera" ng-options="item._id as item.nombre_carrera for item in listCarrera_Facultad" required ></select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Tipo de contrato</label>
+                        <div class="col-md-3 col-sm-6 col-xs-10">
+
+                            <select class="form-control "  ng-model="id_tipo_contrato" ng-options="item._id as item.descripcion for item in listTipo_contrato" required ></select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idpregrado"> Pregrado:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idpregrado" ng-model="pregrado" placeholder="Pregrado"  class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idposgrado"> Posgrado:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idposgrado" ng-model="postgrado" placeholder="Posgrado"  class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idmiembro_asociacion"> Mienbro de la asociacion:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idmiembro_asociacion" ng-model="miembro_asociacion" placeholder="Miembro de la asociacion" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idfecha_afiliacion"> Fecha de afiliacion:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idfecha_afiliacion" ng-model="fecha_afiliacion" placeholder="Fecha de afiliacion" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idvalor_cuota"> Valor de la cuota:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="number" step="0.01" id="idvalor_cuota" ng-model="valor_cuota" placeholder="Valor de la cuota" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" type="submit">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Aceptar
+                            </button>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="reset">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+    </div><!-- /.page-content -->
+</div>

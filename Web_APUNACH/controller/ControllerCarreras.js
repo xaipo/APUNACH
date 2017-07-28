@@ -1,14 +1,13 @@
-app.controller('usuariosController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
+app.controller('carrerasController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
 
 
-    $scope.initUsuarios=function(){
-
-        $scope.id_usuario = "59765a7c4fda492a70d68a9b";
+    $scope.initCarreras=function(){
+      
 
         //inicializar los tipos de usuarios
         $http({
             method: 'GET',
-            url: myProvider.getAllTipoUsuario(),
+            url: myProvider.getFacultades()+"?estado="+0,
             headers: {
                // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -19,10 +18,10 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen tipo de usuarios en la BD!", "warning");
+                swal("Advertencia!", "No existen facultades en la BD!", "warning");
             } else {
 
-                $scope.listTipoUsuarios = response.data;
+                $scope.listFacultades = response.data;
             }
 
 
@@ -33,12 +32,12 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
         });
 
     }
-    $scope.initListar=function(){
+    $scope.initCarreraListar=function(){
 
         //inicializar todos los usuarios
         $http({
             method: 'GET',
-            url: myProvider.getUsuarios_Tipo(),
+            url: myProvider.getCarrera_Facultad(),
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -49,10 +48,10 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
+                swal("Advertencia!", "No existen carreras en la BD!", "warning");
             } else {
 
-                $scope.listUser_tipo = response.data;
+                $scope.listCarrera_Facultad = response.data;
                 
             }
 
@@ -65,7 +64,7 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
 
         $timeout(function(){
 
-            $('#datatableuser').DataTable({
+            $('#datatablecarreras').DataTable({
                 "language": {
                     "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
@@ -77,10 +76,10 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
 
     }
 
-    $scope.modificarUsuario=function(usuario){
+    $scope.modificarCarrera=function(carrera){
 
-            window.localStorage["usuario"]= JSON.stringify(usuario);
-            $location.path("/ModificarUsuarios");
+            window.localStorage["carrera"]= JSON.stringify(carrera);
+            $location.path("/ModificarCarreras");
 
     }
     $scope.cancelarModificarUser=function(){
@@ -90,34 +89,21 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
     }
 
 
-    $scope.registrarUser=function(){
-
-        var name = $scope.name;
-        var username = $scope.username;
-        var pass = $scope.password1;
-        var repass = $scope.password2;
-        var tipoUser=$scope.id_usuario;
-        var email = $scope.correo;
-
-        if (pass == repass) {
-            pass = SHA1(pass);
-            console.log('encriptado');
+    $scope.registrarCarrera=function(){
 
             $http({
                 method: 'POST',
-                url: myProvider.postSaveUser(),
+                url: myProvider.postSaveCarrera(),
                 headers: {
                     // 'Content-Type': 'application/json',
                     //'Authorization': token
                 },
                 data: {
 
-                    name: name,
-                    tipoUsuario: tipoUser,
-                    email:email,
-                    username: username,
-                    password:pass,
-                    estado:"0"
+                    nombre_carrera: $scope.nombre_carrera,
+                    estado: "0",
+                    id_facultad:$scope.id_facultad,
+
 
 
 
@@ -129,16 +115,12 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
 
                 if (response.data.length == 0) {
 
-                    swal("Error!", "No se ingreso el usuario!", "error");
+                    swal("Error!", "No se ingreso la carrera!", "error");
                 } else {
 
-                    swal("Exito!", "Usuario ingresado correctamente!", "success");
-                    $scope.name="";
-                    $scope.username="";
-                    $scope.password1="";
-                    $scope.password2="";
-                    $scope.id_usuario = "59765a7c4fda492a70d68a9b";
-                    $scope.correo = "";
+                    swal("Exito!", "Carrera ingresada correctamente!", "success");
+                    $scope.nombre_carrera = "";
+
 
 
                 }
@@ -149,52 +131,37 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
                 alert('error al realizar Ingreso');
 
             });
-        }else {
 
-            alert('Las claves no coinciden');
-        }
 
 
 
     }
 
-    $scope.initModificarUsuarios=function(){
+    $scope.initModificarCarreras=function(){
 
-        $scope.user = JSON.parse(window.localStorage.getItem('usuario'));
-        console.log($scope.user);
-        $scope.initUsuarios();
+        $scope.carrera = JSON.parse(window.localStorage.getItem('carrera'));
+        console.log($scope.carrera);
+        $scope.initCarreras();
+
         
 
     }
 
 
-    $scope.modificarUser=function(){
+    $scope.modiCarrera=function(){
 
-        var name = $scope.user.name;
-        var username = $scope.user.username;
-        var pass = $scope.password1;
-        var repass = $scope.password2;
-        var tipoUser=$scope.user.tipoUsuario;
-        var email = $scope.user.email;
-
-        if (pass == repass) {
-            pass = SHA1(pass);
-            console.log('encriptado');
 
             $http({
                 method: 'PUT',
-                url: myProvider.putSaveUser()+"/"+$scope.user._id,
+                url: myProvider.putCarrera()+"/"+$scope.carrera._id,
                 headers: {
                     // 'Content-Type': 'application/json',
                     //'Authorization': token
                 },
                 data: {
 
-                    name: name,
-                    tipoUsuario: tipoUser,
-                    email:email,
-                    username: username,
-                    password:pass
+                    nombre_carrera: $scope.nombre_carrera,
+                    id_facultad:$scope.id_facultad
 
 
 
@@ -222,14 +189,8 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
                 alert('error al realizar Ingreso');
 
             });
-        }else {
-
-            alert('Las claves no coinciden');
         }
-
-
-
-    }
+    
 
     $scope.eliminarUsuario=function(usuario){
 

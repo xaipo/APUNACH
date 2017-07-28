@@ -1,11 +1,20 @@
 app.controller('localesController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
 
+    $('#idfechaacuerdo').datepicker({
+        autoclose: true,
+        changeMonth: true,
+        changeYear: true,
+        format: 'yyyy-mm-dd', //Se especifica como deseamos representarla
+        firstDay: 1
+
+    });
+
     $scope.initListarLocal=function(){
 
         //inicializar todos los usuarios
         $http({
             method: 'GET',
-            url: myProvider.getLocales(),
+            url: myProvider.getLocales()+"?estado="+0,
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -39,7 +48,7 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
 
 
             });
-        }, 1500, false);
+        }, 500, false);
 
 
     }
@@ -99,43 +108,42 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
 
     }
 
-    $scope.initModificarUsuarios=function(){
+    $scope.initModificarLocales=function(){
 
-        $scope.user = JSON.parse(window.localStorage.getItem('usuario'));
-        console.log($scope.user);
-        $scope.initUsuarios();
+        $scope.local = JSON.parse(window.localStorage.getItem('local'));
+        console.log($scope.local);
+
 
 
     }
 
+    $scope.modificarLocal=function(local){
 
-    $scope.modificarUser=function(){
+        window.localStorage["local"]= JSON.stringify(local);
+        $location.path("/ModificarLocales");
 
-        var name = $scope.user.name;
-        var username = $scope.user.username;
-        var pass = $scope.password1;
-        var repass = $scope.password2;
-        var tipoUser=$scope.user.tipoUsuario;
-        var email = $scope.user.email;
+    }
 
-        if (pass == repass) {
-            pass = SHA1(pass);
-            console.log('encriptado');
+
+    $scope.modiLocales=function(){
+
 
             $http({
                 method: 'PUT',
-                url: myProvider.putSaveUser()+"/"+$scope.user._id,
+                url: myProvider.putLocal()+"/"+$scope.local._id,
                 headers: {
                     // 'Content-Type': 'application/json',
                     //'Authorization': token
                 },
                 data: {
 
-                    name: name,
-                    tipoUsuario: tipoUser,
-                    email:email,
-                    username: username,
-                    password:pass
+                    nombre: $scope.local.nombre,
+                    ruc: $scope.local.ruc,
+                    direccion:$scope.local.direccion,
+                    credito_max: $scope.local.creditomax,
+                    fecha_inicio_acuerdo:$scope.locfecha_acuerdo,
+                    telefono:$scope.local.telefono,
+                    porcentaje_ganancia:$scope.local.porcentage
 
 
 
@@ -147,16 +155,12 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
 
                 if (response.data.length == 0) {
 
-                    swal("Error!", "No se ingreso el usuario!", "error");
+                    swal("Error!", "No se modifico el local!", "error");
                 } else {
 
-                    swal("Exito!", "Usuario ingresado correctamente!", "success");
-                    $scope.name="";
-                    $scope.username="";
-                    $scope.password1="";
-                    $scope.password2="";
-                    $scope.id_usuario = "59765a7c4fda492a70d68a9b";
-                    $scope.correo = "";
+                    swal("Exito!", "Local ingresado correctamente!", "success");
+                    $location.path("/ListaLocales");
+
 
 
                 }
@@ -167,59 +171,78 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
                 alert('error al realizar Ingreso');
 
             });
-        }else {
 
-            alert('Las claves no coinciden');
-        }
 
 
 
     }
 
-    $scope.eliminarUsuario=function(usuario){
-        console.log(usuario);
+    $scope.cancelarModificarLocales=function(){
+        console.log("hey");
 
-        $http({
-            method: 'PUT',
-            url: myProvider.putSaveUser()+"/"+usuario._id,
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
+        $location.path("/ListaLocales");
+
+    }
+
+    $scope.eliminarLocal=function(local){
+
+
+        swal({
+                title: "Eliminar Local",
+                text: "Estas seguro que quieres eliminar el local?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, estoy de acuerdo!",
+                cancelButtonText: "No, cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
             },
-            data: {
+            function(isConfirm){
+                if (isConfirm) {
 
-              estado:"1"
+                    $http({
+                        method: 'PUT',
+                        url: myProvider.putLocal()+"/"+local._id,
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
 
-
-
-            }
-
-
-        }).then(function successCallback(response) {
-            console.log(response.data);
-
-            if (response.data.length == 0) {
-
-                swal("Error!", "No se ingreso el usuario!", "error");
-            } else {
-
-                swal("Exito!", "Usuario ingresado correctamente!", "success");
-                $scope.name="";
-                $scope.username="";
-                $scope.password1="";
-                $scope.password2="";
-                $scope.id_usuario = "59765a7c4fda492a70d68a9b";
-                $scope.correo = "";
+                            estado:"1"
 
 
-            }
+
+                        }
 
 
-        }, function errorCallback(response) {
+                    }).then(function successCallback(response) {
+                        console.log(response.data);
 
-            alert('error al realizar Ingreso');
+                        if (response.data.length == 0) {
 
-        });
+                            swal("Error!", "No se modifico el local!", "error");
+                        } else {
+                            swal("Exito!", "El local se modifico!", "success");
+                            $scope.initListarLocal();
+
+                        }
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+                } else {
+
+
+                }
+            });
+
 
 
 

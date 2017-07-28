@@ -5,8 +5,8 @@
                 <i class="ace-icon fa fa-home home-icon"></i>
                 <a href="Principal.html#!/">Inicio</a>
             </li>
-            <li class="active">Usuarios</li>
-            <li class="active">Lista de usuarios</li>
+            <li class="active">Carreras</li>
+            <li class="active">Lista de carreras</li>
 
         </ul><!-- /.breadcrumb -->
 
@@ -21,7 +21,7 @@
             <div class="col-xs-12">
                 <div class="page-header">
                     <h1>
-                        Lista de usuarios
+                        Lista de carreras
                         <small>
                             <i class="ace-icon fa fa-angle-double-right"></i>
                             Puede realizar acciones como: modificar y eliminar
@@ -37,35 +37,30 @@
 
                     <!-- tabla-->
 
-                 <div  class="table-responsive" ng-init="initListar()">
-                     <table class="table table-striped table-bordered table-hover" id="datatableuser">
+                 <div  class="table-responsive" ng-init="initCarreraListar()">
+                     <table class="table table-striped table-bordered table-hover" id="datatablecarreras">
                          <thead >
                          <tr class="headings">
 
-                             <th class="column-title" style="text-align:center">Nombre</th>
-                             <th class="column-title" style="text-align:center">Username</th>
-                             <th class="column-title" style="text-align:center">Contraseña</th>
-                             <th class="column-title" style="text-align:center">Email</th>
-                             <th class="column-title" style="text-align:center">Tipo de Usuario</th>
+                             <th class="column-title" style="text-align:center">Nombre de la carrera</th>
+                             <th class="column-title" style="text-align:center">Facultad</th>
                              <th class="column-title" style="text-align:center">Accion</th>
+
                          </tr>
                          </thead>
 
                          <tbody style="text-align:center;">
-                         <tr class="even pointer" ng-repeat="x in listUser_tipo">
+                         <tr class="even pointer" ng-repeat="x in listCarrera_Facultad">
 
-                             <td class=" "> {{x.name}}</td>
-                             <td class=" " >{{x.username}} </td>
-                             <td class=" " >{{x.password}} </i></td>
-                             <td class=" " > {{x.email}}</td>
-                             <td class=" " >{{x.R[0].descripcion}} </td>
+                             <td class=" "> {{x.nombre_carrera}}</td>
+                             <td class=" " >{{x.R[0].nombre_facultad}} </td>
                              <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
 
-                                 <a class="green" ng-click="modificarUsuario(x)">
+                                 <a class="green" ng-click="modificarCarrera(x)">
                                      <i class="ace-icon fa fa-pencil bigger-130"></i>
                                  </a>
 
-                                 <a class="red" ng-click="eliminarUsuario(x)">
+                                 <a class="red" ng-click="eliminarCarrera(x)">
                                      <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                  </a>
                              </div>
@@ -79,7 +74,7 @@
                                          <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 
                                              <li>
-                                                 <a   class="tooltip-success" data-rel="tooltip" title="Edit" ng-click="modificarUsuario(x)">
+                                                 <a   class="tooltip-success" data-rel="tooltip" title="Edit" ng-click="modificarCarrera(x)">
 																				<span class="green">
 																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																				</span>
@@ -87,7 +82,7 @@
                                              </li>
 
                                              <li>
-                                                 <a  class="tooltip-error" data-rel="tooltip" title="Delete" ng-click="eliminarUsuario(x)">
+                                                 <a  class="tooltip-error" data-rel="tooltip" title="Delete" ng-click="eliminarCarrera(x)">
 																				<span class="red">
 																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																				</span>
@@ -109,3 +104,4 @@
         </div><!-- /.row -->
     </div><!-- /.page-content -->
 </div>
+    </div>

@@ -30,6 +30,33 @@ function ApiUrl(){
     this.getLocales=function(){
         return direccion+'locales';
     }
+    this.putLocal=function(){
+        return direccion+'locales';
+    }
+    //Facultades
+    this.postSaveFacultad=function(){
+        return direccion+'facultad';
+    }
+    this.getFacultades=function(){
+        return direccion+'facultad';
+    }
+    this.putFacultad=function(){
+        return direccion+'facultad';
+    }
+    //Carreras
+    this.postSaveCarrera=function(){
+        return direccion+'carrera';
+    }
+    this.getCarrera_Facultad=function(){
+        return direccion+'carrera_facultad';
+    }
+    this.putCarrera=function(){
+        return direccion+'carrera';
+    }
+    //Docente
+    this. getTipo_Contrato=function(){
+        return direccion+'tipoContrato';
+    }
     
 }
 
@@ -49,6 +76,19 @@ app.config (function($routeProvider ,$provide){
     //Locales
     $routeProvider.when("/IngresoLocales",{templateUrl:"pages/IngresoLocales.html", controller:'localesController'});
     $routeProvider.when("/ListaLocales",{templateUrl:"pages/ListaLocales.html", controller:'localesController'});
+    $routeProvider.when("/ModificarLocales",{templateUrl:"pages/ModificarLocales.html", controller:'localesController'});
+    //Facultades
+    $routeProvider.when("/IngresoFacultades",{templateUrl:"pages/IngresoFacultades.html", controller:'facultadesController'});
+    $routeProvider.when("/ListaFacultades",{templateUrl:"pages/ListaFacultades.html", controller:'facultadesController'});
+    $routeProvider.when("/ModificarFacultades",{templateUrl:"pages/ModificarFacultades.html", controller:'facultadesController'});
+    //Carreras
+    $routeProvider.when("/IngresoCarreras",{templateUrl:"pages/IngresoCarreras.html", controller:'carrerasController'});
+    $routeProvider.when("/ListaCarreras",{templateUrl:"pages/ListaCarreras.html", controller:'carrerasController'});
+    $routeProvider.when("/ModificarCarreras",{templateUrl:"pages/ModificarCarreras.html", controller:'carrerasController'});
+    //Docentes
+    $routeProvider.when("/IngresoDocentes",{templateUrl:"pages/IngresoDocentes.html", controller:'docentesController'});
+    
+
     
 
 });
