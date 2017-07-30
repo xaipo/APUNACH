@@ -54,8 +54,17 @@ function ApiUrl(){
         return direccion+'carrera';
     }
     //Docente
-    this. getTipo_Contrato=function(){
+    this.getTipo_Contrato=function(){
         return direccion+'tipoContrato';
+    }
+    this.postSaveDocente=function(){
+        return direccion+'docente';
+    }
+    this.getAllDocentes=function(){
+        return direccion+'docente';
+    }
+    this.putUpdateDocente=function(){
+        return direccion+'docente';
     }
     
 }
@@ -87,6 +96,8 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/ModificarCarreras",{templateUrl:"pages/ModificarCarreras.html", controller:'carrerasController'});
     //Docentes
     $routeProvider.when("/IngresoDocentes",{templateUrl:"pages/IngresoDocentes.html", controller:'docentesController'});
+    $routeProvider.when("/ListaDocentes",{templateUrl:"pages/ListaDocentes.html", controller:'docentesController'});
+    $routeProvider.when("/ModificarDocentes",{templateUrl:"pages/ModificarDocentes.html", controller:'docentesController'});
     
 
     

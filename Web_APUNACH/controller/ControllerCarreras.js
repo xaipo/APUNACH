@@ -82,9 +82,9 @@ app.controller('carrerasController', ['$scope', '$http', '$location','myProvider
             $location.path("/ModificarCarreras");
 
     }
-    $scope.cancelarModificarUser=function(){
+    $scope.cancelarModificarCarrera=function(){
 
-        $location.path("/ListaUsuarios");
+        $location.path("/ListaCarreras");
 
     }
 

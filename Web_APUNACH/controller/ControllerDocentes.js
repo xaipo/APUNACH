@@ -77,12 +77,12 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
 
     }
-    $scope.initListar=function(){
+    $scope.initListarDocentes=function(){
 
         //inicializar todos los usuarios
         $http({
             method: 'GET',
-            url: myProvider.getUsuarios_Tipo(),
+            url: myProvider.getAllDocentes()+"?estado="+0,
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -93,10 +93,10 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
+                swal("Advertencia!", "No existen docentes en la BD!", "warning");
             } else {
 
-                $scope.listUser_tipo = response.data;
+                $scope.listDocentes = response.data;
                 
             }
 
@@ -109,7 +109,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
         $timeout(function(){
 
-            $('#datatableuser').DataTable({
+            $('#datatabledocentes').DataTable({
                 "language": {
                     "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
@@ -121,15 +121,15 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
     }
 
-    $scope.modificarUsuario=function(usuario){
+    $scope.modificarDocente=function(docente){
 
-            window.localStorage["usuario"]= JSON.stringify(usuario);
-            $location.path("/ModificarUsuarios");
+            window.localStorage["docente"]= JSON.stringify(docente);
+            $location.path("/ModificarDocentes");
 
     }
-    $scope.cancelarModificarUser=function(){
+    $scope.cancelarModificarDocente=function(){
 
-        $location.path("/ListaUsuarios");
+        $location.path("/ListaDocentes");
 
     }
 
@@ -154,49 +154,114 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
         console.log($scope.valor_cuota);
 
+        $http({
+            method: 'POST',
+            url: myProvider.postSaveDocente(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                cedula : $scope.cedula,
+                nombres : $scope.nombres,
+                apellidos : $scope.apellidos,
+                fecha_nacimiento : $('#idfecha_naci').val(),
+                direccion : $scope.direccion,
+                telefono : $scope.telefono,
+                celular : $scope.celular,
+                correo_electronico : $scope.correo_electronico,
+                id_carrera : $scope.id_carrera,
+                id_tipo_contrato : $scope.id_tipo_contrato,
+                pregrado : $scope.pregrado,
+                postgrado : $scope.postgrado,
+                miembro_asociacion : $scope.miembro_asociacion,
+                fecha_afiliacion : $('#idfecha_afiliacion').val(),
+                estado : 0,
+                valor_cuota : $scope.valor_cuota
+
+
+
+            }
+
+
+        }).then(function successCallback(response) {
+
+
+            if (response.data.length == 0) {
+
+                swal("Error!", "No se ingreso el docente!", "error");
+            } else {
+
+                swal("Exito!", "Docente ingresado correctamente!", "success");
+                $scope.cedula = "";
+                $scope.nombres= "";
+                $scope.apellidos = "";
+                $scope.fecha_nacimiento = "";
+                $scope.direccion = "";
+                $scope.telefono = "";
+                $scope.celular = "";
+                $scope.correo_electronico = "";
+                $scope.id_carrera = "";
+                $scope.id_tipo_contrato= "";
+                $scope.pregrado = "";
+                $scope.postgrado = "";
+                $scope.miembro_asociacion = "";
+                $scope.fecha_afiliacion = "";
+                $scope.valor_cuota= "";
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
 
 
 
 
     }
 
-    $scope.initModificarUsuarios=function(){
+    $scope.initModificarDocentes=function(){
 
-        $scope.user = JSON.parse(window.localStorage.getItem('usuario'));
-        console.log($scope.user);
-        $scope.initUsuarios();
+        $scope.docente = JSON.parse(window.localStorage.getItem('docente'));
+        console.log($scope.docente);
+        $scope.initDocentes();
         
 
     }
 
 
-    $scope.modificarUser=function(){
-
-        var name = $scope.user.name;
-        var username = $scope.user.username;
-        var pass = $scope.password1;
-        var repass = $scope.password2;
-        var tipoUser=$scope.user.tipoUsuario;
-        var email = $scope.user.email;
-
-        if (pass == repass) {
-            pass = SHA1(pass);
-            console.log('encriptado');
+    $scope.modiDocente=function(){
+        console.log($scope.docente.cedula);
 
             $http({
                 method: 'PUT',
-                url: myProvider.putSaveUser()+"/"+$scope.user._id,
+                url: myProvider.putUpdateDocente()+"/"+$scope.docente._id,
                 headers: {
                     // 'Content-Type': 'application/json',
                     //'Authorization': token
                 },
                 data: {
 
-                    name: name,
-                    tipoUsuario: tipoUser,
-                    email:email,
-                    username: username,
-                    password:pass
+                    cedula : $scope.docente.cedula,
+                    nombres : $scope.docente.nombres,
+                    apellidos : $scope.docente.apellidos,
+                    fecha_nacimiento : $('#idfecha_naci').val(),
+                    direccion : $scope.docente.direccion,
+                    telefono : $scope.docente.telefono,
+                    celular : $scope.docente.celular,
+                    correo_electronico : $scope.docente.correo_electronico,
+                    id_carrera : $scope.docente.id_carrera,
+                    id_tipo_contrato : $scope.docente.id_tipo_contrato,
+                    pregrado : $scope.docente.pregrado,
+                    postgrado : $scope.docente.postgrado,
+                    miembro_asociacion : $scope.docente.miembro_asociacion,
+                    fecha_afiliacion : $('#idfecha_afiliacion').val(),
+                    valor_cuota : $scope.docente.valor_cuota
 
 
 
@@ -208,11 +273,11 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                 if (response.data.length == 0) {
 
-                    swal("Error!", "No se ingreso el usuario!", "error");
+                    swal("Error!", "No se modifico el docente!", "error");
                 } else {
 
-                    swal("Exito!", "Usuario ingresado correctamente!", "success");
-                    $location.path("/ListaUsuarios");
+                    swal("Exito!", "El docente se modifico correctamente!", "success");
+                    $location.path("/ListaDocentes");
 
 
 
@@ -224,21 +289,15 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                 alert('error al realizar Ingreso');
 
             });
-        }else {
-
-            alert('Las claves no coinciden');
         }
 
 
-
-    }
-
-    $scope.eliminarUsuario=function(usuario){
+    $scope.eliminarDocente=function(docente){
 
 
         swal({
-                title: "Eliminar Usuario",
-                text: "Estas seguro que quieres eliminar el usuario?",
+                title: "Eliminar Docente",
+                text: "Estas seguro que quieres eliminar el docente?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -252,7 +311,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                     $http({
                         method: 'PUT',
-                        url: myProvider.putSaveUser()+"/"+usuario._id,
+                        url: myProvider.putUpdateDocente()+"/"+docente._id,
                         headers: {
                             // 'Content-Type': 'application/json',
                             //'Authorization': token
@@ -271,10 +330,10 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                         if (response.data.length == 0) {
 
-                            swal("Error!", "No se ingreso el usuario!", "error");
+                            swal("Error!", "No se elimino el docente!", "error");
                         } else {
-                            swal("Exito!", "El usuario se elimino!", "success");
-                            $scope.initListar();
+                            swal("Exito!", "El docente se elimino!", "success");
+                            $scope.initListarDocentes();
 
                         }
 
