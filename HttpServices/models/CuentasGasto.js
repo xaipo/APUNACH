@@ -9,6 +9,10 @@ var CuentasGasto = new mongoose.Schema({
     "descripcion" : {
         type: String,
         required:true
+    },
+    "estado": {
+        type: String,
+        required: true
     }
 
 },{ collection: 'cuentasGasto'

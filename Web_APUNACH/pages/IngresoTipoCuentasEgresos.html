@@ -1,0 +1,61 @@
+
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="Principal.html#!/">Inicio</a>
+            </li>
+            <li class="active">Tipo de cuentas</li>
+            <li class="active">Tipo Cuentas Egresos</li>
+            <li class="active">Ingresar tipo de cuentas de egreso</li>
+
+        </ul><!-- /.breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+
+        </div><!-- /.nav-search -->
+    </div>
+
+    <div class="page-content">
+
+        <div class="page-header">
+            <h1>
+                Ingreso de tipo de cuentas de egresos
+                <small>
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    Ingrese los datos del tipo de cuentas de egresos
+                </small>
+            </h1>
+
+        </div><!-- /.page-header -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <form class="form-horizontal" role="form" ng-submit="registrarTipoCuentaEgreso()">
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idTipoCuentaEgreso"> Descripcion: </label>
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idTipoCuentaEgreso"  ng-model="descripcion" placeholder="Descripcion del tipo de cuenta egreso" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" type="submit">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Aceptar
+                            </button>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="reset">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+    </div><!-- /.page-content -->

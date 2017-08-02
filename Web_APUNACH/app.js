@@ -67,6 +67,28 @@ function ApiUrl(){
         return direccion+'docente';
     }
     
+    //Cuentas
+    //Tipo cuentas ingreso
+    this.postSaveTipoCuentaIngreso=function(){
+        return direccion+'cuentas';
+    }
+    this.getTipoCuentasIngreso=function(){
+        return direccion+'cuentas';
+    }
+    this.putTipoCuentaIngreso=function(){
+        return direccion+'cuentas';
+    }
+    //Tipo cuentas egresos
+    this.postSaveTipoCuentaEgreso=function(){
+        return direccion+'cuentasGasto';
+    }
+    this.getTipoCuentasEgreso=function(){
+        return direccion+'cuentasGasto';
+    }
+    this.putTipoCuentaEgreso=function(){
+        return direccion+'cuentasGasto';
+    }
+    
 }
 
 app.factory("myProvider",function(){
@@ -98,6 +120,23 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/IngresoDocentes",{templateUrl:"pages/IngresoDocentes.html", controller:'docentesController'});
     $routeProvider.when("/ListaDocentes",{templateUrl:"pages/ListaDocentes.html", controller:'docentesController'});
     $routeProvider.when("/ModificarDocentes",{templateUrl:"pages/ModificarDocentes.html", controller:'docentesController'});
+    //Tipo Cuentas
+    //Tipo Ingresos
+    $routeProvider.when("/IngresoTipoCuentasIngresos",{templateUrl:"pages/IngresoTipoCuentasIngresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ListaTipoCuentasIngresos",{templateUrl:"pages/ListaTipoCuentasIngresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ModificarTipoCuentasIngreso",{templateUrl:"pages/ModificarTipoCuentasIngreso.html", controller:'cuentasController'});
+    //Tipo Egresos
+    $routeProvider.when("/IngresoTipoCuentasEgresos",{templateUrl:"pages/IngresoTipoCuentasEgresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ListaTipoCuentasEgresos",{templateUrl:"pages/ListaTipoCuentasEgresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ModificarTipoCuentasEgreso",{templateUrl:"pages/ModificarTipoCuentasEgresos.html", controller:'cuentasController'});
+    //Cuentas
+    //Ingresos
+    $routeProvider.when("/RegistroIngresos",{templateUrl:"pages/RegistroIngresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ListaIngresos",{templateUrl:"pages/ListaIngresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ModificarIngreso",{templateUrl:"pages/ModificarIngreso.html", controller:'cuentasController'});
+
+
+
     
 
     

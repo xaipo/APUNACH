@@ -68,6 +68,7 @@
     <script src="controller/ControllerFacultades.js"></script>
     <script src="controller/ControllerCarreras.js"></script>
     <script src="controller/ControllerDocentes.js"></script>
+    <script src="controller/ControllerCuentas.js"></script>
 
 
 </head>
@@ -181,7 +182,7 @@
         <ul class="nav nav-list">
             <li class="">
                 <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-desktop"></i>
+                    <i class="menu-icon fa fa-user"></i>
 							<span class="menu-text">
 								Usuarios
 							</span>
@@ -215,7 +216,7 @@
 
             <li class="">
                 <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-desktop"></i>
+                    <i class="menu-icon fa fa-shopping-cart"></i>
 							<span class="menu-text">
 								Locales
 							</span>
@@ -248,7 +249,7 @@
             </li>
             <li class="">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-desktop"></i>
+                <i class="menu-icon fa fa-university"></i>
 							<span class="menu-text">
 								Facultades
 							</span>
@@ -281,7 +282,7 @@
         </li>
             <li class="">
                 <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-desktop"></i>
+                    <i class="menu-icon fa fa-graduation-cap"></i>
 							<span class="menu-text">
 								Carreras
 							</span>
@@ -314,7 +315,7 @@
             </li>
             <li class="">
                 <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-desktop"></i>
+                    <i class="menu-icon fa fa-users"></i>
 							<span class="menu-text">
 								Docentes
 							</span>
@@ -346,7 +347,169 @@
                 </ul>
             </li>
 
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-book"></i>
+							<span class="menu-text">
+								Tipo de cuentas
+							</span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+
+                            Tipo Cuentas Ingreso
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="" ng-click="navegacion('/IngresoTipoCuentasIngresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Ingresar tipo de cuenta de ingreso
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                            <li class="">
+                                <a href="" ng-click="navegacion('/ListaTipoCuentasIngresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Lista de tipo de cuentas de ingreso
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                        </ul>
+                    </li>
+
             </ul>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+
+                            Tipo Cuenta Egreso
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="" ng-click="navegacion('/IngresoTipoCuentasEgresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Ingresar tipo de cuenta de egresos
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                            <li class="">
+                                <a href="" ng-click="navegacion('/ListaTipoCuentasEgresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Lista de tipo de cuentas de egresos
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-calculator"></i>
+							<span class="menu-text">
+								Cuentas
+							</span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+
+                            Ingreso
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="" ng-click="navegacion('/RegistroIngresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Registrar ingreso
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                            <li class="">
+                                <a href="" ng-click="navegacion('/ListaIngresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Lista de ingreso
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+
+                            Egreso
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="" ng-click="navegacion('/RegistrarEgresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Registrar egresos
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                            <li class="">
+                                <a href="" ng-click="navegacion('/ListaEgresos')">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Lista de egresos
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
 
 
 
