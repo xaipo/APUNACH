@@ -1,5 +1,5 @@
 
-    <div class="breadcrumbs ace-save-state" id="breadcrumbs" ng-init="initListarTipoCuentasIngreso()">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs" ng-init="initModificarIngresos()">
         <ul class="breadcrumb">
             <li>
                 <i class="ace-icon fa fa-home home-icon"></i>
@@ -7,7 +7,7 @@
             </li>
             <li class="active">Cuentas</li>
             <li class="active">Ingreso</li>
-            <li class="active">Registrar ingreso</li>
+            <li class="active">Modificar ingreso</li>
 
         </ul><!-- /.breadcrumb -->
 
@@ -21,10 +21,10 @@
 
         <div class="page-header">
             <h1>
-                Registro de ingresos
+                Modificacion de ingresos
                 <small>
                     <i class="ace-icon fa fa-angle-double-right"></i>
-                    Ingrese los datos de ingresos
+                    Permite modificar el registro
                 </small>
             </h1>
 
@@ -33,26 +33,26 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
-                <form class="form-horizontal" role="form" ng-submit="registrarCuentaIngreso()">
+                <form class="form-horizontal" role="form" ng-submit="ModificarIngreso()">
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Tipo de cuenta</label>
                         <div class="col-md-3 col-sm-6 col-xs-10">
 
-                            <select class="form-control "  ng-model="id_cuenta" ng-options="item._id as item.descripcion for item in listTipoCuentasIngreso" required ></select>
+                            <select class="form-control "  ng-model="ingresos.id_cuenta" ng-options="item._id as item.descripcion for item in listTipoCuentasIngreso" required ></select>
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idvalor"> Valor: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="number" id="idvalor"  ng-model="valor" step="0.01" placeholder="Ingrese el valor" required class="col-md-7 col-xs-12" />
+                            <input type="number" id="idvalor"  ng-model="ingresos.valor" step="0.01" placeholder="Ingrese el valor" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idfecha_ingre"> Fecha de ingreso:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idfecha_ingre" ng-model="fecha_ingre" placeholder="Fecha de afiliacion" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idfecha_ingre" ng-model="fecha_fin" placeholder="Fecha de afiliacion" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
 
@@ -66,9 +66,9 @@
                             </button>
 
                             &nbsp; &nbsp; &nbsp;
-                            <button class="btn" type="reset">
+                            <button class="btn" type="button" ng-click="cancelarModificarIngreso()">
                                 <i class="ace-icon fa fa-undo bigger-110"></i>
-                                Reset
+                                Cancelar
                             </button>
                         </div>
                     </div>

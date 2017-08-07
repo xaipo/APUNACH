@@ -42,6 +42,15 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
             });
         }, 500, false);
 
+        $('#idfecha_ingre').datepicker({
+            autoclose: true,
+            changeMonth: true,
+            changeYear: true,
+            format: 'yyyy-mm-dd', //Se especifica como deseamos representarla
+            firstDay: 1
+
+        });
+
 
     }
 
@@ -436,14 +445,12 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
     //------------------------------------------------Cuentas Ingresos----------------------------------------------
 
+    $scope.initIngresosListar=function(){
 
-
-    $scope.initListarTipoCuentasEgreso=function(){
-
-        //inicializar todos los tipos de cuentas de ingreso
+        //inicializar todos los usuarios
         $http({
             method: 'GET',
-            url: myProvider.getTipoCuentasEgreso()+"?estado="+0,
+            url: myProvider.getIngreso_Tipocuenta(),
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -454,23 +461,23 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
+                swal("Advertencia!", "No existen cuentas de ingresos en la BD!", "warning");
             } else {
 
-                $scope.listTipoCuentasEgreso = response.data;
+                $scope.listCuentasIngreso = response.data;
 
             }
 
 
         }, function errorCallback(response) {
 
-            alert('error al realizar Egreso');
+            alert('error al realizar Ingreso');
 
         });
 
         $timeout(function(){
 
-            $('#tableTipoCuentasEgreso').DataTable({
+            $('#datatableIngresos').DataTable({
                 "language": {
                     "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
@@ -482,31 +489,41 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
     }
 
-    $scope.modificarTipoCunetaEgreso=function(tipocuentaegreso){
+    
+    $scope.modiIngresos=function(ingresos){
 
-        window.localStorage["tipocuentaegreso"]= JSON.stringify(tipocuentaegreso);
-        $location.path("/ModificarTipoCuentasEgreso");
-
-    }
-    $scope.cancelarTipoCuentaEgreso=function(){
-
-        $location.path("/ListaTipoCuentasEgresos");
+        window.localStorage["ingresos"]= JSON.stringify(ingresos);
+        $location.path("/ModificarIngresos");
 
     }
+    $scope.cancelarModificarIngreso=function(){
+
+        $location.path("/ListaIngresos");
+
+    }
 
 
-    $scope.registrarTipoCuentaEgreso=function(){
+    $scope.registrarCuentaIngreso=function(){
+        console.log($scope.id_cuenta);
+        console.log($('#idfecha_ingre').val());
+        var fecha = $('#idfecha_ingre').val();
+        var fecha_del_sistema = new Date();
+        console.log(fecha_del_sistema);
 
         $http({
             method: 'POST',
-            url: myProvider.postSaveTipoCuentaEgreso(),
+            url: myProvider.postSaveCuentaIngreso(),
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
             },
             data: {
 
-                descripcion: $scope.descripcion,
+                id_cuenta:$scope.id_cuenta,
+                valor:$scope.valor,
+                fecha:fecha,
+                fecha_sistema:fecha_del_sistema,
+                usuario: $scope.id_cuenta,
                 estado:0
 
 
@@ -520,13 +537,13 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
             if (response.data.length == 0) {
 
-                swal("Error!", "No se ingreso La facultad!", "error");
+                swal("Error!", "No se ingreso correctamente la cuenta de ingreso!", "error");
             } else {
 
-                swal("Exito!", "Facultad ingresado correctamente!", "success");
-                $scope.descripcion="";
-
-
+                swal("Exito!", "Cuenta de ingreso se ah ingresado correctamente!", "success");
+                $scope.id_cuenta = "";
+                $scope.valor = "";
+                $scope.fecha_ingre = "";
 
             }
 
@@ -539,9 +556,13 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
     }
 
-    $scope.initModificarTipoCuentasEgreso=function(){
+    $scope.initModificarIngresos=function(){
 
-        $scope.tipocuentaegreso = JSON.parse(window.localStorage.getItem('tipocuentaegreso'));
+        $scope.ingresos = JSON.parse(window.localStorage.getItem('ingresos'));
+        console.log($scope.ingresos);
+        var fecha = $scope.ingresos.fecha.split("T");
+        $scope.fecha_fin = fecha[0];
+        $scope.initListarTipoCuentasIngreso();
 
 
 
@@ -550,19 +571,24 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
 
 
-    $scope.modiTipoCuentaEgreso=function(){
+    $scope.ModificarIngreso=function(){
+
+        var fecha = $('#idfecha_ingre').val();
 
 
         $http({
             method: 'PUT',
-            url: myProvider.putTipoCuentaEgreso()+"/"+$scope.tipocuentaegreso._id,
+            url: myProvider.putIngresos()+"/"+$scope.ingresos._id,
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
             },
             data: {
 
-                descripcion: $scope.tipocuentaegreso.descripcion
+                id_cuenta:$scope.ingresos.id_cuenta,
+                valor:$scope.ingresos.valor,
+                fecha:fecha,
+                usuario: $scope.ingresos.id_cuenta
 
             }
 
@@ -572,11 +598,11 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
             if (response.data.length == 0) {
 
-                swal("Error!", "No se pudo modificar el tipo de cuenta!", "error");
+                swal("Error!", "No se pudo modificar los ingresos!", "error");
             } else {
 
-                swal("Exito!", "El Tipo de cuenta se a modificado correctamente!", "success");
-                $location.path("/ListaTipoCuentasEgresos");
+                swal("Exito!", "La cuenta de ingreso se a modificado correctamente!", "success");
+               $location.path("/ListaIngresos");
 
 
             }
@@ -592,11 +618,11 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
     }
 
-    $scope.eliminarTipoCunetaEgreso=function(TipoCuentasEgreso){
+    $scope.eliminarIngresos=function(ingresos){
 
 
         swal({
-                title: "Eliminar Tipo cuenta de Egreso",
+                title: "Eliminar la cuenta de Ingreso",
                 text: "Estas seguro que quieres eliminar la cuenta?",
                 type: "warning",
                 showCancelButton: true,
@@ -611,7 +637,7 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
                     $http({
                         method: 'PUT',
-                        url: myProvider.putTipoCuentaEgreso()+"/"+TipoCuentasEgreso._id,
+                        url: myProvider.putIngresos()+"/"+ingresos._id,
                         headers: {
                             // 'Content-Type': 'application/json',
                             //'Authorization': token
@@ -628,10 +654,10 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
                         if (response.data.length == 0) {
 
-                            swal("Error!", "No pudo eliminar el tipo de cuenta de egresos!", "error");
+                            swal("Error!", "No pudo eliminar la de cuenta de ingresos!", "error");
                         } else {
-                            swal("Exito!", "El tipo de cuenta de egresos se elimino correctamente!", "success");
-                            $scope.initListarTipoCuentasEgreso();
+                            swal("Exito!", "La cuenta de ingresos se elimino correctamente!", "success");
+                            $scope.initIngresosListar();
 
                         }
 
