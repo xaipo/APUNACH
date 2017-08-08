@@ -109,6 +109,17 @@ function ApiUrl(){
         this.putEgresos=function(){
             return direccion+'gastos';
         }
+    //Parametros
+    this.postSaveParametros=function(){
+        return direccion+'parametro';
+    }
+    this.getParametros=function(){
+        return direccion+'parametro';
+    }
+    this.putParametros=function(){
+        return direccion+'parametro';
+    }
+
 
 }
 
@@ -159,6 +170,11 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/RegistrarEgresos",{templateUrl:"pages/RegistroEgresos.html", controller:'cuentasController'});
     $routeProvider.when("/ListaEgresos",{templateUrl:"pages/ListaEgresos.html", controller:'cuentasController'});
     $routeProvider.when("/ModificarEgresos",{templateUrl:"pages/ModificarEgresos.html", controller:'cuentasController'});
+
+    //Parametros
+    $routeProvider.when("/IngresoParametros",{templateUrl:"pages/IngresoParametros.html", controller:'parametrosController'});
+    $routeProvider.when("/ListaParametros",{templateUrl:"pages/ListaParametros.html", controller:'parametrosController'});
+    $routeProvider.when("/ModificarParametros",{templateUrl:"pages/ModificarParametros.html", controller:'parametrosController'});
 
 
 
