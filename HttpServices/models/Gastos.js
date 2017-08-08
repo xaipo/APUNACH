@@ -17,9 +17,15 @@ var Gastos = new mongoose.Schema({
     "fecha" : {
         type: Date,
         required:true
+    },"fecha_sistema" : {
+        type: Date,
+        required:true
     }, "usuario" : {
         type: mongoose.Schema.ObjectId,
         required:true
+    }, "estado": {
+        type: String,
+        required: true
     }
 
 },{ collection: 'gastos'

@@ -1,0 +1,79 @@
+
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs" ng-init="initModificarEgresos()">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="Principal.html#!/">Inicio</a>
+            </li>
+            <li class="active">Cuentas</li>
+            <li class="active">Ingreso</li>
+            <li class="active">Modificar ingreso</li>
+
+        </ul><!-- /.breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+
+        </div><!-- /.nav-search -->
+    </div>
+    <br>
+    <br>
+    <div class="page-content">
+
+        <div class="page-header">
+            <h1>
+                Modificacion de ingresos
+                <small>
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    Permite modificar el registro
+                </small>
+            </h1>
+
+        </div><!-- /.page-header -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <form class="form-horizontal" role="form" ng-submit="ModificarEgreso()">
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Tipo de cuenta</label>
+                        <div class="col-md-3 col-sm-6 col-xs-10">
+
+                            <select class="form-control "  ng-model="egresos.id_cuenta" ng-options="item._id as item.descripcion for item in listTipoCuentasEgreso" required ></select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idvalor"> Valor: </label>
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="number" id="idvalor"  ng-model="egresos.valor" step="0.01" placeholder="Ingrese el valor" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idfecha_egre"> Fecha de ingreso:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idfecha_egre" ng-model="fecha_fin" placeholder="Fecha de afiliacion" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" type="submit">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Aceptar
+                            </button>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="button" ng-click="cancelarModificarIngreso()">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+    </div><!-- /.page-content -->

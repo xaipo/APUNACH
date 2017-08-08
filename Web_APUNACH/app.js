@@ -99,8 +99,16 @@ function ApiUrl(){
         this.putIngresos=function(){
             return direccion+'ingreso';
         }
-
-
+    //Egresos
+    this.postSaveCuentaEgreso=function(){
+        return direccion+'gastos';
+    }
+    this.getEgreso_Tipocuenta=function(){
+        return direccion+'Egreso_TipoCuenta';
+    },
+        this.putEgresos=function(){
+            return direccion+'gastos';
+        }
 
 }
 
@@ -147,6 +155,10 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/RegistroIngresos",{templateUrl:"pages/RegistroIngresos.html", controller:'cuentasController'});
     $routeProvider.when("/ListaIngresos",{templateUrl:"pages/ListaIngresos.html", controller:'cuentasController'});
     $routeProvider.when("/ModificarIngresos",{templateUrl:"pages/ModificarIngresos.html", controller:'cuentasController'});
+    //Egresos
+    $routeProvider.when("/RegistrarEgresos",{templateUrl:"pages/RegistroEgresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ListaEgresos",{templateUrl:"pages/ListaEgresos.html", controller:'cuentasController'});
+    $routeProvider.when("/ModificarEgresos",{templateUrl:"pages/ModificarEgresos.html", controller:'cuentasController'});
 
 
 

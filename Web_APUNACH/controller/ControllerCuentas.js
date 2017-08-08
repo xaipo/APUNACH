@@ -271,6 +271,15 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
             });
         }, 500, false);
 
+        $('#idfecha_egre').datepicker({
+            autoclose: true,
+            changeMonth: true,
+            changeYear: true,
+            format: 'yyyy-mm-dd', //Se especifica como deseamos representarla
+            firstDay: 1
+
+        });
+
 
     }
 
@@ -661,6 +670,235 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
                         }
 
+                    }, function errorCallback(response) {
+
+                        alert('error al eliminar el usuario');
+
+                    });
+
+
+                } else {
+
+
+                }
+            });
+
+    }
+
+    //------------------------------------------------Cuentas Egresos----------------------------------------------
+
+    $scope.initEgresosListar=function(){
+
+        //inicializar todos los usuarios
+        $http({
+            method: 'GET',
+            url: myProvider.getEgreso_Tipocuenta(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen cuentas de egresos en la BD!", "warning");
+            } else {
+
+                $scope.listCuentasEgreso = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#datatableEgresos').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
+
+    }
+
+
+    $scope.modiEgresos=function(egresos){
+
+        window.localStorage["egresos"]= JSON.stringify(egresos);
+        $location.path("/ModificarEgresos");
+
+    }
+    $scope.cancelarModificarEgreso=function(){
+
+        $location.path("/ListaEgresos");
+
+    }
+
+
+    $scope.registrarCuentaEgreso=function(){
+        console.log($scope.id_cuenta);
+        console.log($('#idfecha_egre').val());
+        var fecha = $('#idfecha_egre').val();
+        var fecha_del_sistema = new Date();
+        console.log(fecha_del_sistema);
+
+        $http({
+            method: 'POST',
+            url: myProvider.postSaveCuentaEgreso(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                id_cuenta:$scope.id_cuenta,
+                valor:$scope.valor,
+                fecha:fecha,
+                fecha_sistema:fecha_del_sistema,
+                usuario: $scope.id_cuenta,
+                estado:0
+                
+            }
+
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Error!", "No se ingreso correctamente la cuenta de egreso!", "error");
+            } else {
+
+                swal("Exito!", "Cuenta de egreso se ah ingresado correctamente!", "success");
+                $scope.id_cuenta = "";
+                $scope.valor = "";
+                $scope.fecha_egre = "";
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+    }
+
+    $scope.initModificarEgresos=function(){
+
+        $scope.egresos = JSON.parse(window.localStorage.getItem('egresos'));
+        console.log($scope.egresos);
+        var fecha = $scope.egresos.fecha.split("T");
+        $scope.fecha_fin = fecha[0];
+        $scope.initListarTipoCuentasEgreso();
+
+
+
+    }
+
+
+
+
+    $scope.ModificarEgreso=function(){
+
+        var fecha = $('#idfecha_egre').val();
+
+
+        $http({
+            method: 'PUT',
+            url: myProvider.putEgresos()+"/"+$scope.egresos._id,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                id_cuenta:$scope.egresos.id_cuenta,
+                valor:$scope.egresos.valor,
+                fecha:fecha,
+                usuario: $scope.egresos.id_cuenta
+
+            }
+
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Error!", "No se pudo modificar los egresos!", "error");
+            } else {
+
+                swal("Exito!", "La cuenta de egreso se a modificado correctamente!", "success");
+                $location.path("/ListaEgresos");
+
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+    }
+
+    $scope.eliminarEgresos=function(egresos){
+
+
+        swal({
+                title: "Eliminar la cuenta de Egreso",
+                text: "Estas seguro que quieres eliminar la cuenta?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Si, estoy de acuerdo!",
+                cancelButtonText: "No, cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+            },
+            function(isConfirm){
+                if (isConfirm) {
+
+                    $http({
+                        method: 'PUT',
+                        url: myProvider.putEgresos()+"/"+egresos._id,
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
+
+                            estado:"1"
+
+                        }
+
+
+                    }).then(function successCallback(response) {
+                        console.log(response.data);
+
+                        if (response.data.length == 0) {
+
+                            swal("Error!", "No pudo eliminar la de cuenta de egresos!", "error");
+                        } else {
+                            swal("Exito!", "La cuenta de egresos se elimino correctamente!", "success");
+                            $scope.initEgresosListar();
+
+                        }
 
                     }, function errorCallback(response) {
 
