@@ -51,9 +51,9 @@ app.controller('parametrosController', ['$scope', '$http', '$location','myProvid
             $location.path("/ModificarParametros");
 
     }
-    $scope.cancelarModificarFacultad=function(){
+    $scope.cancelarModificarParametro=function(){
 
-        $location.path("/ListaFacultades");
+        $location.path("/ListaParametros");
 
     }
 

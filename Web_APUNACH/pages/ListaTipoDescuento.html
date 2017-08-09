@@ -5,9 +5,8 @@
                 <i class="ace-icon fa fa-home home-icon"></i>
                 <a href="Principal.html#!/">Inicio</a>
             </li>
-            <li class="active">Cuentas</li>
-            <li class="active">Ingreso</li>
-            <li class="active">Lista de ingreso</li>
+            <li class="active">Tipo Descuento</li>
+            <li class="active">Lista de tipo descuento</li>
 
         </ul><!-- /.breadcrumb -->
 
@@ -22,7 +21,7 @@
             <div class="col-xs-12">
                 <div class="page-header">
                     <h1>
-                        Lista de cuentas de ingresos
+                        Lista de tipo descuento
                         <small>
                             <i class="ace-icon fa fa-angle-double-right"></i>
                             Puede realizar acciones como: modificar y eliminar
@@ -38,34 +37,29 @@
 
                     <!-- tabla-->
 
-                 <div  class="table-responsive" ng-init="initIngresosListar()">
-                     <table class="table table-striped table-bordered table-hover" id="datatableIngresos">
+                 <div  class="table-responsive" ng-init="initListarTipoDescuento()">
+                     <table class="table table-striped table-bordered table-hover" id="tabletipodescuento">
                          <thead >
                          <tr class="headings">
 
-                             <th class="column-title" style="text-align:center">Tipo de cuenta</th>
+                             <th class="column-title" style="text-align:center">Descripcion</th>
                              <th class="column-title" style="text-align:center">Valor</th>
-                             <th class="column-title" style="text-align:center">Fecha</th>
-                             <th class="column-title" style="text-align:center">Usuario</th>
                              <th class="column-title" style="text-align:center">Accion</th>
-
                          </tr>
                          </thead>
 
                          <tbody style="text-align:center;">
-                         <tr class="even pointer" ng-repeat="x in listCuentasIngreso">
+                         <tr class="even pointer" ng-repeat="x in listTipoDescuento">
 
-                             <td class=" "> {{x.R[0].descripcion}}</td>
-                             <td class=" " >{{x.valor}} </td>
-                             <td class=" " >{{x.fecha}} </td>
-                             <td class=" " >{{x.usuario}} </td>
+                             <td class=" "> {{x.descripcion}}</td>
+                             <td class=" "> {{x.valor}}</td>
                              <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
 
-                                 <a class="green" ng-click="modiIngresos(x)">
+                                 <a class="green" ng-click="modificarTipoDescuento(x)">
                                      <i class="ace-icon fa fa-pencil bigger-130"></i>
                                  </a>
 
-                                 <a class="red" ng-click="eliminarIngresos(x)">
+                                 <a class="red" ng-click="eliminarTipoDescuento(x)">
                                      <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                  </a>
                              </div>
@@ -79,15 +73,15 @@
                                          <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 
                                              <li>
-                                                 <a   class="tooltip-success" data-rel="tooltip" title="Edit" ng-click="modiIngresos(x)">
+                                                 <a   class="tooltip-success" data-rel="tooltip" title="Edit" ng-click="modificarTipoDescuento(x)">
 																				<span class="green">
-																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																					<i class="ace-icon fa fa-pencil-square-o bigger-120" ></i>
 																				</span>
                                                  </a>
                                              </li>
 
                                              <li>
-                                                 <a  class="tooltip-error" data-rel="tooltip" title="Delete" ng-click="eliminarIngresos(x)">
+                                                 <a  class="tooltip-error" data-rel="tooltip" title="Delete" ng-click="eliminarTipoDescuento(x)">
 																				<span class="red">
 																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																				</span>
@@ -109,4 +103,3 @@
         </div><!-- /.row -->
     </div><!-- /.page-content -->
 </div>
-    </div>
