@@ -129,6 +129,14 @@ function ApiUrl(){
     this.putTipoDescuento=function(){
         return direccion+'catalogoDescuentos';
     }
+    //Estado Cuenta
+    this.postSaveEstado_cuenta=function(){
+        return direccion+'estadocuenta';
+    }
+    //Descuentos
+    this.postSaveDescuento=function(){
+        return direccion+'descuentos';
+    }
 
 
 }
@@ -189,6 +197,11 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/IngresoTipoDescuento",{templateUrl:"pages/IngresoTipoDescuento.html", controller:'tipodescuentoController'});
     $routeProvider.when("/ListaTipoDescuento",{templateUrl:"pages/ListaTipoDescuento.html", controller:'tipodescuentoController'});
     $routeProvider.when("/ModificarTipoDescuento",{templateUrl:"pages/ModificarTipoDescuento.html", controller:'tipodescuentoController'});
+    //Ventas
+    $routeProvider.when("/IngresarDescuento",{templateUrl:"pages/IngresarDescuento.html", controller:'descuentosController'});
+    $routeProvider.when("/Descuentos",{templateUrl:"pages/Descuentos.html", controller:'descuentosController'});
+    $routeProvider.when("/ModificarVentas",{templateUrl:"pages/ModificarVentas.html", controller:'descuentosController'});
+
 
 
 

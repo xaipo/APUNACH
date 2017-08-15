@@ -104,6 +104,7 @@ app.use('/api', require('./routes/Carrera'));
 app.use('/api', require('./routes/CatalogoDescuentos'));
 app.use('/api', require('./routes/Descuentos'));
 app.use('/api', require('./routes/Usuarios'));
+app.use('/api', require('./routes/EstadoCuenta'));
 
 //start server
 app.listen(port, function()  {

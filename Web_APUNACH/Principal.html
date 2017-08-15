@@ -71,6 +71,7 @@
     <script src="controller/ControllerCuentas.js"></script>
     <script src="controller/ControllerParametros.js"></script>
     <script src="controller/ControllerTipoDescuentos.js"></script>
+    <script src="controller/ControllerDescuentos.js"></script>
 
 
 </head>
@@ -514,7 +515,7 @@
 
             <li class="">
                 <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-university"></i>
+                    <i class="menu-icon fa fa-sort-amount-asc"></i>
 							<span class="menu-text">
 								Parametros
 							</span>
@@ -547,7 +548,7 @@
             </li>
             <li class="">
                 <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-university"></i>
+                    <i class="menu-icon fa fa-exchange"></i>
 							<span class="menu-text">
 								Tipo Descuentos
 							</span>
@@ -575,6 +576,33 @@
 
                         <b class="arrow"></b>
                     </li>
+
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-gears"></i>
+							<span class="menu-text">
+								Procesos
+							</span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+
+                    <li class="">
+                        <a href="" ng-click="navegacion('/Descuentos')">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Descuentos
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+
 
                 </ul>
             </li>
@@ -677,6 +705,7 @@
 		<script src="assets/js/daterangepicker.min.js"></script>
 		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 		<script src="assets/js/bootstrap-colorpicker.min.js"></script>
+
 
 
 </body>

@@ -9,38 +9,24 @@ var mongoose = restful.mongoose;
 
 var Descuentos = new mongoose.Schema({
 
-    "ci_docente": {
-        type: String,
-        required: true
-    }, "id_catalogo": {
+   "id_catalogo": {
         type: mongoose.Schema.ObjectId,
-        required: true
-    }, "numero_cuotas": {
-        type: Number,
-        required: true
-    }, "valor_cobrado": {
-        type: Number,
         required: true
     },
     "id_local": {
         type: mongoose.Schema.ObjectId,
         required: true
     },
-    "fecha_descuento": {
-        type: Date,
-        required: true
-    },
-    "id_usuario": {
+    "id_estado_cuenta": {
         type: mongoose.Schema.ObjectId,
         required: true
     },
-    "hora": {
-        type: String,
+    "valor_descuento": {
+        type: Number,
         required: true
-    }
-    ,
-    "estado": {
-        type: String,
+    },
+    "cantidad": {
+        type: Number,
         required: true
     }
 
