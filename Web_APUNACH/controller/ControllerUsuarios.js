@@ -162,7 +162,7 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
 
         $scope.user = JSON.parse(window.localStorage.getItem('usuario'));
         console.log($scope.user);
-        $scope.initListarTipoCuentasIngreso();
+        $scope.initUsuarios();
         
 
     }

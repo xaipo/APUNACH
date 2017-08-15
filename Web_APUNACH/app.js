@@ -137,6 +137,9 @@ function ApiUrl(){
     this.postSaveDescuento=function(){
         return direccion+'descuentos';
     }
+    this.getEstadoCuenta_Docente=function(){
+        return direccion+'estadocuenta_docente';
+    }
 
 
 }

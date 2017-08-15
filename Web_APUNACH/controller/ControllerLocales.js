@@ -55,6 +55,8 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
 
     $scope.registrarLocales=function(){
 
+        var fecha_acuerdo = $('#idfechaacuerdo').val();
+
         
         $http({
             method: 'POST',
@@ -70,7 +72,7 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
                 direccion:$scope.direccion,
                 credito_max: $scope.creditomax,
                 estado:"0",
-                fecha_inicio_acuerdo:$scope.fecha_acuerdo,
+                fecha_inicio_acuerdo:fecha_acuerdo,
                 telefono:$scope.telefono,
                 porcentaje_ganancia:$scope.porcentage
 

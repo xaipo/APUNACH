@@ -144,10 +144,9 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initListarDescuentos=function(){
 
-        //inicializar todos los usuarios
         $http({
             method: 'GET',
-            url: myProvider.getLocales()+"?estado="+0,
+            url: myProvider.getEstadoCuenta_Docente(),
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -158,10 +157,10 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen locales en la BD!", "warning");
+                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
             } else {
 
-                $scope.listLocales = response.data;
+                $scope.listEstado_Docente = response.data;
 
             }
 
@@ -174,7 +173,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         $timeout(function(){
 
-            $('#tabledescuentos').DataTable({
+            $('#datatableuser').DataTable({
                 "language": {
                     "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
@@ -182,7 +181,6 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
             });
         }, 500, false);
-
 
     }
 
@@ -245,11 +243,11 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             },
             data: {
 
-                ci_docente: $scope.docenteingresar._id,
+                id_docente: $scope.docenteingresar._id,
                 id_usuario: $scope.docenteingresar._id,
                 fecha_descuento:new Date(),
-                valor_x_pagar: 150,
-                valor_pagado:10,
+                valor_x_pagar: $scope.total,
+                valor_pagado:100,
                 valor_acarreo_mes_anterior:10,
                 hora:new Date(),
                 estado:1
@@ -286,9 +284,6 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                             valor_descuento:$scope.listAceptado[i].valor,
                             cantidad:0
 
-                          
-
-
 
                         }
 
@@ -302,7 +297,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                         } else {
 
 
-                            
+
                         }
 
 

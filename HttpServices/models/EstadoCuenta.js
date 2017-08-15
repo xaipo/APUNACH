@@ -9,8 +9,8 @@ var mongoose = restful.mongoose;
 
 var EstadoCuenta = new mongoose.Schema({
 
-    "ci_docente": {
-        type: String,
+    "id_docente": {
+        type: mongoose.Schema.ObjectId,
         required: true
     }, "id_usuario": {
         type: mongoose.Schema.ObjectId,
