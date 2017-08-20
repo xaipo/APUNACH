@@ -215,6 +215,7 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/IngresarDescuento",{templateUrl:"pages/IngresarDescuento.html", controller:'descuentosController'});
     $routeProvider.when("/Descuentos",{templateUrl:"pages/Descuentos.html", controller:'descuentosController'});
     $routeProvider.when("/ModificarDescuento",{templateUrl:"pages/ModificarDescuento.html", controller:'descuentosController'});
+    $routeProvider.when("/IngresarDescuentoxLocal",{templateUrl:"pages/IngresarDescuentoxLocal.html", controller:'descuentosController'});
 
 
 

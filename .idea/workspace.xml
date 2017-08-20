@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9349b8b5-312d-4b15-a36a-d2804200c91d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HttpServices/models/DescuentosBorrados.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HttpServices/routes/DescuentosBorrados.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Web_APUNACH/pages/ModificarDescuento.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuentoxLocal.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/models/Descuentos.js" afterPath="$PROJECT_DIR$/HttpServices/models/Descuentos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" afterPath="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js" afterPath="$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/server.js" afterPath="$PROJECT_DIR$/HttpServices/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/app.js" afterPath="$PROJECT_DIR$/Web_APUNACH/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" afterPath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html" afterPath="$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuento.html" afterPath="$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuento.html" />
     </list>
     <list id="2a52763a-8609-427c-90c4-b4680a93f5d5" name="New changelist" comment="" />
     <ignored path="APUNACH.iws" />
@@ -38,8 +30,8 @@
       <file leaf-file-name="IngresarDescuento.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuento.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="113" selection-end-column="30" />
+            <state relative-caret-position="68">
+              <caret line="134" column="80" selection-start-line="134" selection-start-column="80" selection-end-line="134" selection-end-column="109" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -50,28 +42,28 @@
       <file leaf-file-name="Descuentos.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="122" column="88" selection-start-line="122" selection-start-column="74" selection-end-line="122" selection-end-column="97" />
+            <state relative-caret-position="221">
+              <caret line="64" column="89" selection-start-line="64" selection-start-column="89" selection-end-line="64" selection-end-column="89" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerDescuentos.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControllerDescuentos.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="483" column="52" selection-start-line="483" selection-start-column="52" selection-end-line="483" selection-end-column="52" />
+            <state relative-caret-position="232">
+              <caret line="446" column="32" selection-start-line="446" selection-start-column="32" selection-end-line="446" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModificarDescuento.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/ModificarDescuento.html">
+      <file leaf-file-name="IngresarDescuentoxLocal.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuentoxLocal.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="277" column="87" selection-start-line="277" selection-start-column="87" selection-end-line="277" selection-end-column="87" />
+              <caret line="148" column="123" selection-start-line="148" selection-start-column="123" selection-end-line="148" selection-end-column="123" />
               <folding />
             </state>
           </provider>
@@ -80,8 +72,8 @@
       <file leaf-file-name="ListaLocales.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/ListaLocales.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="67" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
+            <state relative-caret-position="255">
+              <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -90,8 +82,8 @@
       <file leaf-file-name="ControllerLocales.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerLocales.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="50" column="23" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="23" />
+            <state relative-caret-position="238">
+              <caret line="50" column="23" selection-start-line="41" selection-start-column="5" selection-end-line="50" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -100,8 +92,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="152" column="38" selection-start-line="152" selection-start-column="38" selection-end-line="152" selection-end-column="38" />
+            <state relative-caret-position="412">
+              <caret line="227" column="0" selection-start-line="226" selection-start-column="4" selection-end-line="227" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -123,7 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresoTipoCuentasIngresos.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/ModificarTipoCuentasIngreso.html" />
         <option value="$PROJECT_DIR$/HttpServices/models/Cuentas.js" />
@@ -171,8 +162,9 @@
         <option value="$PROJECT_DIR$/HttpServices/routes/DescuentosBorrados.js" />
         <option value="$PROJECT_DIR$/HttpServices/server.js" />
         <option value="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/app.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/app.js" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuentoxLocal.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
       </list>
     </option>
@@ -214,56 +206,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Web_APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Web_APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="Scratches" />
     </panes>
@@ -278,9 +221,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\APUNACH\Web_APUNACH\pages" />
       <recent name="C:\APUNACH\HttpServices\routes" />
       <recent name="C:\APUNACH\HttpServices\models" />
-      <recent name="C:\APUNACH\Web_APUNACH\pages" />
       <recent name="C:\APUNACH\Web_APUNACH\controller" />
       <recent name="C:\APUNACH\Web_APUNACH\js" />
     </key>
@@ -401,7 +344,7 @@
       <workItem from="1502808762517" duration="25281000" />
       <workItem from="1502901208603" duration="4158000" />
       <workItem from="1502910556086" duration="34030000" />
-      <workItem from="1503109770776" duration="11028000" />
+      <workItem from="1503109770776" duration="16934000" />
     </task>
     <task id="LOCAL-00001" summary="Usuario_ingreso,modificar,eliminar">
       <created>1501045821991</created>
@@ -414,7 +357,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279130000" />
+    <option name="totallyTimeSpent" value="285036000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -427,9 +370,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1372" height="735" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962519" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962519" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32724252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -490,13 +433,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/ListaParametros.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="83" column="140" selection-start-line="83" selection-start-column="140" selection-end-line="83" selection-end-column="140" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/ModificarLocales.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
@@ -782,22 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerLocales.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="23" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/ListaLocales.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="67" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerFacultades.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -814,24 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="152" column="38" selection-start-line="152" selection-start-column="38" selection-end-line="152" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuento.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="113" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/ModificarDescuento.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -840,18 +742,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html">
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
-          <caret line="122" column="88" selection-start-line="122" selection-start-column="74" selection-end-line="122" selection-end-column="97" />
+          <caret line="227" column="0" selection-start-line="226" selection-start-column="4" selection-end-line="227" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/ListaLocales.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerLocales.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="50" column="23" selection-start-line="41" selection-start-column="5" selection-end-line="50" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="134" column="80" selection-start-line="134" selection-start-column="80" selection-end-line="134" selection-end-column="109" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="64" column="89" selection-start-line="64" selection-start-column="89" selection-end-line="64" selection-end-column="89" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="483" column="52" selection-start-line="483" selection-start-column="52" selection-end-line="483" selection-end-column="52" />
+        <state relative-caret-position="232">
+          <caret line="446" column="32" selection-start-line="446" selection-start-column="32" selection-end-line="446" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/pages/IngresarDescuentoxLocal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="148" column="123" selection-start-line="148" selection-start-column="123" selection-end-line="148" selection-end-column="123" />
           <folding />
         </state>
       </provider>

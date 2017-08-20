@@ -199,10 +199,15 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             nombre_local: $scope.localingresar.nombre,
             id_catalogo : x._id,
             descripcion : x.descripcion,
-            valor_descuento: x.valor
+            valor_descuento: x.valor,
+            nombre_docente:$scope.nombre_docente
+
         };
         console.log($scope.objenew);
         $scope.listSeleccion.push($scope.objenew);
+
+
+
 
 
     }
@@ -219,7 +224,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             nombre_local: $scope.localingresar.nombre,
             id_catalogo : $scope.localingresar._id,
             descripcion : $scope.nombre_descuento_new,
-            valor_descuento: $scope.valor_descuento_new
+            valor_descuento: $scope.valor_descuento_new,
+            nombre_docente:$scope.nombre_docente
         };
         console.log($scope.objenew);
         $scope.listAceptado.push($scope.objenew);
@@ -249,7 +255,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
             console.log($scope.listAceptado);
         $scope.listSeleccion = [];
-       // $scope.initListarTipoDescuento_Des();
+        $scope.initListarTipoDescuento_Des();
 
     }
 
@@ -422,6 +428,14 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
     }
+    $scope.seleccionarDocentexLocal=function(docente){
+
+        window.localStorage["docente"]= JSON.stringify(docente);
+        console.log(docente);
+        $scope.nombre_docente = docente.nombres+" "+ docente.apellidos;
+
+
+    }
     $scope.buscar=function(docente) {
         var bandera = false;
         var fecha = new Date();
@@ -491,6 +505,14 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
         $scope.nombre_docente = $scope.docenteingresar.nombres +" "+$scope.docenteingresar.apellidos;
+
+    }
+    $scope.initIngresoDescuentoxLocal=function(){
+
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+        $scope.nombre_local = $scope.localingresar.nombre;
+
+
 
     }
 
