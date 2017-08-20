@@ -7,7 +7,7 @@
 var restful = require("node-restful");
 var mongoose = restful.mongoose;
 
-var Descuentos = new mongoose.Schema({
+var DescuentosBorrados = new mongoose.Schema({
 
    "id_catalogo": {
         type: mongoose.Schema.ObjectId,
@@ -40,8 +40,8 @@ var Descuentos = new mongoose.Schema({
 
 
 }, {
-    collection: 'descuentos'
+    collection: 'descuentosborrados'
 
 });
 
-module.exports = restful.model('descuentos', Descuentos);
+module.exports = restful.model('descuentosborrados', DescuentosBorrados);

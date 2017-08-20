@@ -29,5 +29,10 @@ router.get('/estadocuenta_docente', function (req, res, next)  {
 
 
 });
+router.get('/fecha', function (req, res, next)  {
+
+
+
+});
 
 module.exports=router;

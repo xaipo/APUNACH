@@ -158,6 +158,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             if (response.data.length == 0) {
 
                 swal("Advertencia!", "No existen usuarios en la BD!", "warning");
+                $scope.listEstado_Docente = response.data;
             } else {
 
                 $scope.listEstado_Docente = response.data;
@@ -187,12 +188,52 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     $scope.listSeleccion = [];
     $scope.listAceptado = [];
     $scope.total = 0;
-    $scope.Selecion_multi=function(x){
-        console.log(x);
+    $scope.objenew ={};
 
-        $scope.listSeleccion.push(x);
+    $scope.Selecion_multi=function(x){
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+
+
+        $scope.objenew ={
+            id_local:$scope.localingresar._id,
+            nombre_local: $scope.localingresar.nombre,
+            id_catalogo : x._id,
+            descripcion : x.descripcion,
+            valor_descuento: x.valor
+        };
+        console.log($scope.objenew);
+        $scope.listSeleccion.push($scope.objenew);
+
 
     }
+    $scope.agreg_new=function(){
+
+        var fecha = new Date();
+        console.log(fecha);
+        $scope.total =0;
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+
+
+        $scope.objenew ={
+            id_local:$scope.localingresar._id,
+            nombre_local: $scope.localingresar.nombre,
+            id_catalogo : $scope.localingresar._id,
+            descripcion : $scope.nombre_descuento_new,
+            valor_descuento: $scope.valor_descuento_new
+        };
+        console.log($scope.objenew);
+        $scope.listAceptado.push($scope.objenew);
+        for (var i=0; i < $scope.listAceptado.length;i++)
+        {
+
+            $scope.total = $scope.total + $scope.listAceptado[i].valor_descuento;
+
+        }
+        console.log( $scope.listdescuentosBorrar);
+        console.log($scope.listAceptado);
+
+    }
+
         $scope.AceptarLista=function(){
         console.log($scope.listSeleccion);
 
@@ -201,20 +242,24 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         {
 
             $scope.listAceptado.push($scope.listSeleccion[i]);
-            $scope.total = $scope.total + $scope.listSeleccion[i].valor;
+            $scope.total = $scope.total + $scope.listSeleccion[i].valor_descuento;
 
         }
+            console.log( $scope.listdescuentosBorrar);
+
+            console.log($scope.listAceptado);
         $scope.listSeleccion = [];
-        $scope.initListarTipoDescuento_Des();
+       // $scope.initListarTipoDescuento_Des();
 
     }
+
     $scope.eliminarDescuentolist=function(x){
-        console.log(x._id);
+        console.log(x.descripcion);
 
         for (var i = 0; i < $scope.listAceptado.length; i++) {
 
-            if (x._id == $scope.listAceptado[i]._id) {
-                $scope.total = $scope.total - $scope.listAceptado[i].valor;
+            if ((x.descripcion== $scope.listAceptado[i].descripcion)&& (x.nombre_local== $scope.listAceptado[i].nombre_local)) {
+                $scope.total = $scope.total - $scope.listAceptado[i].valor_descuento;
                 console.log($scope.total);
 
                 $scope.listAceptado.splice(i, 1);
@@ -278,10 +323,12 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                         },
                         data: {
 
-                            id_catalogo:$scope.listAceptado[i]._id,
-                            id_local:$scope.localingresar,
+                            id_catalogo:$scope.listAceptado[i].id_catalogo,
+                            id_local:$scope.listAceptado[i].id_local,
+                            nombre_local:$scope.listAceptado[i].nombre_local,
                             id_estado_cuenta:response.data._id,
-                            valor_descuento:$scope.listAceptado[i].valor,
+                            descripcion:$scope.listAceptado[i].descripcion,
+                            valor_descuento:$scope.listAceptado[i].valor_descuento,
                             cantidad:0
 
 
@@ -324,11 +371,45 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
-    $scope.initModificarLocales=function(){
+    $scope.listdescuentosBorrar=[];
+    $scope.initModificarDescuento=function(){
 
-        $scope.local = JSON.parse(window.localStorage.getItem('local'));
-        console.log($scope.local);
+    console.clear();
+        $scope.destallesdescuento = JSON.parse(window.localStorage.getItem('destallesdescuento'));
+        console.log($scope.destallesdescuento);
+        $http({
+            method: 'GET',
+            url: myProvider.getAllDescuentos()+"?id_estado_cuenta="+$scope.destallesdescuento._id,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
 
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen descuentos en la BD!", "warning");
+            } else {
+
+                window.localStorage["listdescuentosBorrar"]= JSON.stringify(response.data);
+                $scope.listAceptado = response.data;
+                for (var i=0; i < $scope.listAceptado.length;i++)
+                {
+
+                    $scope.total = $scope.total + $scope.listAceptado[i].valor_descuento;
+
+                }
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
 
 
     }
@@ -338,39 +419,117 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         window.localStorage["local"]= JSON.stringify(local);
         console.log(local);
         $scope.nombre_local = local.nombre;
-        $location.path("/IngresarDescuento");
 
+
+    }
+    $scope.buscar=function(docente) {
+        var bandera = false;
+        var fecha = new Date();
+        console.log(fecha);
+        var año = fecha.getFullYear();
+        var mes = fecha.getMonth() + 1;
+        var fecha_init = new Date(año + '-' + mes + '-1');
+        var fecha_fin = new Date(año + '-' + mes + '-31');
+        console.log(fecha_init);
+        console.log(fecha_fin);
+
+
+        if($scope.listEstado_Docente.length != undefined)
+        {
+            for (var i = 0; i < $scope.listEstado_Docente.length; i++) {
+
+                var fecha1 = $scope.listEstado_Docente[i].fecha_descuento.split("T");
+                var fecha2 = fecha1[0];
+                var fecha_desc = new Date(fecha2);
+                console.log(fecha_desc);
+
+                if ((docente._id == $scope.listEstado_Docente[i].id_docente) && (fecha_init <= fecha_desc <= fecha_fin)) {
+
+                    bandera = true;
+                }
+
+            }
+        }
+
+
+        return (bandera);
     }
     $scope.seleccionarDocente=function(docente){
 
-        window.localStorage["docente"]= JSON.stringify(docente);
-        console.log(docente);
-        $scope.nombre_docente = docente.nombres +" "+docente.apellidos;
-        $location.path("/IngresarDescuento");
+
+        if($scope.buscar(docente))
+        {
+            alert ("el descuento ya se encuetra ingresado para el mes actual, escoja ver detalle del decuento")
+        }
+        else {
+            window.localStorage["docente"]= JSON.stringify(docente);
+            console.log(docente);
+            $scope.nombre_docente = docente.nombres +" "+docente.apellidos;
+            $location.path("/IngresarDescuento");
+
+
+
+        }
+
+
+
+    }
+    $scope.seleccionarLocalIngreso=function(local){
+
+
+
+            window.localStorage["local"]= JSON.stringify(local);
+            console.log(local);
+            $scope.nombre_local = local.nombre;
+            $location.path("/IngresarDescuentoxLocal");
+
+
+
+
+    }
+    $scope.initIngresoDescuento=function(){
+
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
+        $scope.nombre_docente = $scope.docenteingresar.nombres +" "+$scope.docenteingresar.apellidos;
+
+    }
+
+    $scope.modificarDescuento=function(destallesdescuento){
+
+        window.localStorage["destallesdescuento"]= JSON.stringify(destallesdescuento);
+        $location.path("/ModificarDescuento");
 
     }
 
 
-    $scope.modiLocales=function(){
+    $scope.modiDescuento=function(){
 
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+        $scope.destallesdescuento = JSON.parse(window.localStorage.getItem('destallesdescuento'));
+        $scope.listdescuentosBorrar = JSON.parse(window.localStorage.getItem('listdescuentosBorrar'));
+
+        ///Ingreso descuentos de la tabla descuentosborrados
+        console.log($scope.listdescuentosBorrar);
+
+        for (var i = 0; i<$scope.listdescuentosBorrar.length;i++) {
+            console.log($scope.listdescuentosBorrar[i]);
 
             $http({
-                method: 'PUT',
-                url: myProvider.putLocal()+"/"+$scope.local._id,
+                method: 'POST',
+                url: myProvider.postSaveDescuentoBorrar(),
                 headers: {
                     // 'Content-Type': 'application/json',
                     //'Authorization': token
                 },
                 data: {
 
-                    nombre: $scope.local.nombre,
-                    ruc: $scope.local.ruc,
-                    direccion:$scope.local.direccion,
-                    credito_max: $scope.local.creditomax,
-                    fecha_inicio_acuerdo:$scope.locfecha_acuerdo,
-                    telefono:$scope.local.telefono,
-                    porcentaje_ganancia:$scope.local.porcentage
-
+                    id_catalogo: $scope.listdescuentosBorrar[i].id_catalogo,
+                    id_local: $scope.listdescuentosBorrar[i].id_local,
+                    nombre_local: $scope.listdescuentosBorrar[i].nombre_local,
+                    id_estado_cuenta: $scope.destallesdescuento._id,
+                    descripcion: $scope.listdescuentosBorrar[i].descripcion,
+                    valor_descuento: $scope.listdescuentosBorrar[i].valor_descuento,
+                    cantidad: 0
 
 
                 }
@@ -381,12 +540,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
                 if (response.data.length == 0) {
 
-                    swal("Error!", "No se modifico el local!", "error");
+
                 } else {
-
-                    swal("Exito!", "Local ingresado correctamente!", "success");
-                    $location.path("/ListaLocales");
-
 
 
                 }
@@ -397,7 +552,135 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                 alert('error al realizar Ingreso');
 
             });
+        }
 
+
+///borrado descuentos de la tabla descuentos
+
+        console.log($scope.listdescuentosBorrar);
+
+        for (var i = 0; i<$scope.listdescuentosBorrar.length;i++)
+        {
+            console.log(myProvider.deleteDescuento()+"/"+$scope.listdescuentosBorrar[i]._id);
+            $http({
+                method: 'DELETE',
+                url: myProvider.deleteDescuento()+"/"+$scope.listdescuentosBorrar[i]._id,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                }
+
+
+            }).then(function successCallback(response) {
+                console.log(response.data);
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+
+        }
+
+
+     //modificar estado_cuenta y agregar nuevos descuentos
+
+
+
+        $http({
+
+            method: 'PUT',
+            url: myProvider.putEstado_cuenta()+"/"+$scope.destallesdescuento._id,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+
+                //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+                fecha_descuento:new Date(),
+                valor_x_pagar: $scope.total,
+                valor_pagado:100,
+                valor_acarreo_mes_anterior:10,
+                hora:new Date(),
+                estado:1
+
+
+
+            }
+
+
+        }).then(function successCallback(response) {
+
+            console.log(response.data);
+            if (response.data.length == 0) {
+
+                swal("Error!", "EL descuento no se ingreso correctamente!", "error");
+            } else {
+
+                swal("Exito!", "El descuento se ingreso correctamente!", "success");
+                for (var i = 0; i<$scope.listAceptado.length;i++)
+                {
+
+                    $http({
+                        method: 'POST',
+                        url: myProvider.postSaveDescuento(),
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
+
+                            id_catalogo:$scope.listAceptado[i].id_catalogo,
+                            id_local:$scope.listAceptado[i].id_local,
+                            nombre_local:$scope.listAceptado[i].nombre_local,
+                            id_estado_cuenta:response.data._id,
+                            descripcion:$scope.listAceptado[i].descripcion,
+                            valor_descuento:$scope.listAceptado[i].valor_descuento,
+                            cantidad:0
+
+
+                        }
+
+
+                    }).then(function successCallback(response) {
+                        console.log(response.data);
+
+                        if (response.data.length == 0) {
+
+
+                        } else {
+
+
+
+                        }
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+
+                }
+
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
 
 
 

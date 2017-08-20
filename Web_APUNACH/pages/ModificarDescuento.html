@@ -1,4 +1,4 @@
-<div class="main-content-inner" ng-init="initIngresoDescuento()" xmlns="http://www.w3.org/1999/html">
+<div class="main-content-inner" ng-init="initModificarDescuento()" xmlns="http://www.w3.org/1999/html">
     <div class="breadcrumbs ace-save-state" id="breadcrumbs">
         <ul class="breadcrumb">
             <li>
@@ -7,7 +7,7 @@
             </li>
             <li class="active">Procesos</li>
             <li class="active">Descuentos</li>
-            <li class="active">Ingreso Descuentos</li>
+            <li class="active">Modificar Descuentos</li>
 
         </ul><!-- /.breadcrumb -->
 
@@ -20,10 +20,10 @@
 
         <div class="page-header">
             <h1>
-                Ingreso descuentos
+                Modificar descuentos
                 <small>
                     <i class="ace-icon fa fa-angle-double-right"></i>
-                    Ingreso de los datos de los descuentos
+                    Modificacion de los datos de los descuentos
                 </small>
             </h1>
         </div><!-- /.page-header -->
@@ -39,7 +39,7 @@
 
                             <div class="width-90 label label-info label-xlg arrowed-in arrowed-in-right " >
 
-                                        <span class="white">{{nombre_docente}}</span>
+                                        <span class="white" >{{destallesdescuento.R[0].nombres}} {{destallesdescuento.R[0].apellidos}}</span>
 
                             </div>
 
@@ -275,9 +275,9 @@
 
                     <div class="clearfix form-actions">
                         <div class="col-md-offset-3 col-md-9">
-                            <button class="btn btn-info" type="button" ng-click="AceptarDescuentos()">
+                            <button class="btn btn-info" type="button" ng-click="modiDescuento()">
                                 <i class="ace-icon fa fa-check bigger-110"></i>
-                                Aceptar
+                                Modificar
                             </button>
 
                             &nbsp; &nbsp; &nbsp;

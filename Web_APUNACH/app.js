@@ -140,7 +140,18 @@ function ApiUrl(){
     this.getEstadoCuenta_Docente=function(){
         return direccion+'estadocuenta_docente';
     }
-
+    this.getAllDescuentos=function(){
+        return direccion+'descuentos';
+    }
+    this.deleteDescuento=function(){
+        return direccion+'descuentos';
+    }
+    this.postSaveDescuentoBorrar=function(){
+        return direccion+'descuentosborrados';
+    }
+    this.putEstado_cuenta=function(){
+        return direccion+'estadocuenta';
+    }
 
 }
 
@@ -200,10 +211,10 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/IngresoTipoDescuento",{templateUrl:"pages/IngresoTipoDescuento.html", controller:'tipodescuentoController'});
     $routeProvider.when("/ListaTipoDescuento",{templateUrl:"pages/ListaTipoDescuento.html", controller:'tipodescuentoController'});
     $routeProvider.when("/ModificarTipoDescuento",{templateUrl:"pages/ModificarTipoDescuento.html", controller:'tipodescuentoController'});
-    //Ventas
+    //Descuentos
     $routeProvider.when("/IngresarDescuento",{templateUrl:"pages/IngresarDescuento.html", controller:'descuentosController'});
     $routeProvider.when("/Descuentos",{templateUrl:"pages/Descuentos.html", controller:'descuentosController'});
-    $routeProvider.when("/ModificarVentas",{templateUrl:"pages/ModificarVentas.html", controller:'descuentosController'});
+    $routeProvider.when("/ModificarDescuento",{templateUrl:"pages/ModificarDescuento.html", controller:'descuentosController'});
 
 
 
