@@ -53,18 +53,18 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
                 switch(response.data[0].tipoUsuario) {
                     //Administrador
                     case "59765ab44fda492a70d68a9c":
-                        window.localStorage.setItem("usuario", JSON.stringify($scope.usuario1));
+                        window.localStorage.setItem("usuarioLogueado", JSON.stringify($scope.usuario1));
                         window.location ='Principal.html';
 
                         break;
                     //profesor
                     case "59765a7c4fda492a70d68a9b":
-                        window.localStorage.setItem("usuario", JSON.stringify($scope.usuario1));
+                        window.localStorage.setItem("usuarioLogueado", JSON.stringify($scope.usuario1));
                         //window.location ='Administrator/CieUser/ConfiguracionCIe10.html';
                         break;
                     //directiva
                     case "59765ac54fda492a70d68a9d":
-                        window.localStorage.setItem("usuario", JSON.stringify($scope.usuario1));
+                        window.localStorage.setItem("usuarioLogueado", JSON.stringify($scope.usuario1));
                         //window.location ='Administrator/CieUser/ConfiguracionCIe10.html';
                         break;
                     default:
