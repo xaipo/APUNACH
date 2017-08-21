@@ -10,7 +10,12 @@ var url = 'http://localhost:3000/api/';
 
 function ApiUrl(){
 
+   
     //Usuarios
+    this. getUser=function(){
+        return direccion+'user';
+    }
+    
     this.getAllTipoUsuario=function(){
         return direccion+'tipoUsuario';
     }
@@ -248,6 +253,17 @@ app.controller('navegacion', ['$scope', '$http', '$location','myProvider','$loca
 
 
     }
+
+
+    $scope.signout = function(){
+
+        localStorage.clear();
+        //  localStorage.removeItem('usuario');
+        //localStorage.removeItem('authenticated');
+        window.location = 'index.html';
+
+
+    };
 
 
 }]);
