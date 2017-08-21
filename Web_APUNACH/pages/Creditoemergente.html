@@ -1,0 +1,190 @@
+<div class="main-content-inner"  xmlns="http://www.w3.org/1999/html">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="Principal.html#!/">Inicio</a>
+            </li>
+            <li class="active">Procesos</li>
+            <li class="active">Ceditos emergentes</li>
+
+        </ul><!-- /.breadcrumb -->
+
+        <div class="nav-search" id="nav-search">
+
+        </div><!-- /.nav-search -->
+    </div>
+
+    <div class="page-content">
+
+        <div class="page-header">
+            <h1>
+                Ingreso descuentos
+                <small>
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    Ingreso de los datos de los descuentos
+                </small>
+            </h1>
+        </div><!-- /.page-header -->
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <form class="form-horizontal" role="form" ng-submit="AceptarCreditoEmergete()">
+
+
+                    <div class="input-group " >
+
+                        <input type="text"  style="text-align: center" ng-model="nombre_docente" class="form-control search-query " placeholder="Nombre del docente" disabled required />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-purple btn-sm" data-toggle="modal" data-target="#myModal5">
+                                <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                                Buscar
+                            </button>
+                        </span>
+                        <div class="modal fade" id="myModal5" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Listado de docentes</h4>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div  class="table-responsive" ng-init="initListarDocentes_Des()">
+                                            <table class="table table-striped table-bordered table-hover" id="datatabledocentes">
+                                                <thead >
+                                                <tr class="headings">
+                                                    <th class="column-title" style="text-align:center">Seleccionar</th>
+                                                    <th class="column-title" style="text-align:center">Cedula</th>
+                                                    <th class="column-title" style="text-align:center">Nombres</th>
+                                                    <th class="column-title" style="text-align:center">Apellidos</th>
+                                                    <th class="column-title" style="text-align:center">Correo electronico</th>
+
+                                                </tr>
+                                                </thead>
+
+                                                <tbody style="text-align:center;">
+                                                <tr class="even pointer" ng-repeat="x in listDocentes">
+
+                                                    <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
+
+                                                        <a class="blue" ng-click="seleccionarDocentexLocal(x)" data-dismiss="modal">
+                                                            <i class="ace-icon fa fa-check-square-o bigger-130"></i>
+                                                        </a>
+
+                                                    </div>
+
+                                                    </td>
+                                                    <td class=" "> {{x.cedula}}</td>
+                                                    <td class=" " >{{x.nombres}} </td>
+                                                    <td class=" " >{{x.apellidos}} </i></td>
+                                                    <td class=" " >{{x.correo_electronico}} </td>
+
+                                                </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idvalpres"> Valor del prestamo: </label>
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="number" step="0.01" id="idvalpres"  ng-model="valor_pres" placeholder="Valor del prestamo" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idvalcuotas"> No. Cuotas:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="number"  id="idvalcuotas" ng-model="val_cuotas" placeholder="numero de cuotas" required class="col-md-7 col-xs-12" />
+                        </div>
+                    </div>
+
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button class="btn btn-info" type="submit" >
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Aceptar
+                            </button>
+
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="button" ng-click="cancelarIngresarDescuento()">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <br>
+
+
+
+                    <div  class="table-responsive" >
+                        <table class="table table-striped table-bordered table-hover" id="datatableListDescuentos">
+                            <thead >
+                            <tr class="headings">
+                                <th class="column-title" style="text-align:center">Local</th>
+                                <th class="column-title" style="text-align:center">Motivo</th>
+                                <th class="column-title" style="text-align:center">Valor</th>
+                                <th class="column-title" style="text-align:center">Accion</th>
+
+
+                            </tr>
+                            </thead>
+
+                            <tbody style="text-align:center;">
+                            <tr class="even pointer" ng-repeat="x in listAceptado ">
+
+                                <td class=" "> {{x.nombre_local}}</td>
+                                <td class=" "> {{x.descripcion}}</td>
+                                <td class=" " >{{x.valor_descuento}} </td>
+                                <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
+
+                                    <a class="red" ng-click="eliminarDescuentolist(x)" >
+                                        <i class="ace-icon fa fa-remove bigger-130"></i>
+                                    </a>
+
+                                </div>
+
+                                </td>
+
+
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 pull-left">
+                            <h4 class="pull-right">
+                                Total :
+                                <span class="red">{{total}}</span>
+                            </h4>
+                        </div>
+                    </div>
+
+
+
+
+                    </form>
+                </div>
+            </div>
+
+    </div><!-- /.page-content -->
+</div>

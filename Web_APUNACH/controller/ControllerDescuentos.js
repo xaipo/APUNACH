@@ -192,6 +192,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.Selecion_multi=function(x){
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
 
 
         $scope.objenew ={
@@ -200,7 +201,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             id_catalogo : x._id,
             descripcion : x.descripcion,
             valor_descuento: x.valor,
-            nombre_docente:$scope.nombre_docente
+            nombre_docente:$scope.nombre_docente,
+            id_docente:$scope.docenteingresar._id
 
         };
         console.log($scope.objenew);
@@ -217,6 +219,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         console.log(fecha);
         $scope.total =0;
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
 
 
         $scope.objenew ={
@@ -225,7 +228,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             id_catalogo : $scope.localingresar._id,
             descripcion : $scope.nombre_descuento_new,
             valor_descuento: $scope.valor_descuento_new,
-            nombre_docente:$scope.nombre_docente
+            nombre_docente:$scope.nombre_docente,
+            id_docente:$scope.docenteingresar._id
         };
         console.log($scope.objenew);
         $scope.listAceptado.push($scope.objenew);
@@ -373,6 +377,260 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             alert('error al realizar Ingreso');
 
         });
+
+
+    }
+    $scope.listaaa = [];
+
+    $scope.AceptarDescuentosxLocal=function(){
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+        var bandera = false;
+        var fecha = new Date();
+        var año = fecha.getFullYear();
+        var mes = fecha.getMonth() + 1;
+        var fecha_init = new Date(año + '-' + mes + '-1');
+        var fecha_fin = new Date(año + '-' + mes + '-31');
+        console.log(fecha_init);
+        console.log(fecha_fin);
+
+        var n = $scope.listAceptado.length;
+        var aux1=n;
+        var b=0;
+
+
+
+        for(var i=0;i<n;i++) {
+
+
+
+            $http({
+                method: 'GET',
+                url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.listAceptado[i].id_docente,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {}
+
+
+            }).then(function successCallback(response) {
+
+                $scope.listEstado_cuenta_consulta = response.data;
+                console.log(response.data);
+                $scope.listaaa.push(response.data);
+
+
+                if (i == n) {
+                    console.log(b);
+                    aux1=aux1-1;
+                    console.log(aux1);
+                    if (aux1==0){
+                        console.log(aux1);
+                        console.log(b);
+                        console.log($scope.listAceptado[b]);
+
+                        $http({
+                            method: 'POST',
+                            url: myProvider.postSaveDescuento(),
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {
+
+                                id_catalogo:$scope.listAceptado[b].id_catalogo,
+                                id_local:$scope.listAceptado[b].id_local,
+                                nombre_local:$scope.listAceptado[b].nombre_local,
+                                id_estado_cuenta:response.data[0]._id,
+                                descripcion:$scope.listAceptado[b].descripcion,
+                                valor_descuento:$scope.listAceptado[b].valor_descuento,
+                                cantidad:0
+
+
+                            }
+
+
+                        }).then(function successCallback(response) {
+                            console.log(response.data);
+
+                            if (response.data.length == 0) {
+
+
+                            } else {
+
+                                var total = $scope.listEstado_cuenta_consulta[0].valor_x_pagar + response.data.valor_descuento;
+                                $http({
+
+                                    method: 'PUT',
+                                    url: myProvider.putEstado_cuenta()+"/"+$scope.listEstado_cuenta_consulta[0]._id,
+                                    headers: {
+                                        // 'Content-Type': 'application/json',
+                                        //'Authorization': token
+                                    },
+                                    data: {
+
+
+                                        //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+                                        fecha_descuento:new Date(),
+                                        valor_x_pagar: total,
+                                        valor_pagado:100,
+                                        valor_acarreo_mes_anterior:10,
+                                        hora:new Date(),
+                                        estado:1
+
+
+
+                                    }
+
+
+                                }).then(function successCallback(response) {
+
+                                    console.log(response.data);
+
+                                }, function errorCallback(response) {
+
+                                    alert('error al realizar Ingreso');
+
+                                });
+
+
+
+
+                            }
+
+
+                        }, function errorCallback(response) {
+
+                            alert('error al realizar Ingreso');
+
+                        });
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        b++;
+
+                    }
+                    else {
+                        console.log(aux1);
+                        console.log(b);
+                        //siempre empieza aqui
+                        console.log($scope.listAceptado[b]);
+
+                        $http({
+                            method: 'POST',
+                            url: myProvider.postSaveDescuento(),
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {
+
+                                id_catalogo:$scope.listAceptado[b].id_catalogo,
+                                id_local:$scope.listAceptado[b].id_local,
+                                nombre_local:$scope.listAceptado[b].nombre_local,
+                                id_estado_cuenta:response.data[0]._id,
+                                descripcion:$scope.listAceptado[b].descripcion,
+                                valor_descuento:$scope.listAceptado[b].valor_descuento,
+                                cantidad:0
+
+
+                            }
+
+
+                        }).then(function successCallback(response) {
+                            console.log(response.data);
+
+                            if (response.data.length == 0) {
+
+
+
+                            } else {
+                                var total = $scope.listEstado_cuenta_consulta[0].valor_x_pagar + response.data.valor_descuento;
+                                $http({
+
+                                    method: 'PUT',
+                                    url: myProvider.putEstado_cuenta()+"/"+$scope.listEstado_cuenta_consulta[0]._id,
+                                    headers: {
+                                        // 'Content-Type': 'application/json',
+                                        //'Authorization': token
+                                    },
+                                    data: {
+
+
+                                        //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+                                        fecha_descuento:new Date(),
+                                        valor_x_pagar: total,
+                                        valor_pagado:100,
+                                        valor_acarreo_mes_anterior:10,
+                                        hora:new Date(),
+                                        estado:1
+
+
+
+                                    }
+
+
+                                }).then(function successCallback(response) {
+
+                                    console.log(response.data);
+
+                                }, function errorCallback(response) {
+
+                                    alert('error al realizar Ingreso');
+
+                                });
+
+
+                            }
+
+
+
+
+
+                        }, function errorCallback(response) {
+
+                            alert('error al realizar Ingreso');
+
+                        });
+
+                        b++;
+                    }
+
+                }
+
+
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+        }
+        console.log($scope.listaaa);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -583,7 +841,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         for (var i = 0; i<$scope.listdescuentosBorrar.length;i++)
         {
-            console.log(myProvider.deleteDescuento()+"/"+$scope.listdescuentosBorrar[i]._id);
+
             $http({
                 method: 'DELETE',
                 url: myProvider.deleteDescuento()+"/"+$scope.listdescuentosBorrar[i]._id,
@@ -780,6 +1038,58 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             });
 
 
+
+
+    }
+
+    //-------------------------------------------Prestamos Emergentes
+
+    $scope.AceptarCreditoEmergente=function(){
+
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
+
+
+        $http({
+            method: 'POST',
+            url: myProvider.postSaveCredito_Emergente(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                valor:$scope.valor_pres,
+                fecha_maxima_pago:new Daye(),
+                numero_cuotas:$scope.val_cuotas,
+                usuario: $scope.docenteingresar._id,
+                ci_docente:$scope.docenteingresar._id
+
+            }
+
+
+        }).then(function successCallback(response) {
+
+            console.log(response.data);
+            if (response.data.length == 0) {
+
+                swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
+            } else {
+
+                swal("Exito!", "El credito emergente se registro correctamente!", "success");
+
+
+
+                
+
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
 
 
     }

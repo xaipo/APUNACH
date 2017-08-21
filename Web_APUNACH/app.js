@@ -152,6 +152,13 @@ function ApiUrl(){
     this.putEstado_cuenta=function(){
         return direccion+'estadocuenta';
     }
+    this.getEstadoCuentaxLocal=function(){
+        return direccion+'estadocuenta';
+    }
+    //Credito Emergente
+    this.postSaveCredito_Emergente=function(){
+        return direccion+'creditoEmergente';
+    }
 
 }
 
@@ -216,6 +223,9 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/Descuentos",{templateUrl:"pages/Descuentos.html", controller:'descuentosController'});
     $routeProvider.when("/ModificarDescuento",{templateUrl:"pages/ModificarDescuento.html", controller:'descuentosController'});
     $routeProvider.when("/IngresarDescuentoxLocal",{templateUrl:"pages/IngresarDescuentoxLocal.html", controller:'descuentosController'});
+    //Creditos Emergentes
+    $routeProvider.when("/Creditoemergente",{templateUrl:"pages/Creditoemergente.html", controller:'descuentosController'});
+
 
 
 
