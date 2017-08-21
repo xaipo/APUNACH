@@ -87,7 +87,6 @@ app.get('*', (req, res) => {
 //app.use('/api',passport.authenticate('jwt', { session: false }) ,require('./routes/clienteApi'));
 
 
-
 app.use('/api', require('./routes/login'));
 app.use('/api', require('./routes/TipoUsuario'));
 app.use('/api', require('./routes/TipoContrato'));
@@ -104,7 +103,7 @@ app.use('/api', require('./routes/Carrera'));
 app.use('/api', require('./routes/CatalogoDescuentos'));
 app.use('/api', require('./routes/Descuentos'));
 app.use('/api', require('./routes/DescuentosBorrados'));
-app.use('/api', require('./routes/Usuarios'));
+app.use('/api',passport.authenticate('jwt', { session: false }),  require('./routes/Usuarios'));
 app.use('/api', require('./routes/EstadoCuenta'));
 
 //start server

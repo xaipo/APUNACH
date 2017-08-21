@@ -48,12 +48,8 @@ router.post('/authenticate',function (req, res, next)  {
                 res.json({
                     success: true,
                     token: 'JWT ' + token,
-                    user: {
-                        id: user._id,
-                        name: user.name,
-                        username: user.username,
-                        email: user.email
-                    }
+                    user: user
+                    
                 });
             } else {
                 return res.json({ success: false, msg: 'Wrong Password!' });

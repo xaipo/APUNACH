@@ -1,17 +1,22 @@
 app.controller('usuariosController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
 
+    var token1 = JSON.parse(window.localStorage.getItem('usuarioLogueado'));
+    var token =token1.token;
+    console.log(token1);
+
+
 
     $scope.initUsuarios=function(){
 
-        $scope.id_usuario = "59765a7c4fda492a70d68a9b";
+     $scope.tipoUsuario = "59765a7c4fda492a70d68a9b";
 
         //inicializar los tipos de usuarios
         $http({
             method: 'GET',
             url: myProvider.getAllTipoUsuario(),
             headers: {
-               // 'Content-Type': 'application/json',
-                //'Authorization': token
+                'Content-Type': 'application/json',
+                'Authorization': token
             },
 
         }).then(function successCallback(response) {
@@ -33,15 +38,18 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
         });
 
     }
+
     $scope.initListar=function(){
+
+
 
         //inicializar todos los usuarios
         $http({
             method: 'GET',
             url: myProvider.getUsuarios_Tipo(),
             headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
+                 'Content-Type': 'application/json',
+                'Authorization': token
             },
 
         }).then(function successCallback(response) {
@@ -96,19 +104,18 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
         var username = $scope.username;
         var pass = $scope.password1;
         var repass = $scope.password2;
-        var tipoUser=$scope.id_usuario;
+        var tipoUser=$scope.tipoUsuario;
         var email = $scope.correo;
 
         if (pass == repass) {
-            pass = SHA1(pass);
             console.log('encriptado');
 
             $http({
                 method: 'POST',
                 url: myProvider.postSaveUser(),
                 headers: {
-                    // 'Content-Type': 'application/json',
-                    //'Authorization': token
+                     'Content-Type': 'application/json',
+                    'Authorization': token
                 },
                 data: {
 
@@ -137,7 +144,7 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
                     $scope.username="";
                     $scope.password1="";
                     $scope.password2="";
-                    $scope.id_usuario = "59765a7c4fda492a70d68a9b";
+            //        $scope.id_usuario = "59765a7c4fda492a70d68a9b";
                     $scope.correo = "";
 
 
@@ -186,7 +193,7 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
                 url: myProvider.putSaveUser()+"/"+$scope.user._id,
                 headers: {
                     // 'Content-Type': 'application/json',
-                    //'Authorization': token
+                    'Authorization': token
                 },
                 data: {
 
@@ -253,7 +260,7 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
                         url: myProvider.putSaveUser()+"/"+usuario._id,
                         headers: {
                             // 'Content-Type': 'application/json',
-                            //'Authorization': token
+                            'Authorization': token
                         },
                         data: {
 

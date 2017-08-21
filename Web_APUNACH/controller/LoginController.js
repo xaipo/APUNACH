@@ -11,7 +11,7 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
 
 
 
-    console.log(myProvider.getUser());
+    console.log(myProvider.getUrlAutenticar());
     $scope.mensaje = "";
     $scope.usuario = "";
     $scope.password = "";
@@ -19,77 +19,54 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
     //$rootScope.usuarioLogin;
     $scope.login = function () {
         $scope.mensaje = "procesando";
-        var url= myProvider.getUser()+'?username='+$scope.usuario;
+     //   var url= myProvider.getUser()+'?username='+$scope.usuario;
+
+        var url= myProvider.getUrlAutenticar();
         console.log(url);
 
+
+
         $http({
-            method: 'GET',
+            method: 'POST',
             url: url,
+            data: {
+                username: $scope.usuario,
+                password: $scope.password
+            },
             headers: {
                 'Content-Type': 'application/json'
             }
 
         }).then(function successCallback(response) {
-
             console.log(response.data);
 
-            $scope.usuario1= angular.fromJson(response.data[0]);
-           console.log($scope.usuario1);
-          var   pass = SHA1($scope.password);
-            console.log(pass);
+            switch(response.data.user.tipoUsuario) {
+                //Administrador
+                case "59765ab44fda492a70d68a9c":
+                    window.localStorage.setItem("usuarioLogueado", JSON.stringify(response.data));
+                    window.location ='Principal.html';
 
-            if(response.data.length>0){
+                    break;
+                //profesor
+                case "59765a7c4fda492a70d68a9b":
+                    window.localStorage.setItem("usuarioLogueado", JSON.stringify(response.data));
+                    //window.location ='Administrator/CieUser/ConfiguracionCIe10.html';
+                    break;
+                //directiva
+                case "59765ac54fda492a70d68a9d":
+                    window.localStorage.setItem("usuarioLogueado", JSON.stringify(response.data));
+                    //window.location ='Administrator/CieUser/ConfiguracionCIe10.html';
+                    break;
+                default:
 
-            if($scope.usuario1.username==$scope.usuario && $scope.usuario1.password==pass ){
-
-                console.log("entro");
-
-
-
-                $scope.mensaje="Bienvenido "+response.data[0].username.toString();
-
-                console.log( $scope.mensaje);
-
-                switch(response.data[0].tipoUsuario) {
-                    //Administrador
-                    case "59765ab44fda492a70d68a9c":
-                        window.localStorage.setItem("usuarioLogueado", JSON.stringify($scope.usuario1));
-                        window.location ='Principal.html';
-
-                        break;
-                    //profesor
-                    case "59765a7c4fda492a70d68a9b":
-                        window.localStorage.setItem("usuarioLogueado", JSON.stringify($scope.usuario1));
-                        //window.location ='Administrator/CieUser/ConfiguracionCIe10.html';
-                        break;
-                    //directiva
-                    case "59765ac54fda492a70d68a9d":
-                        window.localStorage.setItem("usuarioLogueado", JSON.stringify($scope.usuario1));
-                        //window.location ='Administrator/CieUser/ConfiguracionCIe10.html';
-                        break;
-                    default:
-
-                     alert('El tipo de usuario no tiene permiso para ningun sistema')
-                }
-
-            }else{
-
-                $scope.mensaje="Revise su usuario y password";
+                    alert('El tipo de usuario no tiene permiso para ningun sistema')
             }
-
-            }else{
-
-                $scope.mensaje="Revise su usuario y password";
-                alert('Revise su usuario y password');
-
-            }
-            console.log(response);
 
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
             Console.log(response);
-            $scope.mesaje=response.mensaje;
+        //    $scope.mesaje=response.mensaje;
 
         });
     };

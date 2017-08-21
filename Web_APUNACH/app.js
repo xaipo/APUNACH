@@ -12,8 +12,8 @@ function ApiUrl(){
 
    
     //Usuarios
-    this. getUser=function(){
-        return direccion+'user';
+    this.getUrlAutenticar=function(){
+        return direccion+'authenticate';
     }
     
     this.getAllTipoUsuario=function(){
