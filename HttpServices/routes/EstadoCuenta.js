@@ -9,11 +9,25 @@ var TipoUsuario = require('../models/EstadoCuenta');
 TipoUsuario.methods(['get','put','post','delete','search']);
 TipoUsuario.register(router,'/estadocuenta');
 
+var hoy = new Date();
+var dd = hoy.getDate();
+var mm = hoy.getMonth()+1; //hoy es 0!
+var yyyy = hoy.getFullYear();
+var mes = mm;
+
+if(mes<10) {
+    mes='0'+mes
+}
+
+var fecha1 = mes+'/'+yyyy;
+
+console.log(fecha1);
+
 router.get('/estadocuenta_docente', function (req, res, next)  {
     TipoUsuario.aggregate(
 
         [
-            { "$match": { "estado": "1" } },
+            { "$match": { "estado": "1","frac_fecha":fecha1 } },
             {"$lookup": {
                 "from": "docente",
                 "localField": "id_docente",

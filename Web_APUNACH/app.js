@@ -170,6 +170,9 @@ function ApiUrl(){
     this.postSaveCuotas_credito=function(){
         return direccion+'cuotascredito';
     }
+    this.getAllCuotasxId_Cre=function(){
+        return direccion+'cuotascredito';
+    }
 
 }
 

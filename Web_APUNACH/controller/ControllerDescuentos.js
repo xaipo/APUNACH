@@ -144,6 +144,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initListarDescuentos=function(){
 
+
+
         $http({
             method: 'GET',
             url: myProvider.getEstadoCuenta_Docente(),
@@ -267,18 +269,25 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     $scope.eliminarDescuentolist=function(x){
         console.log(x.descripcion);
 
-        for (var i = 0; i < $scope.listAceptado.length; i++) {
+      if(x.descripcion=="Credito Emergente") {
 
-            if ((x.descripcion== $scope.listAceptado[i].descripcion)&& (x.nombre_local== $scope.listAceptado[i].nombre_local)) {
-                $scope.total = $scope.total - $scope.listAceptado[i].valor_descuento;
-                console.log($scope.total);
+          swal("Error!", "No puede eliminar un descuento por credito, acerquese al administrador!", "error");
 
-                $scope.listAceptado.splice(i, 1);
+      }else {
+
+          for (var i = 0; i < $scope.listAceptado.length; i++) {
+
+              if ((x.descripcion == $scope.listAceptado[i].descripcion) && (x.nombre_local == $scope.listAceptado[i].nombre_local)) {
+                  $scope.total = $scope.total - $scope.listAceptado[i].valor_descuento;
+                  console.log($scope.total);
+
+                  $scope.listAceptado.splice(i, 1);
 
 
+              }
+          }
+      }
 
-            }
-        }
 
 
 
@@ -472,7 +481,6 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
                                         //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
-                                        fecha_descuento:new Date(),
                                         valor_x_pagar: total,
                                         valor_pagado:100,
                                         valor_acarreo_mes_anterior:10,
@@ -885,7 +893,6 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
                 //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
-                fecha_descuento:new Date(),
                 valor_x_pagar: $scope.total,
                 valor_pagado:100,
                 valor_acarreo_mes_anterior:10,
@@ -1052,7 +1059,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         console.log(pago);
 
 
-        $http({
+        $http({                                            //Guardar el registro de Credito Emergente
             method: 'POST',
             url: myProvider.postSaveCredito_Emergente(),
             headers: {
@@ -1103,7 +1110,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
                     $http({
                         method: 'POST',
-                        url: myProvider.postSaveCuotas_credito(),
+                        url: myProvider.postSaveCuotas_credito(),   //Guardar las cuotas de credito
                         headers: {
                             // 'Content-Type': 'application/json',
                             //'Authorization': token
@@ -1132,7 +1139,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
                         $http({
                             method: 'GET',
-                            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.docenteingresar._id+"&&frac_fecha="+response.data.fragmento_fec,
+                            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.docenteingresar._id+"&&frac_fecha="+response.data.fragmento_fec, //Buscar estado de cuenta por od docente y fecha
                             headers: {
                                 // 'Content-Type': 'application/json',
                                 //'Authorization': token
@@ -1143,10 +1150,12 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                         }).then(function successCallback(response) {
 
                             console.log(response.data);
+                            $scope.estado_cuenta = response.data[0]._id;
+                            var total_anterior = response.data[0].valor_x_pagar;
                             console.log(objeto);
                                     $http({
                                         method: 'POST',
-                                        url: myProvider.postSaveDescuento(),
+                                        url: myProvider.postSaveDescuento(),    // guadar descuentos nuevos
                                         headers: {
                                             // 'Content-Type': 'application/json',
                                             //'Authorization': token
@@ -1168,13 +1177,14 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                                     }).then(function successCallback(response) {
                                         console.log(response.data);
 
-                                    
 
-                                            var total = $scope.listEstado_cuenta_consulta[0].valor_x_pagar + response.data.valor_descuento;
+
+                                            var total = objeto.valor_credito + total_anterior;
+                                        console.log(total );
                                             $http({
 
                                                 method: 'PUT',
-                                                url: myProvider.putEstado_cuenta()+"/"+$scope.listEstado_cuenta_consulta[0]._id,
+                                                url: myProvider.putEstado_cuenta()+"/"+response.data.id_estado_cuenta, //MODIFICAR eSTADO CUENTA
                                                 headers: {
                                                     // 'Content-Type': 'application/json',
                                                     //'Authorization': token
@@ -1183,12 +1193,9 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
                                                     //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
-                                                    fecha_descuento:new Date(),
+
                                                     valor_x_pagar: total,
-                                                    valor_pagado:100,
-                                                    valor_acarreo_mes_anterior:10,
-                                                    hora:new Date(),
-                                                    estado:1
+
 
 
 
@@ -1305,6 +1312,59 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             });
         }, 500, false);
 
+
+    }
+
+    $scope.initListarCuotas=function(){
+
+        //inicializar todos los usuarios
+        $scope.credito_emerg = JSON.parse(window.localStorage.getItem('credito_emerg'));
+        console.log($scope.credito_emerg._id);
+        $http({
+            method: 'GET',
+            url: myProvider.getAllCuotasxId_Cre()+"?id_credito="+$scope.credito_emerg._id,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen docentes en la BD!", "warning");
+            } else {
+
+                $scope.listCuotas_Cred = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#datatabledocentes').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
+
+    }
+
+    $scope.selectCredito=function(credito){
+
+        window.localStorage["credito_emerg"]= JSON.stringify(credito);
+        console.log(JSON.stringify(credito));
 
     }
 
