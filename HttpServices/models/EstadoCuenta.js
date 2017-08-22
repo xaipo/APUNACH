@@ -39,6 +39,10 @@ var EstadoCuenta = new mongoose.Schema({
     "estado": {
         type: String,
         required: true
+    },
+    "frac_fecha": {
+        type: String,
+        required: true
     }
 
 

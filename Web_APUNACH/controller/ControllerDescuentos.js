@@ -1083,14 +1083,23 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
                 swal("Exito!", "El credito emergente se registro correctamente!", "success");
 
-                var fecha = new Date();
-                var año = fecha.getFullYear();
-                var mes = fecha.getMonth() + 1;
-                var dia = fecha.getDate();
-                var fecha_init = new Date(año + '-' + mes + '-'+dia);
-                var fecha_max = new Date(fecha_init);
+                var hoy = new Date();
+                var dd = hoy.getDate();
+                var mm = hoy.getMonth()+1; //hoy es 0!
+                var yyyy = hoy.getFullYear();
 
-                for(var i=1;i<=$scope.val_cuotas;i++) {
+                for(var i=0;i<$scope.val_cuotas;i++) {
+
+                    var mes = mm+i;
+
+                    if(mes<10) {
+                        mes='0'+mes
+                    }
+
+                    var fecha = mes+'/'+dd+'/'+yyyy;
+                    var fecha1 = mes+'/'+yyyy;
+
+                    console.log(fecha);
 
                     $http({
                         method: 'POST',
@@ -1104,9 +1113,10 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                             id_credito: response.data._id,
                             numero_cuotas: i,
                             valor_credito: pago,
-                            fecha_max_pago: fecha_max,
+                            fecha_max_pago: fecha,
                             fecha_pago: new Date(),
                             id_user: $scope.docenteingresar._id,
+                            fragmento_fec:fecha1,
                             estado:"pendiente"
 
                         }
@@ -1115,21 +1125,118 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                     }).then(function successCallback(response) {
 
                         console.log(response.data);
+                        var objeto = response.data;
+
+
+                        console.log($scope.docenteingresar._id,response.data.fragmento_fec);
+
+                        $http({
+                            method: 'GET',
+                            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.docenteingresar._id+"&&frac_fecha="+response.data.fragmento_fec,
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {}
+
+
+                        }).then(function successCallback(response) {
+
+                            console.log(response.data);
+                            console.log(objeto);
+                                    $http({
+                                        method: 'POST',
+                                        url: myProvider.postSaveDescuento(),
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            id_catalogo:"5993682845f4a949eca9bddf",
+                                            id_local:"5993682845f4a949eca9bddf",
+                                            nombre_local:"APUNACH",
+                                            id_estado_cuenta:response.data[0]._id,
+                                            descripcion:"Credito Emergente",
+                                            valor_descuento:objeto.valor_credito,
+                                            cantidad:0
+
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+                                        console.log(response.data);
+
+                                    
+
+                                            var total = $scope.listEstado_cuenta_consulta[0].valor_x_pagar + response.data.valor_descuento;
+                                            $http({
+
+                                                method: 'PUT',
+                                                url: myProvider.putEstado_cuenta()+"/"+$scope.listEstado_cuenta_consulta[0]._id,
+                                                headers: {
+                                                    // 'Content-Type': 'application/json',
+                                                    //'Authorization': token
+                                                },
+                                                data: {
+
+
+                                                    //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+                                                    fecha_descuento:new Date(),
+                                                    valor_x_pagar: total,
+                                                    valor_pagado:100,
+                                                    valor_acarreo_mes_anterior:10,
+                                                    hora:new Date(),
+                                                    estado:1
+
+
+
+                                                }
+
+
+                                            }).then(function successCallback(response) {
+
+                                                console.log(response.data);
+
+                                            }, function errorCallback(response) {
+
+                                                alert('error al realizar Ingreso');
+
+                                            });
+
+
+
+
+
+
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso');
+
+                                    });
+
+
+
+
+
+
+                        }, function errorCallback(response) {
+
+                            alert('error al realizar Ingreso');
+
+                        });
+
+
+
+
                         if (response.data.length == 0) {
 
                             swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
                         } else {
 
                             swal("Exito!", "El credito emergente se registro correctamente!", "success");
-
-                            var año = fecha_max.getFullYear();
-                            var mes = fecha_max.getMonth() + 1;
-                            var dia = fecha_max.getDate();
-                            var fecha_init = new Date(año + '-' + mes + '-'+dia);
-                            console.log(fecha_init);
-                            var fecha_max = new Date(fecha_init);
-                            console.log(fecha_max);
-
 
                         }
 

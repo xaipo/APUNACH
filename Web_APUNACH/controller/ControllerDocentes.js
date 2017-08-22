@@ -92,7 +92,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
             var hoy = new Date();
             var dd = hoy.getDate();
-            var mm = hoy.getMonth()+1; //hoy es 0!
+            var mm = hoy.getMonth(); //hoy es 0!
             var yyyy = hoy.getFullYear();
 
             var cuotas=12-mm;
@@ -276,16 +276,9 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
 
                 var hoy = new Date();
-                var dd = hoy.getDate();
+                var dd = "28";
                 var mm = hoy.getMonth()+1; //hoy es 0!
                 var yyyy = hoy.getFullYear();
-
-                if(dd<10) {
-                    dd='0'+dd
-                }
-
-
-
 
 
                 for (var i=0;i<$scope.cuotaInicial.cuotas;i++){
@@ -299,6 +292,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     }
 
                     var fecha = mes+'/'+dd+'/'+yyyy;
+                    var fecha1 = mes+'/'+yyyy;
 
                     console.log(fecha);
 
@@ -318,6 +312,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
          valor_pagado:0,
          valor_acarreo_mes_anterior:0,
          hora:fecha,
+         frac_fecha:fecha1,
          estado:1
 
          }

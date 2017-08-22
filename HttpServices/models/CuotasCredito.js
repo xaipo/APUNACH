@@ -33,6 +33,10 @@ var CuotasCredito = new mongoose.Schema({
     "estado": {
         type: String,
         required: true
+    },
+    "fragmento_fec": {
+        type: String,
+        required: true
     }
 
 },{ collection: 'cuotascredito'
