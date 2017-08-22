@@ -122,6 +122,8 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
     $scope.modificarLocal=function(local){
 
         window.localStorage["local"]= JSON.stringify(local);
+
+     
         $location.path("/ModificarLocales");
 
     }

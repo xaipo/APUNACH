@@ -76,6 +76,76 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         });
 
 
+        console.log("datso al cargar ");
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getParametros()+"?estado="+0,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data[0]);
+
+            var hoy = new Date();
+            var dd = hoy.getDate();
+            var mm = hoy.getMonth()+1; //hoy es 0!
+            var yyyy = hoy.getFullYear();
+
+            var cuotas=12-mm;
+            console.log(mm);
+            $scope.valor_cuota=response.data[0].valor/cuotas;
+
+            $scope.cuotaInicial={
+              cuotas:cuotas,
+                valor:$scope.valor_cuota
+
+            };
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getLocales()+"?estado="+0,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen locales en la BD!", "warning");
+            } else {
+
+                $scope.listLocales = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
     }
     $scope.initListarDocentes=function(){
 
@@ -134,7 +204,12 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
     }
 
 
+
     $scope.registrarDocente=function(){
+
+
+
+
 
        console.log($scope.cedula);
         console.log($scope.nombres);
@@ -192,6 +267,149 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                 swal("Error!", "No se ingreso el docente!", "error");
             } else {
+
+
+         console.log(
+         $scope.cuotaInicial,  $scope.listLocales[2], response.data
+
+         );
+
+
+                var hoy = new Date();
+                var dd = hoy.getDate();
+                var mm = hoy.getMonth()+1; //hoy es 0!
+                var yyyy = hoy.getFullYear();
+
+                if(dd<10) {
+                    dd='0'+dd
+                }
+
+
+
+
+
+                for (var i=0;i<$scope.cuotaInicial.cuotas;i++){
+
+
+
+                    var mes = mm+i;
+
+                    if(mes<10) {
+                        mes='0'+mes
+                    }
+
+                    var fecha = mes+'/'+dd+'/'+yyyy;
+
+                    console.log(fecha);
+
+         $http({
+         method: 'POST',
+         url: myProvider.postSaveEstado_cuenta(),
+         headers: {
+         // 'Content-Type': 'application/json',
+         //'Authorization': token
+         },
+         data: {
+
+         id_docente: response.data._id,
+         id_usuario: response.data._id,
+         fecha_descuento:fecha,
+         valor_x_pagar: $scope.cuotaInicial.valor,
+         valor_pagado:0,
+         valor_acarreo_mes_anterior:0,
+         hora:fecha,
+         estado:1
+
+         }
+
+
+         }).then(function successCallback(response) {
+
+         console.log(response.data);
+         if (response.data.length == 0) {
+
+         swal("Error!", "EL descuento no se ingreso correctamente!", "error");
+         } else {
+
+
+         $http({
+         method: 'POST',
+         url: myProvider.postSaveDescuento(),
+         headers: {
+         // 'Content-Type': 'application/json',
+         //'Authorization': token
+         },
+         data: {
+
+
+         id_catalogo:$scope.listLocales[2]._id,
+         id_local:$scope.listLocales[2]._id,
+         nombre_local:$scope.listLocales[2].nombre,
+         id_estado_cuenta:response.data._id,
+         descripcion:"Valor cuota inicial",
+         valor_descuento:$scope.cuotaInicial.valor,
+         cantidad:0
+
+
+         }
+
+
+         }).then(function successCallback(response) {
+         console.log(response.data);
+
+             console.log("creacion correcta todo en uno");
+         if (response.data.length == 0) {
+
+
+         } else {
+
+
+
+         }
+
+
+         }, function errorCallback(response) {
+
+         alert('error al realizar Ingreso');
+
+         });
+
+
+
+
+
+         }
+
+
+         }, function errorCallback(response) {
+
+         alert('error al realizar Ingreso');
+
+         });
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 swal("Exito!", "Docente ingresado correctamente!", "success");
                 $scope.cedula = "";
