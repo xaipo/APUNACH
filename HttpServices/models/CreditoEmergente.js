@@ -19,6 +19,18 @@ var CreditoEmergente = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         required:true
     },
+    "id_docente" : {
+        type: String,
+        required:true
+    },
+    "valor_a_pagar" : {
+        type: Number,
+        required:true
+    },
+    "nombre_docente" : {
+        type: String,
+        required:true
+    },
     "ci_docente" : {
         type: String,
         required:true

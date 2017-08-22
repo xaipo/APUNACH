@@ -164,6 +164,12 @@ function ApiUrl(){
     this.postSaveCredito_Emergente=function(){
         return direccion+'creditoEmergente';
     }
+    this.getAllCreditosEmergentes=function(){
+        return direccion+'creditoEmergente';
+    }
+    this.postSaveCuotas_credito=function(){
+        return direccion+'cuotascredito';
+    }
 
 }
 

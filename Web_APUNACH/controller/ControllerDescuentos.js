@@ -192,7 +192,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.Selecion_multi=function(x){
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
-        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('destallesdescuento'));
+
 
 
         $scope.objenew ={
@@ -202,7 +203,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             descripcion : x.descripcion,
             valor_descuento: x.valor,
             nombre_docente:$scope.nombre_docente,
-            id_docente:$scope.docenteingresar._id
+            id_docente:$scope.docenteingresar.R[0]._id
 
         };
         console.log($scope.objenew);
@@ -219,7 +220,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         console.log(fecha);
         $scope.total =0;
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
-        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('destallesdescuento'));
 
 
         $scope.objenew ={
@@ -229,7 +230,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             descripcion : $scope.nombre_descuento_new,
             valor_descuento: $scope.valor_descuento_new,
             nombre_docente:$scope.nombre_docente,
-            id_docente:$scope.docenteingresar._id
+            id_docente:$scope.docenteingresar.R[0]._id
         };
         console.log($scope.objenew);
         $scope.listAceptado.push($scope.objenew);
@@ -1047,6 +1048,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     $scope.AceptarCreditoEmergente=function(){
 
         $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
+        var pago = $scope.valor_pres / $scope.val_cuotas;
+        console.log(pago);
 
 
         $http({
@@ -1059,10 +1062,13 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             data: {
 
                 valor:$scope.valor_pres,
-                fecha_maxima_pago:new Daye(),
+                fecha_maxima_pago:new Date(),
                 numero_cuotas:$scope.val_cuotas,
                 usuario: $scope.docenteingresar._id,
-                ci_docente:$scope.docenteingresar._id
+                id_docente:$scope.docenteingresar._id,
+                valor_a_pagar:pago,
+                nombre_docente:$scope.docenteingresar.nombres +" "+ $scope.docenteingresar.apellidos,
+                ci_docente:$scope.docenteingresar.cedula
 
             }
 
@@ -1077,9 +1083,65 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
                 swal("Exito!", "El credito emergente se registro correctamente!", "success");
 
+                var fecha = new Date();
+                var año = fecha.getFullYear();
+                var mes = fecha.getMonth() + 1;
+                var dia = fecha.getDate();
+                var fecha_init = new Date(año + '-' + mes + '-'+dia);
+                var fecha_max = new Date(fecha_init);
+
+                for(var i=1;i<=$scope.val_cuotas;i++) {
+
+                    $http({
+                        method: 'POST',
+                        url: myProvider.postSaveCuotas_credito(),
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
+
+                            id_credito: response.data._id,
+                            numero_cuotas: i,
+                            valor_credito: pago,
+                            fecha_max_pago: fecha_max,
+                            fecha_pago: new Date(),
+                            id_user: $scope.docenteingresar._id,
+                            estado:"pendiente"
+
+                        }
 
 
-                
+                    }).then(function successCallback(response) {
+
+                        console.log(response.data);
+                        if (response.data.length == 0) {
+
+                            swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
+                        } else {
+
+                            swal("Exito!", "El credito emergente se registro correctamente!", "success");
+
+                            var año = fecha_max.getFullYear();
+                            var mes = fecha_max.getMonth() + 1;
+                            var dia = fecha_max.getDate();
+                            var fecha_init = new Date(año + '-' + mes + '-'+dia);
+                            console.log(fecha_init);
+                            var fecha_max = new Date(fecha_init);
+                            console.log(fecha_max);
+
+
+                        }
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+                }
 
 
             }
@@ -1090,6 +1152,51 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             alert('error al realizar Ingreso');
 
         });
+
+
+    }
+
+    $scope.initListarCreditosEmergentes=function(){
+        console.log("que hay");
+
+        //inicializar todos los usuarios
+        $http({
+            method: 'GET',
+            url: myProvider.getAllCreditosEmergentes(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen locales en la BD!", "warning");
+            } else {
+
+                $scope.listCreditosEmegentes = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#tableCreditos').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
 
 
     }
