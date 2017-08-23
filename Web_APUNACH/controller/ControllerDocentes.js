@@ -343,7 +343,8 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
          id_estado_cuenta:response.data._id,
          descripcion:"Valor cuota inicial",
          valor_descuento:$scope.cuotaInicial.valor,
-         cantidad:0
+         cantidad:0,
+         fecha:response.data.frac_fecha
 
 
          }
