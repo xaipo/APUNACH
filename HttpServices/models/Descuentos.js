@@ -9,6 +9,8 @@ var mongoose = restful.mongoose;
 
 var Descuentos = new mongoose.Schema({
 
+    "fecha": {type: Date, default: Date.now},
+
    "id_catalogo": {
         type: mongoose.Schema.ObjectId,
         required: true

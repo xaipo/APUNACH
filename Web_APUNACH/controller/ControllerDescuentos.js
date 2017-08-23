@@ -1315,14 +1315,12 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
-    $scope.initListarCuotas=function(){
+    $scope.selectCredito=function(credito){
 
-        //inicializar todos los usuarios
-        $scope.credito_emerg = JSON.parse(window.localStorage.getItem('credito_emerg'));
-        console.log($scope.credito_emerg._id);
+
         $http({
             method: 'GET',
-            url: myProvider.getAllCuotasxId_Cre()+"?id_credito="+$scope.credito_emerg._id,
+            url: myProvider.getAllCuotasxId_Cre()+"?id_credito="+credito._id,
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -1358,13 +1356,12 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             });
         }, 500, false);
 
-
     }
 
-    $scope.selectCredito=function(credito){
+    $scope.imprimir=function(){
 
-        window.localStorage["credito_emerg"]= JSON.stringify(credito);
-        console.log(JSON.stringify(credito));
+        $location.path("/ImprimirReporte");
+
 
     }
 

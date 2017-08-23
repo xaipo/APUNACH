@@ -239,6 +239,7 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/IngresarDescuentoxLocal",{templateUrl:"pages/IngresarDescuentoxLocal.html", controller:'descuentosController'});
     //Creditos Emergentes
     $routeProvider.when("/Creditoemergente",{templateUrl:"pages/Creditoemergente.html", controller:'descuentosController'});
+    $routeProvider.when("/ImprimirReporte",{templateUrl:"pages/ImprimirReporte.html", controller:'descuentosController'});
 
 
 
