@@ -281,7 +281,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                 var yyyy = hoy.getFullYear();
 
 
-                for (var i=1;i<=$scope.cuotaInicial.cuotas;i++){
+                for (var i=0;i<$scope.cuotaInicial.cuotas;i++){
 
 
 
@@ -294,7 +294,9 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     var fecha = mes+'/'+dd+'/'+yyyy;
                     var fecha1 = mes+'/'+yyyy;
 
-                    console.log(fecha);
+                    console.log(fecha,i,$scope.cuotaInicial.cuotas);
+
+
 
          $http({
          method: 'POST',
@@ -320,6 +322,10 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
          }).then(function successCallback(response) {
 
+
+             console.log(fecha,i,$scope.cuotaInicial.cuotas);
+
+
          console.log(response.data);
          if (response.data.length == 0) {
 
@@ -343,8 +349,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
          id_estado_cuenta:response.data._id,
          descripcion:"Valor cuota inicial",
          valor_descuento:$scope.cuotaInicial.valor,
-         cantidad:0,
-         fecha:response.data.frac_fecha
+         cantidad:0
 
 
          }
