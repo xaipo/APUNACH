@@ -1417,4 +1417,75 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     }
 
 
+    $scope.SaveDefinitivo=function () {
+
+
+        console.log("boton");
+
+        console.log($scope.listEstado_Docente);
+
+        for (var i = 0; i < $scope.listEstado_Docente.length; i++) {
+
+
+            $http({
+
+                method: 'PUT',
+                url: myProvider.putEstado_cuenta() + "/" + $scope.listEstado_Docente[i]._id,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                    //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+
+                    estado: 2,
+
+                }
+
+
+            }).then(function successCallback(response) {
+
+                console.log("cambio estado 2");
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+        }
+
+
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getEstadoUpdate(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+            
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+    }
+
+
+
+
+
 }]);

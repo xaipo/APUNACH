@@ -145,6 +145,11 @@ function ApiUrl(){
     this.getEstadoCuenta_Docente=function(){
         return direccion+'estadocuenta_docente';
     }
+
+    this.getEstadoUpdate=function(){
+        return direccion+'cuotasUpdate';
+    }
+
     this.getAllDescuentos=function(){
         return direccion+'descuentos';
     }

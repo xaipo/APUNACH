@@ -281,7 +281,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                 var yyyy = hoy.getFullYear();
 
 
-                for (var i=0;i<$scope.cuotaInicial.cuotas;i++){
+                for (var i=1;i<=$scope.cuotaInicial.cuotas;i++){
 
 
 
