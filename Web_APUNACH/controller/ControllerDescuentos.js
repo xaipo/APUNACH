@@ -185,6 +185,56 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             });
         }, 500, false);
 
+
+
+    }
+
+    $scope.initListarDescuentosImpri=function(){
+
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getEstadoCuenta_Docente(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
+                $scope.listEstado_Docente = response.data;
+            } else {
+
+                $scope.listEstado_Docente = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#datatableuser').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+           // window.print();
+        }, 500, false);
+
+
+
     }
 
     $scope.listSeleccion = [];
@@ -1361,6 +1411,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     $scope.imprimir=function(){
 
         $location.path("/ImprimirReporte");
+
 
 
     }
