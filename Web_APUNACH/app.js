@@ -150,6 +150,13 @@ function ApiUrl(){
         return direccion+'cuotasUpdate';
     }
 
+    this.getMesPrestamos=function(){
+        return direccion+'mesPrestamos';
+    }
+    this.getMesCuotas=function(){
+        return direccion+'mesCuotas';
+    }
+
     this.getAllDescuentos=function(){
         return direccion+'descuentos';
     }
@@ -159,6 +166,11 @@ function ApiUrl(){
     this.postSaveDescuentoBorrar=function(){
         return direccion+'descuentosborrados';
     }
+    
+    this.postCuentaIngresos=function(){
+        return direccion+'ingresosMes';
+    }
+    
     this.putEstado_cuenta=function(){
         return direccion+'estadocuenta';
     }

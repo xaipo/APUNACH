@@ -399,7 +399,9 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                             id_estado_cuenta:response.data._id,
                             descripcion:$scope.listAceptado[i].descripcion,
                             valor_descuento:$scope.listAceptado[i].valor_descuento,
-                            cantidad:0
+                            cantidad:0,
+                            fecha:response.data.frac_fecha
+
 
 
                         }
@@ -504,8 +506,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                                 id_estado_cuenta:response.data[0]._id,
                                 descripcion:$scope.listAceptado[b].descripcion,
                                 valor_descuento:$scope.listAceptado[b].valor_descuento,
-                                cantidad:0
-
+                                cantidad:0,
+                                fecha:response.data[0].frac_fecha
 
                             }
 
@@ -595,7 +597,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                                 id_estado_cuenta:response.data[0]._id,
                                 descripcion:$scope.listAceptado[b].descripcion,
                                 valor_descuento:$scope.listAceptado[b].valor_descuento,
-                                cantidad:0
+                                cantidad:0,
+                                fecha:response.data[0].frac_fecha
 
 
                             }
@@ -981,7 +984,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                             id_estado_cuenta:response.data._id,
                             descripcion:$scope.listAceptado[i].descripcion,
                             valor_descuento:$scope.listAceptado[i].valor_descuento,
-                            cantidad:0
+                            cantidad:0,
+                            fecha:response.data.frac_fecha
 
 
                         }
@@ -1218,7 +1222,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                                             id_estado_cuenta:response.data[0]._id,
                                             descripcion:"Credito Emergente",
                                             valor_descuento:objeto.valor_credito,
-                                            cantidad:0
+                                            cantidad:0,
+                                            fecha:response.data[0].frac_fecha
 
 
                                         }
@@ -1419,6 +1424,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.SaveDefinitivo=function () {
 
+var totalEstado=0;
 
         console.log("boton");
 
@@ -1426,6 +1432,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         for (var i = 0; i < $scope.listEstado_Docente.length; i++) {
 
+
+            totalEstado+=$scope.listEstado_Docente[i].valor_x_pagar;
 
             $http({
 
@@ -1483,11 +1491,149 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
 
+        
+        $scope.cuentas=[];
+
+
+        var fecha_del_sistema = new Date();
+        
+        
+        $http({
+            method: 'GET',
+            url: myProvider.getMesPrestamos(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data[0]);
+
+            var objeto={
+                id_cuenta:response.data[0]._id,
+                valor:response.data[0].valor,
+                fecha:fecha_del_sistema,
+                fecha_sistema:fecha_del_sistema,
+                usuario: response.data[0]._id,
+                estado:1
+                
+            }
+
+
+            $scope.cuentas.push(objeto);
+
+            $http({
+                method: 'GET',
+                url: myProvider.getMesCuotas(),
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+
+            }).then(function successCallback(response) {
+                console.log(response.data[0]);
+
+                var objeto={
+                    id_cuenta:response.data[0]._id,
+                    valor:response.data[0].valor,
+                    fecha:fecha_del_sistema,
+                    fecha_sistema:fecha_del_sistema,
+                    usuario: response.data[0]._id,
+                    estado:1
+
+                }
+
+
+                $scope.cuentas.push(objeto);
+
+
+totales(totalEstado,fecha_del_sistema);
+
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+            
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+
+
+
 
 
     }
 
 
+
+function totales(totalEstado,fecha_del_sistema) {
+
+    console.log($scope.cuentas,totalEstado);
+
+    var locales=totalEstado-($scope.cuentas[0].valor+$scope.cuentas[1].valor);
+    console.log(locales);
+
+    var objeto={
+        id_cuenta:"599f1d9034917b1ea454e64d",
+        valor:locales,
+        fecha:fecha_del_sistema,
+        fecha_sistema:fecha_del_sistema,
+        usuario: "599f1d9034917b1ea454e64d",
+        estado:1
+
+    }
+
+
+
+    $scope.cuentas.push(objeto);
+
+    console.log($scope.cuentas);
+
+
+
+
+
+
+
+    $http({
+        method: 'POST',
+        url: myProvider.postCuentaIngresos(),
+        headers: {
+            // 'Content-Type': 'application/json',
+            //'Authorization': token
+        },
+        data: $scope.cuentas
+
+
+    }).then(function successCallback(response) {
+        console.log(response.data);
+
+
+
+    }, function errorCallback(response) {
+
+        alert('error al realizar Ingreso');
+
+    });
+
+
+
+
+
+
+}
 
 
 

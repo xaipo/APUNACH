@@ -30,4 +30,21 @@ router.get('/Ingreso_TipoCuenta', function (req, res, next)  {
 
 });
 
+router.post('/ingresosMes', function (req, res, next)  {
+
+    console.log(req.body);
+
+    Ingreso.insertMany( req.body,function (err, tareas) {
+        if (err) { return next(err) }
+        res.json(tareas);
+    } );
+
+   
+
+
+
+});
+
+
+
 module.exports=router;
