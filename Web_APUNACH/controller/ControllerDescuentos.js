@@ -1590,11 +1590,66 @@ totales(totalEstado,fecha_del_sistema);
             console.log(response.data);
 
 
+            for (var  i=0;response.data.length;i++){
+
+
+
+
+//aqui pasar datos de correo
+
+
+
+            $http({
+                method: 'POST',
+                url: 'http://localhost:3000/mail/SendMail',
+                headers: {
+                    'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+                    "mail": response.data[i].correo_electronico,
+                    "nombre": response.data[i].nombres,
+                    "cedula": "0604009381",
+                    "fecha": "2017-01-01",
+                    "valorPagar": "200000.02",
+                    "valorArrastre": "10000.001",
+                    "detalle": [{
+                        "local": "electrobahia",
+                        "motivo": "compra tv led",
+                        "valor": "100"
+                    }, {"local": "electrobahia2", "motivo": "computadora", "valor": "2000"}],
+                    "total": "3100"
+                }
+
+
+            }).then(function successCallback(response) {
+                console.log(response.data);
+
+                if (response.data.length == 'enviado') {
+
+                    alert('ingreso');
+                } else {
+
+
+                }
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+            }
+
+
         }, function errorCallback(response) {
 
             alert('error al realizar Ingreso');
 
         });
+
+
+
 
 
 
