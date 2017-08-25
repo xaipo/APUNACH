@@ -85,6 +85,8 @@ app.get('*', (req, res) => {
 })*/
 
 //app.use('/api',passport.authenticate('jwt', { session: false }) ,require('./routes/clienteApi'));
+//correo
+app.use('/mail', require('./routes/RouteMail'));
 
 
 app.use('/api', require('./routes/login'));
@@ -111,3 +113,6 @@ app.use('/api', require('./routes/CuotasCredito'));
 app.listen(port, function()  {
     console.log('Server started on port ' + port);
 })
+
+
+

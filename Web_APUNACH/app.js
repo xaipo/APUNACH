@@ -150,6 +150,11 @@ function ApiUrl(){
         return direccion+'cuotasUpdate';
     }
 
+    this.getEnvioCorreos=function(){
+        return direccion+'estadocuenta_docente1';
+    }
+
+
     this.getMesPrestamos=function(){
         return direccion+'mesPrestamos';
     }

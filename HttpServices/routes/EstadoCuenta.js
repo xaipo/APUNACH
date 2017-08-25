@@ -5,6 +5,8 @@ var express= require('express');
 var router= express.Router();
 
 var TipoUsuario = require('../models/EstadoCuenta');
+var Docente = require('../models/Docente');
+
 
 TipoUsuario.methods(['get','put','post','delete','search']);
 TipoUsuario.register(router,'/estadocuenta');
@@ -48,8 +50,37 @@ router.get('/estadocuenta_docente', function (req, res, next)  {
 
 
 
-router.get('/fecha', function (req, res, next)  {
+router.get('/estadocuenta_docente1', function (req, res, next)  {
 
+    Docente.aggregate([
+
+
+        {
+            $lookup: {
+                from: "estadocuenta",
+                localField: "_id",
+                foreignField: "id_docente",
+                as: "estadocuenta"
+            }
+        }, {
+            $unwind: {
+                path: "$estadocuenta",
+                preserveNullAndEmptyArrays: true
+            }
+        },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha":fecha1 } },
+        {
+            $lookup: {
+                from: "descuentos",
+                localField: "estadocuenta._id",
+                foreignField: "id_estado_cuenta",
+                as: "estadocuenta.descuentos",
+            }
+        }],function (err, tareas) {
+        if (err) { return next(err) }
+        res.json(tareas);
+    }
+
+    );
 
 
 });

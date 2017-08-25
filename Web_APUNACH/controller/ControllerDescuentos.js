@@ -1566,17 +1566,39 @@ totales(totalEstado,fecha_del_sistema);
 
 
 
-
-
-
-
-
+        
+        
+        
+//envios de correos
 
 
 
     }
 
+    $scope.correo=function () {
 
+
+        $http({
+            method: 'GET',
+            url: myProvider.getEnvioCorreos(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+    }
 
 function totales(totalEstado,fecha_del_sistema) {
 
