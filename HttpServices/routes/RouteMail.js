@@ -45,15 +45,15 @@ router.post('/sendMail',function(req,res){
     var n= req.body.detalle.length;
     for(var i=0;i<n;i++){
         paginaWeb+="<tr>";
-        paginaWeb+="<td style=\"text-align: center\">"+req.body.detalle[i].local+"</td>";
-        paginaWeb+="<td style=\"text-align: center\">"+req.body.detalle[i].motivo+"</td>";
-        paginaWeb+="<td style=\"text-align: center\">$"+req.body.detalle[i].valor+"</td>";
+        paginaWeb+="<td style=\"text-align: center\">"+req.body.detalle[i].nombre_local+"</td>";
+        paginaWeb+="<td style=\"text-align: center\">"+req.body.detalle[i].descripcion+"</td>";
+        paginaWeb+="<td style=\"text-align: center\">$"+req.body.detalle[i].valor_descuento+"</td>";
         paginaWeb+="</tr>";
     }
 
     paginaWeb+="</table>"
     paginaWeb+="<br><br>"
-    paginaWeb+="<h4>Total a Descontar:</h4>"+req.body.total;
+ 
 
 // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({

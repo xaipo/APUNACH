@@ -1588,12 +1588,21 @@ totales(totalEstado,fecha_del_sistema);
 
         }).then(function successCallback(response) {
             console.log(response.data);
+            var n = response.data.length;
+
+            var ancho=100/n;
+
+            console.log(ancho);
+            var progreso=0;
+
+            $scope.correosTotales=n;
+            $scope.numero=0;
+
+            for (var  i=0;i<response.data.length;i++){
 
 
-            for (var  i=0;response.data.length;i++){
 
-
-
+                console.log( $scope.numero);
 
 //aqui pasar datos de correo
 
@@ -1609,30 +1618,21 @@ totales(totalEstado,fecha_del_sistema);
                 data: {
                     "mail": response.data[i].correo_electronico,
                     "nombre": response.data[i].nombres,
-                    "cedula": "0604009381",
-                    "fecha": "2017-01-01",
-                    "valorPagar": "200000.02",
-                    "valorArrastre": "10000.001",
-                    "detalle": [{
-                        "local": "electrobahia",
-                        "motivo": "compra tv led",
-                        "valor": "100"
-                    }, {"local": "electrobahia2", "motivo": "computadora", "valor": "2000"}],
-                    "total": "3100"
+                    "cedula": response.data[i].cedula,
+                    "fecha": response.data[i].estadocuenta.fecha_descuento,
+                    "valorPagar": response.data[i].estadocuenta.valor_x_pagar,
+                    "valorArrastre": response.data[i].estadocuenta.valor_acarreo_mes_anterior,
+                    "detalle": response.data[i].estadocuenta.descuentos
                 }
 
 
             }).then(function successCallback(response) {
                 console.log(response.data);
 
-                if (response.data.length == 'enviado') {
 
-                    alert('ingreso');
-                } else {
-
-
-                }
-
+                    progreso += ancho;
+                $('#bar1').css('width', progreso + '%');
+                $scope.numero+=1;
 
             }, function errorCallback(response) {
 
@@ -1662,10 +1662,29 @@ function totales(totalEstado,fecha_del_sistema) {
     var locales=totalEstado-($scope.cuentas[0].valor+$scope.cuentas[1].valor);
     console.log(locales);
 
+
+
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth()+1; //hoy es 0!
+    var yyyy = hoy.getFullYear();
+
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+
+    var fecha1 = mm+'/'+yyyy;
+
+
+
+
+
     var objeto={
         id_cuenta:"599f1d9034917b1ea454e64d",
         valor:locales,
-        fecha:fecha_del_sistema,
+        fecha:fecha1,
         fecha_sistema:fecha_del_sistema,
         usuario: "599f1d9034917b1ea454e64d",
         estado:1

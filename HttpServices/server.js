@@ -108,6 +108,7 @@ app.use('/api', require('./routes/DescuentosBorrados'));
 app.use('/api', require('./routes/Usuarios'));
 app.use('/api', require('./routes/EstadoCuenta'));
 app.use('/api', require('./routes/CuotasCredito'));
+app.use('/api', require('./routes/Pendientes'));
 
 //start server
 app.listen(port, function()  {

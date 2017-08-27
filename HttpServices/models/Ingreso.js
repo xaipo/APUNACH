@@ -15,7 +15,7 @@ var Ingreso = new mongoose.Schema({
         required:true
     },
     "fecha" : {
-        type: Date,
+        type:String ,
         required:true
     },"fecha_sistema" : {
         type: Date,

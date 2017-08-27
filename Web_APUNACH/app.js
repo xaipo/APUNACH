@@ -192,6 +192,12 @@ function ApiUrl(){
     this.postSaveCuotas_credito=function(){
         return direccion+'cuotascredito';
     }
+
+    this.postSavePendientes=function(){
+        return direccion+'pendientes';
+    }
+
+
     this.getAllCuotasxId_Cre=function(){
         return direccion+'cuotascredito';
     }
@@ -264,6 +270,8 @@ app.config (function($routeProvider ,$provide){
     $routeProvider.when("/ImprimirReporte",{templateUrl:"pages/ImprimirReporte.html", controller:'descuentosController'});
 
 
+
+    $routeProvider.when("/Acarreo",{templateUrl:"pages/RegistroAcarreo.html", controller:'cuentasController'});
 
 
 

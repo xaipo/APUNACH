@@ -1,6 +1,8 @@
 app.controller('cuentasController', ['$scope', '$http', '$location','myProvider','$localStorage','$timeout',  function ($scope,$http,$location,myProvider,$localStorage,$timeout) {
 
-    
+
+    console.log("controlador ingreso");
+
     $scope.initListarTipoCuentasIngreso=function(){
 
         //inicializar todos los tipos de cuentas de ingreso
@@ -744,7 +746,273 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
     }
 
+    $scope.initListarDocentes_Des=function(){
 
+        //inicializar todos los usuarios
+        $http({
+            method: 'GET',
+            url: myProvider.getAllDocentes()+"?estado="+0,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen docentes en la BD!", "warning");
+            } else {
+
+                $scope.listDocentes = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#datatabledocentes').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
+
+    }
+
+    $scope.seleccionarDocentexLocal=function(docente){
+
+
+        $scope.nombre_docente = docente.nombres+" "+ docente.apellidos;
+        $scope.docente=docente;
+
+    }
+
+
+    $scope.registrarAcarreo=function(){
+
+        var hoy = new Date();
+        var dd = hoy.getDate();
+        var mm = hoy.getMonth()+1; //hoy es 0!
+        var yyyy = hoy.getFullYear();
+
+        var mes = hoy.getMonth()+2; //hoy es 0!
+
+        if(mm<10) {
+            mm='0'+mm
+        }
+
+
+        if(mes<10) {
+            mes='0'+mes
+        }
+
+
+        var fecha = mm+'/'+dd+'/'+yyyy;
+        var fecha1 = mm+'/'+yyyy;
+        var fecha2 = mes+'/'+yyyy;
+
+        console.log(fecha1);
+
+
+
+        var objeto={
+            fecha:fecha1,
+            docente:$scope.docente._id,
+            observacion:$scope.observacion,
+            estado:"pendiente",
+            valor:$scope.valor
+
+        }
+
+        console.log(objeto);
+
+
+        $http({
+            method: 'POST',
+            url: myProvider.postSavePendientes(),   //Guardar las cuotas de credito
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: objeto
+
+
+        }).then(function successCallback(response) {
+
+            console.log(response.data);
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + objeto.docente+"&&frac_fecha="+fecha2, //Buscar estado de cuenta por od docente y fecha
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {}
+
+
+        }).then(function successCallback(response) {
+
+            console.log(response.data[0]);
+
+
+
+
+
+
+
+            $http({
+
+                method: 'PUT',
+                url: myProvider.putEstado_cuenta()+"/"+response.data[0]._id, //MODIFICAR eSTADO CUENTA
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+
+                    //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+
+                    valor_acarreo_mes_anterior: objeto.valor
+
+
+
+
+                }
+
+
+            }).then(function successCallback(response) {
+
+                console.log(response.data);
+
+
+
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+
+
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.putIngresos() + "?fecha=" + fecha1, //Buscar estado de cuenta por od docente y fecha
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {}
+
+
+        }).then(function successCallback(response) {
+
+            console.log(response.data[0]);
+
+
+            var nuevoValor=response.data[0].valor-objeto.valor;
+
+console.log(nuevoValor,objeto.valor);
+
+
+
+            $http({
+
+                method: 'PUT',
+                url: myProvider.putIngresos()+"/"+response.data[0]._id, //MODIFICAR eSTADO CUENTA
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+
+                    //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+
+                    valor: nuevoValor
+
+
+
+
+                }
+
+
+            }).then(function successCallback(response) {
+
+                console.log("final ingreso",response.data);
+
+
+
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+
+
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+    }
+    
+    
     $scope.registrarCuentaEgreso=function(){
         console.log($scope.id_cuenta);
         console.log($('#idfecha_egre').val());
