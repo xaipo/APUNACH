@@ -979,6 +979,41 @@ console.log(nuevoValor,objeto.valor);
 
 
 
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:3000/mail/SendMail1',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        //'Authorization': token
+                    },
+                    data: {
+                        "mail": $scope.docente.correo_electronico,
+                        "nombre": $scope.docente.nombres,
+                        "cedula": $scope.docente.cedula,
+                        "fecha": fecha1,
+                        "valorPagar": objeto.valor,
+                        "detalle": objeto.observacion
+                    }
+
+
+                }).then(function successCallback(response) {
+                    console.log(response.data);
+
+
+                    $scope.mensaje="se a enviado la notificacion al correo del docente"
+
+                }, function errorCallback(response) {
+
+                    alert('error al realizar Ingreso');
+
+                });
+
+
+
+
+
+
+
 
 
             }, function errorCallback(response) {
@@ -1002,6 +1037,10 @@ console.log(nuevoValor,objeto.valor);
 
 
 
+
+
+        
+        
 
 
 

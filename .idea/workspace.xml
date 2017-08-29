@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9349b8b5-312d-4b15-a36a-d2804200c91d" name="Default" comment="moficacion de estados de cuenta segun mes y tambien el de credito correspondiente">
+    <list default="true" id="9349b8b5-312d-4b15-a36a-d2804200c91d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/routes/RouteMail.js" afterPath="$PROJECT_DIR$/HttpServices/routes/RouteMail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/Pages/RegistroAcarreo.html" afterPath="$PROJECT_DIR$/Web_APUNACH/Pages/RegistroAcarreo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/Principal.html" afterPath="$PROJECT_DIR$/Web_APUNACH/Principal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerCuentas.js" afterPath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerCuentas.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" afterPath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
     </list>
     <list id="2a52763a-8609-427c-90c4-b4680a93f5d5" name="New changelist" comment="" />
     <ignored path="APUNACH.iws" />
@@ -24,68 +29,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Principal.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Principal.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="161" column="4" selection-start-line="161" selection-start-column="4" selection-end-line="161" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImprimirReporte.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ImprimirReporte.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ImprimirReporte.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="77" column="2" selection-start-line="77" selection-start-column="2" selection-end-line="77" selection-end-column="2" />
+            <state relative-caret-position="117">
+              <caret line="70" column="91" selection-start-line="70" selection-start-column="91" selection-end-line="70" selection-end-column="91" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="152" column="4" selection-start-line="152" selection-start-column="4" selection-end-line="152" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServices/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RouteMail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServices/routes/RouteMail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-              <folding>
-                <marker date="1503675657478" expanded="false" signature="363:373" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="375:970" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="390:572" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="584:954" placeholder="..." />
-                <marker date="1503675657478" expanded="false" signature="609:627" placeholder="..." />
-                <marker date="1503675657478" expanded="false" signature="678:696" placeholder="..." />
-                <marker date="1503675657478" expanded="false" signature="747:765" placeholder="..." />
-                <marker date="1503675657478" expanded="false" signature="815:833" placeholder="..." />
-                <marker date="1503675657478" expanded="false" signature="889:907" placeholder="..." />
-                <marker date="1503675657478" expanded="false" signature="1038:1048" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="1050:1174" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="1066:1174" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="1332:1350" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="1422:1440" placeholder="..." />
-                <marker date="1503675657478" expanded="true" signature="1513:1531" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -93,23 +52,13 @@
       <file leaf-file-name="ControllerDescuentos.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="1599" column="0" selection-start-line="1599" selection-start-column="0" selection-end-line="1599" selection-end-column="0" />
+            <state relative-caret-position="501">
+              <caret line="1753" column="4" selection-start-line="1753" selection-start-column="4" selection-end-line="1753" selection-end-column="4" />
               <folding>
+                <element signature="e#1479#2448#0" expanded="false" />
                 <element signature="e#41397#41508#0" expanded="false" />
                 <element signature="e#42088#42211#0" expanded="false" />
-                <marker date="1503688096312" expanded="true" signature="3521:3524" placeholder="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ingreso.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServices/models/Ingreso.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -130,18 +79,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresoTipoCuentasEgresos.html" />
-        <option value="$PROJECT_DIR$/HttpServices/models/CuentasGasto.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/pages/ModificarTipoCuentasEgresos.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresoUsuarios.html" />
-        <option value="$PROJECT_DIR$/HttpServices/models/Ingreso.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/RegistroIngresos.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/ModificarIngresos.html" />
         <option value="$PROJECT_DIR$/HttpServices/models/Gastos.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/RegistroEgresos.html" />
         <option value="$PROJECT_DIR$/HttpServices/routes/Gastos.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/ModificarEgresos.html" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerCuentas.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresoParametros.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresoTipoDescuento.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerTipoDescuentos.js" />
@@ -172,15 +116,20 @@
         <option value="$PROJECT_DIR$/HttpServices/routes/CuotasCredito.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js" />
         <option value="$PROJECT_DIR$/HttpServices/models/Descuentos.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/Principal.html" />
         <option value="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" />
         <option value="$PROJECT_DIR$/HttpServices/routes/Ingreso.js" />
         <option value="$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/app.js" />
+        <option value="$PROJECT_DIR$/HttpServices/routes/Pendientes.js" />
         <option value="$PROJECT_DIR$/HttpServices/server.js" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/app.js" />
+        <option value="$PROJECT_DIR$/HttpServices/models/Ingreso.js" />
+        <option value="$PROJECT_DIR$/HttpServices/models/Pendientes.js" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/Pages/RegistroAcarreo.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerCuentas.js" />
         <option value="$PROJECT_DIR$/HttpServices/routes/RouteMail.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/Pages/ImprimirReporte.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/Principal.html" />
       </list>
     </option>
   </component>
@@ -193,7 +142,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -220,6 +169,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -287,11 +237,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/PageSendMail/PageSendMail" />
+    <property name="last_opened_file_path" value="C:/xampp/htdocs/Cliente" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="nodejs_interpreter_path" value="C:\Program Files\nodejs\node" />
@@ -300,14 +249,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\subirProyectos\proyectos\APUNACH\HttpServices\routes" />
+      <recent name="E:\subirProyectos\proyectos\APUNACH\HttpServices\models" />
+      <recent name="E:\subirProyectos\proyectos\APUNACH\Web_APUNACH\Pages" />
       <recent name="E:\subirProyectos\proyectos\APUNACH\Web_APUNACH\controller" />
       <recent name="E:\subirProyectos\proyectos\APUNACH\Web_APUNACH" />
-      <recent name="C:\APUNACH\HttpServices\routes" />
-      <recent name="C:\APUNACH\HttpServices\models" />
-      <recent name="C:\APUNACH\Web_APUNACH\pages" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.server.js">
+  <component name="RunManager" selected="JavaScript Debug.Principal.html">
     <configuration default="false" name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/HttpServices">
       <method />
     </configuration>
@@ -381,8 +330,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Principal.html" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Principal.html" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.server.js" />
         <item index="2" class="java.lang.String" itemvalue="Node.js.ControllerLocales.js" />
         <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.ListaLocales.html" />
       </list>
@@ -430,7 +379,13 @@
       <workItem from="1503520561144" duration="18797000" />
       <workItem from="1503614033543" duration="1031000" />
       <workItem from="1503615973731" duration="67000" />
-      <workItem from="1503671926855" duration="8777000" />
+      <workItem from="1503671926855" duration="8822000" />
+      <workItem from="1503688578795" duration="10379000" />
+      <workItem from="1503872379009" duration="132000" />
+      <workItem from="1503935121148" duration="3289000" />
+      <workItem from="1503953951055" duration="181000" />
+      <workItem from="1504016734083" duration="1222000" />
+      <workItem from="1504022330650" duration="1999000" />
     </task>
     <task id="LOCAL-00001" summary="Usuario_ingreso,modificar,eliminar">
       <created>1501045821991</created>
@@ -523,11 +478,25 @@
       <option name="project" value="LOCAL" />
       <updated>1503688138686</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="moficacion de estados de cuenta segun mes y tambien el de credito correspondiente">
+      <created>1503688181208</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1503688181208</updated>
+    </task>
+    <task id="LOCAL-00015" summary="regustro de oeduentes del docente">
+      <created>1503872479258</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1503872479258</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283237000" />
+    <option name="totallyTimeSpent" value="300484000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -539,20 +508,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19866072" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17708333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32724252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24884793" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24713585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2618658" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -599,9 +568,10 @@
     <MESSAGE value="ingreso docente cuotas variso meses" />
     <MESSAGE value="guardado de las lista s de ttales de en al tabla ingreso" />
     <MESSAGE value="listado para el envio por coorreo detallado" />
-    <MESSAGE value="moficacion de estados de cuenta segun mes y tambien el de credito correspondiente" />
     <MESSAGE value="envio correo lectronico" />
-    <option name="LAST_COMMIT_MESSAGE" value="envio correo lectronico" />
+    <MESSAGE value="moficacion de estados de cuenta segun mes y tambien el de credito correspondiente" />
+    <MESSAGE value="regustro de oeduentes del docente" />
+    <option name="LAST_COMMIT_MESSAGE" value="regustro de oeduentes del docente" />
     <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
   </component>
   <component name="XDebuggerManager">
@@ -609,45 +579,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ListaLocales.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="89" column="53" selection-start-line="89" selection-start-column="53" selection-end-line="89" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/IngresoTipoDescuento.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="32" column="80" selection-start-line="32" selection-start-column="80" selection-end-line="32" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/routes/CatalogoDescuentos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/models/CatalogoDescuentos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ListaTipoDescuento.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1876">
-          <caret line="3346" column="0" selection-start-line="3346" selection-start-column="0" selection-end-line="3346" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -868,27 +803,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerCuentas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8806">
-          <caret line="518" column="6" selection-start-line="518" selection-start-column="6" selection-end-line="518" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/models/Ingreso.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServices/routes/Docente.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -896,7 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="63" column="22" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,7 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -920,15 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="88" column="39" selection-start-line="88" selection-start-column="39" selection-end-line="88" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,66 +842,110 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="177" column="76" selection-start-line="177" selection-start-column="76" selection-end-line="177" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
+    <entry file="file://$PROJECT_DIR$/HttpServices/routes/Pendientes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/IngresarDescuentoxLocal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="86" column="93" selection-start-line="86" selection-start-column="93" selection-end-line="86" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServices/models/Ingreso.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/RegistroAcarreo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="115" column="18" selection-start-line="115" selection-start-column="18" selection-end-line="115" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="152" column="4" selection-start-line="152" selection-start-column="4" selection-end-line="152" selection-end-column="4" />
+        <state relative-caret-position="398">
+          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServices/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerCuentas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="1034" column="0" selection-start-line="1034" selection-start-column="0" selection-end-line="1034" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HttpServices/routes/RouteMail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-          <folding>
-            <marker date="1503675657478" expanded="false" signature="363:373" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="375:970" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="390:572" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="584:954" placeholder="..." />
-            <marker date="1503675657478" expanded="false" signature="609:627" placeholder="..." />
-            <marker date="1503675657478" expanded="false" signature="678:696" placeholder="..." />
-            <marker date="1503675657478" expanded="false" signature="747:765" placeholder="..." />
-            <marker date="1503675657478" expanded="false" signature="815:833" placeholder="..." />
-            <marker date="1503675657478" expanded="false" signature="889:907" placeholder="..." />
-            <marker date="1503675657478" expanded="false" signature="1038:1048" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="1050:1174" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="1066:1174" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="1332:1350" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="1422:1440" placeholder="..." />
-            <marker date="1503675657478" expanded="true" signature="1513:1531" placeholder="..." />
-          </folding>
+        <state relative-caret-position="398">
+          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
+    <entry file="file://$PROJECT_DIR$/HttpServices/models/Pendientes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="1599" column="0" selection-start-line="1599" selection-start-column="0" selection-end-line="1599" selection-end-column="0" />
-          <folding>
-            <element signature="e#41397#41508#0" expanded="false" />
-            <element signature="e#42088#42211#0" expanded="false" />
-            <marker date="1503688096312" expanded="true" signature="3521:3524" placeholder="{...}" />
-          </folding>
+        <state relative-caret-position="398">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ImprimirReporte.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="77" column="2" selection-start-line="77" selection-start-column="2" selection-end-line="77" selection-end-column="2" />
+        <state relative-caret-position="117">
+          <caret line="70" column="91" selection-start-line="70" selection-start-column="91" selection-end-line="70" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="2957" column="40" selection-start-line="2957" selection-start-column="40" selection-end-line="2957" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="1753" column="4" selection-start-line="1753" selection-start-column="4" selection-end-line="1753" selection-end-column="4" />
+          <folding>
+            <element signature="e#1479#2448#0" expanded="false" />
+            <element signature="e#41397#41508#0" expanded="false" />
+            <element signature="e#42088#42211#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="161" column="4" selection-start-line="161" selection-start-column="4" selection-end-line="161" selection-end-column="4" />
           <folding />
         </state>
       </provider>
