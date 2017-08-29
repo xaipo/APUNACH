@@ -39,7 +39,10 @@ var Docente = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         required:true
     },
-    "id_tipo_contrato" : { },
+    "id_tipo_contrato" : {
+
+        //panic
+    },
     "pregrado" : {
         type: String,
         required:true
