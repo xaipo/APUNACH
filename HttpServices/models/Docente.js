@@ -42,6 +42,9 @@ var Docente = new mongoose.Schema({
     "id_tipo_contrato" : {
 
         //panic
+        ///......
+        
+
     },
     "pregrado" : {
         type: String,
