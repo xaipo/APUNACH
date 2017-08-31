@@ -67,6 +67,10 @@ var Docente = new mongoose.Schema({
     "valor_cuota" : {
         type: Number
 
+    },
+    "tarjeta" : {
+        type: String
+
     }
 
 },{ collection: 'docente'
