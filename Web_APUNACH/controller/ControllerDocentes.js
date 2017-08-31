@@ -203,7 +203,50 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
     }
 
+    $('.input-daterange').datepicker({autoclose:true});
 
+
+
+    $scope.mostrar=false;
+    $scope.mostrar1=false;
+
+    $scope.afiliacion=function () {
+
+        if ($scope.miembro_asociacion=="No"){
+
+            $scope.mostrar1=false;
+
+        }else {
+
+
+            $scope.mostrar1=true;
+
+        }
+
+
+    }
+
+
+
+    $scope.cambio=function () {
+
+        if ($scope.id_tipo_contrato=="De planta"){
+
+            $scope.mostrar=false;
+
+        }else {
+
+
+            $scope.mostrar=true;
+
+        }
+
+
+
+    }
+    
+    
+    
 
     $scope.registrarDocente=function(){
 
@@ -228,172 +271,209 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         console.log($('#idfecha_afiliacion').val());
 
         console.log($scope.valor_cuota);
+        console.log( $('#fecha_inicio').val(), $('#fecha_fin').val());
 
-        $http({
-            method: 'POST',
-            url: myProvider.postSaveDocente(),
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
-            },
-            data: {
 
-                cedula : $scope.cedula,
-                nombres : $scope.nombres,
-                apellidos : $scope.apellidos,
-                fecha_nacimiento : $('#idfecha_naci').val(),
-                direccion : $scope.direccion,
-                telefono : $scope.telefono,
-                celular : $scope.celular,
-                correo_electronico : $scope.correo_electronico,
-                id_carrera : $scope.id_carrera,
-                id_tipo_contrato : $scope.id_tipo_contrato,
-                pregrado : $scope.pregrado,
-                postgrado : $scope.postgrado,
-                miembro_asociacion : $scope.miembro_asociacion,
-                fecha_afiliacion : $('#idfecha_afiliacion').val(),
-                estado : 0,
-                valor_cuota : $scope.valor_cuota
 
+
+        if ($scope.miembro_asociacion=="Si"){
+
+
+
+            if ($scope.id_tipo_contrato=="De planta"){
+                $scope.objeto={
+
+                    tipo:$scope.id_tipo_contrato,
+                }
+
+                console.log($scope.objeto);
+
+            }else {
+
+
+                $scope.objeto={
+
+                    tipo:$scope.id_tipo_contrato,
+                    fecha_inicio:$('#fecha_inicio').val(),
+                    fecha_fin:$('#fecha_fin').val()
+
+                }
+
+                console.log($scope.objeto);
 
 
             }
 
 
-        }).then(function successCallback(response) {
-
-
-            if (response.data.length == 0) {
-
-                swal("Error!", "No se ingreso el docente!", "error");
-            } else {
-
-
-         console.log(
-         $scope.cuotaInicial,  $scope.listLocales[2], response.data
-
-         );
-
-
-                var hoy = new Date();
-                var dd = "28";
-                var mm = hoy.getMonth()+1; //hoy es 0!
-                var yyyy = hoy.getFullYear();
-
-
-                for (var i=0;i<$scope.cuotaInicial.cuotas;i++){
-
-
-
-                    var mes = mm+i;
-
-                    if(mes<10) {
-                        mes='0'+mes
-                    }
-
-                    var fecha = mes+'/'+dd+'/'+yyyy;
-                    var fecha1 = mes+'/'+yyyy;
-
-                    console.log(fecha,i,$scope.cuotaInicial.cuotas);
-
-
-
-         $http({
-         method: 'POST',
-         url: myProvider.postSaveEstado_cuenta(),
-         headers: {
-         // 'Content-Type': 'application/json',
-         //'Authorization': token
-         },
-         data: {
-
-         id_docente: response.data._id,
-         id_usuario: response.data._id,
-         fecha_descuento:fecha,
-         valor_x_pagar: $scope.cuotaInicial.valor,
-         valor_pagado:0,
-         valor_acarreo_mes_anterior:0,
-         hora:fecha,
-         frac_fecha:fecha1,
-         estado:1
-
-         }
-
-
-         }).then(function successCallback(response) {
-
-
-             console.log(fecha,i,$scope.cuotaInicial.cuotas);
-
-
-         console.log(response.data);
-         if (response.data.length == 0) {
-
-         swal("Error!", "EL descuento no se ingreso correctamente!", "error");
-         } else {
-
-
-         $http({
-         method: 'POST',
-         url: myProvider.postSaveDescuento(),
-         headers: {
-         // 'Content-Type': 'application/json',
-         //'Authorization': token
-         },
-         data: {
-
-
-         id_catalogo:$scope.listLocales[2]._id,
-         id_local:$scope.listLocales[2]._id,
-         nombre_local:$scope.listLocales[2].nombre,
-         id_estado_cuenta:response.data._id,
-         descripcion:"Valor cuota inicial",
-         valor_descuento:$scope.cuotaInicial.valor,
-         cantidad:0,
-fecha:response.data.frac_fecha
-
-
-         }
-
-
-         }).then(function successCallback(response) {
-         console.log(response.data);
-
-             console.log("creacion correcta todo en uno");
-         if (response.data.length == 0) {
-
-
-         } else {
-
-
-
-         }
-
-
-         }, function errorCallback(response) {
-
-         alert('error al realizar Ingreso');
-
-         });
 
 
 
 
 
-         }
 
+            $http({
+                method: 'POST',
+                url: myProvider.postSaveDocente(),
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
 
-         }, function errorCallback(response) {
-
-         alert('error al realizar Ingreso');
-
-         });
+                    cedula : $scope.cedula,
+                    nombres : $scope.nombres,
+                    apellidos : $scope.apellidos,
+                    fecha_nacimiento : $('#idfecha_naci').val(),
+                    direccion : $scope.direccion,
+                    telefono : $scope.telefono,
+                    celular : $scope.celular,
+                    correo_electronico : $scope.correo_electronico,
+                    id_carrera : $scope.id_carrera,
+                    id_tipo_contrato : $scope.objeto,
+                    pregrado : $scope.pregrado,
+                    postgrado : $scope.postgrado,
+                    miembro_asociacion : $scope.miembro_asociacion,
+                    fecha_afiliacion : $('#idfecha_afiliacion').val(),
+                    estado : 0,
+                    valor_cuota : $scope.valor_cuota
 
 
 
                 }
 
 
+            }).then(function successCallback(response) {
+
+
+                if (response.data.length == 0) {
+
+                    swal("Error!", "No se ingreso el docente!", "error");
+                } else {
+
+
+                    console.log(
+                        $scope.cuotaInicial,  $scope.listLocales[2], response.data
+
+                    );
+
+
+                    var hoy = new Date();
+                    var dd = "28";
+                    var mm = hoy.getMonth()+1; //hoy es 0!
+                    var yyyy = hoy.getFullYear();
+
+
+                    for (var i=0;i<$scope.cuotaInicial.cuotas;i++){
+
+
+
+                        var mes = mm+i;
+
+                        if(mes<10) {
+                            mes='0'+mes
+                        }
+
+                        var fecha = mes+'/'+dd+'/'+yyyy;
+                        var fecha1 = mes+'/'+yyyy;
+
+                        console.log(fecha,i,$scope.cuotaInicial.cuotas);
+
+
+
+                        $http({
+                            method: 'POST',
+                            url: myProvider.postSaveEstado_cuenta(),
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {
+
+                                id_docente: response.data._id,
+                                id_usuario: response.data._id,
+                                fecha_descuento:fecha,
+                                valor_x_pagar: $scope.cuotaInicial.valor,
+                                valor_pagado:0,
+                                valor_acarreo_mes_anterior:0,
+                                hora:fecha,
+                                frac_fecha:fecha1,
+                                estado:1
+
+                            }
+
+
+                        }).then(function successCallback(response) {
+
+
+                            console.log(fecha,i,$scope.cuotaInicial.cuotas);
+
+
+                            console.log(response.data);
+                            if (response.data.length == 0) {
+
+                                swal("Error!", "EL descuento no se ingreso correctamente!", "error");
+                            } else {
+
+
+                                $http({
+                                    method: 'POST',
+                                    url: myProvider.postSaveDescuento(),
+                                    headers: {
+                                        // 'Content-Type': 'application/json',
+                                        //'Authorization': token
+                                    },
+                                    data: {
+
+
+                                        id_catalogo:$scope.listLocales[2]._id,
+                                        id_local:$scope.listLocales[2]._id,
+                                        nombre_local:$scope.listLocales[2].nombre,
+                                        id_estado_cuenta:response.data._id,
+                                        descripcion:"Valor cuota inicial",
+                                        valor_descuento:$scope.cuotaInicial.valor,
+                                        cantidad:0,
+                                        fecha:response.data.frac_fecha
+
+
+                                    }
+
+
+                                }).then(function successCallback(response) {
+                                    console.log(response.data);
+
+                                    console.log("creacion correcta todo en uno");
+                                    if (response.data.length == 0) {
+
+
+                                    } else {
+
+
+
+                                    }
+
+
+                                }, function errorCallback(response) {
+
+                                    alert('error al realizar Ingreso');
+
+                                });
+
+
+
+
+
+                            }
+
+
+                        }, function errorCallback(response) {
+
+                            alert('error al realizar Ingreso');
+
+                        });
+
+
+
+                    }
 
 
 
@@ -413,31 +493,131 @@ fecha:response.data.frac_fecha
 
 
 
-                swal("Exito!", "Docente ingresado correctamente!", "success");
-                $scope.cedula = "";
-                $scope.nombres= "";
-                $scope.apellidos = "";
-                $scope.fecha_nacimiento = "";
-                $scope.direccion = "";
-                $scope.telefono = "";
-                $scope.celular = "";
-                $scope.correo_electronico = "";
-                $scope.id_carrera = "";
-                $scope.id_tipo_contrato= "";
-                $scope.pregrado = "";
-                $scope.postgrado = "";
-                $scope.miembro_asociacion = "";
-                $scope.fecha_afiliacion = "";
-                $scope.valor_cuota= "";
+
+
+                    swal("Exito!", "Docente ingresado correctamente!", "success");
+                    $scope.cedula = "";
+                    $scope.nombres= "";
+                    $scope.apellidos = "";
+                    $scope.fecha_nacimiento = "";
+                    $scope.direccion = "";
+                    $scope.telefono = "";
+                    $scope.celular = "";
+                    $scope.correo_electronico = "";
+                    $scope.id_carrera = "";
+                    $scope.id_tipo_contrato= "";
+                    $scope.pregrado = "";
+                    $scope.postgrado = "";
+                    $scope.miembro_asociacion = "";
+                    $scope.fecha_afiliacion = "";
+                    $scope.valor_cuota= "";
+
+                }
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+
+
+
+
+        }else {
+
+
+
+
+
+
+            if ($scope.id_tipo_contrato=="De planta"){
+                $scope.objeto={
+
+                    tipo:$scope.id_tipo_contrato,
+                }
+
+                console.log($scope.objeto);
+
+            }else {
+
+
+                $scope.objeto={
+
+                    tipo:$scope.id_tipo_contrato,
+                    fecha_inicio:$('#fecha_inicio').val(),
+                    fecha_fin:$('#fecha_fin').val()
+
+                }
+
+                console.log($scope.objeto);
+
 
             }
 
 
-        }, function errorCallback(response) {
 
-            alert('error al realizar Ingreso');
 
-        });
+
+
+
+
+            $http({
+                method: 'POST',
+                url: myProvider.postSaveDocente(),
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                    cedula : $scope.cedula,
+                    nombres : $scope.nombres,
+                    apellidos : $scope.apellidos,
+                    fecha_nacimiento : $('#idfecha_naci').val(),
+                    direccion : $scope.direccion,
+                    telefono : $scope.telefono,
+                    celular : $scope.celular,
+                    correo_electronico : $scope.correo_electronico,
+                    id_carrera : $scope.id_carrera,
+                    id_tipo_contrato : $scope.objeto,
+                    pregrado : $scope.pregrado,
+                    postgrado : $scope.postgrado,
+                    miembro_asociacion : $scope.miembro_asociacion,
+                    fecha_afiliacion : new Date(),
+                    estado : 0,
+                    valor_cuota : 0
+
+
+
+                }
+
+
+            }).then(function successCallback(response) {
+
+
+            console.log("registro de docente correcto");
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+
+
+
+
+
+
+
+
+        }
+
 
 
 

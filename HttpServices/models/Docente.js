@@ -57,16 +57,16 @@ var Docente = new mongoose.Schema({
         required:true
     },
     "fecha_afiliacion" : {
-        type: Date,
-        required:true
+        type: Date
+
     },
     "estado" : {
-        type: String,
-        required:true
+        type: String
+
     },
     "valor_cuota" : {
-        type: Number,
-        required:true
+        type: Number
+
     }
 
 },{ collection: 'docente'
