@@ -202,6 +202,16 @@ function ApiUrl(){
         return direccion+'cuotascredito';
     }
 
+    //Ver Descuentos Docentes
+    this.getVerDescuentos=function(){
+        return direccion+'verEstadcoCuentaDocente';
+    }
+
+    this.getCreditosEmergentesPorId=function(){
+        return direccion+'verCreditoEmergente';
+    }
+
+
 }
 
 app.factory("myProvider",function(){
@@ -268,6 +278,11 @@ app.config (function($routeProvider ,$provide){
     //Creditos Emergentes
     $routeProvider.when("/Creditoemergente",{templateUrl:"pages/Creditoemergente.html", controller:'descuentosController'});
     $routeProvider.when("/ImprimirReporte",{templateUrl:"pages/ImprimirReporte.html", controller:'descuentosController'});
+
+    //Para los profesores  VerDescuentos
+    $routeProvider.when("/VerDescuentos",{templateUrl:"pages/VerDescuentos.html", controller:'descuentosController'});
+    $routeProvider.when("/VerCreditoemergente",{templateUrl:"pages/VerCreditoemergente.html", controller:'descuentosController'});
+
 
 
 

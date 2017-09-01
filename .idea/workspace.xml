@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9349b8b5-312d-4b15-a36a-d2804200c91d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Web_APUNACH/Pages/VerCreditoemergente.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Web_APUNACH/Pages/VerDescuentos.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/models/Docente.js" afterPath="$PROJECT_DIR$/HttpServices/models/Docente.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" afterPath="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js" afterPath="$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html" afterPath="$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/app.js" afterPath="$PROJECT_DIR$/Web_APUNACH/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" afterPath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html" afterPath="$PROJECT_DIR$/Web_APUNACH/pages/Descuentos.html" />
     </list>
     <list id="2a52763a-8609-427c-90c4-b4680a93f5d5" name="New changelist" comment="" />
     <ignored path="APUNACH.iws" />
@@ -29,32 +36,48 @@
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+              <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImprimirReporte.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ImprimirReporte.html">
+      <file leaf-file-name="PrincipalDocente.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="159">
+              <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerDescuentos.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
+      <file leaf-file-name="VerDescuentos.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/VerDescuentos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="1753" column="4" selection-start-line="1753" selection-start-column="4" selection-end-line="1753" selection-end-column="4" />
-              <folding>
-                <element signature="e#1479#2448#0" expanded="false" />
-                <element signature="e#41397#41508#0" expanded="false" />
-                <element signature="e#42088#42211#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="138">
+              <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerCreditoemergente.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/VerCreditoemergente.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-459">
+              <caret line="42" column="81" selection-start-line="42" selection-start-column="81" selection-end-line="42" selection-end-column="81" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Creditoemergente.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/Creditoemergente.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="141" column="76" selection-start-line="141" selection-start-column="76" selection-end-line="141" selection-end-column="76" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -62,39 +85,22 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
+            <state relative-caret-position="329">
+              <caret line="210" column="26" selection-start-line="210" selection-start-column="26" selection-end-line="210" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServices/server.js">
+      <file leaf-file-name="ControllerDescuentos.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IngresoDocentes.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/IngresoDocentes.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="102" column="30" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Docente.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HttpServices/models/Docente.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="43" column="15" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
-              <folding />
+            <state relative-caret-position="243">
+              <caret line="1437" column="101" selection-start-line="1437" selection-start-column="101" selection-end-line="1437" selection-end-column="101" />
+              <folding>
+                <element signature="e#45103#45214#0" expanded="false" />
+                <element signature="e#45794#45917#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,12 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Web_APUNACH/pages/RegistroIngresos.html" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/pages/ModificarIngresos.html" />
-        <option value="$PROJECT_DIR$/HttpServices/models/Gastos.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/pages/RegistroEgresos.html" />
-        <option value="$PROJECT_DIR$/HttpServices/routes/Gastos.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/pages/ModificarEgresos.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresoParametros.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/pages/IngresoTipoDescuento.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerTipoDescuentos.js" />
@@ -151,21 +151,27 @@
         <option value="$PROJECT_DIR$/HttpServices/routes/CuotasCredito.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js" />
         <option value="$PROJECT_DIR$/HttpServices/models/Descuentos.js" />
-        <option value="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" />
         <option value="$PROJECT_DIR$/HttpServices/routes/Ingreso.js" />
-        <option value="$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js" />
         <option value="$PROJECT_DIR$/HttpServices/routes/Pendientes.js" />
         <option value="$PROJECT_DIR$/HttpServices/server.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/app.js" />
         <option value="$PROJECT_DIR$/HttpServices/models/Ingreso.js" />
         <option value="$PROJECT_DIR$/HttpServices/models/Pendientes.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/Pages/RegistroAcarreo.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerCuentas.js" />
         <option value="$PROJECT_DIR$/HttpServices/routes/RouteMail.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/Pages/ImprimirReporte.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/Principal.html" />
         <option value="$PROJECT_DIR$/HttpServices/models/Docente.js" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/Pages/Descuentos.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/Pages/PrincipalDocente.html" />
+        <option value="$PROJECT_DIR$/HttpServices/routes/Descuentos.js" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/Pages/VerCreditoemergente.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/app.js" />
+        <option value="$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js" />
+        <option value="$PROJECT_DIR$/HttpServices/routes/CreditoEmergente.js" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/Pages/VerDescuentos.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
       </list>
     </option>
   </component>
@@ -178,7 +184,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -233,7 +239,75 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Web_APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web_APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web_APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="HttpServices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="APUNACH" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HttpServices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -270,12 +344,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\APUNACH\Web_APUNACH" />
+      <recent name="C:\APUNACH\Web_APUNACH\Pages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\APUNACH\Web_APUNACH\Pages" />
       <recent name="E:\subirProyectos\proyectos\APUNACH\HttpServices\routes" />
       <recent name="E:\subirProyectos\proyectos\APUNACH\HttpServices\models" />
       <recent name="E:\subirProyectos\proyectos\APUNACH\Web_APUNACH\Pages" />
       <recent name="E:\subirProyectos\proyectos\APUNACH\Web_APUNACH\controller" />
-      <recent name="E:\subirProyectos\proyectos\APUNACH\Web_APUNACH" />
     </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
@@ -292,10 +370,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/models/Docente.js</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/Principal.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/controller/LoginController.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/pages/ImprimirReporte.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/pages/IngresoDocentes.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -303,7 +381,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/controller/indexLocal.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/indexLocal.html</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -311,7 +390,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/package-lock.json</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -393,7 +471,7 @@
       </FILE-GROUP>
     </UpdatedFiles>
   </component>
-  <component name="RunManager" selected="Node.js.server.js">
+  <component name="RunManager" selected="JavaScript Debug.Principal.html">
     <configuration default="false" name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/HttpServices">
       <method />
     </configuration>
@@ -404,6 +482,9 @@
       <method />
     </configuration>
     <configuration default="false" name="ControllerLocales.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="ControllerLocales.js" working-dir="$PROJECT_DIR$/Web_APUNACH/controller">
+      <method />
+    </configuration>
+    <configuration default="false" name="indexLocal.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/APUNACH/Web_APUNACH/indexLocal.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -459,18 +540,20 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
       <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Principal.html" />
       <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.ListaLocales.html" />
       <item index="3" class="java.lang.String" itemvalue="Node.js.ControllerLocales.js" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.indexLocal.html" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Principal.html" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.ControllerLocales.js" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.ListaLocales.html" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Principal.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.indexLocal.html" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.server.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.ControllerLocales.js" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.ListaLocales.html" />
       </list>
     </recent_temporary>
   </component>
@@ -524,6 +607,10 @@
       <workItem from="1504016734083" duration="1222000" />
       <workItem from="1504022330650" duration="1999000" />
       <workItem from="1504025649268" duration="707000" />
+      <workItem from="1504027529569" duration="244000" />
+      <workItem from="1504027803125" duration="146000" />
+      <workItem from="1504027971484" duration="82000" />
+      <workItem from="1504028067967" duration="19129000" />
     </task>
     <task id="LOCAL-00001" summary="Usuario_ingreso,modificar,eliminar">
       <created>1501045821991</created>
@@ -641,7 +728,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301191000" />
+    <option name="totallyTimeSpent" value="321129000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -653,20 +740,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1748512" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32724252" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17708333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27035332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24577573" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32405892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24386252" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2618658" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -725,41 +812,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ListaTipoDescuento.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerTipoDescuentos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDocentes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="50" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ListaUsuarios.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/models/Locales.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServices/routes/Locales.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -813,13 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/LoginController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="64" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -886,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDescuento.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="88" column="96" selection-start-line="88" selection-start-column="96" selection-end-line="88" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServices/models/CuotasCredito.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -935,20 +973,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/routes/Docente.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/routes/Descuentos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="63" column="22" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServices/routes/Ingreso.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -960,20 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/Descuentos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="177" column="76" selection-start-line="177" selection-start-column="76" selection-end-line="177" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -1009,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="1034" column="0" selection-start-line="1034" selection-start-column="0" selection-end-line="1034" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1017,7 +1026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1035,31 +1043,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ImprimirReporte.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state relative-caret-position="1343">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="1753" column="4" selection-start-line="1753" selection-start-column="4" selection-end-line="1753" selection-end-column="4" />
-          <folding>
-            <element signature="e#1479#2448#0" expanded="false" />
-            <element signature="e#41397#41508#0" expanded="false" />
-            <element signature="e#42088#42211#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1067,15 +1055,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="102" column="30" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,15 +1062,129 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/Descuentos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="33" column="107" selection-start-line="33" selection-start-column="107" selection-end-line="33" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/LoginController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDescuento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="58" selection-start-line="0" selection-start-column="58" selection-end-line="0" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="52" column="56" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServices/routes/CreditoEmergente.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="210" column="26" selection-start-line="210" selection-start-column="26" selection-end-line="210" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServices/routes/Descuentos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="71" column="36" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/Creditoemergente.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="141" column="76" selection-start-line="141" selection-start-column="76" selection-end-line="141" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServices/routes/Docente.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HttpServices/models/Docente.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="43" column="15" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="15" />
+        <state relative-caret-position="332">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/VerCreditoemergente.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="42" column="81" selection-start-line="42" selection-start-column="81" selection-end-line="42" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/VerDescuentos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="1437" column="101" selection-start-line="1437" selection-start-column="101" selection-end-line="1437" selection-end-column="101" />
+          <folding>
+            <element signature="e#45103#45214#0" expanded="false" />
+            <element signature="e#45794#45917#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
