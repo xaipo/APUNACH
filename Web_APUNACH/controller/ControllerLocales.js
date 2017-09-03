@@ -113,6 +113,8 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
     $scope.initModificarLocales=function(){
 
         $scope.local = JSON.parse(window.localStorage.getItem('local'));
+        var fecha = $scope.local.fecha_inicio_acuerdo.split("T");
+        $scope.local.fecha_inicio_acuerdo = fecha[0];
         console.log($scope.local);
 
 
@@ -131,7 +133,7 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
 
     $scope.modiLocales=function(){
 
-
+        var fecha_acuerdo = $('#idfechaacuerdo').val();
             $http({
                 method: 'PUT',
                 url: myProvider.putLocal()+"/"+$scope.local._id,
@@ -144,10 +146,10 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
                     nombre: $scope.local.nombre,
                     ruc: $scope.local.ruc,
                     direccion:$scope.local.direccion,
-                    credito_max: $scope.local.creditomax,
-                    fecha_inicio_acuerdo:$scope.locfecha_acuerdo,
+                    credito_max: $scope.local.credito_max,
+                    fecha_inicio_acuerdo:fecha_acuerdo,
                     telefono:$scope.local.telefono,
-                    porcentaje_ganancia:$scope.local.porcentage
+                    porcentaje_ganancia:$scope.local.porcentaje_ganancia
 
 
 

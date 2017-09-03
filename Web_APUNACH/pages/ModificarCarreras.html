@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idnamecarrera"> Nombre de la carrera: </label>
                         <div class="col-md-5 col-sm-6 col-xs-10">
-                            <input type="text" id="idnamecarrera"  ng-model="carrera.nombre_carrera" placeholder="Nombre de la carrera" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idnamecarrera"  ng-model="carrera.nombre_carrera" placeholder="Nombre de la carrera" required class="col-md-7 col-xs-12" onkeypress="return soloLetras(event)" maxlength="50"/>
                         </div>
                     </div>
 

@@ -34,13 +34,13 @@
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idnamelocal"> Nombre: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idnamelocal"  ng-model="local.nombre" placeholder="Nombre" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idnamelocal"  ng-model="local.nombre" placeholder="Nombre" required class="col-md-7 col-xs-12" onkeypress="return soloLetras(event)" maxlength="50"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idruc"> Ruc: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idruc"  ng-model="local.ruc" placeholder="Ruc" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idruc"  ng-model="local.ruc" placeholder="Ruc" required class="col-md-7 col-xs-12" minlength="13" maxlength="13" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                         <label class="col-md-4 col-sm-4 col-xs-12  control-label no-padding-right" for="iddireccion"> Direccion:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="iddireccion" ng-model="local.direccion" placeholder="Direccion" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="iddireccion" ng-model="local.direccion" placeholder="Direccion" required class="col-md-7 col-xs-12" maxlength="50"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,14 +71,14 @@
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idtelefono"> Telefono:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idtelefono" ng-model="local.telefono" placeholder="Ingrese telefono" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idtelefono" ng-model="local.telefono" placeholder="Ingrese telefono" required class="col-md-7 col-xs-12" minlength="7" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idporcentage"> % de ganancia:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="number" id="idporcentage" step="0.01" ng-model="local.porcentaje_ganancia" placeholder="Porcentage de ganancia" required class="col-md-7 col-xs-12" />
+                            <input type="number" id="idporcentage"  ng-model="local.porcentaje_ganancia" placeholder="Porcentage de ganancia" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
 
