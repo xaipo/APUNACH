@@ -295,6 +295,8 @@ app.config (function($routeProvider ,$provide){
 
     $routeProvider.when("/estados",{templateUrl:"pages/cambioCredito.html", controller:'docentesController'});
 
+    $routeProvider.when("/generarReportes",{templateUrl:"pages/generarReportes.html", controller:'descuentosController'});
+
 
 
     

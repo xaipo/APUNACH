@@ -249,7 +249,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initListarDescuentosImpri=function(){
 
-
+    console.log("hola");
 
         $http({
             method: 'GET',
@@ -2085,5 +2085,14 @@ function totales(totalEstado,fecha_del_sistema) {
             a.click();
         });
     });
+
+
+    $scope.genrarReportesInit=function() {
+
+        $("#tableEstado_cuenta1").hide();
+
+    }
+
+
 
 }]);
