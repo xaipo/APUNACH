@@ -179,15 +179,11 @@
 
                              <td class=" "> {{x.R[0].cedula}}</td>
                              <td class=" " >{{x.R[0].nombres}} {{x.R[0].apellidos}} </td>
-                             <td class=" " >{{x.fecha_descuento | date : format : timezone}} </i></td>
+                             <td class=" " >{{x.fecha_descuento | date :  "y-MM-dd"}} </i></td>
                              <td class=" " > {{x.valor_x_pagar | currency}}</td>
                              <td class=" " > 0 </td>
 
                              <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
-
-                                 <a class="blue" ng-click="verDestalle(x)">
-                                     <i class="ace-icon fa fa-eye bigger-130"></i>
-                                 </a>
 
                                  <a class="green" ng-click="modificarDescuento(x)">
                                      <i class="ace-icon fa fa-pencil bigger-130"></i>

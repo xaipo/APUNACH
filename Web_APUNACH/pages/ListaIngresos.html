@@ -56,8 +56,8 @@
                          <tr class="even pointer" ng-repeat="x in listCuentasIngreso">
 
                              <td class=" "> {{x.R[0].descripcion}}</td>
-                             <td class=" " >{{x.valor}} </td>
-                             <td class=" " >{{x.fecha}} </td>
+                             <td class=" " >{{x.valor | currency}} </td>
+                             <td class=" " >{{x.fecha | date :  "y-MM-dd"}} </td>
                              <td class=" " >{{x.usuario}} </td>
                              <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
 

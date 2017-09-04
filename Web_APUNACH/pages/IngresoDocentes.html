@@ -69,7 +69,7 @@
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idtelefono"> Telefono:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idtelefono" ng-model="telefono" placeholder="Telefono"  class="col-md-7 col-xs-12" minlength="7" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
+                            <input type="text" id="idtelefono" ng-model="telefono" placeholder="Telefono"  class="col-md-7 col-xs-12" maxlength="7" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
                         </div>
                     </div>
                     <div class="form-group">

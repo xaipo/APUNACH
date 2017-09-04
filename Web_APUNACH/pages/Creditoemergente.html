@@ -159,7 +159,7 @@
 
                                     <td class=" "> {{x.ci_docente}}</td>
                                     <td class=" " >{{x.nombre_docente}} </td>
-                                    <td class=" " >{{x.fecha_maxima_pago | date : format : timezone}} </i></td>
+                                    <td class=" " >{{x.fecha_maxima_pago | date :  "y-MM-dd"}} </i></td>
                                     <td class=" " > {{x.valor | currency}}</td>
                                     <td class=" " > {{x.numero_cuotas}}</td>
                                     <td class=" " > {{x.valor_a_pagar | currency}}</td>
@@ -216,9 +216,9 @@
 
                                                     </td>
                                                     <td class=" "> {{x.id_credito}}</td>
-                                                    <td class=" "> {{x.numero_cuotas}}</td>
+                                                    <td class=" "> {{x.numero_cuotas + 1}}</td>
                                                     <td class=" " >{{x.valor_credito}} </td>
-                                                    <td class=" " >{{x.fecha_max_pago}} </i></td>
+                                                    <td class=" " >{{x.fecha_max_pago | date :  "y-MM-dd"}} </i></td>
                                                     <td class=" " >{{x.estado}} </td>
 
                                                 </tr>
