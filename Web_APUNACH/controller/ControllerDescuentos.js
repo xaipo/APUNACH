@@ -177,7 +177,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         $timeout(function(){
 
-            $('#datatableuser').DataTable({
+            $('#tableEstado_cuenta').DataTable({
                 "language": {
                     "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
@@ -1840,7 +1840,7 @@ function totales(totalEstado,fecha_del_sistema) {
         fecha:fecha1,
         fecha_sistema:fecha_del_sistema,
         usuario: "599f1d9034917b1ea454e64d",
-        estado:1
+        estado:0
 
     }
 
