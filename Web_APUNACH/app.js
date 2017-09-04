@@ -62,6 +62,11 @@ function ApiUrl(){
     this.getTipo_Contrato=function(){
         return direccion+'tipoContrato';
     }
+
+    this.getInformacion=function(){
+        return direccion+'docente';
+    }
+    
     this.postSaveDocente=function(){
         return direccion+'docente';
     }
@@ -273,7 +278,7 @@ app.config (function($routeProvider ,$provide){
 
     $routeProvider.when("/Acarreo",{templateUrl:"pages/RegistroAcarreo.html", controller:'cuentasController'});
 
-
+    $routeProvider.when("/estados",{templateUrl:"pages/cambioCredito.html", controller:'docentesController'});
 
 
 

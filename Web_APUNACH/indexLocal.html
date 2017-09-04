@@ -81,11 +81,16 @@
             <div class="container">
                 <div class="row">
 
-                    <form class="form-inline center" role="form">
 
+                    <form class="form-inline center" role="form">
+                        <label>INFORMACION </label>
+                        <br>
                         <div class="form-group">
+
                             <label class="sr-only" >docente</label>
-                            <input type="text" class="form-control"   placeholder="pasa la tarjeta" ng-model="docente">
+
+                            <input type="password" name="fname" autofocus ng-model="tarjeta" placeholder="pasa la tarjeta" />
+
                         </div>
                         <div class="form-group">
 
@@ -93,21 +98,57 @@
 
                         </div>
 
+
                             <button  ng-click="buscar()" class="btn btn-default">Buscar</button>
                     </form>
 
 
 
 
-                    <input type="password" class="form-control"   ng-model="tarjeta" ng-change="buscarTarjeta()">
 
-                    <br>
-                    <label>Cedula:    {{datos.cedula}}</label>
-                    <br>
-                    <label>Nombres:    {{datos.nombres}}</label>
-                    <br>
-                    <label>Apellidos:    {{datos.apellidos}}</label>
-                    <br>
+
+
+
+<div ng-show="mostrar" class="center">
+
+    <div class="col-md-4 col-sm-4 col-xs-12 ">
+        <br>
+        <label>Docente</label>
+        <br>
+        <label>Cedula:    {{datos.cedula}}</label>
+        <br>
+        <label>Nombres:    {{datos.nombres}}</label>
+        <br>
+        <label>Apellidos:    {{datos.apellidos}}</label>
+        <br>
+
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12 ">
+        <br>
+        <label>Local</label>
+        <br>
+        <label>Nombre:    {{local1.nombre}}</label>
+        <br>
+        <label>Credito:    {{local1.credito_max}}</label>
+        <br>
+
+
+    </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12 ">
+        <br>
+        <label>Estado del Credito</label>
+        <br>
+      <h3>{{datos.estado}}</h3>
+
+    </div>
+
+
+</div>
+
+
+
 
 
                 </div>

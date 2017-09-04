@@ -29,40 +29,7 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
 
 
 
-    $scope.buscarTarjeta = function () {
-        
 
-        console.log($scope.tarjeta);
-
-        $http({
-            method: 'GET',
-            url: 'http://localhost:3000/api/docente?tarjeta='+$scope.tarjeta,
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
-            },
-
-        }).then(function successCallback(response) {
-            console.log(response.data);
-
-            $scope.datos=response.data[0];
-
-
-        }, function errorCallback(response) {
-
-            alert('error al realizar Ingreso');
-
-        });
-
-
-
-
-
-
-
-
-    }
-    
 
 
 
@@ -70,13 +37,11 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
 
         console.log("boton ");
 
-
-
-
-
+        
             $http({
                 method: 'GET',
-                url: 'http://localhost:3000/api/docente?cedula='+$scope.docente,
+                url: myProvider.getInformacion()+'?tarjeta='+$scope.tarjeta,
+         
                 headers: {
                     // 'Content-Type': 'application/json',
                     //'Authorization': token
@@ -85,8 +50,37 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
             }).then(function successCallback(response) {
                 console.log(response.data);
 
+                $scope.mostrar=true;
                 $scope.datos=response.data[0];
 
+
+
+
+                switch( $scope.datos.estado) {
+
+                    case "0":
+                        $scope.datos.estado="Con Credito";
+                        break;
+
+                    case "1":
+                        $scope.datos.estado="Sin Credito";
+                        break;
+
+                    case "2":
+                        $scope.datos.estado="Fuera de la Asociacion";
+                        break;
+                    default:
+
+
+                }
+
+
+
+
+
+
+
+                $scope.local1=$scope.local;
 
             }, function errorCallback(response) {
 
@@ -95,7 +89,7 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
             });
 
     }
-
+    $scope.mostrar=false;
 
 
 

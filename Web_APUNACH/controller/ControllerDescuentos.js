@@ -54,6 +54,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+  
     $scope.initListarDocentes_Des=function(){
 
         //inicializar todos los usuarios

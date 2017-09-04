@@ -755,6 +755,126 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
 
     }
-    
+
+
+    $scope.seleccionarDocentexLocalES=function(docente){
+
+        window.localStorage["docente"]= JSON.stringify(docente);
+        console.log(docente);
+        $scope.nombre_docente = docente.nombres+" "+ docente.apellidos;
+
+$scope.docenteEstado=docente;
+
+
+        
+    }
+
+    $scope.estados=[
+
+        {
+            id:"0",
+            nombre:"Con Credito"
+        },
+        {
+            id:"1",
+            nombre:"Sin Credito"
+        },
+        {
+            id:"2",
+            nombre:"Fuera de la Asociacion"
+        }
+
+
+    ];
+
+    $scope.initListarDocentesEstado=function(){
+
+        //inicializar todos los usuarios
+        $http({
+            method: 'GET',
+            url: myProvider.getAllDocentes(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen docentes en la BD!", "warning");
+            } else {
+
+                $scope.listDocentes = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#datatabledocentes').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
+
+    }
+
+
+
+
+
+    $scope.registrarEstado=function(){
+
+console.log(
+        $scope.docenteEstado._id,
+        $scope.docenteEstado.estado
+);
+
+        $http({
+            method: 'PUT',
+            url: myProvider.putUpdateDocente()+"/"+$scope.docenteEstado._id,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+
+                estado :   $scope.docenteEstado.estado
+
+
+
+            }
+
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+    }
+
 
 }]);
