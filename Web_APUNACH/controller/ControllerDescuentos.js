@@ -1903,6 +1903,33 @@ function totales(totalEstado,fecha_del_sistema) {
     }
 
     img.src = "images/grande.svg";
+
+    //---------------------------------------------sello apunach
+
+    function getBase64Image(img1) {
+
+        var canvas = document.createElement("canvas");
+
+        canvas.width = img1.width;
+        canvas.height = img1.height;
+        var ctx = canvas.getContext("2d");
+
+        ctx.drawImage(img1, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/jpeg");
+
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+
+    }
+    var img1 = new Image();
+
+    img1.onload = function(){
+        var dataURI = getBase64Image(img1);
+        return dataURI;
+
+    }
+
+    img1.src = "images/selloApunach.JPG";
     
     $scope.ReporteCuenta_estado=function(lista){
 
@@ -1932,9 +1959,10 @@ function totales(totalEstado,fecha_del_sistema) {
 
 
         doc.addImage(img.onload(), 'PNG', x, y-10, 15, 15);
+        doc.addImage(img1.onload(), 'PNG', x+148, y-10, 18, 18);
         doc.setFontSize(16);
         doc.setFontType("bold");
-        doc.text( "REPORTE DE DESCUENTOS AL ROL DE PAGO ",x+25, y+0);
+        doc.text( "REPORTE DE DESCUENTOS AL ROL DE PAGO ",x+18, y+0);
         doc.rect(x, y+10, 165,10, 'S')
         doc.setFontSize(10);
         doc.setFontType("bold");
@@ -2041,5 +2069,21 @@ function totales(totalEstado,fecha_del_sistema) {
 
 
     }
+
+    $(document).ready(function() {
+        $("#btnExport").click(function(e) {
+            e.preventDefault();
+
+            //getting data from our table
+            var data_type = 'data:application/vnd.ms-excel';
+            var table_div = document.getElementById('tableEstado_cuenta1');
+            var table_html = table_div.outerHTML.replace(/ /g, '%20');
+
+            var a = document.createElement('a');
+            a.href = data_type + ', ' + table_html;
+            a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
+            a.click();
+        });
+    });
 
 }]);

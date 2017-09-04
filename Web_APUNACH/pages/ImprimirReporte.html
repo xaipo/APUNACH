@@ -42,7 +42,7 @@
                     <!-- tabla-->
 
                     <div  class="table-responsive" ng-init="initListarDescuentosImpri()">
-                        <table class="table table-striped table-bordered table-hover" id="tableEstado_cuenta">
+                        <table class="table table-striped table-bordered table-hover" id="tableEstado_cuenta1">
                             <thead >
                             <tr class="headings">
 
@@ -71,6 +71,10 @@
                     <button class="btn btn-warning left hidden-print" ng-click="ReporteCuenta_estado(listEstado_Docente)"> <!--ng-click="newDescuento()"-->
                         <i class="ace-icon fa fa-file bigger-110"></i>
                         Imprimir reporte
+                    </button>
+                    <button class="btn btn-primary left hidden-print" id="btnExport"> <!--ng-click="newDescuento()"-->
+                        <i class="ace-icon fa fa-file bigger-110"></i>
+                        Exportar a Exel
                     </button>
 
                     <button class="btn btn-info left hidden-print" ng-click="SaveDefinitivo()"> <!--ng-click="newDescuento()"-->
