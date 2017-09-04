@@ -76,6 +76,27 @@
     <script src="controller/ControllerTipoDescuentos.js"></script>
     <script src="controller/ControllerDescuentos.js"></script>
 
+    <script>
+        function soloLetras(e){
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-39-46";
+
+            tecla_especial = false
+            for(var i in especiales){
+                if(key == especiales[i]){
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if(letras.indexOf(tecla)==-1 && !tecla_especial){
+                return false;
+            }
+        }
+    </script>
+
 
 </head>
 
@@ -109,7 +130,7 @@
             <ul class="nav ace-nav">
 
                 <li class="light-blue dropdown-modal">
-                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                    <a data-toggle="dropdown"  class="dropdown-toggle">
                       <!--  <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />-->
 								<span class="user-info">
 									<small>Welcome,</small>
@@ -120,21 +141,7 @@
                     </a>
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li>
-                            <a href="#">
-                                <i class="ace-icon fa fa-cog"></i>
-                                Settings
-                            </a>
-                        </li>
 
-                        <li>
-                            <a href="profile.html">
-                                <i class="ace-icon fa fa-user"></i>
-                                Profile
-                            </a>
-                        </li>
-
-                        <li class="divider"></li>
 
                         <li>
                             <a href="" ng-click="signout()">
@@ -673,23 +680,22 @@
         <div class="footer-inner">
             <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Riobytes</span>
+							<span class="blue bolder">
+                                <a href="http://riobytes.com/" target="_blank">Riobytes</a>
+                                </span>
 							Solutions &copy; 2017
 						</span>
 
                 &nbsp; &nbsp;
 						<span class="action-buttons">
-							<a href="#">
+							<a href="https://twitter.com/RiobytesS" target="_blank">
                                 <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
                             </a>
 
-							<a href="#">
+							<a href="https://www.facebook.com/riobytes/" target="_blank">
                                 <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
                             </a>
 
-							<a href="#">
-                                <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-                            </a>
 						</span>
             </div>
         </div>

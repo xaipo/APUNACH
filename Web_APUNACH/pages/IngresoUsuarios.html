@@ -34,13 +34,13 @@
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idname"> Nombre: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idname"  ng-model="name" placeholder="Nombre" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idname"  ng-model="name" placeholder="Nombre" required class="col-md-7 col-xs-12" onkeypress="return soloLetras(event)" maxlength="50" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idusername"> Username: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idusername"  ng-model="username" placeholder="Username" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idusername"  ng-model="username" placeholder="Username" required class="col-md-7 col-xs-12" maxlength="10"/>
                         </div>
                     </div>
 
@@ -50,21 +50,21 @@
                         <label class="col-md-4 col-sm-4 col-xs-12  control-label no-padding-right" for="idpassword1"> Contraseña</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="password" id="idpassword1" ng-model="password1" placeholder="Password" required class="col-md-7 col-xs-12" />
+                            <input type="password" id="idpassword1" ng-model="password1" placeholder="Password" required class="col-md-7 col-xs-12" minlength="6"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idpassword2"> Re contraseña</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="password" id="idpassword2" ng-model="password2" placeholder="Re-password" required class="col-md-7 col-xs-12" />
+                            <input type="password" id="idpassword2" ng-model="password2" placeholder="Re-password" required class="col-md-7 col-xs-12" minlength="6"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idcorreo"> Correo electronico</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idcorreo" ng-model="correo" placeholder="e-mail" required class="col-md-7 col-xs-12" />
+                            <input type="email" id="idcorreo" ng-model="correo" placeholder="e-mail" required class="col-md-7 col-xs-12" maxlength="20"/>
                         </div>
                     </div>
                     <div class="form-group">

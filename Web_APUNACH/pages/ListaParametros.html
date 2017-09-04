@@ -52,7 +52,7 @@
                          <tr class="even pointer" ng-repeat="x in listParametros">
 
                              <td class=" "> {{x.descripcion}}</td>
-                             <td class=" "> {{x.valor}}</td>
+                             <td class=" "> {{x.valor | currency}}</td>
                              <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
 
                                  <a class="green" ng-click="modificarParametros(x)">

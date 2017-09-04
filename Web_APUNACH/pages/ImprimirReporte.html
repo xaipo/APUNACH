@@ -58,7 +58,7 @@
 
                                 <td class=" "> {{x.R[0].cedula}}</td>
                                 <td class=" " >{{x.R[0].nombres}} {{x.R[0].apellidos}} </td>
-                                <td class=" " >{{x.fecha_descuento | date : format : timezone}} </i></td>
+                                <td class=" " >{{x.fecha_descuento | date :  "y-MM-dd"}} </i></td>
                                 <td class=" " > {{x.valor_x_pagar | currency}}</td>
 
 

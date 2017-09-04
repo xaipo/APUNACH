@@ -160,8 +160,8 @@ app.controller('carrerasController', ['$scope', '$http', '$location','myProvider
                 },
                 data: {
 
-                    nombre_carrera: $scope.nombre_carrera,
-                    id_facultad:$scope.id_facultad
+                    nombre_carrera: $scope.carrera.nombre_carrera,
+                    id_facultad:$scope.carrera.id_facultad
 
 
 
@@ -177,7 +177,7 @@ app.controller('carrerasController', ['$scope', '$http', '$location','myProvider
                 } else {
 
                     swal("Exito!", "Usuario ingresado correctamente!", "success");
-                    $location.path("/ListaUsuarios");
+                    $location.path("/ListaCarreras");
 
 
 

@@ -190,6 +190,63 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+    $scope.initVerDescuentos=function(){
+
+        $scope.userLogin = JSON.parse(window.localStorage.getItem('usuarioLogueado'));
+        console.log($scope.userLogin);
+
+
+
+        $http({
+            method: 'POST',
+            url: myProvider.getVerDescuentos(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+               cedula:$scope.userLogin.user.username
+
+
+
+            }
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
+                $scope.listEstado_Docente = response.data;
+            } else {
+
+                $scope.listEstado_Docente = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#tableVerEstado_cuenta').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
+
+
+    }
+
     $scope.initListarDescuentosImpri=function(){
 
 
@@ -1371,6 +1428,53 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+    $scope.initListarVerCreditosEmergentes=function(){
+        console.log("que hay");
+        $scope.userLogin = JSON.parse(window.localStorage.getItem('usuarioLogueado'));
+        console.log($scope.userLogin);
+
+        //inicializar todos los usuarios
+        $http({
+            method: 'GET',
+            url: myProvider.getAllCreditosEmergentes()+"?ci_docente="+$scope.userLogin.user.username,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen locales en la BD!", "warning");
+            } else {
+
+                $scope.listCreditosEmegentes = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#tableCreditos').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
+
+    }
+
     $scope.selectCredito=function(credito){
 
 
@@ -1391,6 +1495,54 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             } else {
 
                 $scope.listCuotas_Cred = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+        $timeout(function(){
+
+            $('#datatabledocentes').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
+    }
+
+    $scope.selectEstado_cuenta=function(list_estado){
+        $scope.total = 0;
+        $http({
+            method: 'GET',
+            url: myProvider.getAllDescuentos()+"?id_estado_cuenta="+list_estado._id,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen descuentos en la BD!", "warning");
+            } else {
+
+                $scope.listAceptado = response.data;
+                for (var i=0; i < $scope.listAceptado.length;i++)
+                {
+
+                    $scope.total = $scope.total + $scope.listAceptado[i].valor_descuento;
+
+                }
 
             }
 

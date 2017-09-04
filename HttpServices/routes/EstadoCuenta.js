@@ -46,6 +46,27 @@ router.get('/estadocuenta_docente', function (req, res, next)  {
 
 });
 
+router.post('/verEstadcoCuentaDocente', function (req, res, next)  {
+    Docente.aggregate(
+
+        [
+            { "$match": { "cedula": req.body.cedula } },
+            {"$lookup": {
+                "from": "estadocuenta",
+                "localField": "_id",
+                "foreignField": "id_docente",
+                "as": "R"
+            }}
+
+        ],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
+    )
+
+
+});
+
 
 
 

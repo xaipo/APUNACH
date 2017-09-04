@@ -34,13 +34,13 @@
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idcedulado"> Cedula: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idcedulado"  ng-model="cedula" placeholder="Cedula de identidad" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idcedulado"  ng-model="cedula" placeholder="Cedula de identidad" required class="col-md-7 col-xs-12" minlength="10" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idnombres"> Nombres: </label>
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idnombres"  ng-model="nombres" placeholder="Nombre" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idnombres"  ng-model="nombres" placeholder="Nombre" required class="col-md-7 col-xs-12" onkeypress="return soloLetras(event)" maxlength="30"/>
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idapellidos"> Apellidos:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idapellidos" ng-model="apellidos" placeholder="Apellidos" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idapellidos" ng-model="apellidos" placeholder="Apellidos" required class="col-md-7 col-xs-12" onkeypress="return soloLetras(event)" maxlength="30"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -62,28 +62,28 @@
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="iddireccion"> Direccion:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="iddireccion" ng-model="direccion" placeholder="Direccion" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="iddireccion" ng-model="direccion" placeholder="Direccion" required class="col-md-7 col-xs-12" maxlength="50"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idtelefono"> Telefono:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idtelefono" ng-model="telefono" placeholder="Telefono"  class="col-md-7 col-xs-12" />
+                            <input type="text" id="idtelefono" ng-model="telefono" placeholder="Telefono"  class="col-md-7 col-xs-12" maxlength="7" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idcelular"> Celular:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idcelular" ng-model="celular" placeholder="Celular" required class="col-md-7 col-xs-12" />
+                            <input type="text" id="idcelular" ng-model="celular" placeholder="Celular" required class="col-md-7 col-xs-12" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idemail"> Email:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idemail" ng-model="correo_electronico" placeholder="Correo electronico" required class="col-md-7 col-xs-12" />
+                            <input type="email" id="idemail" ng-model="correo_electronico" placeholder="Correo electronico" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -126,14 +126,14 @@
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idpregrado"> Pregrado:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idpregrado" ng-model="pregrado" placeholder="Pregrado"  class="col-md-7 col-xs-12" />
+                            <input type="text" id="idpregrado" ng-model="pregrado" placeholder="Pregrado"  class="col-md-7 col-xs-12" maxlength="30"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idposgrado"> Posgrado:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idposgrado" ng-model="postgrado" placeholder="Posgrado"  class="col-md-7 col-xs-12" />
+                            <input type="text" id="idposgrado" ng-model="postgrado" placeholder="Posgrado"  class="col-md-7 col-xs-12" maxlength="30"/>
                         </div>
                     </div>
 
