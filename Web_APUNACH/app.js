@@ -26,7 +26,7 @@ function ApiUrl(){
         return direccion+'usuario_Tipo';
     }
     this.putSaveUser=function(){
-        return direccion+'user';
+        return direccion+'updateUser';
     }
     //Locales
     this.postSaveLocal=function(){

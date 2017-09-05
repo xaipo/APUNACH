@@ -185,9 +185,10 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
         var email = $scope.user.email;
 
         if (pass == repass) {
-            pass = SHA1(pass);
-            console.log('encriptado');
 
+
+
+            
             $http({
                 method: 'PUT',
                 url: myProvider.putSaveUser()+"/"+$scope.user._id,
