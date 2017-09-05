@@ -335,7 +335,8 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     miembro_asociacion : $scope.miembro_asociacion,
                     fecha_afiliacion : $('#idfecha_afiliacion').val(),
                     estado : 0,
-                    valor_cuota : $scope.valor_cuota
+                    valor_cuota : $scope.valor_cuota,
+                    tarjeta:$scope.cedula
 
 
 

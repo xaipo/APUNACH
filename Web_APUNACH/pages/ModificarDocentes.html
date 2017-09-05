@@ -98,9 +98,17 @@
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Tipo de contrato</label>
                         <div class="col-md-3 col-sm-6 col-xs-10">
 
-                            <select class="form-control "  ng-model="docente.id_tipo_contrato" ng-options="item._id as item.descripcion for item in listTipo_contrato" required ></select>
+                            <select class="form-control "  ng-model="docente.id_tipo_contrato.tipo" ng-options="item.descripcion as item.descripcion for item in listTipo_contrato" required ></select>
+                            <div class="input-daterange input-group" >
+                                <input type="text" class="input-sm form-control" ng-model="docente.id_tipo_contrato.fecha_inicio" id="fecha_inicio"  />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
 
+                                <input type="text" class="input-sm form-control"  id="fecha_fin" ng-model="docente.id_tipo_contrato.fecha_fin" />
+                            </div>
                         </div>
+
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idpregrado"> Pregrado:</label>

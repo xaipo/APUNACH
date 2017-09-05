@@ -360,7 +360,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
         $scope.docenteingresar = JSON.parse(window.localStorage.getItem('destallesdescuento'));
 
-
+        console.log( $scope.docenteingresar);
 
         $scope.objenew ={
             id_local:$scope.localingresar._id,
@@ -380,6 +380,9 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
     }
+
+
+
     $scope.agreg_new=function(){
 
         var fecha = new Date();
