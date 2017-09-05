@@ -216,6 +216,11 @@ function ApiUrl(){
         return direccion+'verCreditoEmergente';
     }
 
+    //ver descuentos por fechas
+    this.VerEstadoCuentaFecha=function(){
+        return direccion+'EstadcoCuentaDocenteFecha';
+    }
+
 
 }
 

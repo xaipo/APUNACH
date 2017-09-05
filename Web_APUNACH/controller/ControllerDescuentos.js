@@ -2089,7 +2089,72 @@ function totales(totalEstado,fecha_del_sistema) {
 
     $scope.genrarReportesInit=function() {
 
-        $("#tableEstado_cuenta1").hide();
+        //$("#tableEstado_cuenta1").hide();
+        var fecha = new Date();
+        var año = fecha.getFullYear();
+        var mes = fecha.getMonth() + 1;
+        if(mes < 10)
+        {
+            mes = "0"+mes;
+        }
+        var fecha_init = año + '-' + mes;
+        console.log(fecha_init);
+        document.getElementById("mes").value = fecha_init;
+
+
+
+    }
+
+    $scope.fecha_buscar=function() {
+
+       var fecha_para_consulta = $('#mes').val();
+        var fecha = fecha_para_consulta.split("-");
+        var año = fecha[0];
+        var mes = fecha[1];
+        var fecha_fin = mes+"/"+año;
+
+        console.log(fecha_fin);
+
+        $http({
+            method: 'POST',
+            url: myProvider.VerEstadoCuentaFecha(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                frac_fecha:fecha_fin
+
+
+
+            }
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
+                $scope.listEstado_Docente = response.data;
+            } else {
+
+                $scope.listEstado_Docente = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
 
     }
 

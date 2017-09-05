@@ -67,6 +67,30 @@ router.post('/verEstadcoCuentaDocente', function (req, res, next)  {
 
 });
 
+router.post('/EstadcoCuentaDocenteFecha', function (req, res, next)  {
+
+console.log(req.body.frac_fecha);
+    TipoUsuario.aggregate(
+
+
+        [
+            { "$match": { "frac_fecha": req.body.frac_fecha} },
+            {"$lookup": {
+                "from": "docente",
+                "localField": "id_docente",
+                "foreignField": "_id",
+                "as": "R"
+            }}
+
+        ],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
+    )
+
+
+});
+
 
 
 
