@@ -300,6 +300,62 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     $scope.total = 0;
     $scope.objenew ={};
 
+    $scope.Selecion_multixLocal=function(x){
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('destallesdescuento'));
+
+
+
+        $scope.objenew ={
+            id_local:$scope.localingresar._id,
+            nombre_local: $scope.localingresar.nombre,
+            id_catalogo : x._id,
+            descripcion : x.descripcion,
+            valor_descuento: x.valor,
+            nombre_docente:$scope.nombre_docente,
+            id_docente:$scope.id_docente,
+
+        };
+        console.log($scope.objenew);
+        $scope.listSeleccion.push($scope.objenew);
+
+
+
+
+
+    }
+
+    $scope.agreg_newxLocal=function(){
+
+        var fecha = new Date();
+        console.log(fecha);
+        $scope.total =0;
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+        $scope.docenteingresar = JSON.parse(window.localStorage.getItem('destallesdescuento'));
+
+
+        $scope.objenew ={
+            id_local:$scope.localingresar._id,
+            nombre_local: $scope.localingresar.nombre,
+            id_catalogo : $scope.localingresar._id,
+            descripcion : $scope.nombre_descuento_new,
+            valor_descuento: $scope.valor_descuento_new,
+            nombre_docente:$scope.nombre_docente,
+            id_docente:$scope.id_docente
+        };
+        console.log($scope.objenew);
+        $scope.listAceptado.push($scope.objenew);
+        for (var i=0; i < $scope.listAceptado.length;i++)
+        {
+
+            $scope.total = $scope.total + $scope.listAceptado[i].valor_descuento;
+
+        }
+        console.log( $scope.listdescuentosBorrar);
+        console.log($scope.listAceptado);
+
+    }
+
     $scope.Selecion_multi=function(x){
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
         $scope.docenteingresar = JSON.parse(window.localStorage.getItem('destallesdescuento'));
@@ -811,6 +867,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         window.localStorage["docente"]= JSON.stringify(docente);
         console.log(docente);
         $scope.nombre_docente = docente.nombres+" "+ docente.apellidos;
+        $scope.id_docente = docente._id;
 
 
     }
