@@ -1933,138 +1933,153 @@ function totales(totalEstado,fecha_del_sistema) {
     
     $scope.ReporteCuenta_estado=function(lista){
 
-        var fecha = new Date();
-        var año = fecha.getFullYear();
-        var mes = fecha.getMonth() + 1;
-        var dia = fecha.getDate();
-        if(mes<10) {
-            mes='0'+mes
-        }
-        if(dia<10) {
-            dia='0'+dia
-        }
-        var fecha_act = dia + '-' +mes+ '-' +año;
-        var fecha_init = '01' + '-' + mes+'-' + año;
-        var fecha_fin = '31' + '-' + mes+'-' + año;
+        if(lista.length == 0)
+        {
+            swal("Advertencia!", "No existen datos para imprimir!", "warning");
+        }else {
 
-        console.log(lista);
+            console.log(lista[0].fecha_descuento);
 
-
-
-
-        var doc = new jsPDF('p', 'mm', [297, 210]);
-
-        var x=25;
-        var y=25;
-
-
-        doc.addImage(img.onload(), 'PNG', x, y-10, 15, 15);
-        doc.addImage(img1.onload(), 'PNG', x+148, y-10, 18, 18);
-        doc.setFontSize(16);
-        doc.setFontType("bold");
-        doc.text( "REPORTE DE DESCUENTOS AL ROL DE PAGO ",x+18, y+0);
-        doc.rect(x, y+10, 165,10, 'S')
-        doc.setFontSize(10);
-        doc.setFontType("bold");
-        doc.text( "LISTADO DE DOCENTES",x+60, y+16);
-
-        doc.setFontSize(8);
-        doc.setFontType("bold");
-        doc.text( "PERIODO: ",x, y+25);
-        doc.setFontType("normal");
-        doc.text( "desde "+fecha_init+" hasta "+fecha_fin ,x+15, y+25);
-        doc.setFontType("bold");
-        doc.text( "FECHA DE IMPRESION: ",x, y+30);
-        doc.setFontType("normal");
-        doc.text( fecha_act,x+33, y+30);
-
-        // doc.rect(x, y+35, 165,220, 'S')
-
-        doc.setFontSize(10);
-        doc.setFontType("bold");
-        doc.text( "Num",x+1, y+39);
-        doc.text( "Cedula",x+15, y+39);
-        doc.text( "Nombre Completo",x+43, y+39);
-        doc.text( "Fecha de pago",x+98, y+39);
-        doc.text( "Monto",x+140, y+39);
-        doc.line(x, y+40, x+165,y+40);
-        doc.line(x, y+35, x+165,y+35);
-        //verticales estaticas
-        doc.line(x, y+35, x,y+40);
-        doc.line(x+10, y+35, x+10,y+40);
-        doc.line(x+30, y+35, x+30,y+40);
-        doc.line(x+90, y+35, x+90,y+40);
-        doc.line(x+130, y+35, x+130,y+40);
-        doc.line(x+165, y+35, x+165,y+40);
-
-        doc.setFontSize(8);
-        doc.setFontType("normal");
-        var z = 44;
-        var num = 1;
-        var aun = 40;
-        var prueba = 300;
-        var b = 1;
-        var registros = 0;
-
-        for (var i = 0; i < lista.length; i++) {
-
-            var fecha1 = lista[i].fecha_descuento.split("T");
-            var fecha2 = fecha1[0];
-
-            doc.text( num.toString() ,x+4, y+z);
-            doc.text( lista[i].R[0].cedula ,x+12, y+z);
-            doc.text( lista[i].R[0].nombres+" "+lista[i].R[0].apellidos ,x+35, y+z);
-            doc.text( fecha2,x+98, y+z);
-            doc.text( lista[i].valor_x_pagar.toString(),x+141, y+z);
-            z = z + 5;
-            num = num +1;
-            doc.line(x, y+aun+5, x+165,y+aun+5)
-            aun = aun + 5;
-
-
-            //lineas vertivales
-            doc.line(x, y+aun-5, x,y+aun);
-            doc.line(x+10, y+aun-5, x+10,y+aun);
-            doc.line(x+30, y+aun-5, x+30,y+aun);
-            doc.line(x+90, y+aun-5, x+90,y+aun);
-            doc.line(x+130, y+aun-5, x+130,y+aun);
-            doc.line(x+165, y+aun-5, x+165,y+aun);
-            registros = registros +1;
-
-            if(i == 42)
-            {
-
-                z=-1;
-                aun =-5;
-                doc.addPage();
-                doc.line(x, y+aun, x+165,y+aun);
-                registros = 0;
-
+            var fecha = new Date(lista[0].fecha_descuento);
+            var año = fecha.getFullYear();
+            var mes = fecha.getMonth() + 1;
+            var dia = fecha.getDate();
+            if (mes < 10) {
+                mes = '0' + mes
             }
-            if(registros == 50)
-            {
-                b=b+1;
-                z=-1;
-                aun =-5;
-                doc.addPage();
-                doc.line(x, y+aun, x+165,y+aun);
-                registros = 0;
-
-
+            if (dia < 10) {
+                dia = '0' + dia
             }
 
+            var fecha1 = new Date();
+            var año1 = fecha1.getFullYear();
+            var mes1 = fecha1.getMonth() + 1;
+            var dia1 = fecha1.getDate();
+            if (mes1 < 10) {
+                mes1 = '0' + mes1
+            }
+            if (dia1 < 10) {
+                dia1 = '0' + dia1
+            }
+            console.log(dia1);
 
+            var fecha_act = dia1 + '-' + mes1 + '-' + año1;
+            var fecha_init = '01' + '-' + mes + '-' + año;
+            var fecha_fin = '31' + '-' + mes + '-' + año;
+
+            console.log(lista);
+
+
+            var doc = new jsPDF('p', 'mm', [297, 210]);
+
+            var x = 25;
+            var y = 25;
+
+
+            doc.addImage(img.onload(), 'PNG', x, y - 10, 15, 15);
+            doc.addImage(img1.onload(), 'PNG', x + 148, y - 10, 18, 18);
+            doc.setFontSize(16);
+            doc.setFontType("bold");
+            doc.text("REPORTE DE DESCUENTOS AL ROL DE PAGO ", x + 18, y + 0);
+            doc.rect(x, y + 10, 165, 10, 'S')
+            doc.setFontSize(10);
+            doc.setFontType("bold");
+            doc.text("LISTADO DE DOCENTES", x + 60, y + 16);
+
+            doc.setFontSize(8);
+            doc.setFontType("bold");
+            doc.text("PERIODO: ", x, y + 25);
+            doc.setFontType("normal");
+            doc.text("desde " + fecha_init + " hasta " + fecha_fin, x + 15, y + 25);
+            doc.setFontType("bold");
+            doc.text("FECHA DE IMPRESION: ", x, y + 30);
+            doc.setFontType("normal");
+            doc.text(fecha_act, x + 33, y + 30);
+
+            // doc.rect(x, y+35, 165,220, 'S')
+
+            doc.setFontSize(10);
+            doc.setFontType("bold");
+            doc.text("Num", x + 1, y + 39);
+            doc.text("Cedula", x + 15, y + 39);
+            doc.text("Nombre Completo", x + 43, y + 39);
+            doc.text("Fecha de pago", x + 98, y + 39);
+            doc.text("Monto", x + 140, y + 39);
+            doc.line(x, y + 40, x + 165, y + 40);
+            doc.line(x, y + 35, x + 165, y + 35);
+            //verticales estaticas
+            doc.line(x, y + 35, x, y + 40);
+            doc.line(x + 10, y + 35, x + 10, y + 40);
+            doc.line(x + 30, y + 35, x + 30, y + 40);
+            doc.line(x + 90, y + 35, x + 90, y + 40);
+            doc.line(x + 130, y + 35, x + 130, y + 40);
+            doc.line(x + 165, y + 35, x + 165, y + 40);
+
+            doc.setFontSize(8);
+            doc.setFontType("normal");
+            var z = 44;
+            var num = 1;
+            var aun = 40;
+            var prueba = 300;
+            var b = 1;
+            var registros = 0;
+
+            for (var i = 0; i < lista.length; i++) {
+
+                var fecha1 = lista[i].fecha_descuento.split("T");
+                var fecha2 = fecha1[0];
+
+                doc.text(num.toString(), x + 4, y + z);
+                doc.text(lista[i].R[0].cedula, x + 12, y + z);
+                doc.text(lista[i].R[0].nombres + " " + lista[i].R[0].apellidos, x + 35, y + z);
+                doc.text(fecha2, x + 98, y + z);
+                doc.text(lista[i].valor_x_pagar.toString(), x + 141, y + z);
+                z = z + 5;
+                num = num + 1;
+                doc.line(x, y + aun + 5, x + 165, y + aun + 5)
+                aun = aun + 5;
+
+
+                //lineas vertivales
+                doc.line(x, y + aun - 5, x, y + aun);
+                doc.line(x + 10, y + aun - 5, x + 10, y + aun);
+                doc.line(x + 30, y + aun - 5, x + 30, y + aun);
+                doc.line(x + 90, y + aun - 5, x + 90, y + aun);
+                doc.line(x + 130, y + aun - 5, x + 130, y + aun);
+                doc.line(x + 165, y + aun - 5, x + 165, y + aun);
+                registros = registros + 1;
+
+                if (i == 42) {
+
+                    z = -1;
+                    aun = -5;
+                    doc.addPage();
+                    doc.line(x, y + aun, x + 165, y + aun);
+                    registros = 0;
+
+                }
+                if (registros == 50) {
+                    b = b + 1;
+                    z = -1;
+                    aun = -5;
+                    doc.addPage();
+                    doc.line(x, y + aun, x + 165, y + aun);
+                    registros = 0;
+
+
+                }
+
+
+            }
+
+            doc.line(x + 10, y + aun + 30, x + 55, y + aun + 30);
+            doc.text("Tes. de la APUNACH", x + 18, y + aun + 35);
+
+            //doc.line(x+80, y+35, x+80,y+255)
+
+
+            doc.save('Listado.pdf');
         }
-
-        doc.line(x+10, y+aun+30, x+55,y+aun+30);
-        doc.text( "Tes. de la APUNACH" ,x+18, y+aun+35);
-
-        //doc.line(x+80, y+35, x+80,y+255)
-
-
-
-
-        doc.save('Listado.pdf');
 
 
 
@@ -2089,7 +2104,7 @@ function totales(totalEstado,fecha_del_sistema) {
 
     $scope.genrarReportesInit=function() {
 
-        //$("#tableEstado_cuenta1").hide();
+        $("#tableEstado_cuenta1").hide();
         var fecha = new Date();
         var año = fecha.getFullYear();
         var mes = fecha.getMonth() + 1;
@@ -2099,6 +2114,7 @@ function totales(totalEstado,fecha_del_sistema) {
         }
         var fecha_init = año + '-' + mes;
         console.log(fecha_init);
+        $scope.fecha_global = mes + '-' + año;
         document.getElementById("mes").value = fecha_init;
 
 
@@ -2112,6 +2128,7 @@ function totales(totalEstado,fecha_del_sistema) {
         var año = fecha[0];
         var mes = fecha[1];
         var fecha_fin = mes+"/"+año;
+        $scope.fecha_global = mes+"-"+año
 
         console.log(fecha_fin);
 
@@ -2135,7 +2152,6 @@ function totales(totalEstado,fecha_del_sistema) {
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen usuarios en la BD!", "warning");
                 $scope.listEstado_Docente = response.data;
             } else {
 

@@ -10,6 +10,8 @@ var url = 'http://localhost:3000/api/';
 
 function ApiUrl(){
 
+
+
    
     //Usuarios
     this.getUrlAutenticar=function(){

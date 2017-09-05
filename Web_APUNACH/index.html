@@ -47,7 +47,7 @@
     <![endif]-->
 </head>
 
-<body class="login-layout" ng-app="myApp">
+<body class="login-layout light-login" ng-app="myApp">
 <div class="main-container" ng-controller="LoginController">
     <div class="main-content">
         <div class="row">
@@ -57,7 +57,7 @@
                         <h1>
                             <img src="images/grande.svg" width="30px" alt="">
                             <span class="red">SIA</span>
-                            <span class="white" id="id-text2">APUNACH</span>
+                            <span class="grey" id="id-text2">APUNACH</span>
                         </h1>
                         <h4 class="blue" id="id-company-text">&copy; Riobytes Solutions</h4>
                     </div>
@@ -98,7 +98,7 @@
 
                                                 <button type="button" class="width-35 pull-right btn btn-sm btn-primary" ng-click="login()">
                                                     <i class="ace-icon fa fa-key"></i>
-                                                    <span class="bigger-110">Login</span>
+                                                    <span class="bigger-110">ingresar</span>
                                                 </button>
                                             </div>
 
@@ -108,12 +108,19 @@
 
 
                                 </div><!-- /.widget-main -->
-
                                 <div class="toolbar clearfix">
-
+                                    <div>
+                                        <a href="#" data-target="#forgot-box" class="forgot-password-link">
+                                            <i class="ace-icon fa fa-arrow-left"></i>
+                                            Locales
+                                        </a>
+                                    </div>
 
                                     <div>
-
+                                        <a href="#" data-target="#signup-box" class="user-signup-link">
+                                            Docentes
+                                            <i class="ace-icon fa fa-arrow-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div><!-- /.widget-body -->
@@ -161,6 +168,7 @@
                         </div><!-- /.forgot-box -->
 
                     </div><!-- /.position-relative -->
+
 
 
                 </div>
