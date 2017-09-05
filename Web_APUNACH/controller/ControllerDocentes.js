@@ -630,6 +630,12 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         $scope.docente = JSON.parse(window.localStorage.getItem('docente'));
         console.log($scope.docente);
         $scope.initDocentes();
+        var fecha = $scope.docente.fecha_nacimiento.split("T");
+        $scope.docente.fecha_nacimiento = fecha[0];
+
+        var fecha1 = $scope.docente.fecha_afiliacion.split("T");
+        $scope.docente.fecha_afiliacion = fecha1[0];
+
         
 
     }
