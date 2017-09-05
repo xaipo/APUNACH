@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const bCrypt = require('bcryptjs');
 
 //Register
 router.post('/register', function (req, res, next)  {
@@ -24,6 +25,38 @@ router.post('/register', function (req, res, next)  {
     });
 });
 //Todos los usuario
+
+
+router.put('/updateUser/:id', function (req, res) {
+
+
+    User.findById(req.params.id, function (err, user) {
+
+        user.name= req.body.name;
+        user.email= req.body.email;
+        user.tipoUsuario= req.body.tipoUsuario;
+        user.username= req.body.username;
+      
+
+        user.password =  createHash(req.body.password);
+
+        user.save(function (err) {
+            if (err) { res.send(err) }
+            res.json(user);
+        })
+    })
+
+
+
+
+});
+
+
+
+var createHash = function(password){
+    return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+};
+
 
 
 //Authenticate
