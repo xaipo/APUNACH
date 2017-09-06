@@ -906,6 +906,53 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
                 console.log(response.data);
 
 
+                $http({
+                    method: 'POST',
+                    url: myProvider.postSaveDescuento(),
+                    headers: {
+                        // 'Content-Type': 'application/json',
+                        //'Authorization': token
+                    },
+                    data: {
+
+                        id_catalogo:"5993682845f4a949eca9bddf",
+                        id_local:"5993682845f4a949eca9bddf",
+                        nombre_local:"APUNACH",
+                        id_estado_cuenta:response.data._id,
+                        descripcion:objeto.observacion,
+                        valor_descuento:objeto.valor,
+                        cantidad:0,
+                        fecha:objeto.fecha
+
+
+
+                    }
+
+
+
+
+                }).then(function successCallback(response) {
+                    console.log(response.data);
+
+
+
+
+                }, function errorCallback(response) {
+
+                    alert('error al realizar Ingreso');
+
+                });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
