@@ -893,8 +893,8 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
                     //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
 
-                    valor_acarreo_mes_anterior: objeto.valor
-
+                    valor_acarreo_mes_anterior: objeto.valor,
+                    valor_x_pagar:response.data[0].valor_x_pagar+objeto.valor
 
 
 
@@ -933,6 +933,11 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
                 }).then(function successCallback(response) {
                     console.log(response.data);
+
+
+
+                    //actulizar
+
 
 
 
