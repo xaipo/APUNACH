@@ -192,8 +192,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initVerDescuentos=function(){
 
-        $scope.userLogin = JSON.parse(window.localStorage.getItem('usuarioLogueado'));
-        console.log($scope.userLogin);
+        $scope.cedula = JSON.parse(window.localStorage.getItem('cedula'));
+        console.log($scope.cedula);
 
 
 
@@ -206,7 +206,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             },
             data: {
 
-               cedula:$scope.userLogin.user.username
+               cedula:$scope.cedula
 
 
 
@@ -1490,13 +1490,12 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initListarVerCreditosEmergentes=function(){
         console.log("que hay");
-        $scope.userLogin = JSON.parse(window.localStorage.getItem('usuarioLogueado'));
-        console.log($scope.userLogin);
+        $scope.cedula = JSON.parse(window.localStorage.getItem('cedula'));
 
         //inicializar todos los usuarios
         $http({
             method: 'GET',
-            url: myProvider.getAllCreditosEmergentes()+"?ci_docente="+$scope.userLogin.user.username,
+            url: myProvider.getAllCreditosEmergentes()+"?ci_docente="+$scope.cedula,
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -2164,7 +2163,7 @@ function totales(totalEstado,fecha_del_sistema) {
 
     $scope.genrarReportesInit=function() {
 
-        $("#tableEstado_cuenta1").hide();
+        //$("#tableEstado_cuenta1").hide();
         var fecha = new Date();
         var año = fecha.getFullYear();
         var mes = fecha.getMonth() + 1;

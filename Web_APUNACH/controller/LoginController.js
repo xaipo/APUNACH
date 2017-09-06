@@ -74,6 +74,14 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
         });
     };
 
+    $scope.entrarSistema = function () {
+        console.log($scope.cedula);
+
+                    window.localStorage.setItem("cedula", JSON.stringify($scope.cedula));
+                    window.location ='PrincipalDocente.html';
+
+    };
+
   //  console.log($rootScope.usuarioLogin);
 
 }]);

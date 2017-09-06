@@ -10,7 +10,7 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
 
         $http({
             method: 'GET',
-            url: 'http://localhost:3000/api/locales',
+            url: 'http://localhost:3000/api/locales?estado=0',
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
@@ -31,11 +31,12 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
 
 
 
-
+   
 
     $scope.buscar = function () {
+        
+        console.log($scope.tarjeta);
 
-        console.log("boton ");
 
         
             $http({
