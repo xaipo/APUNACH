@@ -433,6 +433,25 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+    $scope.AceptarListaDocente=function(){
+        console.log($scope.listSeleccion);
+
+
+        for (var i=0; i < $scope.listSeleccion.length;i++)
+        {
+
+            $scope.listAceptado.push($scope.listSeleccion[i]);
+            $scope.total = $scope.total + $scope.listSeleccion[i].valor_descuento;
+
+        }
+        console.log( $scope.listdescuentosBorrar);
+
+        console.log($scope.listAceptado);
+        $scope.listSeleccion = [];
+        $scope.initListarTipoDescuento_Des();
+
+    }
+
     $scope.eliminarDescuentolist=function(x){
         console.log(x.descripcion);
 
@@ -817,6 +836,9 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     $scope.listdescuentosBorrar=[];
     $scope.initModificarDescuento=function(){
 
+        $("#button1").hide();
+        $("#button2").hide();
+
     console.clear();
         $scope.destallesdescuento = JSON.parse(window.localStorage.getItem('destallesdescuento'));
         console.log($scope.destallesdescuento);
@@ -862,6 +884,16 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
         window.localStorage["local"]= JSON.stringify(local);
         console.log(local);
         $scope.nombre_local = local.nombre;
+
+        if($scope.nombre_local == "APUNACH")
+        {
+            $("#button1").show();
+            $("#button2").hide();
+        }
+        else {
+            $("#button1").hide();
+            $("#button2").show();
+        }
 
 
     }
@@ -947,10 +979,24 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     }
     $scope.initIngresoDescuentoxLocal=function(){
 
+        $("#button3").hide();
+        $("#button4").hide();
+
+
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
         $scope.nombre_local = $scope.localingresar.nombre;
+        console.log($scope.nombre_local);
+        if($scope.nombre_local == "APUNACH")
+        {
 
+            $("#button3").show();
+            $("#button4").hide();
+        }
+        else {
+            $("#button3").hide();
+            $("#button4").show();
 
+        }
 
     }
 

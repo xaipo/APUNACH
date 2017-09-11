@@ -82,7 +82,7 @@
                                                 <tbody style="text-align:center;">
                                                 <tr class="even pointer" ng-repeat="x in listDocentes">
 
-                                                    <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
+                                                    <!--<td class=" " ><div class="hidden-sm hidden-xs action-buttons">
 
                                                         <a class="blue" ng-click="seleccionarDocentexLocal(x)" data-dismiss="modal">
                                                             <i class="ace-icon fa fa-check-square-o bigger-130"></i>
@@ -90,7 +90,18 @@
 
                                                     </div>
 
+                                                    </td>-->
+                                                    <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
+
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace" id="cheki" ng-click="seleccionarDocentexLocal(x)"/>
+                                                            <span class="lbl"></span>
+                                                        </label>
+
+                                                    </div>
                                                     </td>
+
+
                                                     <td class=" "> {{x.cedula}}</td>
                                                     <td class=" " >{{x.nombres}} </td>
                                                     <td class=" " >{{x.apellidos}} </i></td>
@@ -103,6 +114,13 @@
                                         </div>
 
                                     </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-info" type="button" ng-click="AceptarListaDocente()" data-dismiss="modal">
+                                            Agregar
+                                        </button>
+
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +130,7 @@
 
 
                     <div class="form-group">
-                            <button class="btn btn-warning col-md-3 col-sm-4 col-xs-12" data-toggle="modal" data-target="#myModal2" >
+                            <button class="btn btn-warning col-md-3 col-sm-4 col-xs-12" data-toggle="modal" data-target="#myModal2" id="button3">
                                 <i class="ace-icon fa fa-search bigger-110"></i>
                                 Agregar Descuentos fijos
                             </button>
@@ -164,7 +182,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-info" type="button" ng-click="AceptarLista()" data-dismiss="modal">
+                                        <button class="btn btn-info" type="button" ng-click="AceptarLista()" data-dismiss="modal" >
                                             Agregar
                                         </button>
 
@@ -177,7 +195,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-primary col-md-3 col-sm-4 col-xs-12" data-toggle="modal" data-target="#myModal3">
+                        <button class="btn btn-primary col-md-3 col-sm-4 col-xs-12" data-toggle="modal" data-target="#myModal3" id="button4">
                             <i class="ace-icon fa fa-search bigger-110"></i>
                             Agregar Descuentos nuevos
                         </button>
