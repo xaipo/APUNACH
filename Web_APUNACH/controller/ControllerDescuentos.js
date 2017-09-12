@@ -1947,11 +1947,13 @@ function totales(totalEstado,fecha_del_sistema) {
         fecha:fecha1,
         fecha_sistema:fecha_del_sistema,
         usuario: "599f1d9034917b1ea454e64d",
-        estado:0
+        estado:1
 
     }
 
 
+
+    
 
     $scope.cuentas.push(objeto);
 
@@ -2224,6 +2226,91 @@ function totales(totalEstado,fecha_del_sistema) {
 
     }
 
+
+
+
+
+    $scope.ReporteCierreMes=function(fecha) {
+
+        console.log("cierre del mes");
+
+        console.log(fecha);
+
+
+
+
+
+
+
+        $http({
+            method: 'POST',
+            url: myProvider.VerIngresosMes(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                fecha:fecha
+
+
+
+            }
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+$scope.listaMesIngresos=response.data;
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+        $http({
+            method: 'POST',
+            url: myProvider.VerEgresosMes(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                fecha:fecha
+
+
+
+            }
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            $scope.listaMesEgresos=response.data;
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+    }
+    
     $scope.fecha_buscar=function() {
 
        var fecha_para_consulta = $('#mes').val();
@@ -2233,7 +2320,16 @@ function totales(totalEstado,fecha_del_sistema) {
         var fecha_fin = mes+"/"+año;
         $scope.fecha_global = mes+"-"+año
 
-        console.log(fecha_fin);
+        console.log(fecha_para_consulta);
+
+var mesFecha = año+"-"+mes+"-";
+        
+        $scope.ReporteCierreMes(mesFecha);
+
+
+
+
+
 
         $http({
             method: 'POST',

@@ -87,6 +87,10 @@ function ApiUrl(){
     this.getTipoCuentasIngreso=function(){
         return direccion+'cuentas';
     }
+
+    this.getBackup=function(){
+        return direccion+'backup';
+    }
     this.putTipoCuentaIngreso=function(){
         return direccion+'cuentas';
     }
@@ -223,6 +227,13 @@ function ApiUrl(){
         return direccion+'EstadcoCuentaDocenteFecha';
     }
 
+    this.VerIngresosMes=function(){
+        return direccion+'Ingresos_Mes';
+    }
+
+    this.VerEgresosMes=function(){
+        return direccion+'Egresos_Mes';
+    }
 
 }
 
@@ -333,6 +344,43 @@ app.controller('navegacion', ['$scope', '$http', '$location','myProvider','$loca
 
 
     };
+
+
+    $scope.respaldo = function(){
+
+        console.log("respaldo ");
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getBackup(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data == "creacion exitosa") {
+
+                swal("El respaldo se genero correctamente");
+            } else {
+
+                swal("Error al sacar respaldo");
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+        
+
+    };
+
 
 
 }]);

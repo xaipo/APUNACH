@@ -109,6 +109,7 @@ app.use('/api', require('./routes/Usuarios'));
 app.use('/api', require('./routes/EstadoCuenta'));
 app.use('/api', require('./routes/CuotasCredito'));
 app.use('/api', require('./routes/Pendientes'));
+app.use('/api', require('./routes/Backup'));
 
 //start server
 app.listen(port, function()  {

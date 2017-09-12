@@ -34,7 +34,7 @@
 
                     <div class="form-group">
                     <label class="control-label no-padding-right"> Fitrado por mes:  </label>
-                    <input type="month" id="mes" step="1" min="2013-12" max="2014-12" value="" >
+                    <input type="month" id="mes" step="1" min="2017-12" max="2050-12" value="" >
 
                         <button class="btn btn-info" type="submit" ng-click="fecha_buscar()">
                             <i class="ace-icon fa fa-check bigger-110"></i>
@@ -122,7 +122,13 @@
                             <tr class="even pointer">
 
                                 <td class=" "> Cierre de mes</td>
-                                <td class=" " >pdf html </td>
+                                <td class=" " >
+
+                                    <button class="btn btn-danger btn-xs" >
+                                        <i class="ace-icon fa fa-file-pdf-o  bigger-110 icon-only"></i>
+                                    </button>
+
+                                </td>
                                 <td class=" " >Permite imprimir el listado de los egresos del mes actual </i></td>
 
                             </tr>

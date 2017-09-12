@@ -6,6 +6,8 @@ var router= express.Router();
 
 var Ingreso = require('../models/Ingreso');
 
+var Egreso = require('../models/Gastos');
+
 Ingreso.methods(['get','put','post','delete','search']);
 Ingreso.register(router,'/ingreso');
 
@@ -30,6 +32,12 @@ router.get('/Ingreso_TipoCuenta', function (req, res, next)  {
 
 });
 
+
+
+
+
+
+
 router.post('/ingresosMes', function (req, res, next)  {
 
     console.log(req.body);
@@ -41,6 +49,89 @@ router.post('/ingresosMes', function (req, res, next)  {
 
    
 
+
+
+});
+
+
+
+
+
+router.post('/Ingresos_Mes', function (req, res, next)  {
+
+
+
+    Ingreso.aggregate(
+
+
+        [
+
+
+            { "$match":
+            {
+                "$and" : [
+                    {    fecha_sistema: {$gte: new Date(req.body.fecha+"01T00:00:00.369Z")}},
+                    {    fecha_sistema: {$lt: new Date(req.body.fecha+"28T00:00:00.369Z")}}
+
+
+    ]
+            }
+
+            },
+
+    {"$lookup": {
+                "from": "cuentas",
+                "localField": "id_cuenta",
+                "foreignField": "_id",
+                "as": "R"
+            }}
+
+        ],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
+    )
+
+
+});
+
+
+
+
+router.post('/Egresos_Mes', function (req, res, next)  {
+
+
+
+    Egreso.aggregate(
+
+
+        [
+
+
+            { "$match":
+            {
+                "$and" : [
+                    {    fecha_sistema: {$gte: new Date(req.body.fecha+"01T00:00:00.369Z")}},
+                    {    fecha_sistema: {$lt: new Date(req.body.fecha+"28T00:00:00.369Z")}}
+
+
+                ]
+            }
+
+            },
+
+            {"$lookup": {
+                "from": "cuentas",
+                "localField": "id_cuenta",
+                "foreignField": "_id",
+                "as": "R"
+            }}
+
+        ],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
+    )
 
 
 });
