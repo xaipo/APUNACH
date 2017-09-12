@@ -249,6 +249,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initListarDescuentosImpri=function(){
 
+        $('#tableEstado_cuenta1').hide();
+
     console.log("hola");
 
         $http({
@@ -2106,17 +2108,15 @@ function totales(totalEstado,fecha_del_sistema) {
             doc.setFontSize(10);
             doc.setFontType("bold");
             doc.text("Num", x + 1, y + 39);
-            doc.text("Cedula", x + 15, y + 39);
-            doc.text("Nombre Completo", x + 43, y + 39);
-            doc.text("Fecha de pago", x + 98, y + 39);
+            doc.text("Cedula", x + 20, y + 39);
+            doc.text("Nombre Completo", x + 70, y + 39);
             doc.text("Monto", x + 140, y + 39);
             doc.line(x, y + 40, x + 165, y + 40);
             doc.line(x, y + 35, x + 165, y + 35);
             //verticales estaticas
             doc.line(x, y + 35, x, y + 40);
             doc.line(x + 10, y + 35, x + 10, y + 40);
-            doc.line(x + 30, y + 35, x + 30, y + 40);
-            doc.line(x + 90, y + 35, x + 90, y + 40);
+            doc.line(x + 40, y + 35, x + 40, y + 40);
             doc.line(x + 130, y + 35, x + 130, y + 40);
             doc.line(x + 165, y + 35, x + 165, y + 40);
 
@@ -2135,9 +2135,8 @@ function totales(totalEstado,fecha_del_sistema) {
                 var fecha2 = fecha1[0];
 
                 doc.text(num.toString(), x + 4, y + z);
-                doc.text(lista[i].R[0].cedula, x + 12, y + z);
-                doc.text(lista[i].R[0].nombres + " " + lista[i].R[0].apellidos, x + 35, y + z);
-                doc.text(fecha2, x + 98, y + z);
+                doc.text(lista[i].R[0].cedula, x + 18, y + z);
+                doc.text(lista[i].R[0].nombres + " " + lista[i].R[0].apellidos, x + 65, y + z);
                 doc.text(lista[i].valor_x_pagar.toString(), x + 141, y + z);
                 z = z + 5;
                 num = num + 1;
@@ -2148,8 +2147,7 @@ function totales(totalEstado,fecha_del_sistema) {
                 //lineas vertivales
                 doc.line(x, y + aun - 5, x, y + aun);
                 doc.line(x + 10, y + aun - 5, x + 10, y + aun);
-                doc.line(x + 30, y + aun - 5, x + 30, y + aun);
-                doc.line(x + 90, y + aun - 5, x + 90, y + aun);
+                doc.line(x + 40, y + aun - 5, x + 40, y + aun);
                 doc.line(x + 130, y + aun - 5, x + 130, y + aun);
                 doc.line(x + 165, y + aun - 5, x + 165, y + aun);
                 registros = registros + 1;
@@ -2201,7 +2199,7 @@ function totales(totalEstado,fecha_del_sistema) {
 
             var a = document.createElement('a');
             a.href = data_type + ', ' + table_html;
-            a.download = 'exported_table_' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
+            a.download = 'lista_docentes' + Math.floor((Math.random() * 9999999) + 1000000) + '.xls';
             a.click();
         });
     });
@@ -2257,6 +2255,7 @@ function totales(totalEstado,fecha_del_sistema) {
 
             if (response.data.length == 0) {
 
+                swal("Advertencia!", "No existen datos para este mes!", "warning");
                 $scope.listEstado_Docente = response.data;
             } else {
 
@@ -2271,11 +2270,72 @@ function totales(totalEstado,fecha_del_sistema) {
 
         });
 
+    }
+
+    $scope.genera_tabla=function()  {
+        var miArrayDeObjetos = [
+            { CODE: "ORA-00001", ERROR: "unique constraint (string.string) violated", DATE: "2015-10-01" },
+            { CODE: "ORA-00017", ERROR: "session requested to set trace event", DATE: "2015-10-29" },
+            { CODE: "ORA-02142", ERROR: "missing or invalid ALTER TABLESPACE option", DATE: "2015-11-09" },
+            { CODE: "ORA-19500", ERROR: "device block size string is invalid", DATE: "2015-11-14" }
+        ];
+
+        var miArrayDeObjetos1 = $scope.listEstado_Docente;
+        console.log($scope.listEstado_Docente);
 
 
-
-
-
+//comprobamos compatibilidad
+        if(window.Blob && (window.URL || window.webkitURL)){
+            var contenido = "",
+                d = new Date(),
+                blob,
+                reader,
+                save,
+                clicEvent;
+            //creamos contenido del archivo
+            for (var i = 0; i < miArrayDeObjetos.length; i++) {
+                //construimos cabecera del csv
+                if (i == 0)
+                    contenido += Object.keys(miArrayDeObjetos[i]).join(";") + "\n";
+                //resto del contenido
+                contenido += Object.keys(miArrayDeObjetos[i]).map(function(key){
+                        return miArrayDeObjetos[i][key];
+                    }).join(";") + "\n";
+            }
+            //creamos el blob
+            blob =  new Blob(["\ufeff", contenido], {type: 'text/csv'});
+            //creamos el reader
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                //escuchamos su evento load y creamos un enlace en dom
+                save = document.createElement('a');
+                save.href = event.target.result;
+                save.target = '_blank';
+                //aquí le damos nombre al archivo
+                save.download = "log_"+ d.getDate() + "_" + (d.getMonth()+1) + "_" + d.getFullYear() +".csv";
+                try {
+                    //creamos un evento click
+                    clicEvent = new MouseEvent('click', {
+                        'view': window,
+                        'bubbles': true,
+                        'cancelable': true
+                    });
+                } catch (e) {
+                    //si llega aquí es que probablemente implemente la forma antigua de crear un enlace
+                    clicEvent = document.createEvent("MouseEvent");
+                    clicEvent.initEvent('click', true, true);
+                }
+                //disparamos el evento
+                save.dispatchEvent(clicEvent);
+                //liberamos el objeto window.URL
+                (window.URL || window.webkitURL).revokeObjectURL(save.href);
+            }
+            //leemos como url
+            reader.readAsDataURL(blob);
+        }else {
+            //el navegador no admite esta opción
+            alert("Su navegador no permite esta acción");
+        }
 
     }
 

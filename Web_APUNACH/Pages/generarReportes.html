@@ -55,7 +55,6 @@
 
                             <th class="column-title" style="text-align:center">Cedula del docente</th>
                             <th class="column-title" style="text-align:center">Nombre Docente</th>
-                            <th class="column-title" style="text-align:center">Fecha</th>
                             <th class="column-title" style="text-align:center">Valor a pagar</th>
                         </tr>
                         </thead>
@@ -65,7 +64,6 @@
 
                             <td class=" "> {{x.R[0].cedula}}</td>
                             <td class=" " >{{x.R[0].nombres}} {{x.R[0].apellidos}} </td>
-                            <td class=" " >{{x.fecha_descuento | date :  "y-MM-dd"}} </i></td>
                             <td class=" " > {{x.valor_x_pagar | currency}}</td>
 
 
@@ -139,6 +137,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <input type="button" value="Genera una tabla" ng-click="genera_tabla()">
 
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
