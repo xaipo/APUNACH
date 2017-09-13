@@ -2369,6 +2369,8 @@ var mesFecha = año+"-"+mes+"-";
     }
 
     $scope.genera_tabla=function()  {
+        
+        
         var miArrayDeObjetos = [
             { CODE: "ORA-00001", ERROR: "unique constraint (string.string) violated", DATE: "2015-10-01" },
             { CODE: "ORA-00017", ERROR: "session requested to set trace event", DATE: "2015-10-29" },
@@ -2378,8 +2380,7 @@ var mesFecha = año+"-"+mes+"-";
 
         var miArrayDeObjetos1 = $scope.listEstado_Docente;
         console.log($scope.listEstado_Docente);
-
-
+        
 //comprobamos compatibilidad
         if(window.Blob && (window.URL || window.webkitURL)){
             var contenido = "",
