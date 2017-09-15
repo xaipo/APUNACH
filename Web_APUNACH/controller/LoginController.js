@@ -38,10 +38,10 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
             }
 
         }).then(function successCallback(response) {
-            console.log(response.data);
-            if(response.data.length == 0)
+            console.log(response.data.success);
+            if(response.data.success == false)
             {
-                swal("Advertencia!", "No existe el usuario en la BD!", "warning");
+                swal("Advertencia!", "El usuario o la contraseña no son correctos, intentelo nuevamnete!", "warning");
             }else {
 
                 switch (response.data.user.tipoUsuario) {

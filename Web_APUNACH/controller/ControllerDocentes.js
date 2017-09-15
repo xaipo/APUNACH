@@ -599,7 +599,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
             }).then(function successCallback(response) {
 
 
-            console.log("registro de docente correcto");
+                swal("Exito!", "Docente ingresado correctamente!", "success");
 
 
             }, function errorCallback(response) {

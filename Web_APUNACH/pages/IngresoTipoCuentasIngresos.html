@@ -54,6 +54,76 @@
                             </button>
                         </div>
                     </div>
+                    <div class="col-xs-12">
+
+                        <div class="table-header">
+                            Results for "Latest Registered Domains"
+                        </div>
+
+                        <!-- tabla-->
+
+                        <div  class="table-responsive" ng-init="initListarTipoCuentasIngreso()">
+                            <table class="table table-striped table-bordered table-hover" id="tableTipoCuentasIngreso">
+                                <thead >
+                                <tr class="headings">
+
+                                    <th class="column-title" style="text-align:center">Descripcion de tipo de cuenta de ingreso</th>
+                                    <th class="column-title" style="text-align:center">Accion</th>
+                                </tr>
+                                </thead>
+
+                                <tbody style="text-align:center;">
+                                <tr class="even pointer" ng-repeat="x in listTipoCuentasIngreso">
+
+                                    <td class=" "> {{x.descripcion}}</td>
+                                    <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
+
+                                        <a class="green" ng-click="modificarTipoCunetaIngreso(x)">
+                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                        </a>
+
+                                        <a class="red" ng-click="eliminarTipoCunetaIngreso(x)">
+                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                        </a>
+                                    </div>
+
+                                        <div class="hidden-md hidden-lg">
+                                            <div class="inline pos-rel">
+                                                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                                </button>
+
+                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+
+                                                    <li>
+                                                        <a   class="tooltip-success" data-rel="tooltip" title="Edit" ng-click="modificarTipoCunetaIngreso(x)">
+																				<span class="green">
+																					<i class="ace-icon fa fa-pencil-square-o bigger-120" ></i>
+																				</span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a  class="tooltip-error" data-rel="tooltip" title="Delete" ng-click="eliminarTipoCunetaIngreso(x)">
+																				<span class="red">
+																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																				</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div></td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+
                     </form>
                 </div>
             </div>

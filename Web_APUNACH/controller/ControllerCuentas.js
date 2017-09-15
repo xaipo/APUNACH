@@ -99,6 +99,7 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
                     swal("Exito!", "Facultad ingresado correctamente!", "success");
                     $scope.descripcion="";
+                    $scope.initListarTipoCuentasIngreso();
 
 
 
@@ -328,6 +329,7 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
                 swal("Exito!", "Facultad ingresado correctamente!", "success");
                 $scope.descripcion="";
+                $scope.initListarTipoCuentasEgreso();
 
 
 
