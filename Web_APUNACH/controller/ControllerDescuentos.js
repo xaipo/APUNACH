@@ -327,12 +327,38 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+
     $scope.agreg_newxLocal=function(){
+
+        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+
+     var n =  $scope.listadoDocentesSelect.length;
+
+
+        for (var i =0;i<n;i++){
+
+            var objenew ={
+                id_local:$scope.localingresar._id,
+                nombre_local: $scope.localingresar.nombre,
+                id_catalogo : $scope.localingresar._id,
+                descripcion : $scope.nombre_descuento_new,
+                valor_descuento: $scope.valor_descuento_new,
+                nombre_docente:$scope.listadoDocentesSelect[i].nombres+" "+$scope.listadoDocentesSelect[i].apellidos,
+                id_docente:$scope.listadoDocentesSelect[i]._id
+            };
+
+
+            $scope.listAceptado.push(objenew);
+
+
+
+
+        }
 
         var fecha = new Date();
         console.log(fecha);
         $scope.total =0;
-        $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+
         $scope.docenteingresar = JSON.parse(window.localStorage.getItem('destallesdescuento'));
 
 
@@ -345,16 +371,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             nombre_docente:$scope.nombre_docente,
             id_docente:$scope.id_docente
         };
-        console.log($scope.objenew);
-        $scope.listAceptado.push($scope.objenew);
-        for (var i=0; i < $scope.listAceptado.length;i++)
-        {
 
-            $scope.total = $scope.total + $scope.listAceptado[i].valor_descuento;
 
-        }
-        console.log( $scope.listdescuentosBorrar);
-        console.log($scope.listAceptado);
 
     }
 
@@ -455,32 +473,14 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     }
 
     $scope.eliminarDescuentolist=function(x){
-        console.log(x.descripcion);
+        console.log(x);
 
-      if(x.descripcion=="Credito Emergente") {
+        var index = $scope.listAceptado.indexOf(x);
 
-          swal("Error!", "No puede eliminar un descuento por credito, acerquese al administrador!", "error");
-
-      }else {
-
-          for (var i = 0; i < $scope.listAceptado.length; i++) {
-
-              if ((x.descripcion == $scope.listAceptado[i].descripcion) && (x.nombre_local == $scope.listAceptado[i].nombre_local)) {
-                  $scope.total = $scope.total - $scope.listAceptado[i].valor_descuento;
-                  console.log($scope.total);
-
-                  $scope.listAceptado.splice(i, 1);
+                  $scope.listAceptado.splice(index, 1);
 
 
-              }
           }
-      }
-
-
-
-
-
-    }
 
     $scope.AceptarDescuentos=function(){
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
@@ -899,15 +899,60 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
     }
+
+    $scope.listadoDocentesSelect=[];
+
+
+
+
+
     $scope.seleccionarDocentexLocal=function(docente){
 
-        window.localStorage["docente"]= JSON.stringify(docente);
+       /*window.localStorage["docente"]= JSON.stringify(docente);
         console.log(docente);
         $scope.nombre_docente = docente.nombres+" "+ docente.apellidos;
         $scope.id_docente = docente._id;
+*/
+
+
+        var index = $scope.listadoDocentesSelect.indexOf(docente);
+
+        console.log(index);
+
+
+
+        if (index==-1){
+
+
+            $scope.listadoDocentesSelect.push(docente);
+            console.log($scope.listadoDocentesSelect);
+
+        }else {
+
+
+
+            $scope.listadoDocentesSelect.splice(index, 1);
+            console.log($scope.listadoDocentesSelect);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
+
+
+
+
     $scope.buscar=function(docente) {
         var bandera = false;
         var fecha = new Date();
