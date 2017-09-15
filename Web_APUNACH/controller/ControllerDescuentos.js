@@ -249,7 +249,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initListarDescuentosImpri=function(){
 
-        $('#tableEstado_cuenta1').hide();
+       // $('#tableEstado_cuenta1').hide();
 
     console.log("hola");
 
@@ -1647,6 +1647,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             } else {
 
                 $scope.listCuotas_Cred = response.data;
+                console.log($scope.listCuotas_Cred);
 
             }
 
