@@ -42,6 +42,8 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
             if(response.data.success == false)
             {
                 swal("Advertencia!", "El usuario o la contraseña no son correctos, intentelo nuevamnete!", "warning");
+                $scope.usuario = "";
+                $scope.password = "";
             }else {
 
                 switch (response.data.user.tipoUsuario) {

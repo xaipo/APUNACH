@@ -57,6 +57,9 @@
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="login-container">
+                    <br>
+                    <br>
+                    <br>
                     <div class="center">
                         <h1>
                             <img src="images/grande.svg" width="30px" alt="">
@@ -79,7 +82,7 @@
 
                                     <div class="space-6"></div>
 
-                                    <form>
+                                    <form ng-submit="login()">
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -90,7 +93,7 @@
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" type="password" ng-model="password" name="password" required placeholder="Password" />
+															<input type="password" class="form-control"  ng-model="password" name="password" required placeholder="Password" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
                                             </label>
@@ -100,7 +103,7 @@
                                             <div class="clearfix">
 
 
-                                                <button type="button" class="width-35 pull-right btn btn-sm btn-primary" ng-click="login()">
+                                                <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" >
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">ingresar</span>
                                                 </button>
@@ -128,6 +131,7 @@
                                         </a>
                                     </div>
                                 </div>
+
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->
 
@@ -144,11 +148,11 @@
                                         Ingrese los parametros de busqueda
                                     </p>
 
-                                    <form >
+                                    <form ng-submit="buscar()">
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" id="passDocente" class="form-control" placeholder="Pase la tarjeta" autofocus ng-model="tarjeta"/>
+															<input type="password" id="passDocente" class="form-control" required placeholder="Pase la tarjeta" autofocus ng-model="tarjeta"/>
                                                             <i class="ace-icon fa fa-credit-card"></i>
 														</span>
                                             </label>
@@ -159,7 +163,7 @@
                                             </div>
 
                                             <div class="clearfix">
-                                                <button type="button" class="width-35 pull-right btn btn-sm btn-danger" ng-click="buscar()">
+                                                <button type="submit" class="width-35 pull-right btn btn-sm btn-danger" >
                                                     <span class="bigger-110">Buscar!</span>
                                                 </button>
                                             </div>
