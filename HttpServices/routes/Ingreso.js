@@ -121,7 +121,7 @@ router.post('/Egresos_Mes', function (req, res, next)  {
             },
 
             {"$lookup": {
-                "from": "cuentas",
+                "from": "cuentasGasto",
                 "localField": "id_cuenta",
                 "foreignField": "_id",
                 "as": "R"

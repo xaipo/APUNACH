@@ -230,7 +230,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
     $scope.cambio=function () {
 
-        if ($scope.id_tipo_contrato=="De planta"){
+        if ($scope.id_tipo_contrato=="Nombramiento"){
 
             $scope.mostrar=false;
 
@@ -245,13 +245,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
     }
     
-    
-    
-
     $scope.registrarDocente=function(){
-
-
-
 
 
        console.log($scope.cedula);
@@ -278,9 +272,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
         if ($scope.miembro_asociacion=="Si"){
 
-
-
-            if ($scope.id_tipo_contrato=="De planta"){
+            if ($scope.id_tipo_contrato=="Nombramiento"){
                 $scope.objeto={
 
                     tipo:$scope.id_tipo_contrato,
@@ -477,25 +469,6 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     swal("Exito!", "Docente ingresado correctamente!", "success");
                     $scope.cedula = "";
                     $scope.nombres= "";
@@ -534,7 +507,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
 
 
-            if ($scope.id_tipo_contrato=="De planta"){
+            if ($scope.id_tipo_contrato=="Nombramiento"){
                 $scope.objeto={
 
                     tipo:$scope.id_tipo_contrato,
