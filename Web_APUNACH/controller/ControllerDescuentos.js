@@ -1212,17 +1212,6 @@ var i=0;
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -1230,6 +1219,16 @@ var i=0;
 
         var index = $scope.listadoDocentesSelect.indexOf(docente);
         $scope.listadoDocentesSelect.splice(index, 1);
+
+    }
+
+
+    $scope.seleccionarDocentexLocal1=function(docente){
+
+        window.localStorage["docente"]= JSON.stringify(docente);
+        console.log(docente);
+        $scope.nombre_docente = docente.nombres+" "+ docente.apellidos;
+
 
     }
 
@@ -2597,7 +2596,7 @@ function totales(totalEstado,fecha_del_sistema) {
         }).then(function successCallback(response) {
             console.log(response.data);
 
-$scope.listaMesIngresos=response.data;
+        $scope.listaMesIngresos=response.data;
 
 
         }, function errorCallback(response) {
@@ -2619,8 +2618,6 @@ $scope.listaMesIngresos=response.data;
             data: {
 
                 fecha:fecha
-
-
 
             }
 
@@ -2706,8 +2703,8 @@ var mesFecha = año+"-"+mes+"-";
     }
 
     $scope.genera_tabla=function()  {
-        
-        
+
+
         var miArrayDeObjetos = [
             { CODE: "ORA-00001", ERROR: "unique constraint (string.string) violated", DATE: "2015-10-01" },
             { CODE: "ORA-00017", ERROR: "session requested to set trace event", DATE: "2015-10-29" },
@@ -2717,7 +2714,7 @@ var mesFecha = año+"-"+mes+"-";
 
         var miArrayDeObjetos1 = $scope.listEstado_Docente;
         console.log($scope.listEstado_Docente);
-        
+
 //comprobamos compatibilidad
         if(window.Blob && (window.URL || window.webkitURL)){
             var contenido = "",
@@ -2772,6 +2769,159 @@ var mesFecha = año+"-"+mes+"-";
         }
 
     }
+
+    $scope.ReporteCuenta_estadoEcxel=function(lista){
+
+        var miArrayDeObjetos = [];
+
+        for (var i = 0; i < lista.length; i++) {
+
+            miArrayDeObjetos[i]={Num : i + 1,
+                Cedulas: lista[i].R[0].cedula,
+                Nombre_Completo: lista[i].R[0].apellidos + " " + lista[i].R[0].nombres,
+                Monto: lista[i].valor_x_pagar
+
+
+            }
+
+
+        }
+
+
+        console.log(miArrayDeObjetos);
+
+        if(window.Blob && (window.URL || window.webkitURL)){
+            var contenido = "",
+                d = new Date(),
+                blob,
+                reader,
+                save,
+                clicEvent;
+            //creamos contenido del archivo
+            for (var i = 0; i < miArrayDeObjetos.length; i++) {
+                //construimos cabecera del csv
+                if (i == 0)
+                    contenido += Object.keys(miArrayDeObjetos[i]).join(";") + "\n";
+                //resto del contenido
+                contenido += Object.keys(miArrayDeObjetos[i]).map(function(key){
+                        return miArrayDeObjetos[i][key];
+                    }).join(";") + "\n";
+            }
+            //creamos el blob
+            blob =  new Blob(["\ufeff", contenido], {type: 'text/csv'});
+            //creamos el reader
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                //escuchamos su evento load y creamos un enlace en dom
+                save = document.createElement('a');
+                save.href = event.target.result;
+                save.target = '_blank';
+                //aquí le damos nombre al archivo
+                save.download = "Estado_cuenta_"+ d.getDate() + "_" + (d.getMonth()+1) + "_" + d.getFullYear() +".csv";
+                try {
+                    //creamos un evento click
+                    clicEvent = new MouseEvent('click', {
+                        'view': window,
+                        'bubbles': true,
+                        'cancelable': true
+                    });
+                } catch (e) {
+                    //si llega aquí es que probablemente implemente la forma antigua de crear un enlace
+                    clicEvent = document.createEvent("MouseEvent");
+                    clicEvent.initEvent('click', true, true);
+                }
+                //disparamos el evento
+                save.dispatchEvent(clicEvent);
+                //liberamos el objeto window.URL
+                (window.URL || window.webkitURL).revokeObjectURL(save.href);
+            }
+            //leemos como url
+            reader.readAsDataURL(blob);
+        }else {
+            //el navegador no admite esta opción
+            alert("Su navegador no permite esta acción");
+        }
+
+
+
+    }
+
+    $scope.ReporteCerrar_mes=function(lista){
+
+        var miArrayDeObjetos = [];
+
+        for (var i = 0; i < lista.length; i++) {
+
+            miArrayDeObjetos[i]={Num : i + 1,
+                Cedulas: lista[i].R[0].cedula,
+                Nombre_Completo: lista[i].R[0].apellidos + " " + lista[i].R[0].nombres,
+                Monto: lista[i].valor_x_pagar
+
+
+            }
+
+
+        }
+
+
+        console.log(miArrayDeObjetos);
+
+        if(window.Blob && (window.URL || window.webkitURL)){
+            var contenido = "",
+                d = new Date(),
+                blob,
+                reader,
+                save,
+                clicEvent;
+            //creamos contenido del archivo
+            for (var i = 0; i < miArrayDeObjetos.length; i++) {
+                //construimos cabecera del csv
+                if (i == 0)
+                    contenido += Object.keys(miArrayDeObjetos[i]).join(";") + "\n";
+                //resto del contenido
+                contenido += Object.keys(miArrayDeObjetos[i]).map(function(key){
+                        return miArrayDeObjetos[i][key];
+                    }).join(";") + "\n";
+            }
+            //creamos el blob
+            blob =  new Blob(["\ufeff", contenido], {type: 'text/csv'});
+            //creamos el reader
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                //escuchamos su evento load y creamos un enlace en dom
+                save = document.createElement('a');
+                save.href = event.target.result;
+                save.target = '_blank';
+                //aquí le damos nombre al archivo
+                save.download = "Estado_cuenta_"+ d.getDate() + "_" + (d.getMonth()+1) + "_" + d.getFullYear() +".csv";
+                try {
+                    //creamos un evento click
+                    clicEvent = new MouseEvent('click', {
+                        'view': window,
+                        'bubbles': true,
+                        'cancelable': true
+                    });
+                } catch (e) {
+                    //si llega aquí es que probablemente implemente la forma antigua de crear un enlace
+                    clicEvent = document.createEvent("MouseEvent");
+                    clicEvent.initEvent('click', true, true);
+                }
+                //disparamos el evento
+                save.dispatchEvent(clicEvent);
+                //liberamos el objeto window.URL
+                (window.URL || window.webkitURL).revokeObjectURL(save.href);
+            }
+            //leemos como url
+            reader.readAsDataURL(blob);
+        }else {
+            //el navegador no admite esta opción
+            alert("Su navegador no permite esta acción");
+        }
+
+
+
+    }
+
 
 
 
