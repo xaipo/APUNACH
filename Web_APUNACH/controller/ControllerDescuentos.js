@@ -141,6 +141,105 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+
+
+
+    $scope.initListarDocentes_Des1=function(){
+
+
+
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getParametros(), //Buscar estado de cuenta por od docente y fecha
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {}
+
+
+        }).then(function successCallback(response) {
+
+
+            console.log(response.data[1]);
+
+            $scope.porcentaje = response.data[1].valor;
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+            cargar_listaDocentes("?estado=0&&miembro_asociacion=Si");
+
+
+
+
+
+
+        function cargar_listaDocentes(parametros) {
+
+
+            console.log(parametros);
+
+
+
+            //inicializar todos los usuarios
+            $http({
+                method: 'GET',
+                url: myProvider.getAllDocentes()+parametros,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+
+            }).then(function successCallback(response) {
+                console.log(response.data);
+
+                $scope.listDocentes = response.data;
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+            $timeout(function(){
+
+                $('#datatabledocentes').DataTable({
+                    "language": {
+                        "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    }
+
+
+                });
+            }, 500, false);
+
+
+
+
+        }
+
+
+
+
+
+    }
+
+
+
     $scope.initListarTipoDescuento_Des=function(){
 
         //inicializar todos los usuarios
@@ -1612,8 +1711,24 @@ var i=0;
     $scope.AceptarCreditoEmergente=function(){
 
         $scope.docenteingresar = JSON.parse(window.localStorage.getItem('docente'));
-        var pago = $scope.valor_pres / $scope.val_cuotas;
+
+
+
+        console.log($scope.porcentaje);
+
+var porcentaje=$scope.porcentaje/100;
+
+
+        var totalInteres = $scope.valor_pres + $scope.valor_pres *porcentaje;
+
+        var pago = totalInteres / $scope.val_cuotas;
         console.log(pago);
+
+
+
+
+
+
 
 
         $http({                                            //Guardar el registro de Credito Emergente
@@ -1826,6 +1941,15 @@ var i=0;
         });
 
 
+
+
+
+
+
+
+
+
+
     }
 
     $scope.initListarCreditosEmergentes=function(){
@@ -1845,7 +1969,7 @@ var i=0;
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen locales en la BD!", "warning");
+                swal("Advertencia!", "No existen Creditos Emergentes en la BD!", "warning");
             } else {
 
                 $scope.listCreditosEmegentes = response.data;
