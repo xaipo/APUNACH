@@ -326,7 +326,19 @@ app.config (function($routeProvider ,$provide){
 
 
 
-app.controller('navegacion', ['$scope', '$http', '$location','myProvider','$localStorage',  function ($scope,$http,$location,myProvider,$localStorage) {
+app.controller('navegacion', ['$scope', '$http', '$location','myProvider','$localStorage','$rootScope',  function ($scope,$http,$location,myProvider,$localStorage,$rootScope) {
+
+
+
+
+
+
+    $rootScope.usuario  =  JSON.parse(window.localStorage.getItem('usuarioLogueado'));
+
+    console.log($rootScope.usuario.user);
+
+
+
 
     $scope.navegacion = function (url) {
         $location.path(url);

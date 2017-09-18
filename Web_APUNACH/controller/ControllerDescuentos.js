@@ -931,8 +931,9 @@ var i=0;
 
 
 
+                            b++;
 
-
+                            
 
 
 
@@ -1065,6 +1066,7 @@ var i=0;
                         console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
 
                         b=b+1;
+
                         forRepetir(b);
 
 
