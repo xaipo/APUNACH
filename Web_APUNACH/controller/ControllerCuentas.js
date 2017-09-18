@@ -750,6 +750,8 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
     $scope.initListarDocentes_Des=function(){
 
+
+
         //inicializar todos los usuarios
         $http({
             method: 'GET',
