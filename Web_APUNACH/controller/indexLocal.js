@@ -54,34 +54,34 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
                 $scope.mostrar=true;
                 $scope.datos=response.data[0];
 
+                if (response.data.length == 0) {
+
+                    swal("Advertencia!", "No existe el docentes en la BD!", "warning");
+                } else {
 
 
+                    switch( $scope.datos.estado) {
 
-                switch( $scope.datos.estado) {
+                        case "0":
+                            $scope.datos.estado="Con Credito";
+                            break;
 
-                    case "0":
-                        $scope.datos.estado="Con Credito";
-                        break;
+                        case "1":
+                            $scope.datos.estado="Sin Credito";
+                            break;
 
-                    case "1":
-                        $scope.datos.estado="Sin Credito";
-                        break;
+                        case "2":
+                            $scope.datos.estado="Fuera de la Asociacion";
+                            break;
+                        default:
 
-                    case "2":
-                        $scope.datos.estado="Fuera de la Asociacion";
-                        break;
-                    default:
 
+                    }
+                    
+                    $scope.local1=$scope.local;
 
                 }
 
-
-
-
-
-
-
-                $scope.local1=$scope.local;
 
             }, function errorCallback(response) {
 

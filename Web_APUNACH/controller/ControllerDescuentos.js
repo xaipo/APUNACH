@@ -623,6 +623,25 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+    $scope.AceptarLista1=function(){
+        console.log($scope.listSeleccion);
+
+
+        for (var i=0; i < $scope.listSeleccion.length;i++)
+        {
+
+            $scope.listAceptado.push($scope.listSeleccion[i]);
+            $scope.total = $scope.total + $scope.listSeleccion[i].valor_descuento;
+
+        }
+        console.log( $scope.listdescuentosBorrar);
+
+        console.log($scope.listAceptado);
+        $scope.listSeleccion = [];
+        $scope.initListarTipoDescuento_Des();
+
+    }
+
 
 
 

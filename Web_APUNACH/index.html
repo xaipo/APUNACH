@@ -152,7 +152,7 @@
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" id="passDocente" class="form-control" required placeholder="Pase la tarjeta" autofocus ng-model="tarjeta"/>
+															<input type="password" id="passDocente" class="form-control"  placeholder="Pase la tarjeta" autofocus ng-model="tarjeta" required minlength="10" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
                                                             <i class="ace-icon fa fa-credit-card"></i>
 														</span>
                                             </label>
@@ -231,12 +231,12 @@
                                     <div class="space-6"></div>
                                     <p> Ingrese el dato de consulta: </p>
 
-                                    <form>
+                                    <form ng-submit="entrarSistema()">
                                         <fieldset>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Cedula" ng-model="cedula"/>
+															<input type="text" class="form-control" placeholder="Cedula" ng-model="cedula" required minlength="10" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
                                             </label>
@@ -245,7 +245,7 @@
 
                                             <div class="clearfix">
 
-                                                <button type="button" class="width-25 pull-right btn btn-sm btn-success" ng-click="entrarSistema()">
+                                                <button type="submit" class="width-25 pull-right btn btn-sm btn-success" >
                                                     <span class="bigger-110">Buscar</span>
 
                                                     <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
