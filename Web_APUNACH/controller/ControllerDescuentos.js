@@ -333,8 +333,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     $scope.initVerDescuentos=function(){
 
-        $scope.cedula = JSON.parse(window.localStorage.getItem('cedula'));
-        console.log($scope.cedula);
+        $scope.docenteConsulta  =  JSON.parse(window.localStorage.getItem('docenteConsultas'));
+        console.log($scope.docenteConsulta[0].cedula);
 
 
 
@@ -347,7 +347,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             },
             data: {
 
-               cedula:$scope.cedula
+               cedula:$scope.docenteConsulta[0].cedula
 
 
 
@@ -1716,12 +1716,12 @@ var i=0;
 
         console.log($scope.porcentaje);
 
-var porcentaje=$scope.porcentaje/100;
+var porcentaje=($scope.porcentaje/100);
 
 
         var totalInteres = $scope.valor_pres + $scope.valor_pres *porcentaje;
 
-        var pago = totalInteres / $scope.val_cuotas;
+        var pago = (totalInteres / $scope.val_cuotas).toFixed(2);
         console.log(pago);
 
 
@@ -1881,7 +1881,7 @@ var porcentaje=$scope.porcentaje/100;
 
                                             }, function errorCallback(response) {
 
-                                                alert('error al realizar Ingreso');
+                                                alert('error al realizar Ingreso 77');
 
                                             });
 
@@ -1893,7 +1893,7 @@ var porcentaje=$scope.porcentaje/100;
 
                                     }, function errorCallback(response) {
 
-                                        alert('error al realizar Ingreso');
+                                        alert('error al realizar Ingreso yy');
 
                                     });
 
@@ -1904,7 +1904,7 @@ var porcentaje=$scope.porcentaje/100;
 
                         }, function errorCallback(response) {
 
-                            alert('error al realizar Ingreso');
+                            alert('error al realizar Ingreso ss');
 
                         });
 
@@ -1914,16 +1914,18 @@ var porcentaje=$scope.porcentaje/100;
                         if (response.data.length == 0) {
 
                             swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
+
                         } else {
 
                             swal("Exito!", "El credito emergente se registro correctamente!", "success");
+                            $scope.initListarCreditosEmergentes();
 
                         }
 
 
                     }, function errorCallback(response) {
 
-                        alert('error al realizar Ingreso');
+                        alert('error al realizar Ingreso por aqui');
 
                     });
 
@@ -1939,6 +1941,9 @@ var porcentaje=$scope.porcentaje/100;
             alert('error al realizar Ingreso');
 
         });
+
+
+
 
 
 
@@ -1999,12 +2004,13 @@ var porcentaje=$scope.porcentaje/100;
 
     $scope.initListarVerCreditosEmergentes=function(){
         console.log("que hay");
-        $scope.cedula = JSON.parse(window.localStorage.getItem('cedula'));
+        $scope.docenteConsulta  =  JSON.parse(window.localStorage.getItem('docenteConsultas'));
+        console.log($scope.docenteConsulta[0].cedula);
 
         //inicializar todos los usuarios
         $http({
             method: 'GET',
-            url: myProvider.getAllCreditosEmergentes()+"?ci_docente="+$scope.cedula,
+            url: myProvider.getAllCreditosEmergentes()+"?ci_docente="+$scope.docenteConsulta[0].cedula,
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token

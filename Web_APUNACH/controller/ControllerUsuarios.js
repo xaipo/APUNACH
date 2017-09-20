@@ -83,6 +83,12 @@ app.controller('usuariosController', ['$scope', '$http', '$location','myProvider
         }, 500, false);
 
 
+       var x = new Big(355);
+        var y = new Big(113);
+       var z = x.div(y);
+        console.log(z);
+
+
     }
 
     $scope.modificarUsuario=function(usuario){

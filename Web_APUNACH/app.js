@@ -334,8 +334,13 @@ app.controller('navegacion', ['$scope', '$http', '$location','myProvider','$loca
 
 
     $rootScope.usuario  =  JSON.parse(window.localStorage.getItem('usuarioLogueado'));
+    $scope.docenteConsulta  =  JSON.parse(window.localStorage.getItem('docenteConsultas'));
+    console.log($scope.docenteConsulta);
+    var nombre= $scope.docenteConsulta[0].nombres.split(" ");
 
-    console.log($rootScope.usuario.user);
+    var apellido = $scope.docenteConsulta[0].apellidos.split(" ");
+    $scope.nombre_apellido = nombre[0]+" "+apellido[0];
+    console.log($scope.nombre_apellido);
 
 
 

@@ -131,9 +131,9 @@
                                             <td class=" " >{{x.ruc}} </td>
                                             <td class=" " >{{x.direccion}} </i></td>
                                             <td class=" " > {{x.credito_max}}</td>
-                                            <td class=" " >{{x.fecha_inicio_acuerdo}} </td>
+                                            <td class=" " >{{x.fecha_inicio_acuerdo | date :  "y-MM-dd"}} </td>
                                             <td class=" " >{{x.telefono}} </td>
-                                            <td class=" " >{{x.porcentaje_ganancia}} </td>
+                                            <td class=" " >{{x.porcentaje_ganancia}}% </td>
 
                                         </tr>
 

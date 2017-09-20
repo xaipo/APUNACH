@@ -84,8 +84,37 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
     $scope.entrarSistema = function () {
         console.log($scope.cedula);
 
-                    window.localStorage.setItem("cedula", JSON.stringify($scope.cedula));
-                    window.location ='PrincipalDocente.html';
+        $http({
+            method: 'GET',
+            url: myProvider.getAllDocentes()+"?cedula="+$scope.cedula,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existe el docentes en la BD!", "warning");
+            } else {
+
+                window.localStorage.setItem("docenteConsultas", JSON.stringify(response.data));
+                window.location ='PrincipalDocente.html';
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+        
+        
+
+
 
     };
 
