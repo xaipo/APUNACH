@@ -54,7 +54,7 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
                         window.location = 'Principal.html';
 
                         break;
-                    //profesor
+                 /*   //profesor
                     case "59765a7c4fda492a70d68a9b":
                         window.localStorage.setItem("usuarioLogueado", JSON.stringify(response.data));
                         console.log(response.data);
@@ -65,7 +65,7 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
                         window.localStorage.setItem("usuarioLogueado", JSON.stringify(response.data));
                         console.log(response.data);
                         //window.location ='Administrator/CieUser/ConfiguracionCIe10.html';
-                        break;
+                        break;*/
                     default:
 
                         alert('El tipo de usuario no tiene permiso para ningun sistema')
