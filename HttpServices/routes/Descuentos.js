@@ -64,6 +64,39 @@ console.log("entro");
 
 router.get('/mesCuotas', function (req, res, next)  {
 
+//sacar ganancias de cada local por el mes q se elija y agrupar 
+
+    TipoUsuario.aggregate([
+        {
+            $match: {
+                fecha: { $eq: fecha1 },descripcion: { $eq:"Valor cuota inicial"  }
+            }
+        },
+        {
+            $group: {
+                _id:"599f1d9a34917b1ea454e64e" ,
+                valor: {$sum: "$valor_descuento" }
+            }
+        }
+    ], function (err, result) {
+        if (err) {
+            next(err);
+        } else {
+            res.json(result);
+        }
+    });
+
+
+
+
+});
+
+
+
+
+
+router.get('/mesGanancias', function (req, res, next)  {
+
 
 
     TipoUsuario.aggregate([
@@ -90,6 +123,9 @@ router.get('/mesCuotas', function (req, res, next)  {
 
 
 });
+
+
+
 
 
 module.exports=router;
