@@ -5,6 +5,36 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
         $http({
             method: 'GET',
+            url: myProvider.getFacultades(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen carreras en la BD!", "warning");
+            } else {
+
+                $scope.listFacultades = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+/*
+
+        $http({
+            method: 'GET',
             url: myProvider.getCarrera_Facultad(),
             headers: {
                 // 'Content-Type': 'application/json',
@@ -28,7 +58,9 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
             alert('error al realizar Ingreso');
 
-        });
+        });*/
+
+
 
         $http({
             method: 'GET',
@@ -167,7 +199,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
             } else {
 
                 $scope.listDocentes = response.data;
-                
+
             }
 
 
@@ -187,6 +219,56 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
             });
         }, 500, false);
+
+
+    }
+
+    $scope.select_facultad=function(id_facultad){
+        
+        console.log(id_facultad);
+
+        //inicializar todos los usuarios
+        if(id_facultad != undefined) {
+            console.log(myProvider.getCarreras() + "?id_facultad=" + id_facultad);
+
+            $http({
+                method: 'GET',
+                url: myProvider.getCarreras() + "?id_facultad=" + id_facultad,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+
+            }).then(function successCallback(response) {
+                console.log(response.data);
+
+                if (response.data.length == 0) {
+
+                    swal("Advertencia!", "No existen docentes en la BD!", "warning");
+                } else {
+
+                    $scope.listCarreras = response.data;
+
+                }
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+            $timeout(function () {
+
+                $('#datatabledocentes').DataTable({
+                    "language": {
+                        "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    }
+
+
+                });
+            }, 500, false);
+        }
 
 
     }
@@ -316,10 +398,12 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     nombres : $scope.nombres,
                     apellidos : $scope.apellidos,
                     fecha_nacimiento : $('#idfecha_naci').val(),
+                    lugar_nacimiento: $scope.lugar_naci,
                     direccion : $scope.direccion,
                     telefono : $scope.telefono,
                     celular : $scope.celular,
                     correo_electronico : $scope.correo_electronico,
+                    id_facultad : $scope.id_facultad,
                     id_carrera : $scope.id_carrera,
                     id_tipo_contrato : $scope.objeto,
                     pregrado : $scope.pregrado,
@@ -474,10 +558,12 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     $scope.nombres= "";
                     $scope.apellidos = "";
                     $scope.fecha_nacimiento = "";
+                    $scope.lugar_naci = "";
                     $scope.direccion = "";
                     $scope.telefono = "";
                     $scope.celular = "";
                     $scope.correo_electronico = "";
+                    $scope.id_facultad = "";
                     $scope.id_carrera = "";
                     $scope.id_tipo_contrato= "";
                     $scope.pregrado = "";
@@ -610,6 +696,63 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         var fecha1 = $scope.docente.fecha_afiliacion.split("T");
         $scope.docente.fecha_afiliacion = fecha1[0];
 
+        $http({
+            method: 'GET',
+            url: myProvider.getFacultades(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen carreras en la BD!", "warning");
+            } else {
+
+                $scope.listFacultades = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getCarrera_Facultad(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen carreras en la BD!", "warning");
+            } else {
+
+                $scope.listCarreras = response.data;
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
         
 
     }
@@ -617,6 +760,9 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
     $scope.modiDocente=function(){
         console.log($scope.docente.cedula);
+        console.log($scope.docente.lugar_nacimiento);
+        console.log($scope.docente.id_facultad);
+        console.log($scope.docente.id_carrera);
 
             $http({
                 method: 'PUT',
@@ -631,10 +777,12 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     nombres : $scope.docente.nombres,
                     apellidos : $scope.docente.apellidos,
                     fecha_nacimiento : $('#idfecha_naci').val(),
+                    lugar_nacimiento: $scope.docente.lugar_nacimiento,
                     direccion : $scope.docente.direccion,
                     telefono : $scope.docente.telefono,
                     celular : $scope.docente.celular,
                     correo_electronico : $scope.docente.correo_electronico,
+                    id_facultad : $scope.docente.id_facultad,
                     id_carrera : $scope.docente.id_carrera,
                     id_tipo_contrato : $scope.docente.id_tipo_contrato,
                     pregrado : $scope.docente.pregrado,

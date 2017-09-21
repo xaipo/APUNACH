@@ -59,6 +59,13 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="iddireccion"> Lugar de nacimiento:</label>
+
+                        <div class="col-md-7 col-sm-6 col-xs-10">
+                            <input type="text" id="idlugar_naci" ng-model="lugar_naci" placeholder="Lugar de nacimiento" required class="col-md-7 col-xs-12" maxlength="100"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="iddireccion"> Direccion:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
@@ -87,10 +94,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Facultad:</label>
+                        <div class="col-md-3 col-sm-6 col-xs-10">
+
+                            <select class="form-control "  ng-model="id_facultad" ng-options="item._id as item.nombre_facultad for item in listFacultades" required  ng-click="select_facultad(id_facultad)"></select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Carrera</label>
                         <div class="col-md-3 col-sm-6 col-xs-10">
 
-                            <select class="form-control "  ng-model="id_carrera" ng-options="item._id as item.nombre_carrera for item in listCarrera_Facultad" required ></select>
+                            <select class="form-control "  ng-model="id_carrera" ng-options="item._id as item.nombre_carrera for item in listCarreras" required ></select>
 
                         </div>
                     </div>

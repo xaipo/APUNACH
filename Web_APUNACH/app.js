@@ -60,6 +60,9 @@ function ApiUrl(){
     this.putCarrera=function(){
         return direccion+'carrera';
     }
+    this.getCarreras=function(){
+        return direccion+'carrera';
+    }
     //Docente
     this.getTipo_Contrato=function(){
         return direccion+'tipoContrato';

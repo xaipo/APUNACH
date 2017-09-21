@@ -20,6 +20,10 @@ var Docente = new mongoose.Schema({
         type: Date,
         required:true
     },
+    "lugar_nacimiento" : {
+    type: String,
+        required:true
+},
     "direccion" : {
         type: String,
         required:true
@@ -33,6 +37,10 @@ var Docente = new mongoose.Schema({
     },
     "correo_electronico" : {
         type: String,
+        required:true
+    },
+    "id_facultad" : {
+        type: mongoose.Schema.ObjectId,
         required:true
     },
     "id_carrera" : {
