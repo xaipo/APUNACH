@@ -60,6 +60,8 @@ app.controller('tipodescuentoController', ['$scope', '$http', '$location','myPro
 
     $scope.registrarTipoDescuento=function(){
 
+
+       console.log($scope.valor);
             $http({
                 method: 'POST',
                 url: myProvider.postSaveTipoDescuento(),

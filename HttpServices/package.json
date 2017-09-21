@@ -16,6 +16,7 @@
     "jsonwebtoken": "*",
     "mongodb": "^2.2.31",
     "mongoose": "*",
+    "mongoose-big-decimal": "0.0.3",
     "node-restful": "*",
     "passport": "*",
     "passport-jwt": "*"
