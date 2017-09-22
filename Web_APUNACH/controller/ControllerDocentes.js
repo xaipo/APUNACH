@@ -558,7 +558,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                                     }, function errorCallback(response) {
 
-                                        alert('error al realizar Ingreso');
+                                        alert('error al realizar Ingreso 23423');
 
                                     });
 
@@ -571,7 +571,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                             }, function errorCallback(response) {
 
-                                alert('error al realizar Ingreso');
+                               // alert('error al realizar Ingreso');
 
                             });
 
