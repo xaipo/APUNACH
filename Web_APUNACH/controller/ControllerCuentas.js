@@ -880,70 +880,173 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
 
 
-
-
-
-
-            $http({
-
-                method: 'PUT',
-                url: myProvider.putEstado_cuenta()+"/"+response.data[0]._id, //MODIFICAR eSTADO CUENTA
-                headers: {
-                    // 'Content-Type': 'application/json',
-                    //'Authorization': token
-                },
-                data: {
-
-
-                    //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
-
-                    valor_acarreo_mes_anterior: objeto.valor,
-                    valor_x_pagar:response.data[0].valor_x_pagar+objeto.valor
-
-
-
-                }
-
-
-            }).then(function successCallback(response) {
-
-                console.log(response.data);
+            if (typeof(response.data[0]) !== "undefined") {
 
 
                 $http({
-                    method: 'POST',
-                    url: myProvider.postSaveDescuento(),
+
+                    method: 'PUT',
+                    url: myProvider.putEstado_cuenta() + "/" + response.data[0]._id, //MODIFICAR eSTADO CUENTA
                     headers: {
                         // 'Content-Type': 'application/json',
                         //'Authorization': token
                     },
                     data: {
 
-                        id_catalogo:"5993682845f4a949eca9bddf",
-                        id_local:"5993682845f4a949eca9bddf",
-                        nombre_local:"APUNACH",
-                        id_estado_cuenta:response.data._id,
-                        descripcion:objeto.observacion,
-                        valor_descuento:objeto.valor,
-                        cantidad:0,
-                        fecha:objeto.fecha
+
+                        //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+
+                        valor_acarreo_mes_anterior: objeto.valor,
+                        valor_x_pagar: response.data[0].valor_x_pagar + objeto.valor
+
+
+                    }
+
+
+                }).then(function successCallback(response) {
+
+                    console.log(response.data);
+
+
+                    $http({
+                        method: 'POST',
+                        url: myProvider.postSaveDescuento(),
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
+
+                            id_catalogo: "5993682845f4a949eca9bddf",
+                            id_local: "5993682845f4a949eca9bddf",
+                            nombre_local: "APUNACH",
+                            id_estado_cuenta: response.data._id,
+                            descripcion: objeto.observacion,
+                            valor_descuento: objeto.valor,
+                            cantidad: 0,
+                            fecha: objeto.fecha
+
+
+                        }
+
+
+                    }).then(function successCallback(response) {
+                        console.log(response.data);
+
+
+                        //actulizar
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+                }, function errorCallback(response) {
+
+                    alert('error al realizar Ingreso');
+
+                });
+
+
+            }else {
+
+
+                console.log("undefined");
+
+
+
+                console.log(".........................................................................................................................................");
+
+
+
+
+
+
+
+
+
+                console.log("aqui empnieza al creaciond el nuevo ");
+
+                $http({
+                    method: 'POST',
+                    url: myProvider.postSaveEstado_cuenta(),
+                    headers: {
+                        // 'Content-Type': 'application/json',
+                        //'Authorization': token
+                    },
+                    data: {
+
+
+
+
+                        id_docente: objeto.docente,
+                        id_usuario: objeto.docente,
+                        fecha_descuento:fecha,
+                        valor_x_pagar: objeto.valor,
+                        valor_pagado:0,
+                        valor_acarreo_mes_anterior:objeto.valor,
+                        hora:fecha,
+                        frac_fecha:fecha2,
+                        estado:0
 
 
 
                     }
 
 
-
-
                 }).then(function successCallback(response) {
+
+
                     console.log(response.data);
 
 
+                    if (response.data.length == 0) {
 
-                    //actulizar
+                        swal("Error!", "EL descuento no se ingreso correctamente!", "error");
+                    } else {
+
+
+                        $http({
+                            method: 'POST',
+                            url: myProvider.postSaveDescuento(),
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {
+
+
+                                id_catalogo: "5993682845f4a949eca9bddf",
+                                id_local: "5993682845f4a949eca9bddf",
+                                nombre_local: "APUNACH",
+                                id_estado_cuenta: response.data._id,
+                                descripcion: objeto.observacion,
+                                valor_descuento: objeto.valor,
+                                cantidad: 0,
+                                fecha: objeto.fecha
+                            }
+
+
+                        }).then(function successCallback(response) {
+                            console.log(response.data);
+
+                            console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
+
+
+                        }, function errorCallback(response) {
+
+                            alert('error al realizar Ingreso');
+
+                        });
 
 
 
+
+
+                    }
 
 
                 }, function errorCallback(response) {
@@ -956,25 +1059,7 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
 
 
-
-
-
-
-
-
-
-
-
-            }, function errorCallback(response) {
-
-                alert('error al realizar Ingreso');
-
-            });
-
-
-
-
-
+            }
 
 
 
