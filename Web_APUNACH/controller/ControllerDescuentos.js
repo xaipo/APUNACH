@@ -10,7 +10,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     });
 
     $scope.initDescuentos=function(){
-        $('#Agm').hide();
+      /* $('#Agm').hide();
         $('#Ml').hide();
 
 
@@ -42,11 +42,13 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
 
+
+
         }, function errorCallback(response) {
 
             alert('error al realizar Ingreso');
 
-        });
+        });*/
 
 
 
@@ -833,21 +835,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
     $scope.AceptarDescuentosxLocal=function(){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
         var bandera = false;
@@ -3251,6 +3239,498 @@ var mesFecha = año+"-"+mes+"-";
             //el navegador no admite esta opción
             alert("Su navegador no permite esta acción");
         }
+
+
+
+    }
+
+
+    $scope.AgregarMes=function(){
+
+
+
+
+
+        //permite cambiar el estado del mes en parametros
+
+
+        $http({
+            method: 'PUT',
+            url: myProvider.putParametros()+"/59c68df654fe692ae0bfae2f",
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+                valor: 1
+            }
+
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+            $scope.initListarDescuentos();
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getAllDocentes()+"?estado=0&&miembro_asociacion=Si",
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existen docentes en la BD!", "warning");
+            } else {
+
+                $scope.listAceptado = response.data;
+
+
+
+                ////////////////////////Inicio////////////////////////////
+                $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
+                var bandera = false;
+                var fecha = new Date();
+                var año = fecha.getFullYear();
+                var mes = fecha.getMonth() + 1;
+                var fecha_init = new Date(año + '-' + mes + '-1');
+                var fecha_fin = new Date(año + '-' + mes + '-31');
+                console.log(fecha_init);
+                console.log(fecha_fin);
+
+                if (mes<10){
+                    mes="0"+mes;
+                }
+                var  fechaU=mes+"/"+año;
+
+                console.log("guardar descuentos");
+                console.log(fechaU);
+
+                var n = $scope.listAceptado.length;
+                var aux1=n;
+                var b=0;
+                var i=0;
+
+                console.log($scope.listAceptado);
+
+
+
+
+
+
+
+
+                forRepetir(i);
+
+
+                function forRepetir(x) {
+
+
+                    for (i=x;i<n;i++){
+
+                        console.log(myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.listAceptado[i]._id+"&&frac_fecha="+fechaU);
+
+                        $http({
+                            method: 'GET',
+                            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.listAceptado[i]._id+"&&frac_fecha="+fechaU,
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {}
+
+
+                        }).then(function successCallback(response) {
+
+                            $scope.listEstado_cuenta_consulta = response.data[0];
+                            console.log(response.data[0]);
+                            console.log(i);
+                            $scope.listaaa.push(response.data[0]);
+
+
+
+
+
+                            if (typeof(response.data[0]) !== "undefined"){
+
+
+                                console.log(response.data[0]);
+
+
+
+                                console.log(b);
+                                aux1=aux1-1;
+                                console.log(aux1);
+                                if (aux1==0){
+                                    console.log(aux1);
+                                    console.log(b);
+                                    console.log($scope.listAceptado[b]);
+
+
+
+                                    $http({
+                                        method: 'POST',
+                                        url: myProvider.postSaveDescuento(),
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            id_catalogo:"5993682845f4a949eca9bddf",
+                                            id_local:"5993682845f4a949eca9bddf",
+                                            nombre_local:"APUNACH",
+                                            id_estado_cuenta:response.data._id,
+                                            descripcion:"Valor cuota inicial",
+                                            valor_descuento:$scope.listAceptado[b].valor_cuota,
+                                            cantidad:0,
+                                            fecha:response.data.frac_fecha
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+                                        console.log(response.data);
+
+
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso');
+
+                                    });
+
+
+                                    var total = response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_descuento;
+
+                                    $http({
+
+                                        method: 'PUT',
+                                        url: myProvider.putEstado_cuenta()+"/"+response.data[0]._id,
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            valor_x_pagar: total
+
+
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+
+                                        console.log(response.data);
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso');
+
+                                    });
+
+                                    b++;
+
+                                    forRepetir(b);
+
+                                }
+                                else {
+                                    console.log(aux1);
+                                    console.log(b);
+
+                                    //siempre empieza aqui
+                                    console.log($scope.listAceptado[b]);
+
+                                    $http({
+                                        method: 'POST',
+                                        url: myProvider.postSaveDescuento(),
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            id_catalogo:"5993682845f4a949eca9bddf",
+                                            id_local:"5993682845f4a949eca9bddf",
+                                            nombre_local:"APUNACH",
+                                            id_estado_cuenta:response.data._id,
+                                            descripcion:"Valor cuota inicial",
+                                            valor_descuento:$scope.listAceptado[b].valor_cuota,
+                                            cantidad:0,
+                                            fecha:response.data.frac_fecha
+
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+                                        console.log(response.data);
+
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso');
+
+                                    });
+
+
+
+
+                                    var total = response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_descuento;
+
+                                    $http({
+
+                                        method: 'PUT',
+                                        url: myProvider.putEstado_cuenta()+"/"+response.data[0]._id,
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            valor_x_pagar: total
+
+
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+
+                                        console.log(response.data);
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso');
+
+                                    });
+
+
+
+
+
+                                    b++;
+
+                                    forRepetir(b);
+
+                                }
+
+
+
+                            }else {
+
+
+                                //registro de nuevo estado de cuenta y agregar el descuento
+
+                                console.log($scope.listAceptado[b]);
+
+                                console.log(b);
+                                aux1=aux1-1;
+                                console.log(aux1);
+
+
+                                console.log("aux faltante de resto:"+aux1);
+
+
+                                crearNuevoEstadoCuenta(b);
+
+
+
+                                b++;
+
+
+
+
+
+                            }
+
+
+
+
+
+
+
+
+                        }, function errorCallback(response) {
+
+                            alert('error al realizar Ingreso');
+
+                        });
+
+
+
+
+
+                        break;
+
+
+
+                    }
+
+
+
+                }
+
+
+
+
+                console.log($scope.listaaa)
+
+
+
+
+                function crearNuevoEstadoCuenta(b) {
+
+                    console.log(".........................................................................................................................................");
+                    var hoy = new Date();
+                    var dd = "28";
+                    var mm = hoy.getMonth()+1; //hoy es 0!
+                    var yyyy = hoy.getFullYear();
+
+                    var mes = mm;
+
+                    if(mes<10) {
+                        mes='0'+mes
+                    }
+
+                    var fecha = mes+'/'+dd+'/'+yyyy;
+                    var fecha1 = mes+'/'+yyyy;
+
+
+                    console.log(b);
+                    console.log($scope.listAceptado[b]._id);
+                    console.log($scope.listAceptado[b].valor_descuento);
+
+
+
+
+
+                    console.log("aqui empnieza al creaciond el nuevo ");
+
+                    $http({
+                        method: 'POST',
+                        url: myProvider.postSaveEstado_cuenta(),
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
+
+                            id_docente: $scope.listAceptado[b]._id,
+                            id_usuario: $scope.listAceptado[b]._id,
+                            fecha_descuento:fecha,
+                            valor_x_pagar: $scope.listAceptado[b].valor_cuota,
+                            valor_pagado:0,
+                            valor_acarreo_mes_anterior:0,
+                            hora:fecha,
+                            frac_fecha:fecha1,
+                            estado:1
+
+                        }
+
+
+                    }).then(function successCallback(response) {
+
+
+                        console.log(response.data);
+                        console.log(b);
+
+                        if (response.data.length == 0) {
+
+                            swal("Error!", "EL descuento no se ingreso correctamente!", "error");
+                        } else {
+
+                            console.log($scope.listAceptado[b]);
+
+                            $http({
+                                method: 'POST',
+                                url: myProvider.postSaveDescuento(),
+                                headers: {
+                                    // 'Content-Type': 'application/json',
+                                    //'Authorization': token
+                                },
+                                data: {
+
+                                    id_catalogo:"5993682845f4a949eca9bddf",
+                                    id_local:"5993682845f4a949eca9bddf",
+                                    nombre_local:"APUNACH",
+                                    id_estado_cuenta:response.data._id,
+                                    descripcion:"Valor cuota inicial",
+                                    valor_descuento:$scope.listAceptado[b].valor_cuota,
+                                    cantidad:0,
+                                    fecha:response.data.frac_fecha
+
+                                }
+
+
+                            }).then(function successCallback(response) {
+                                console.log(response.data);
+
+                                console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
+
+                                b=b+1;
+
+                                forRepetir(b);
+
+
+
+                            }, function errorCallback(response) {
+
+                                alert('error al realizar Ingreso');
+
+                            });
+
+
+
+
+
+                        }
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+                }
+
+
+
+
+
+
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+
 
 
 
