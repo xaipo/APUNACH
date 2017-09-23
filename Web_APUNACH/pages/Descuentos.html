@@ -1,4 +1,4 @@
-<div class="main-content-inner">
+<div class="main-content-inner" ng-init="initDescuentos()">
     <div class="breadcrumbs ace-save-state" id="breadcrumbs">
         <ul class="breadcrumb">
             <li>
@@ -86,11 +86,16 @@
                     </div>
                 </div>-->
 
+                <button class="btn btn-primary" type="button"  data-toggle="modal" id="Agm">
+                    <i class="ace-icon fa fa-file bigger-110"></i>
+                    Agregar descuento Mes
+                </button>
 
-                <button class="btn btn-warning" type="button"  data-toggle="modal" data-target="#myModal2">
+                <button class="btn btn-warning" type="button"  data-toggle="modal" data-target="#myModal2" id="Ml">
                     <i class="ace-icon fa fa-file bigger-110"></i>
                     Nuevo por local
                 </button>
+
                 <div class="modal fade" id="myModal2" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">

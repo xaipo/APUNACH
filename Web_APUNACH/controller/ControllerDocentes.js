@@ -452,7 +452,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                         swal("Error!", "No se ingreso el docente!", "error");
                     } else {
 
-
+/*
                         console.log(
                             $scope.cuotaInicial,  $scope.listLocales[0], response.data
 
@@ -579,7 +579,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                         }
 
-
+*/
                         swal("Exito!", "Docente ingresado correctamente!", "success");
                         $scope.cedula = "";
                         $scope.nombres= "";
@@ -672,6 +672,23 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
 
                     swal("Exito!", "Docente ingresado correctamente!", "success");
+                    $scope.cedula = "";
+                    $scope.nombres= "";
+                    $scope.apellidos = "";
+                    $scope.fecha_nacimiento = "";
+                    $scope.lugar_naci = "";
+                    $scope.direccion = "";
+                    $scope.telefono = "";
+                    $scope.celular = "";
+                    $scope.correo_electronico = "";
+                    $scope.id_facultad = "";
+                    $scope.id_carrera = "";
+                    $scope.id_tipo_contrato= "";
+                    $scope.pregrado = "";
+                    $scope.postgrado = "";
+                    $scope.miembro_asociacion = "";
+                    $scope.fecha_afiliacion = "";
+                    $scope.valor_cuota= "";
 
 
                 }, function errorCallback(response) {
@@ -679,16 +696,7 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     alert('error al realizar Ingreso');
 
                 });
-
-
-
-
-
-
-
-
-
-
+                
             }
 
 

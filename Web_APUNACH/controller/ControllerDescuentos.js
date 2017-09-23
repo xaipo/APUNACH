@@ -9,6 +9,55 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     });
 
+    $scope.initDescuentos=function(){
+        $('#Agm').hide();
+        $('#Ml').hide();
+
+
+        $http({
+            method: 'GET',
+            url: myProvider.getParametros(), //Buscar estado de cuenta por od docente y fecha
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {}
+
+
+        }).then(function successCallback(response) {
+
+
+            console.log(response.data[2].valor);
+            if(response.data[2].valor == 0)
+            {
+                $('#Agm').show();
+                $('#Ml').hide();
+            }else {
+                $('#Agm').hide();
+                $('#Ml').show();
+            }
+
+
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+       
+
+    }
+
+
+
     $scope.initListarLocal_Des=function(){
         console.log("que hay");
 
@@ -2294,7 +2343,7 @@ var totalEstado=0;
                 $scope.cuentas.push(objeto);
 
 
-totales(totalEstado,fecha_del_sistema);
+                 totales(totalEstado,fecha_del_sistema);
 
 
 
@@ -2310,6 +2359,31 @@ totales(totalEstado,fecha_del_sistema);
             alert('error al realizar Ingreso');
 
         });
+
+        //permite cambiar el estado del mes en parametros
+
+        $http({
+            method: 'POST',
+            url: myProvider.putParametros()+'?_id=59c68df654fe692ae0bfae2f',
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: $scope.cuentas
+
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
 
 
 
