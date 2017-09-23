@@ -3393,11 +3393,11 @@ var mesFecha = año+"-"+mes+"-";
                                             id_catalogo:"5993682845f4a949eca9bddf",
                                             id_local:"5993682845f4a949eca9bddf",
                                             nombre_local:"APUNACH",
-                                            id_estado_cuenta:response.data._id,
+                                            id_estado_cuenta:response.data[0]._id,
                                             descripcion:"Valor cuota inicial",
                                             valor_descuento:$scope.listAceptado[b].valor_cuota,
                                             cantidad:0,
-                                            fecha:response.data.frac_fecha
+                                            fecha:response.data[0].frac_fecha
 
                                         }
 
@@ -3414,7 +3414,9 @@ var mesFecha = año+"-"+mes+"-";
                                     });
 
 
-                                    var total = response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_descuento;
+                                    var total = response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_cuota;
+
+                                    console.log("antes de actulizar "+response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_cuota);
 
                                     $http({
 
@@ -3467,11 +3469,11 @@ var mesFecha = año+"-"+mes+"-";
                                             id_catalogo:"5993682845f4a949eca9bddf",
                                             id_local:"5993682845f4a949eca9bddf",
                                             nombre_local:"APUNACH",
-                                            id_estado_cuenta:response.data._id,
+                                            id_estado_cuenta:response.data[0]._id,
                                             descripcion:"Valor cuota inicial",
                                             valor_descuento:$scope.listAceptado[b].valor_cuota,
                                             cantidad:0,
-                                            fecha:response.data.frac_fecha
+                                            fecha:response.data[0].frac_fecha
 
 
                                         }
@@ -3490,7 +3492,9 @@ var mesFecha = año+"-"+mes+"-";
 
 
 
-                                    var total = response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_descuento;
+                                    var total = response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_cuota;
+
+                                    console.log("antes de actulizar "+response.data[0].valor_x_pagar + $scope.listAceptado[b].valor_cuota);
 
                                     $http({
 
