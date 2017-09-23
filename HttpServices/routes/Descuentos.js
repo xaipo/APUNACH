@@ -95,23 +95,28 @@ router.get('/mesCuotas', function (req, res, next)  {
 
 
 
-router.get('/mesGanancias', function (req, res, next)  {
+router.post('/mesGanancias', function (req, res, next)  {
 
-
+    console.log(req.body);
 
     TipoUsuario.aggregate([
         {
             $match: {
-                fecha: { $eq: fecha1 },descripcion: { $eq:"Valor cuota inicial"  }
+                fecha: { $eq: req.body.fecha }
             }
         },
-        {
-            $group: {
-                _id:"599f1d9a34917b1ea454e64e" ,
-                valor: {$sum: "$valor_descuento" }
-            }
+    {
+        $group: {
+            _id:"$nombre_local" ,
+            valor: {$sum: "$valor_descuento" }
         }
-    ], function (err, result) {
+    },
+
+    {$lookup: {from: "locales", localField: "_id", foreignField: "nombre", as: "local"}}
+
+
+
+], function (err, result) {
         if (err) {
             next(err);
         } else {
