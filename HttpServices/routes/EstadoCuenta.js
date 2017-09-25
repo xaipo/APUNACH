@@ -17,13 +17,26 @@ var mm = hoy.getMonth()+1; //hoy es 0!
 var yyyy = hoy.getFullYear();
 var mes = mm;
 
+var mes1=mm+1;
+
 if(mes<10) {
     mes='0'+mes
 }
 
+if(mes1<10) {
+    mes1='0'+mes1
+}
+
+
+
+
+
+var fechaAnterior =yyyy+"-"+mes1+"-"+15;
+var fechaActual = yyyy+"-"+mes+"-"+15;
+
 var fecha1 = mes+'/'+yyyy;
 
-console.log(fecha1);
+console.log(fechaActual,fechaAnterior);
 
 router.get('/estadocuenta_docente', function (req, res, next)  {
     TipoUsuario.aggregate(
@@ -129,5 +142,108 @@ router.get('/estadocuenta_docente1', function (req, res, next)  {
 
 
 });
+
+
+//aqui va la fecha
+
+router.get('/EstadoCuentaDocente', function (req, res, next)  {
+
+
+
+    TipoUsuario.find(
+
+
+
+        {
+            "id_docente":  "59c00415fd99ee0324ab9caa",
+            "fecha_descuento": {
+                $gte: new Date("2017-09-15T05:00:00.000Z"),
+                $lte: new Date("2017-09-28T05:00:00.000Z")
+            }
+
+        },function (err, datos) {
+            if (err) { return next(err) }
+            res.json(datos);
+        }
+
+
+    )
+
+
+});
+
+
+router.get('/AllEstadoCuenta', function (req, res, next)  {
+
+
+
+    TipoUsuario.find(
+
+
+
+        {
+            "fecha_descuento": {
+                $gte: new Date("2017-09-15T05:00:00.000Z"),
+                $lte: new Date("2017-09-28T05:00:00.000Z")
+            }
+
+        },function (err, datos) {
+            if (err) { return next(err) }
+            res.json(datos);
+        }
+
+
+    )
+
+
+
+
+
+});
+
+
+
+router.get('/AllEstadoCuenta1', function (req, res, next)  {
+
+
+
+
+    TipoUsuario.aggregate(
+
+
+        [
+
+
+            { "$match":
+            {
+                "$and" : [
+                    {    fecha_descuento: {$gte: new Date( fechaActual+"T00:00:00.000Z")}},
+                    {    fecha_descuento: {$lte: new Date(fechaAnterior+"T00:00:00.000Z")}}
+
+
+                ]
+            }
+
+            },
+
+            {"$lookup": {
+                "from": "docente",
+                "localField": "id_docente",
+                "foreignField": "_id",
+                "as": "R"
+            }}
+
+        ],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
+    )
+
+
+});
+
+
+
+
 
 module.exports=router;
