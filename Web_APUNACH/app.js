@@ -157,7 +157,7 @@ function ApiUrl(){
         return direccion+'descuentos';
     }
     this.getEstadoCuenta_Docente=function(){
-        return direccion+'estadocuenta_docente';
+        return direccion+'AllEstadoCuenta1';
     }
 
     this.getEstadoUpdate=function(){
@@ -194,7 +194,7 @@ function ApiUrl(){
         return direccion+'estadocuenta';
     }
     this.getEstadoCuentaxLocal=function(){
-        return direccion+'estadocuenta';
+        return direccion+'EstadoCuentaDocente';
     }
     //Credito Emergente
     this.postSaveCredito_Emergente=function(){

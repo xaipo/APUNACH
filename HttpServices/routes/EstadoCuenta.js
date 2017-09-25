@@ -146,7 +146,7 @@ router.get('/estadocuenta_docente1', function (req, res, next)  {
 
 //aqui va la fecha
 
-router.get('/EstadoCuentaDocente', function (req, res, next)  {
+router.post('/EstadoCuentaDocente', function (req, res, next)  {
 
 
 
@@ -155,10 +155,10 @@ router.get('/EstadoCuentaDocente', function (req, res, next)  {
 
 
         {
-            "id_docente":  "59c00415fd99ee0324ab9caa",
+            "id_docente":  req.body.docente,
             "fecha_descuento": {
-                $gte: new Date("2017-09-15T05:00:00.000Z"),
-                $lte: new Date("2017-09-28T05:00:00.000Z")
+                $gte: new Date(fechaActual+"T00:00:00.000Z"),
+                $lte: new Date(fechaAnterior+"T00:00:00.000Z")
             }
 
         },function (err, datos) {

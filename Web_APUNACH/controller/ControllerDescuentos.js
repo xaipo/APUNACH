@@ -874,13 +874,18 @@ var i=0;
             for (i=x;i<n;i++){
 
                 $http({
-                        method: 'GET',
-                        url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.listAceptado[i].id_docente+"&&frac_fecha="+fechaU,
+                        method: 'POST',
+                        url: myProvider.getEstadoCuentaxLocal() ,
                         headers: {
                             // 'Content-Type': 'application/json',
                             //'Authorization': token
                         },
-                        data: {}
+                        data: {
+                            
+                            docente:$scope.listAceptado[i].id_docente
+                            
+                            
+                        }
 
 
                     }).then(function successCallback(response) {
@@ -1170,7 +1175,7 @@ var i=0;
 
                     id_docente: $scope.listAceptado[b].id_docente,
                     id_usuario: $scope.listAceptado[b].id_docente,
-                    fecha_descuento:fecha,
+                    fecha_descuento:new Date(),
                     valor_x_pagar: $scope.listAceptado[b].valor_descuento,
                     valor_pagado:0,
                     valor_acarreo_mes_anterior:0,
@@ -1870,14 +1875,21 @@ var porcentaje=($scope.porcentaje/100);
 
                         console.log($scope.docenteingresar._id, response.data.fragmento_fec);
 
+
                         $http({
-                            method: 'GET',
-                            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.docenteingresar._id + "&&frac_fecha=" + response.data.fragmento_fec, //Buscar estado de cuenta por od docente y fecha
-                            headers: {
-                                // 'Content-Type': 'application/json',
-                                //'Authorization': token
-                            },
-                            data: {}
+                                method: 'POST',
+                                url: myProvider.getEstadoCuentaxLocal() ,
+                                headers: {
+                                    // 'Content-Type': 'application/json',
+                                    //'Authorization': token
+                                },
+                                data: {
+
+                                    docente:$scope.docenteingresar._id
+
+
+                                }
+
 
 
                         }).then(function successCallback(response) {
@@ -3341,16 +3353,23 @@ var mesFecha = año+"-"+mes+"-";
 
                     for (i=x;i<n;i++){
 
-                        console.log(myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.listAceptado[i]._id+"&&frac_fecha="+fechaU);
+                
+
 
                         $http({
-                            method: 'GET',
-                            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + $scope.listAceptado[i]._id+"&&frac_fecha="+fechaU,
-                            headers: {
-                                // 'Content-Type': 'application/json',
-                                //'Authorization': token
-                            },
-                            data: {}
+                                method: 'POST',
+                                url: myProvider.getEstadoCuentaxLocal() ,
+                                headers: {
+                                    // 'Content-Type': 'application/json',
+                                    //'Authorization': token
+                                },
+                                data: {
+
+                                    docente:$scope.listAceptado[i].id_docente
+
+
+                                }
+                            
 
 
                         }).then(function successCallback(response) {
