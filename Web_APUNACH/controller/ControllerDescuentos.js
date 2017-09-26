@@ -1886,6 +1886,7 @@ var porcentaje=($scope.porcentaje/100);
 
                             var anio= yyyy+1;
                             mes1='0'+auxf;
+                            yyyy=anio;
 
                         }
 
@@ -1902,6 +1903,8 @@ var porcentaje=($scope.porcentaje/100);
 
                             var anio= yyyy+1;
                             mes='0'+auxfr;
+                            yyyy=anio;
+
 
                         }
 
@@ -3738,7 +3741,7 @@ var mesFecha = año+"-"+mes+"-";
                             valor_pagado:0,
                             valor_acarreo_mes_anterior:0,
                             hora:fecha,
-                            frac_fecha:fecha1,
+                            frac_fecha:fecha,
                             estado:1
 
                         }
