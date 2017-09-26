@@ -797,6 +797,48 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         console.log($scope.docente.id_facultad);
         console.log($scope.docente.id_carrera);
 
+
+        $http({
+            method: 'GET',
+            url: myProvider.getParametros()+"?estado="+0,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data[0]);
+
+            var hoy = new Date();
+            var dd = hoy.getDate();
+            var mm = hoy.getMonth(); //hoy es 0!
+            var yyyy = hoy.getFullYear();
+
+            var fecha_afiliacion = $('#idfecha_afiliacion').val();
+            console.log($('#idfecha_afiliacion').val());
+            var fecha = fecha_afiliacion.split("-");
+            var año = fecha[0];
+            var mes = fecha[1];
+            var dia = fecha[2];
+
+            console.log(año);
+            console.log(mes);
+            console.log(dia);
+
+            var cuotas=12-mes+1;
+            $scope.docente.valor_cuota=response.data[0].valor/cuotas;
+            console.log($scope.docente.valor_cuota);
+
+            $scope.cuotaInicial={
+                cuotas:cuotas,
+                valor:$scope.docente.valor_cuota
+
+            };
+
+
+
+            ////////////ingreso//////////////////////////////
+
             $http({
                 method: 'PUT',
                 url: myProvider.putUpdateDocente()+"/"+$scope.docente._id,
@@ -850,6 +892,14 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                 alert('error al realizar Ingreso');
 
             });
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
         }
 
 
@@ -911,6 +961,8 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
                 }
             });
+
+
 
 
 
@@ -1031,6 +1083,120 @@ console.log(
             alert('error al realizar Ingreso');
 
         });
+
+
+
+
+    }
+
+
+    $scope.initModificarDocentesVer=function(){
+
+        $scope.docente1 = JSON.parse(window.localStorage.getItem('docenteConsultas'));
+
+        $http({
+            method: 'GET',
+            url: myProvider.getAllDocentes()+"?cedula="+$scope.docente1[0].cedula,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            if (response.data.length == 0) {
+
+                swal("Advertencia!", "No existe el docentes en la BD!", "warning");
+            } else {
+
+
+                $scope.docente = response.data[0];
+                console.log($scope.docente);
+
+                console.log($scope.docente);
+                $scope.initDocentes();
+                var fecha = $scope.docente.fecha_nacimiento.split("T");
+                $scope.docente.fecha_nacimiento = fecha[0];
+
+                var fecha1 = $scope.docente.fecha_afiliacion.split("T");
+                $scope.docente.fecha_afiliacion = fecha1[0];
+
+                $http({
+                    method: 'GET',
+                    url: myProvider.getFacultades(),
+                    headers: {
+                        // 'Content-Type': 'application/json',
+                        //'Authorization': token
+                    },
+
+                }).then(function successCallback(response) {
+                    console.log(response.data);
+
+                    if (response.data.length == 0) {
+
+                        swal("Advertencia!", "No existen carreras en la BD!", "warning");
+                    } else {
+
+                        $scope.listFacultades = response.data;
+
+                    }
+
+
+                }, function errorCallback(response) {
+
+                    alert('error al realizar Ingreso');
+
+                });
+
+
+                $http({
+                    method: 'GET',
+                    url: myProvider.getCarrera_Facultad(),
+                    headers: {
+                        // 'Content-Type': 'application/json',
+                        //'Authorization': token
+                    },
+
+                }).then(function successCallback(response) {
+                    console.log(response.data);
+
+                    if (response.data.length == 0) {
+
+                        swal("Advertencia!", "No existen carreras en la BD!", "warning");
+                    } else {
+
+                        $scope.listCarreras = response.data;
+
+                    }
+
+
+                }, function errorCallback(response) {
+
+                    alert('error al realizar Ingreso');
+
+                });
+
+
+
+
+
+            }
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+
+
 
 
 

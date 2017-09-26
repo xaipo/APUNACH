@@ -1,5 +1,5 @@
 
-<div class="main-content-inner">
+<div class="main-content-inner" ng-init="initCierreDefini()">
     <div class="breadcrumbs ace-save-state hidden-print" id="breadcrumbs" >
         <ul class="breadcrumb">
             <li>
@@ -77,7 +77,7 @@
                         Exportar a Exel
                     </button>
 
-                    <button class="btn btn-info left hidden-print" ng-click="SaveDefinitivo()"> <!--ng-click="newDescuento()"-->
+                    <button class="btn btn-warning left hidden-print" ng-click="SaveDefinitivo()" id="buttonCierreDefinitivo"> <!--ng-click="newDescuento()"-->
                         <i class="ace-icon fa fa-file bigger-110"></i>
                         Cierre definitivo
                     </button>

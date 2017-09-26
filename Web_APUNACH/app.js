@@ -314,6 +314,7 @@ app.config (function($routeProvider ,$provide){
     //Para los profesores  VerDescuentos
     $routeProvider.when("/VerDescuentos",{templateUrl:"pages/VerDescuentos.html", controller:'descuentosController'});
     $routeProvider.when("/VerCreditoemergente",{templateUrl:"pages/VerCreditoemergente.html", controller:'descuentosController'});
+    $routeProvider.when("/ModificarDatos",{templateUrl:"pages/ModificarDatosDocente.html", controller:'docentesController'});
 
 
 

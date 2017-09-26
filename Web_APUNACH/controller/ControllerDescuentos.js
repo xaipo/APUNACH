@@ -439,6 +439,14 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+    $scope.initCierreDefini=function() {
+
+
+
+
+    }
+
+
     $scope.initListarDescuentosImpri=function(){
 
        // $('#tableEstado_cuenta1').hide();
@@ -869,6 +877,14 @@ var i=0;
 
 
         function forRepetir(x) {
+
+            if(x==$scope.listAceptado.length)
+            {
+
+                swal("Exito!", "Se ingreso corectamente!", "success");
+                $location.path("/Descuentos");
+                
+            }
 
 
             for (i=x;i<n;i++){
@@ -1629,6 +1645,7 @@ var i=0;
             } else {
 
                 swal("Exito!", "El descuento se ingreso correctamente!", "success");
+
                 for (var i = 0; i<$scope.listAceptado.length;i++)
                 {
 
@@ -1676,6 +1693,7 @@ var i=0;
 
 
                 }
+                $location.path("/Descuentos");
 
 
             }
@@ -2189,17 +2207,6 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
     $scope.initListarCreditosEmergentes=function(){
@@ -2397,7 +2404,9 @@ var porcentaje=($scope.porcentaje/100);
 
     $scope.SaveDefinitivo=function () {
 
-var totalEstado=0;
+
+
+       var totalEstado=0;
 
         console.log("boton");
 
@@ -2537,20 +2546,24 @@ var totalEstado=0;
 
         });
 
+
         //permite cambiar el estado del mes en parametros
 
         $http({
-            method: 'POST',
-            url: myProvider.putParametros()+'?_id=59c68df654fe692ae0bfae2f',
+            method: 'PUT',
+            url: myProvider.putParametros()+"/59c68df654fe692ae0bfae2f",
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
             },
-            data: $scope.cuentas
+            data: {
+                valor: 0
+            }
 
 
         }).then(function successCallback(response) {
             console.log(response.data);
+
 
 
 
@@ -3415,6 +3428,7 @@ var mesFecha = año+"-"+mes+"-";
                     {
                         $scope.initDescuentos()
                         $scope.initListarDescuentos();
+                        swal("Exito!", "El mes se creo corectamente!", "success");
                     }
 
 
