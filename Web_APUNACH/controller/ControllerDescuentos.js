@@ -1787,6 +1787,22 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
+
+        var hoy = new Date();
+        var dd = hoy.getDate();
+        var mm = hoy.getMonth()+1; //hoy es 0!
+        var yyyy = hoy.getFullYear();
+        var mes = mm;
+
+
+
+        if(mes<10) {
+            mes='0'+mes
+        }
+
+
+
+
         $http({                                            //Guardar el registro de Credito Emergente
             method: 'POST',
             url: myProvider.postSaveCredito_Emergente(),
@@ -1827,19 +1843,64 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
+
+
+
+
                 for(var i=0;i<$scope.val_cuotas;i++) {
 
                     var mes = mm+i;
+                    var mes1 = mm+i+1;
 
                     console.log("mes de creacion :" +mes);
 
 
-                    if(mes<10) {
-                        mes='0'+mes
+
+
+
+
+                    if(mes1<10) {
+                        mes1='0'+mes1
+                    }else {
+
+                        if (mes1>12){
+                            var auxf =mes1-12;
+
+                            var anio= yyyy+1;
+                            mes1='0'+auxf;
+
+                        }
+
+
                     }
 
-                    var fecha = mes+'/'+dd+'/'+yyyy;
-                    var fecha1 = mes+'/'+yyyy;
+
+                    if(mes<10) {
+                        mes='0'+mes
+                    }else {
+
+                        if (mes>12){
+                            var auxfr =mes-12;
+
+                            var anio= yyyy+1;
+                            mes='0'+auxfr;
+
+                        }
+
+
+                    }
+
+                    ///probar q funcione el crear nuevos estados de cuenta segun el mes si se pasa de 12 
+
+                    var fecha =yyyy+"-"+mes+"-"+15+"T00:00:00.000Z";
+
+                    var fecha1 =yyyy+"-"+mes1+"-"+15+"T00:00:00.000Z";
+
+                    var fecha2 =yyyy+"-"+mes+'-'+dd+"T00:00:00.000Z";
+
+
+
+
 
                     console.log(fecha);
 
@@ -1855,10 +1916,10 @@ var porcentaje=($scope.porcentaje/100);
                             id_credito: response.data._id,
                             numero_cuotas: i,
                             valor_credito: pago,
-                            fecha_max_pago: fecha,
-                            fecha_pago: new Date(),
+                            fecha_max_pago: fecha1,
+                            fecha_pago: fecha,
                             id_user: $scope.docenteingresar._id,
-                            fragmento_fec:fecha1,
+                            fragmento_fec:fecha2,
                             estado:"pendiente"
 
                         }
@@ -1873,20 +1934,27 @@ var porcentaje=($scope.porcentaje/100);
                         var objeto = response.data;
 
 
+
+
+
+
+
+
                         console.log($scope.docenteingresar._id, response.data.fragmento_fec);
 
 
                         $http({
                                 method: 'POST',
-                                url: myProvider.getEstadoCuentaxLocal() ,
+                                url: myProvider.getEstadoCuentaxLocal1() ,
                                 headers: {
                                     // 'Content-Type': 'application/json',
                                     //'Authorization': token
                                 },
                                 data: {
 
-                                    docente:$scope.docenteingresar._id
-
+                                    docente:$scope.docenteingresar._id,
+                                    fecha: response.data.fecha_pago,
+                                    fecha1:response.data.fecha_max_pago
 
                                 }
 
@@ -1998,11 +2066,11 @@ var porcentaje=($scope.porcentaje/100);
 
                                         id_docente: $scope.docenteingresar._id,
                                         id_usuario: $scope.docenteingresar._id,
-                                        fecha_descuento:fecha,
+                                        fecha_descuento:fecha2,
                                         valor_x_pagar: objeto.valor_credito,
                                         valor_pagado:0,
                                         valor_acarreo_mes_anterior:0,
-                                        hora:fecha,
+                                        hora:fecha2,
                                         frac_fecha:objeto.fragmento_fec,
                                         estado:1
 

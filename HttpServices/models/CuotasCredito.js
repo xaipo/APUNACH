@@ -35,7 +35,7 @@ var CuotasCredito = new mongoose.Schema({
         required: true
     },
     "fragmento_fec": {
-        type: String,
+        type: Date,
         required: true
     }
 

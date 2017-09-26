@@ -196,6 +196,12 @@ function ApiUrl(){
     this.getEstadoCuentaxLocal=function(){
         return direccion+'EstadoCuentaDocente';
     }
+
+    
+
+    this.getEstadoCuentaxLocal1=function(){
+        return direccion+'EstadoCuentaDocenteFecha';
+    }
     //Credito Emergente
     this.postSaveCredito_Emergente=function(){
         return direccion+'creditoEmergente';

@@ -244,6 +244,33 @@ router.get('/AllEstadoCuenta1', function (req, res, next)  {
 
 
 
+router.post('/EstadoCuentaDocenteFecha', function (req, res, next)  {
+
+    console.log(req.body);
+
+
+    TipoUsuario.find(
+
+
+
+        {
+            "id_docente":  req.body.docente,
+            "fecha_descuento": {
+                $gte: new Date(req.body.fecha),
+                $lte: new Date(req.body.fecha1)
+            }
+
+        },function (err, datos) {
+            if (err) { return next(err) }
+            res.json(datos);
+        }
+
+
+    )
+
+
+});
+
 
 
 module.exports=router;
