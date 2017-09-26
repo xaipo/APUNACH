@@ -1158,10 +1158,14 @@ var i=0;
         function crearNuevoEstadoCuenta(b) {
 
             console.log(".........................................................................................................................................");
+
+
             var hoy = new Date();
-            var dd = "28";
+            var dd = hoy.getDate();
             var mm = hoy.getMonth()+1; //hoy es 0!
             var yyyy = hoy.getFullYear();
+
+
 
             var mes = mm;
 
@@ -1169,8 +1173,8 @@ var i=0;
                 mes='0'+mes
             }
 
-            var fecha = mes+'/'+dd+'/'+yyyy;
-            var fecha1 = mes+'/'+yyyy;
+
+            var fecha =yyyy+"-"+mes+'-'+dd+"T00:00:00.000Z";
 
 
             console.log(b);
@@ -1191,12 +1195,12 @@ var i=0;
 
                     id_docente: $scope.listAceptado[b].id_docente,
                     id_usuario: $scope.listAceptado[b].id_docente,
-                    fecha_descuento:new Date(),
+                    fecha_descuento:fecha,
                     valor_x_pagar: $scope.listAceptado[b].valor_descuento,
                     valor_pagado:0,
                     valor_acarreo_mes_anterior:0,
                     hora:fecha,
-                    frac_fecha:fecha1,
+                    frac_fecha:fecha,
                     estado:1
 
                 }
@@ -1852,10 +1856,6 @@ var porcentaje=($scope.porcentaje/100);
 
                 swal("Exito!", "El credito emergente se registro correctamente!", "success");
 
-                var hoy = new Date();
-                var dd = hoy.getDate();
-                var mm = hoy.getMonth()+1; //hoy es 0!
-                var yyyy = hoy.getFullYear();
 
 
 
@@ -1866,6 +1866,17 @@ var porcentaje=($scope.porcentaje/100);
 
 
                 for(var i=0;i<$scope.val_cuotas;i++) {
+
+
+
+                    var hoy = new Date();
+                    var dd = hoy.getDate();
+                    var mm = hoy.getMonth()+1; //hoy es 0!
+                    var yyyy = hoy.getFullYear();
+                    var yyyy1 = hoy.getFullYear();
+
+
+
 
                     var mes = mm+i;
                     var mes1 = mm+i+1;
@@ -1879,16 +1890,18 @@ var porcentaje=($scope.porcentaje/100);
 
                     if(mes1<10) {
                         mes1='0'+mes1
+
                     }else {
 
                         if (mes1>12){
                             var auxf =mes1-12;
 
-                            var anio= yyyy+1;
+                            var anio= yyyy1+1;
                             mes1='0'+auxf;
-                            yyyy=anio;
+                            yyyy1=anio;
 
                         }
+
 
 
                     }
@@ -1913,10 +1926,12 @@ var porcentaje=($scope.porcentaje/100);
 
                     ///probar q funcione el crear nuevos estados de cuenta segun el mes si se pasa de 12 
 
+               //fecha inicio
                     var fecha =yyyy+"-"+mes+"-"+15+"T00:00:00.000Z";
+                    //fecha fin
+                    var fecha1 =yyyy1+"-"+mes1+"-"+15+"T00:00:00.000Z";
 
-                    var fecha1 =yyyy+"-"+mes1+"-"+15+"T00:00:00.000Z";
-
+//fech actual q se crea en cada estado cuenta nuevo
                     var fecha2 =yyyy+"-"+mes+'-'+dd+"T00:00:00.000Z";
 
 
@@ -2483,6 +2498,7 @@ var porcentaje=($scope.porcentaje/100);
         var fecha_del_sistema = new Date();
         
         
+        
         $http({
             method: 'GET',
             url: myProvider.getMesPrestamos(),
@@ -2676,20 +2692,8 @@ function totales(totalEstado,fecha_del_sistema) {
     var locales=totalEstado-($scope.cuentas[0].valor+$scope.cuentas[1].valor);
     console.log(locales);
 
-
-
-    var hoy = new Date();
-    var dd = hoy.getDate();
-    var mm = hoy.getMonth()+1; //hoy es 0!
-    var yyyy = hoy.getFullYear();
-
-
-    if(mm<10) {
-        mm='0'+mm
-    }
-
-
-    var fecha1 = mm+'/'+yyyy;
+    
+ 
 
 
 
@@ -2698,7 +2702,7 @@ function totales(totalEstado,fecha_del_sistema) {
     var objeto={
         id_cuenta:"599f1d9034917b1ea454e64d",
         valor:locales,
-        fecha:fecha1,
+        fecha:fecha_del_sistema,
         fecha_sistema:fecha_del_sistema,
         usuario: "599f1d9034917b1ea454e64d",
         estado:1

@@ -36,7 +36,13 @@ var fechaActual = yyyy+"-"+mes+"-"+15;
 
 var fecha1 = mes+'/'+yyyy;
 
+
+
 console.log(fechaActual,fechaAnterior);
+
+
+
+
 
 router.get('/estadocuenta_docente', function (req, res, next)  {
     TipoUsuario.aggregate(
@@ -125,7 +131,10 @@ router.get('/estadocuenta_docente1', function (req, res, next)  {
                 path: "$estadocuenta",
                 preserveNullAndEmptyArrays: true
             }
-        },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha":fecha1 } },
+        },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha": {
+            $gte: new Date(fechaActual+"T00:00:00.000Z"),
+            $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+        } } },
         {
             $lookup: {
                 from: "descuentos",
@@ -156,7 +165,7 @@ router.post('/EstadoCuentaDocente', function (req, res, next)  {
 
         {
             "id_docente":  req.body.docente,
-            "fecha_descuento": {
+            "frac_fecha": {
                 $gte: new Date(fechaActual+"T00:00:00.000Z"),
                 $lte: new Date(fechaAnterior+"T00:00:00.000Z")
             }
@@ -182,7 +191,7 @@ router.get('/AllEstadoCuenta', function (req, res, next)  {
 
 
         {
-            "fecha_descuento": {
+            "frac_fecha": {
                 $gte: new Date("2017-09-15T05:00:00.000Z"),
                 $lte: new Date("2017-09-28T05:00:00.000Z")
             }
@@ -217,8 +226,9 @@ router.get('/AllEstadoCuenta1', function (req, res, next)  {
             { "$match":
             {
                 "$and" : [
-                    {    fecha_descuento: {$gte: new Date( fechaActual+"T00:00:00.000Z")}},
-                    {    fecha_descuento: {$lte: new Date(fechaAnterior+"T00:00:00.000Z")}}
+                    {    frac_fecha: {$gte: new Date( fechaActual+"T00:00:00.000Z")}},
+                    {    frac_fecha: {$lte: new Date(fechaAnterior+"T00:00:00.000Z")}},
+                    {    estado: "1"}
 
 
                 ]
@@ -255,7 +265,7 @@ router.post('/EstadoCuentaDocenteFecha', function (req, res, next)  {
 
         {
             "id_docente":  req.body.docente,
-            "fecha_descuento": {
+            "frac_fecha": {
                 $gte: new Date(req.body.fecha),
                 $lte: new Date(req.body.fecha1)
             }

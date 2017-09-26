@@ -11,21 +11,28 @@ TipoUsuario.register(router,'/descuentos');
 
 
 
-
-
 var hoy = new Date();
 var dd = hoy.getDate();
 var mm = hoy.getMonth()+1; //hoy es 0!
 var yyyy = hoy.getFullYear();
 var mes = mm;
 
+var mes1=mm+1;
+
 if(mes<10) {
     mes='0'+mes
 }
 
-var fecha1 = mes+'/'+yyyy;
+if(mes1<10) {
+    mes1='0'+mes1
+}
 
-console.log(fecha1);
+
+
+
+
+var fechaAnterior =yyyy+"-"+mes1+"-"+15;
+var fechaActual = yyyy+"-"+mes+"-"+15;
 
 
 
@@ -37,7 +44,12 @@ console.log("entro");
     TipoUsuario.aggregate([
         {
             $match: {
-                fecha: { $eq: fecha1 },descripcion: { $eq:"Credito Emergente"  }
+
+                "fecha": {
+                    $gte: new Date(fechaActual+"T00:00:00.000Z"),
+                    $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+                }
+                ,descripcion: { $eq:"Credito Emergente"  }
             }
         },
         {
@@ -69,7 +81,10 @@ router.get('/mesCuotas', function (req, res, next)  {
     TipoUsuario.aggregate([
         {
             $match: {
-                fecha: { $eq: fecha1 },descripcion: { $eq:"Valor cuota inicial"  }
+                "fecha": {
+                    $gte: new Date(fechaActual+"T00:00:00.000Z"),
+                    $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+                },descripcion: { $eq:"Valor cuota inicial"  }
             }
         },
         {
