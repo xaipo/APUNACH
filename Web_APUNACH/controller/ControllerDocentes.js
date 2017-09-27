@@ -879,10 +879,8 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     swal("Error!", "No se modifico el docente!", "error");
                 } else {
 
+
                     swal("Exito!", "El docente se modifico correctamente!", "success");
-                    $location.path("/ListaDocentes");
-
-
 
                 }
 
@@ -1113,6 +1111,11 @@ console.log(
 
                 $scope.docente = response.data[0];
                 console.log($scope.docente);
+
+                if($scope.docente.id_tipo_contrato.tipo == "Nombramiento")
+                {
+                    $('#fechas_contrato').hide();
+                }
 
                 console.log($scope.docente);
                 $scope.initDocentes();

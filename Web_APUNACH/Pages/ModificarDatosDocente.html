@@ -3,7 +3,7 @@
         <ul class="breadcrumb">
             <li>
                 <i class="ace-icon fa fa-home home-icon"></i>
-                <a href="Principal.html#!/">Inicio</a>
+                <a href="PrincipalDocente.html#!/">Inicio</a>
             </li>
             <li class="active">Docentes</li>
             <li class="active">Modificar docentes</li>
@@ -114,7 +114,7 @@
                         <div class="col-md-3 col-sm-6 col-xs-10">
 
                             <select class="form-control "  ng-model="docente.id_tipo_contrato.tipo" ng-options="item.descripcion as item.descripcion for item in listTipo_contrato" required disabled></select>
-                            <div class="input-daterange input-group" >
+                            <div class="input-daterange input-group" id="fechas_contrato">
                                 <input type="text" class="input-sm form-control" ng-model="docente.id_tipo_contrato.fecha_inicio" id="fecha_inicio"  />
 																	<span class="input-group-addon">
 																		<i class="fa fa-exchange"></i>

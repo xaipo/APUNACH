@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9349b8b5-312d-4b15-a36a-d2804200c91d" name="Default" comment="correccion agregar descuentos por local">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDatosDocente.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDatosDocente.html" afterPath="$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDatosDocente.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html" afterPath="$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/app.js" afterPath="$PROJECT_DIR$/Web_APUNACH/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" afterPath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js" afterPath="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web_APUNACH/pages/ImprimirReporte.html" afterPath="$PROJECT_DIR$/Web_APUNACH/pages/ImprimirReporte.html" />
     </list>
     <list id="2a52763a-8609-427c-90c4-b4680a93f5d5" name="New changelist" comment="" />
     <ignored path="APUNACH.iws" />
@@ -33,7 +31,7 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="5372">
               <caret line="316" column="62" selection-start-line="316" selection-start-column="62" selection-end-line="316" selection-end-column="83" />
               <folding>
                 <marker date="1506455827764" expanded="true" signature="276:279" placeholder="{...}" />
@@ -43,11 +41,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Descuentos.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/Descuentos.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1496">
+              <caret line="88" column="108" selection-start-line="88" selection-start-column="108" selection-end-line="88" selection-end-column="108" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ModificarDatosDocente.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDatosDocente.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="59" selection-start-line="0" selection-start-column="59" selection-end-line="0" selection-end-column="59" />
+            <state relative-caret-position="85">
+              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -66,22 +74,67 @@
       <file leaf-file-name="ControllerDescuentos.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="454" column="0" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="95" />
+            <state relative-caret-position="57137">
+              <caret line="3365" column="11" selection-start-line="3365" selection-start-column="11" selection-end-line="3365" selection-end-column="11" />
               <folding>
-                <marker date="1506455827752" expanded="true" signature="53052:56135" placeholder="{...}" />
-                <marker date="1506455827752" expanded="true" signature="53052:56302" placeholder="{...}" />
-                <marker date="1506455827752" expanded="true" signature="53052:56314" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="18839:28073" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="19604:27816" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="19665:19816" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="19848:27803" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="19873:20401" placeholder="{&quot;method&quot;: 'POST'...}" />
+                <marker date="1506468187069" expanded="true" signature="20014:20161" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="20044:20135" placeholder="//..." />
+                <marker date="1506468187069" expanded="true" signature="20193:20377" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="20443:27636" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="20756:27005" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="21010:23940" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="21237:22430" placeholder="{&quot;method&quot;: 'POST'...}" />
+                <marker date="1506468187069" expanded="true" signature="21421:21616" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="21467:21574" placeholder="//..." />
+                <marker date="1506468187069" expanded="true" signature="21664:22390" placeholder="{&quot;cantidad&quot;: 0...}" />
+                <marker date="1506468187069" expanded="true" signature="22472:22582" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="22617:22734" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="22903:23506" placeholder="{&quot;method&quot;: 'PUT'...}" />
+                <marker date="1506468187069" expanded="true" signature="23111:23306" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="23157:23264" placeholder="//..." />
+                <marker date="1506468187069" expanded="true" signature="23354:23466" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="23548:23657" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="23692:23809" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="23978:26972" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="24263:25457" placeholder="{&quot;method&quot;: 'POST'...}" />
+                <marker date="1506468187069" expanded="true" signature="24447:24642" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="24493:24600" placeholder="//..." />
+                <marker date="1506468187069" expanded="true" signature="24690:25417" placeholder="{&quot;cantidad&quot;: 0...}" />
+                <marker date="1506468187069" expanded="true" signature="25499:25608" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="25643:25760" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="25931:26534" placeholder="{&quot;method&quot;: 'PUT'...}" />
+                <marker date="1506468187069" expanded="true" signature="26139:26334" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="26185:26292" placeholder="//..." />
+                <marker date="1506468187069" expanded="true" signature="26382:26494" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="26576:26685" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="27010:27606" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="27904:28073" placeholder="{...}" />
+                <marker date="1506468187069" expanded="true" signature="67565:68177" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerDocentes.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControllerDocentes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="1113" column="48" selection-start-line="1113" selection-start-column="48" selection-end-line="1113" selection-end-column="48" />
+            <state relative-caret-position="18972">
+              <caret line="1116" column="39" selection-start-line="1116" selection-start-column="39" selection-end-line="1116" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Principal.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1683">
+              <caret line="99" column="13" selection-start-line="80" selection-start-column="3" selection-end-line="99" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -90,38 +143,18 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="233" column="62" selection-start-line="233" selection-start-column="62" selection-end-line="233" selection-end-column="62" />
+            <state relative-caret-position="3961">
+              <caret line="233" column="58" selection-start-line="233" selection-start-column="58" selection-end-line="233" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/LoginController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="112" column="11" selection-start-line="86" selection-start-column="7" selection-end-line="112" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VerDescuentos.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/VerDescuentos.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrincipalDocente.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PrincipalDocente.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="165" column="72" selection-start-line="165" selection-start-column="72" selection-end-line="165" selection-end-column="72" />
+            <state relative-caret-position="303">
+              <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -188,12 +221,12 @@
         <option value="$PROJECT_DIR$/Web_APUNACH/Pages/IngresoDocentes.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/Pages/Descuentos.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/Pages/ImprimirReporte.html" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/app.js" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html" />
         <option value="$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDocentes.html" />
-        <option value="$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDatosDocente.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js" />
         <option value="$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDatosDocente.html" />
+        <option value="$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html" />
       </list>
     </option>
   </component>
@@ -235,106 +268,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Web_APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Web_APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Web_APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HttpServices" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="APUNACH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HttpServices" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="Scratches" />
     </panes>
@@ -374,11 +308,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/models/CuotasCredito.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/models/Descuentos.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/models/EstadoCuenta.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/models/Ingreso.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/routes/CuotasCredito.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/routes/Descuentos.js</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/HttpServices/routes/EstadoCuenta.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/app.js</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -475,7 +408,7 @@
       </FILE-GROUP>
     </UpdatedFiles>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+  <component name="RunManager" selected="Node.js.server.js">
     <configuration default="false" name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/HttpServices">
       <method />
     </configuration>
@@ -553,8 +486,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.server.js" />
+        <item index="0" class="java.lang.String" itemvalue="Node.js.server.js" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
         <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.Principal.html" />
         <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.indexLocal.html" />
         <item index="4" class="java.lang.String" itemvalue="Node.js.ControllerLocales.js" />
@@ -640,7 +573,8 @@
       <workItem from="1505922046302" duration="20012000" />
       <workItem from="1506006507279" duration="12239000" />
       <workItem from="1506089205519" duration="28543000" />
-      <workItem from="1506440376399" duration="9548000" />
+      <workItem from="1506440376399" duration="14773000" />
+      <workItem from="1506468138744" duration="714000" />
     </task>
     <task id="LOCAL-00001" summary="Usuario_ingreso,modificar,eliminar">
       <created>1501045821991</created>
@@ -758,7 +692,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="518045000" />
+    <option name="totallyTimeSpent" value="523984000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -770,14 +704,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17633928" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17633928" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16530278" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23731588" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16530278" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -844,13 +778,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HttpServices/models/Carrera.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServices/models/CuentasGasto.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -990,7 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,7 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="76" column="9" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,7 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="338" column="88" selection-start-line="338" selection-start-column="88" selection-end-line="338" selection-end-column="88" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,7 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="277" column="87" selection-start-line="277" selection-start-column="87" selection-end-line="277" selection-end-column="87" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1106,7 +1029,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="141" column="79" selection-start-line="141" selection-start-column="79" selection-end-line="141" selection-end-column="79" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1114,7 +1036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,7 +1043,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="32" column="80" selection-start-line="32" selection-start-column="80" selection-end-line="32" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,29 +1050,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/Descuentos.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="46" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="165" column="72" selection-start-line="165" selection-start-column="72" selection-end-line="165" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
+        <state relative-caret-position="5372">
           <caret line="316" column="62" selection-start-line="316" selection-start-column="62" selection-end-line="316" selection-end-column="83" />
           <folding>
             <marker date="1506455827764" expanded="true" signature="276:279" placeholder="{...}" />
@@ -1165,7 +1068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1173,19 +1075,76 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/Descuentos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="88" column="108" selection-start-line="88" selection-start-column="108" selection-end-line="88" selection-end-column="108" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDescuentos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="454" column="0" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="95" />
+        <state relative-caret-position="57137">
+          <caret line="3365" column="11" selection-start-line="3365" selection-start-column="11" selection-end-line="3365" selection-end-column="11" />
           <folding>
-            <marker date="1506455827752" expanded="true" signature="53052:56135" placeholder="{...}" />
-            <marker date="1506455827752" expanded="true" signature="53052:56302" placeholder="{...}" />
-            <marker date="1506455827752" expanded="true" signature="53052:56314" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="18839:28073" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="19604:27816" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="19665:19816" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="19848:27803" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="19873:20401" placeholder="{&quot;method&quot;: 'POST'...}" />
+            <marker date="1506468187069" expanded="true" signature="20014:20161" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="20044:20135" placeholder="//..." />
+            <marker date="1506468187069" expanded="true" signature="20193:20377" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="20443:27636" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="20756:27005" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="21010:23940" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="21237:22430" placeholder="{&quot;method&quot;: 'POST'...}" />
+            <marker date="1506468187069" expanded="true" signature="21421:21616" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="21467:21574" placeholder="//..." />
+            <marker date="1506468187069" expanded="true" signature="21664:22390" placeholder="{&quot;cantidad&quot;: 0...}" />
+            <marker date="1506468187069" expanded="true" signature="22472:22582" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="22617:22734" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="22903:23506" placeholder="{&quot;method&quot;: 'PUT'...}" />
+            <marker date="1506468187069" expanded="true" signature="23111:23306" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="23157:23264" placeholder="//..." />
+            <marker date="1506468187069" expanded="true" signature="23354:23466" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="23548:23657" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="23692:23809" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="23978:26972" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="24263:25457" placeholder="{&quot;method&quot;: 'POST'...}" />
+            <marker date="1506468187069" expanded="true" signature="24447:24642" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="24493:24600" placeholder="//..." />
+            <marker date="1506468187069" expanded="true" signature="24690:25417" placeholder="{&quot;cantidad&quot;: 0...}" />
+            <marker date="1506468187069" expanded="true" signature="25499:25608" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="25643:25760" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="25931:26534" placeholder="{&quot;method&quot;: 'PUT'...}" />
+            <marker date="1506468187069" expanded="true" signature="26139:26334" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="26185:26292" placeholder="//..." />
+            <marker date="1506468187069" expanded="true" signature="26382:26494" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="26576:26685" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="27010:27606" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="27904:28073" placeholder="{...}" />
+            <marker date="1506468187069" expanded="true" signature="67565:68177" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3961">
+          <caret line="233" column="58" selection-start-line="233" selection-start-column="58" selection-end-line="233" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/LoginController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -1197,34 +1156,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/index.html">
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="233" column="62" selection-start-line="233" selection-start-column="62" selection-end-line="233" selection-end-column="62" />
+        <state relative-caret-position="18972">
+          <caret line="1116" column="39" selection-start-line="1116" selection-start-column="39" selection-end-line="1116" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/LoginController.js">
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/Principal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="112" column="11" selection-start-line="86" selection-start-column="7" selection-end-line="112" selection-end-column="11" />
+        <state relative-caret-position="1683">
+          <caret line="99" column="13" selection-start-line="80" selection-start-column="3" selection-end-line="99" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web_APUNACH/Pages/ModificarDatosDocente.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="59" selection-start-line="0" selection-start-column="59" selection-end-line="0" selection-end-column="59" />
+        <state relative-caret-position="85">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web_APUNACH/controller/ControllerDocentes.js">
+    <entry file="file://$PROJECT_DIR$/Web_APUNACH/PrincipalDocente.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="1113" column="48" selection-start-line="1113" selection-start-column="48" selection-end-line="1113" selection-end-column="48" />
+        <state relative-caret-position="303">
+          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
           <folding />
         </state>
       </provider>
