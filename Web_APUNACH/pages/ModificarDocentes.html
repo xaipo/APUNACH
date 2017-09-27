@@ -113,9 +113,9 @@
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" >Tipo de contrato</label>
                         <div class="col-md-3 col-sm-6 col-xs-10">
 
-                            <select class="form-control "  ng-model="docente.id_tipo_contrato.tipo" ng-options="item.descripcion as item.descripcion for item in listTipo_contrato" required ></select>
-                            <div class="input-daterange input-group" >
-                                <input type="text" class="input-sm form-control" ng-model="docente.id_tipo_contrato.fecha_inicio" id="fecha_inicio"  />
+                            <select class="form-control "  ng-model="docente.id_tipo_contrato.tipo" ng-change="cambioM()" ng-options="item.descripcion as item.descripcion for item in listTipo_contrato" required ></select>
+                            <div class="input-daterange input-group" id="fechas_contrato1" >
+                                <input type="text" class="input-sm form-control" ng-model="docente.id_tipo_contrato.fecha_inicio" id="fecha_inicio" />
 																	<span class="input-group-addon">
 																		<i class="fa fa-exchange"></i>
 																	</span>
@@ -141,20 +141,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idmiembro_asociacion"> Mienbro de la asociacion:</label>
+                        <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="miembro_asociacion"> Mienbro de la asociacion:</label>
 
-                        <div class="col-md-7 col-sm-6 col-xs-10">
-                            <input type="text" id="idmiembro_asociacion" ng-model="docente.miembro_asociacion" placeholder="Miembro de la asociacion" required class="col-md-7 col-xs-12" />
+                        <div class="col-md-4 col-sm-4 col-xs-10">
+
+                            <select class="form-control " id="miembro_asociacion" ng-change="afiliacionM()" ng-model="docente.miembro_asociacion"   >
+                                <option>Si</option>
+                                <option>No</option>
+                            </select>
+
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-show="mostrarM">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idfecha_afiliacion"> Fecha de afiliacion:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">
                             <input type="text" id="idfecha_afiliacion" ng-model="docente.fecha_afiliacion" placeholder="Fecha de afiliacion" required class="col-md-7 col-xs-12" />
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-show="mostrarM">
                         <label class="col-md-4 col-sm-4 col-xs-12 control-label no-padding-right" for="idvalor_cuota"> Valor de la cuota:</label>
 
                         <div class="col-md-7 col-sm-6 col-xs-10">

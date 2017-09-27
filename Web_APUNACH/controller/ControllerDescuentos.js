@@ -2285,7 +2285,7 @@ var porcentaje=($scope.porcentaje/100);
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen locales en la BD!", "warning");
+               // swal("Advertencia!", "No existen locales en la BD!", "warning");
             } else {
 
                 $scope.listCreditosEmegentes = response.data;
