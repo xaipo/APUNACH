@@ -38,12 +38,6 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             }
 
 
-
-
-
-
-
-
         }, function errorCallback(response) {
 
             alert('error al realizar Ingreso');
@@ -2294,7 +2288,7 @@ var porcentaje=($scope.porcentaje/100);
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen locales en la BD!", "warning");
+               // swal("Advertencia!", "No existen locales en la BD!", "warning");
             } else {
 
                 $scope.listCreditosEmegentes = response.data;
@@ -3350,10 +3344,6 @@ var mesFecha = año+"-"+mes+"-";
 
     $scope.AgregarMes=function(){
 
-
-
-
-
         //permite cambiar el estado del mes en parametros
 
 
@@ -3371,9 +3361,6 @@ var mesFecha = año+"-"+mes+"-";
 
         }).then(function successCallback(response) {
             console.log(response.data);
-
-
-
 
         }, function errorCallback(response) {
 
@@ -3438,7 +3425,7 @@ var mesFecha = año+"-"+mes+"-";
                     {
                         $scope.initDescuentos()
                         $scope.initListarDescuentos();
-                        swal("Exito!", "El mes se creo corectamente!", "success");
+
                     }
 
 
@@ -3470,6 +3457,7 @@ var mesFecha = año+"-"+mes+"-";
                             console.log(response.data[0]);
                             console.log(i);
                             $scope.listaaa.push(response.data[0]);
+
 
 
 
@@ -3545,6 +3533,10 @@ var mesFecha = año+"-"+mes+"-";
                                     }).then(function successCallback(response) {
 
                                         console.log(response.data);
+                                        swal("Exito!", "El mes se creo corectamente!", "success");
+
+
+
 
                                     }, function errorCallback(response) {
 
@@ -3623,6 +3615,8 @@ var mesFecha = año+"-"+mes+"-";
                                     }).then(function successCallback(response) {
 
                                         console.log(response.data);
+                                        swal("Exito!", "El mes se creo corectamente!", "success");
+
 
                                     }, function errorCallback(response) {
 

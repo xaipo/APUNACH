@@ -303,6 +303,21 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
 
     }
+    $scope.afiliacionM=function () {
+
+        if ($scope.docente.miembro_asociacion=="No"){
+
+            $scope.mostrarM=false;
+
+        }else {
+
+
+            $scope.mostrarM=true;
+
+        }
+
+
+    }
 
 
 
@@ -316,6 +331,23 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
 
 
             $scope.mostrar=true;
+
+        }
+
+
+
+    }
+    $scope.cambioM=function () {
+        console.log($scope.docente.id_tipo_contrato.tipo);
+
+        if ($scope.docente.id_tipo_contrato.tipo=="Nombramiento"){
+
+            $('#fechas_contrato1').hide();
+
+        }else {
+
+            $('#fechas_contrato1').show();
+            $scope.docente.valor_cuota = 0;
 
         }
 
@@ -729,6 +761,22 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         var fecha1 = $scope.docente.fecha_afiliacion.split("T");
         $scope.docente.fecha_afiliacion = fecha1[0];
 
+        if ($scope.docente.miembro_asociacion=="No"){
+
+            $scope.mostrarM=false;
+
+        }else {
+
+
+            $scope.mostrarM=true;
+
+        }
+
+        if($scope.docente.id_tipo_contrato.tipo == "Nombramiento")
+        {
+            $('#fechas_contrato1').hide();
+        }
+
         $http({
             method: 'GET',
             url: myProvider.getFacultades(),
@@ -798,6 +846,11 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         console.log($scope.docente.id_carrera);
 
 
+
+
+
+
+
         $http({
             method: 'GET',
             url: myProvider.getParametros()+"?estado="+0,
@@ -814,26 +867,40 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
             var mm = hoy.getMonth(); //hoy es 0!
             var yyyy = hoy.getFullYear();
 
-            var fecha_afiliacion = $('#idfecha_afiliacion').val();
-            console.log($('#idfecha_afiliacion').val());
-            var fecha = fecha_afiliacion.split("-");
-            var año = fecha[0];
-            var mes = fecha[1];
-            var dia = fecha[2];
+            if ($scope.docente.miembro_asociacion=="No"){
 
-            console.log(año);
-            console.log(mes);
-            console.log(dia);
+                $scope.docente.valor_cuota = 0;
 
-            var cuotas=12-mes+1;
-            $scope.docente.valor_cuota=response.data[0].valor/cuotas;
-            console.log($scope.docente.valor_cuota);
+            }else {
 
-            $scope.cuotaInicial={
-                cuotas:cuotas,
-                valor:$scope.docente.valor_cuota
 
-            };
+                var fecha_afiliacion = $('#idfecha_afiliacion').val();
+                console.log($('#idfecha_afiliacion').val());
+                var fecha = fecha_afiliacion.split("-");
+                var año = fecha[0];
+                var mes = fecha[1];
+                var dia = fecha[2];
+
+                console.log(año);
+                console.log(mes);
+                console.log(dia);
+
+                var cuotas=12-mes+1;
+                $scope.docente.valor_cuota=response.data[0].valor/cuotas;
+                console.log($scope.docente.valor_cuota);
+
+                $scope.cuotaInicial={
+                    cuotas:cuotas,
+                    valor:$scope.docente.valor_cuota
+
+                };
+
+
+            }
+
+
+
+
 
 
 
@@ -879,10 +946,8 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
                     swal("Error!", "No se modifico el docente!", "error");
                 } else {
 
+
                     swal("Exito!", "El docente se modifico correctamente!", "success");
-                    $location.path("/ListaDocentes");
-
-
 
                 }
 
@@ -1113,6 +1178,11 @@ console.log(
 
                 $scope.docente = response.data[0];
                 console.log($scope.docente);
+
+                if($scope.docente.id_tipo_contrato.tipo == "Nombramiento")
+                {
+                    $('#fechas_contrato').hide();
+                }
 
                 console.log($scope.docente);
                 $scope.initDocentes();
