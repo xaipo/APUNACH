@@ -4,6 +4,15 @@
 var express= require('express');
 var router= express.Router();
 
+var jsonsafeparse = require('json-safe-parse');
+var TipoUsuario = require('../models/EstadoCuenta');
+var Docente = require('../models/Docente');
+var Locales = require('../models/Locales');
+var Excel = require('exceljs');
+
+
+
+
 var TipoUsuario = require('../models/EstadoCuenta');
 var Docente = require('../models/Docente');
 
@@ -182,6 +191,8 @@ router.get('/funexel', function (req, res, next)  {
                     var fs = require('fs');
                     var file= Date.now()+'.xlsx'
 
+                    var totalh = 0;
+
 
                     var writeStream = fs.createWriteStream(file);
                     var workbook = new Excel.Workbook();
@@ -201,6 +212,7 @@ router.get('/funexel', function (req, res, next)  {
                         array.push(auxDoc);
 
                     }
+                array.push({header: 'TOTAL', key: 'totalH', width: 20});
                     worksheet.columns=array;
 
 
@@ -218,6 +230,7 @@ router.get('/funexel', function (req, res, next)  {
                             //console.log(aux);
                             var m=tareas[j].estadocuenta.descuentos.length
                             var auxDescuento=tareas[j].estadocuenta.descuentos;
+
 
                             var resultado=auxDescuento.filter(tarea => tarea.nombre_local===locales[i].nombre);
                             var total=resultado.length;
@@ -240,6 +253,7 @@ router.get('/funexel', function (req, res, next)  {
                             console.log(locales[i].nombre);
 
                         }
+                        aux+='{"totalH":"'+100+'"}';
                         var num= aux.length;
                         aux=aux.substring(2,num-1);
                         aux+='}';

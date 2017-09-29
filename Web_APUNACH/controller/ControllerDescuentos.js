@@ -2614,27 +2614,6 @@ var porcentaje=($scope.porcentaje/100);
     $scope.correo=function () {
 
 
-
-        $http({
-            method: 'GET',
-            url: myProvider.getConsolidado(),
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
-            },
-
-        }).then(function successCallback(response) {
-
-
-
-
-        }, function errorCallback(response) {
-
-            alert('error al realizar Ingreso');
-
-        });
-
-
         $http({
             method: 'GET',
             url: myProvider.getEnvioCorreos(),
@@ -3294,6 +3273,31 @@ var mesFecha = año+"-"+mes+"-";
 
 
     }
+
+
+    $scope.ReporteConsolidado=function(){
+
+        $http({
+            method: 'GET',
+            url: myProvider.getConsolidado(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+        
+    }
+
 
     $scope.ReporteCerrar_mes=function(lista){
 
