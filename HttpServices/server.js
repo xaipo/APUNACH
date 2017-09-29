@@ -36,7 +36,7 @@ var key='1234';
 //var db=rc4(key,config.database);
 var db2=add(key,config.database);
 //console.log(db);
-//console.log(db2);
+console.log(db2);
 
 
 
@@ -44,7 +44,8 @@ var db2=add(key,config.database);
 
 
 // Or `createConnection`
-var promise = mongoose.connect(db2, {
+//var promise = mongoose.connect(db2, {
+var promise = mongoose.connect('mongodb://localhost/APUNACH', {
     useMongoClient: true,
 
 });
