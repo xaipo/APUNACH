@@ -15,64 +15,10 @@ var Excel = require('exceljs');
 
 var TipoUsuario = require('../models/EstadoCuenta');
 var Docente = require('../models/Docente');
-
+var parametros = require('../models/Parametro');
 
 TipoUsuario.methods(['get','put','post','delete','search']);
 TipoUsuario.register(router,'/estadocuenta');
-
-var hoy = new Date();
-var dd = hoy.getDate();
-var mm = hoy.getMonth()+1; //hoy es 0!
-
-var mes = mm;
-
-
-var yyyy = hoy.getFullYear();
-var yyyy1 = hoy.getFullYear();
-
-
-
-
-
-
-
-var mes1=mm+1;
-
-if(mes<10) {
-    mes='0'+mes
-}
-
-if(mes1<10) {
-    mes1='0'+mes1
-
-}else {
-
-    if (mes1>12){
-        var auxf =mes1-12;
-
-        var anio= yyyy1+1;
-        mes1='0'+auxf;
-        yyyy1=anio;
-
-    }
-
-
-
-}
-
-
-
-
-
-
-var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
-var fechaActual = yyyy+"-"+mes+"-"+15;
-
-var fecha1 = mes+'/'+yyyy;
-
-
-
-console.log(fechaActual,fechaAnterior);
 
 
 
@@ -412,6 +358,81 @@ router.get('/AllEstadoCuenta', function (req, res, next)  {
 
 router.get('/AllEstadoCuenta1', function (req, res, next)  {
 
+    parametros.find(
+
+
+
+        {
+            "descripcion": "cierreMes"
+
+        },function (err, datos) {
+            if (err) { return next(err) }
+
+            estado_mes = datos[0].estado;
+
+            console.log(estado_mes);
+
+
+
+
+
+
+if (estado_mes=="cerrado"){
+
+
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth()+1; //hoy es 0!
+
+    var mes = mm;
+
+
+    var yyyy = hoy.getFullYear();
+    var yyyy1 = hoy.getFullYear();
+
+
+
+
+
+
+
+    var mes1=mm+1;
+
+    if(mes<10) {
+        mes='0'+mes
+    }
+
+    if(mes1<10) {
+        mes1='0'+mes1
+
+    }else {
+
+        if (mes1>12){
+            var auxf =mes1-12;
+
+            var anio= yyyy1+1;
+            mes1='0'+auxf;
+            yyyy1=anio;
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+    var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
+    var fechaActual = yyyy+"-"+mes+"-"+15;
+
+    var estado_mes={};
+
+    console.log(fechaActual,fechaAnterior);
+
+
 
 
 
@@ -446,6 +467,116 @@ router.get('/AllEstadoCuenta1', function (req, res, next)  {
             res.json(tareas);
         }
     )
+
+}else {
+
+
+
+
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth()+1; //hoy es 0!
+
+    var mes = mm;
+
+
+    var yyyy = hoy.getFullYear();
+    var yyyy1 = hoy.getFullYear();
+
+
+
+
+
+
+
+    var mes1=mm-1;
+
+    if(mes<10) {
+        mes='0'+mes
+    }
+
+    if(mes1<10) {
+        mes1='0'+mes1
+
+    }else {
+
+        if (mes1>12){
+            var auxf =mes1-12;
+
+            var anio= yyyy1+1;
+            mes1='0'+auxf;
+            yyyy1=anio;
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+    var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
+    var fechaActual = yyyy+"-"+mes+"-"+15;
+
+    var estado_mes={};
+
+    console.log(fechaActual,fechaAnterior);
+
+
+
+
+
+    TipoUsuario.aggregate(
+
+
+        [
+
+
+            { "$match":
+            {
+                "$and" : [
+                    {    frac_fecha: {$gte: new Date( fechaAnterior +"T00:00:00.000Z")}},
+                    {    frac_fecha: {$lte: new Date(fechaActual+"T00:00:00.000Z")}},
+                    {    estado: "1"}
+
+
+                ]
+            }
+
+            },
+
+            {"$lookup": {
+                "from": "docente",
+                "localField": "id_docente",
+                "foreignField": "_id",
+                "as": "R"
+            }}
+
+        ],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
+    )
+
+
+
+}
+
+
+
+
+
+        }
+
+
+    );
+
+
+
+
 
 
 });
