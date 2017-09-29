@@ -116,8 +116,11 @@ function ApiUrl(){
         return direccion+'Ingreso_TipoCuenta';
     },
         this.putIngresos=function(){
-            return direccion+'ingreso';
+            return direccion+'ingresoFecha';
         }
+    this.putIngresos1=function(){
+        return direccion+'ingreso';
+    }
     //Egresos
     this.postSaveCuentaEgreso=function(){
         return direccion+'gastos';

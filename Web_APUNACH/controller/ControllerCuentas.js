@@ -811,6 +811,7 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
         var yyyy = hoy.getFullYear();
 
         var mes = hoy.getMonth()+2; //hoy es 0!
+        var mes1 = hoy.getMonth()+3; //hoy es 0!
 
         if(mm<10) {
             mm='0'+mm
@@ -821,17 +822,21 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
             mes='0'+mes
         }
 
+        if(mes1<10) {
+            mes1='0'+mes1
+        }
 
-        var fecha = mm+'/'+dd+'/'+yyyy;
-        var fecha1 = mm+'/'+yyyy;
-        var fecha2 = mes+'/'+yyyy;
+
+        var fecha = yyyy+"-"+mm+'-'+15+"T00:00:00.000Z";
+        var fecha1 =yyyy+"-"+mes+'-'+15+"T00:00:00.000Z";
+        var fecha2 =yyyy+"-"+mes1+'-'+15+"T00:00:00.000Z";
 
         console.log(fecha1);
 
 
 
         var objeto={
-            fecha:fecha1,
+            fecha:new Date(),
             docente:$scope.docente._id,
             observacion:$scope.observacion,
             estado:"pendiente",
@@ -864,14 +869,22 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
 
 
 
+
         $http({
-            method: 'GET',
-            url: myProvider.getEstadoCuentaxLocal() + "?id_docente=" + objeto.docente+"&&frac_fecha="+fecha2, //Buscar estado de cuenta por od docente y fecha
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
-            },
-            data: {}
+                method: 'POST',
+                url: myProvider.getEstadoCuentaxLocal1() ,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                    docente:objeto.docente,
+                    fecha: fecha1,
+                    fecha1:fecha2
+
+                }
+
 
 
         }).then(function successCallback(response) {
@@ -988,8 +1001,8 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
                         valor_x_pagar: objeto.valor,
                         valor_pagado:0,
                         valor_acarreo_mes_anterior:objeto.valor,
-                        hora:fecha,
-                        frac_fecha:fecha2,
+                        hora:fecha1,
+                        frac_fecha:fecha1,
                         estado:0
 
 
@@ -1070,16 +1083,23 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
         });
 
 
-
-
         $http({
-            method: 'GET',
-            url: myProvider.putIngresos() + "?fecha=" + fecha1, //Buscar estado de cuenta por od docente y fecha
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
-            },
-            data: {}
+                method: 'POST',
+                url: myProvider.putIngresos() ,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                    cuenta:"599f1d9034917b1ea454e64d",
+                    fecha: fecha,
+                    fecha1:fecha1
+
+                }
+
+
+
 
 
         }).then(function successCallback(response) {
@@ -1096,7 +1116,7 @@ console.log(nuevoValor,objeto.valor);
             $http({
 
                 method: 'PUT',
-                url: myProvider.putIngresos()+"/"+response.data[0]._id, //MODIFICAR eSTADO CUENTA
+                url: myProvider.putIngresos1()+"/"+response.data[0]._id, //MODIFICAR eSTADO CUENTA
                 headers: {
                     // 'Content-Type': 'application/json',
                     //'Authorization': token
@@ -1149,13 +1169,7 @@ console.log(nuevoValor,objeto.valor);
 
                 });
 
-
-
-
-
-
-
-
+                
 
             }, function errorCallback(response) {
 

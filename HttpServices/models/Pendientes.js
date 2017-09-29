@@ -7,7 +7,7 @@ var mongoose = restful.mongoose;
 var Pendientes = new mongoose.Schema({
 
     "fecha" : {
-        type: String,
+        type: Date,
         required:true
     },
     "docente" : {

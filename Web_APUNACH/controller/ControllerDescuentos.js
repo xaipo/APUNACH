@@ -339,7 +339,10 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
 
-        $http({
+
+
+
+                $http({
             method: 'GET',
             url: myProvider.getEstadoCuenta_Docente(),
             headers: {

@@ -138,4 +138,37 @@ router.post('/Egresos_Mes', function (req, res, next)  {
 
 
 
+
+
+
+router.post('/ingresoFecha', function (req, res, next)  {
+
+    console.log(req.body);
+
+
+    Ingreso.find(
+
+
+
+        {
+            "id_cuenta":  req.body.cuenta,
+            "fecha": {
+                $gte: new Date(req.body.fecha),
+                $lte: new Date(req.body.fecha1)
+            }
+
+        },function (err, datos) {
+            if (err) { return next(err) }
+            res.json(datos);
+        }
+
+
+    )
+
+
+});
+
+
+
+
 module.exports=router;
