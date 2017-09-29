@@ -3,10 +3,11 @@
  */
 var express= require('express');
 var router= express.Router();
-
+var jsonsafeparse = require('json-safe-parse');
 var TipoUsuario = require('../models/EstadoCuenta');
 var Docente = require('../models/Docente');
-
+var Locales = require('../models/Locales');
+var Excel = require('exceljs');
 
 TipoUsuario.methods(['get','put','post','delete','search']);
 TipoUsuario.register(router,'/estadocuenta');
@@ -135,36 +136,155 @@ console.log(req.body.frac_fecha);
 
 router.get('/estadocuenta_docente1', function (req, res, next)  {
 
+
+
     Docente.aggregate([
 
 
-        {
-            $lookup: {
-                from: "estadocuenta",
-                localField: "_id",
-                foreignField: "id_docente",
-                as: "estadocuenta"
-            }
-        }, {
-            $unwind: {
-                path: "$estadocuenta",
-                preserveNullAndEmptyArrays: true
-            }
-        },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha": {
-            $gte: new Date(fechaActual+"T00:00:00.000Z"),
-            $lte: new Date(fechaAnterior+"T00:00:00.000Z")
-        } } },
-        {
-            $lookup: {
-                from: "descuentos",
-                localField: "estadocuenta._id",
-                foreignField: "id_estado_cuenta",
-                as: "estadocuenta.descuentos",
-            }
-        }],function (err, tareas) {
-        if (err) { return next(err) }
-        res.json(tareas);
-    }
+            {
+                $lookup: {
+                    from: "estadocuenta",
+                    localField: "_id",
+                    foreignField: "id_docente",
+                    as: "estadocuenta"
+                }
+            }, {
+                $unwind: {
+                    path: "$estadocuenta",
+                    preserveNullAndEmptyArrays: true
+                }
+            },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha": {
+                $gte: new Date(fechaActual+"T00:00:00.000Z"),
+                $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+            } } },
+            {
+                $lookup: {
+                    from: "descuentos",
+                    localField: "estadocuenta._id",
+                    foreignField: "id_estado_cuenta",
+                    as: "estadocuenta.descuentos",
+                }
+            }],function (err, tareas) {
+            if (err) { return next(err) }
+
+           // Locales.find()
+            Locales.find({},function (err, locales) {
+                    if (err) { return next(err) }
+
+                    //console.log(tareas[0]);
+                   // console.log(tareas[0].estadocuenta);
+
+                    var fs = require('fs');
+                    var file= Date.now()+'.xlsx'
+
+
+                    var writeStream = fs.createWriteStream(file);
+                    var workbook = new Excel.Workbook();
+                    var worksheet = workbook.addWorksheet('sheet');
+
+                    // must create one more sheet.
+                    // var sheet = workbook.addWorksheet("My Sheet");
+                var s= locales.length
+                    var array=[];
+                array.push({header: 'N', key: 'N', width: 5});
+                array.push({header: 'Relacion Laboral', key: 'Relacion Laboral', width: 20});
+                array.push({header: 'Cedula', key: 'Cedula', width: 20});
+                array.push({header: 'Nombre', key: 'Nombre', width: 40});
+                for(var k=0;k<s;k++) {
+
+                   var auxDoc= {header: locales[k].nombre, key: locales[k].nombre, width: 10};
+                    array.push(auxDoc);
+
+                }
+                    worksheet.columns=array;
+
+
+                console.log(tareas.length)
+                var r=tareas.length;
+                for(var j=0;j<r;j++){
+
+
+                    var n= locales.length;
+                    var aux=JSON.stringify('');
+                    var numCedl=parseInt(j)+1;
+                     aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+tareas[j].nombres+'",';
+                        for(var i=0;i<n;i++){
+
+                            //console.log(aux);
+                            var m=tareas[j].estadocuenta.descuentos.length
+                            var auxDescuento=tareas[j].estadocuenta.descuentos;
+
+                                var resultado=auxDescuento.filter(tarea => tarea.nombre_local===locales[i].nombre);
+                                var total=resultado.length;
+                                if(total===0){
+
+                                    aux+='"'+locales[i].nombre+'"'+':"'+0+'",';
+                                }else{
+                                    if(total<2){
+                                        aux+='"'+locales[i].nombre+'":"'+resultado[0].valor_descuento+'",';
+                                    }else{
+                                        var sum=0;
+                                        for(var s=0; s<total;s++){
+                                            sum+=resultado[s].valor_descuento;
+                                        }
+                                        aux+='"'+locales[i].nombre+'":"'+sum+'",';
+                                    }
+
+                                }
+                                console.log(resultado);
+                                console.log(locales[i].nombre);
+
+                        }
+                            var num= aux.length;
+                            aux=aux.substring(2,num-1);
+                            aux+='}';
+                            console.log(aux);
+                             var newAux=JSON.parse(aux.toString());
+                             worksheet.addRow(newAux);
+                }
+
+
+
+                    //console.log(locales);
+            // res.json(tareas);
+
+
+    // Access an individual columns by key, letter and 1-based column number
+               /* var idCol = worksheet.getColumn('id');
+                var nameCol = worksheet.getColumn('B');
+                var dobCol = worksheet.getColumn(3);*/
+
+    // set column properties
+
+    // Note: will overwrite cell value C1
+
+
+
+
+    // you can create xlsx file now.
+                workbook.xlsx.writeFile('C:\\test\\'+file).then(function() {
+                    res.setHeader('Content-disposition', 'attachment; filename=file.xlsx');
+                    res.setHeader('Content-type', 'application/vnd.ms-excel');
+
+                    //var file =  "C:\\test\\some.xlsx";
+                    var file2="C:\\test\\"+file;
+                    console.log(file2);
+                    var filestream = fs.createReadStream(file2);
+                    filestream.pipe(res);
+                    console.log("xls file is written.-----"+ file);
+                });
+
+                }
+
+
+            )
+
+
+
+
+
+
+        }
 
     );
 

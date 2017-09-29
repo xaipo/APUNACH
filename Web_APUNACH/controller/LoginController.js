@@ -8,9 +8,6 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
     console.log("logincontroler");
 
 
-
-
-
     console.log(myProvider.getUrlAutenticar());
     $scope.mensaje = "";
     $scope.usuario = "";
@@ -118,6 +115,14 @@ app.controller('LoginController', ['$scope', '$http', '$location','myProvider','
 
     };
 
+
+    $scope.test=function(){
+        console.log('entra');
+
+        $scope.unCentavo = 0.01;
+        $scope.suma=$scope.unCentavo+$scope.unCentavo+$scope.unCentavo+$scope.unCentavo+$scope.unCentavo+$scope.unCentavo;
+    console.log($scope.suma);
+}
   //  console.log($rootScope.usuarioLogin);
 
 }]);
