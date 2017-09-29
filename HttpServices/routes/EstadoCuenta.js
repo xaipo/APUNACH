@@ -41,6 +41,7 @@ if(mes1<10) {
 
 }
 
+//error
 
 
 var fechaAnterior =yyyy+"-"+mes1+"-"+15;
