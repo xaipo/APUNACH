@@ -23,11 +23,23 @@ if(mes<10) {
     mes='0'+mes
 }
 
+
 if(mes1<10) {
     mes1='0'+mes1
+}else {
+
+    if (mes1>12){
+        var auxfr =mes1-12;
+
+        var anio= yyyy+1;
+        mes1='0'+auxfr;
+        yyyy=anio;
+
+
+    }
+
+
 }
-
-
 
 
 
@@ -39,6 +51,12 @@ var fecha1 = mes+'/'+yyyy;
 
 
 console.log(fechaActual,fechaAnterior);
+
+
+
+
+
+
 
 
 
@@ -112,7 +130,7 @@ console.log(req.body.frac_fecha);
 
 
 
-
+//docente estado de cuenta
 
 router.get('/estadocuenta_docente1', function (req, res, next)  {
 
