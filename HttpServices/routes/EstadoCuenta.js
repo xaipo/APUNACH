@@ -14,8 +14,14 @@ TipoUsuario.register(router,'/estadocuenta');
 var hoy = new Date();
 var dd = hoy.getDate();
 var mm = hoy.getMonth()+1; //hoy es 0!
-var yyyy = hoy.getFullYear();
+
 var mes = mm;
+
+
+var yyyy = hoy.getFullYear();
+var yyyy1 = hoy.getFullYear();
+
+
 
 var mes1=mm+1;
 
@@ -23,20 +29,20 @@ if(mes<10) {
     mes='0'+mes
 }
 
-
 if(mes1<10) {
     mes1='0'+mes1
+
 }else {
 
     if (mes1>12){
-        var auxfr =mes1-12;
+        var auxf =mes1-12;
 
-        var anio= yyyy+1;
-        mes1='0'+auxfr;
-        yyyy=anio;
-
+        var anio= yyyy1+1;
+        mes1='0'+auxf;
+        yyyy1=anio;
 
     }
+
 
 
 }
@@ -44,7 +50,7 @@ if(mes1<10) {
 
 
 
-var fechaAnterior =yyyy+"-"+mes1+"-"+15;
+var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
 var fechaActual = yyyy+"-"+mes+"-"+15;
 
 var fecha1 = mes+'/'+yyyy;

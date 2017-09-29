@@ -1921,14 +1921,17 @@ var porcentaje=($scope.porcentaje/100);
 
                     }
 
+                    
                     ///probar q funcione el crear nuevos estados de cuenta segun el mes si se pasa de 12 
 
                //fecha inicio
                     var fecha =yyyy+"-"+mes+"-"+15+"T00:00:00.000Z";
                     //fecha fin
+
                     var fecha1 =yyyy1+"-"+mes1+"-"+15+"T00:00:00.000Z";
 
 //fech actual q se crea en cada estado cuenta nuevo
+
                     var fecha2 =yyyy+"-"+mes+'-'+dd+"T00:00:00.000Z";
 
 
