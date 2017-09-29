@@ -170,6 +170,9 @@ function ApiUrl(){
     this.getEnvioCorreos=function(){
         return direccion+'estadocuenta_docente1';
     }
+    this.getConsolidado=function(){
+        return direccion+'funexel';
+    }
 
 
     this.getMesPrestamos=function(){

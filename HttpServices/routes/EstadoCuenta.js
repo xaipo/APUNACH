@@ -63,12 +63,6 @@ console.log(fechaActual,fechaAnterior);
 
 
 
-
-
-
-
-
-
 router.get('/estadocuenta_docente', function (req, res, next)  {
     TipoUsuario.aggregate(
 
@@ -139,7 +133,7 @@ console.log(req.body.frac_fecha);
 
 //docente estado de cuenta
 
-router.get('/estadocuenta_docente1', function (req, res, next)  {
+router.get('/funexel', function (req, res, next)  {
 
     Docente.aggregate([
 
@@ -171,6 +165,46 @@ router.get('/estadocuenta_docente1', function (req, res, next)  {
         if (err) { return next(err) }
         res.json(tareas);
     }
+
+    );
+
+
+});
+
+
+
+router.get('/estadocuenta_docente1', function (req, res, next)  {
+
+    Docente.aggregate([
+
+
+            {
+                $lookup: {
+                    from: "estadocuenta",
+                    localField: "_id",
+                    foreignField: "id_docente",
+                    as: "estadocuenta"
+                }
+            }, {
+                $unwind: {
+                    path: "$estadocuenta",
+                    preserveNullAndEmptyArrays: true
+                }
+            },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha": {
+                $gte: new Date(fechaActual+"T00:00:00.000Z"),
+                $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+            } } },
+            {
+                $lookup: {
+                    from: "descuentos",
+                    localField: "estadocuenta._id",
+                    foreignField: "id_estado_cuenta",
+                    as: "estadocuenta.descuentos",
+                }
+            }],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
 
     );
 
