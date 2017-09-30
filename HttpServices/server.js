@@ -67,6 +67,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 //body-parser middleware
 app.use(bodyParser.json());
 
+var CronJob = require('cron').CronJob;
+var job = new CronJob({
+    cronTime: '*/1 * * * *',
+    onTick: function() {
+
+        console.log("cambio de hora");
+    },
+    start: false,
+
+});
+job.start();
+
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());

@@ -811,7 +811,7 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
         var yyyy = hoy.getFullYear();
 
         var mes = hoy.getMonth()+2; //hoy es 0!
-        var mes1 = hoy.getMonth()+3; //hoy es 0!
+        var mes1 = hoy.getMonth(); //hoy es 0!
 
         if(mm<10) {
             mm='0'+mm
@@ -880,8 +880,8 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
                 data: {
 
                     docente:objeto.docente,
-                    fecha: fecha1,
-                    fecha1:fecha2
+                    fecha: fecha,
+                    fecha1:fecha1
 
                 }
 
@@ -1001,9 +1001,9 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
                         valor_x_pagar: objeto.valor,
                         valor_pagado:0,
                         valor_acarreo_mes_anterior:objeto.valor,
-                        hora:fecha1,
-                        frac_fecha:fecha1,
-                        estado:0
+                        hora:fecha,
+                        frac_fecha:fecha,
+                        estado:1
 
 
 
@@ -1093,8 +1093,8 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
                 data: {
 
                     cuenta:"599f1d9034917b1ea454e64d",
-                    fecha: fecha,
-                    fecha1:fecha1
+                    fecha: fecha2,
+                    fecha1:fecha
 
                 }
 

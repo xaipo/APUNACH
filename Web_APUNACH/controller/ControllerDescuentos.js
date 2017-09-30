@@ -440,8 +440,34 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
 
+        $http({
+            method: 'GET',
+            url: myProvider.getMesFechaC(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
 
-    }
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+            $scope.fechaMesT=response.data.fecha;
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+
+
+
+    };
 
 
     $scope.initListarDescuentosImpri=function(){
@@ -2501,11 +2527,17 @@ var porcentaje=($scope.porcentaje/100);
         $scope.cuentas=[];
 
 
-        var fecha_del_sistema = new Date();
-        
-        
-        
-        $http({
+
+
+
+
+
+
+        var fecha_del_sistema = $scope.fechaMesT;
+
+
+
+            $http({
             method: 'GET',
             url: myProvider.getMesPrestamos(),
             headers: {

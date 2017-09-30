@@ -195,6 +195,13 @@ function ApiUrl(){
     this.postCuentaIngresos=function(){
         return direccion+'ingresosMes';
     }
+
+    
+
+    this.getMesFechaC=function(){
+        return direccion+'EstadoMesParametro';
+    }
+    
     
     this.putEstado_cuenta=function(){
         return direccion+'estadocuenta';
