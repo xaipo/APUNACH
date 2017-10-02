@@ -2782,6 +2782,35 @@ function totales(totalEstado,fecha_del_sistema) {
 
     });
 
+
+
+
+
+    $http({
+        method: 'PUT',
+        url: myProvider.putParametros()+"/59ceb054488b3a22503027af",
+        headers: {
+            // 'Content-Type': 'application/json',
+            //'Authorization': token
+        },
+        data: {
+            estado: "cerrado"
+        }
+
+
+    }).then(function successCallback(response) {
+        console.log(response.data);
+
+    }, function errorCallback(response) {
+
+        alert('error al realizar Ingreso');
+
+    });
+
+
+
+
+
 }
 
     function getBase64Image(img) {
