@@ -90,5 +90,33 @@ router.get('/EstadoMesParametro', function (req, res, next)  {
 
 
 
+router.get('/EstadoCierreMes', function (req, res, next)  {
+
+    TipoUsuario.find(
+
+
+
+        {
+            "descripcion": "cierreMes"
+
+        },function (err, datos) {
+            if (err) {
+                return next(err)
+            }
+
+
+            res.json({estado: datos[0].estado});
+
+        });
+
+
+
+
+});
+
+
+
+
+
 
 module.exports=router;

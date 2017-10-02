@@ -1820,6 +1820,13 @@ var i=0;
 
 
 
+
+
+
+
+
+
+
         console.log($scope.porcentaje);
 
 var porcentaje=($scope.porcentaje/100);
@@ -1833,51 +1840,40 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
-        var hoy = new Date();
-        var dd = hoy.getDate();
-        var mm = hoy.getMonth()+1; //hoy es 0!
-        var yyyy = hoy.getFullYear();
-        var mes = mm;
+        if ($scope.cierreMes=="cerrado"){
+
+            $http({                                            //Guardar el registro de Credito Emergente
+                method: 'POST',
+                url: myProvider.postSaveCredito_Emergente(),
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                    valor:$scope.valor_pres,
+                    fecha_maxima_pago:new Date(),
+                    numero_cuotas:$scope.val_cuotas,
+                    usuario: $scope.docenteingresar._id,
+                    id_docente:$scope.docenteingresar._id,
+                    valor_a_pagar:pago,
+                    nombre_docente:$scope.docenteingresar.nombres +" "+ $scope.docenteingresar.apellidos,
+                    ci_docente:$scope.docenteingresar.cedula
+
+                }
 
 
 
-        if(mes<10) {
-            mes='0'+mes
-        }
 
+            }).then(function successCallback(response) {
 
+                console.log(response.data);
+                if (response.data.length == 0) {
 
+                    swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
+                } else {
 
-        $http({                                            //Guardar el registro de Credito Emergente
-            method: 'POST',
-            url: myProvider.postSaveCredito_Emergente(),
-            headers: {
-                // 'Content-Type': 'application/json',
-                //'Authorization': token
-            },
-            data: {
-
-                valor:$scope.valor_pres,
-                fecha_maxima_pago:new Date(),
-                numero_cuotas:$scope.val_cuotas,
-                usuario: $scope.docenteingresar._id,
-                id_docente:$scope.docenteingresar._id,
-                valor_a_pagar:pago,
-                nombre_docente:$scope.docenteingresar.nombres +" "+ $scope.docenteingresar.apellidos,
-                ci_docente:$scope.docenteingresar.cedula
-
-            }
-
-
-        }).then(function successCallback(response) {
-
-            console.log(response.data);
-            if (response.data.length == 0) {
-
-                swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
-            } else {
-
-                swal("Exito!", "El credito emergente se registro correctamente!", "success");
+                    swal("Exito!", "El credito emergente se registro correctamente!", "success");
 
 
 
@@ -1888,110 +1884,89 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
-                for(var i=0;i<$scope.val_cuotas;i++) {
+                    for(var i=0;i<$scope.val_cuotas;i++) {
 
 
 
-                    var hoy = new Date();
-                    var dd = "28";
+                        var hoy = new Date();
+                        var dd = "28";
 
-                    var mm = hoy.getMonth()+1; //hoy es 0!
-                    var yyyy = hoy.getFullYear();
-                    var yyyy1 = hoy.getFullYear();
-
-
-
-
-                    var mes = mm+i;
-                    var mes1 = mm+i+1;
-
-                    console.log("mes de creacion :" +mes);
-
-
-                    if(dd<10) {
-                        dd='0'+dd
-
-                    }
+                        var mm = hoy.getMonth()+1; //hoy es 0!
+                        var yyyy = hoy.getFullYear();
+                        var yyyy1 = hoy.getFullYear();
 
 
 
-                    if(mes1<10) {
-                        mes1='0'+mes1
 
-                    }else {
+                        var mes = mm+i;
+                        var mes1 = mm+i+1;
 
-                        if (mes1>12){
-                            var auxf =mes1-12;
+                        console.log("mes de creacion :" +mes);
 
-                            var anio= yyyy1+1;
-                            mes1='0'+auxf;
-                            yyyy1=anio;
+
+                        if(dd<10) {
+                            dd='0'+dd
 
                         }
 
 
 
-                    }
+                        if(mes1<10) {
+                            mes1='0'+mes1
 
+                        }else {
 
-                    if(mes<10) {
-                        mes='0'+mes
-                    }else {
+                            if (mes1>12){
+                                var auxf =mes1-12;
 
-                        if (mes>12){
-                            var auxfr =mes-12;
+                                var anio= yyyy1+1;
+                                mes1='0'+auxf;
+                                yyyy1=anio;
 
-                            var anio= yyyy+1;
-                            mes='0'+auxfr;
-                            yyyy=anio;
+                            }
+
 
 
                         }
 
 
-                    }
+                        if(mes<10) {
+                            mes='0'+mes
+                        }else {
 
-                    
-                    ///probar q funcione el crear nuevos estados de cuenta segun el mes si se pasa de 12 
+                            if (mes>12){
+                                var auxfr =mes-12;
 
-               //fecha inicio
-                    var fecha =yyyy+"-"+mes+"-"+15+"T00:00:00.000Z";
-                    //fecha fin
+                                var anio= yyyy+1;
+                                mes='0'+auxfr;
+                                yyyy=anio;
 
-                    var fecha1 =yyyy1+"-"+mes1+"-"+15+"T00:00:00.000Z";
+
+                            }
+
+
+                        }
+
+
+                        ///probar q funcione el crear nuevos estados de cuenta segun el mes si se pasa de 12
+
+                        //fecha inicio
+                        var fecha =yyyy+"-"+mes+"-"+15+"T00:00:00.000Z";
+                        //fecha fin
+
+                        var fecha1 =yyyy1+"-"+mes1+"-"+15+"T00:00:00.000Z";
 
 //fech actual q se crea en cada estado cuenta nuevo
 
-                    var fecha2 =yyyy+"-"+mes+'-'+dd+"T00:00:00.000Z";
+                        var fecha2 =yyyy+"-"+mes+'-'+dd+"T00:00:00.000Z";
 
 
 
 
 
-                    console.log(fecha);
+                        console.log(fecha);
 
-                    console.log({
-                        id_credito: response.data._id,
-                        numero_cuotas: i,
-                        valor_credito: pago,
-                        fecha_max_pago: fecha1,
-                        fecha_pago: fecha,
-                        id_user: $scope.docenteingresar._id,
-                        fragmento_fec:fecha2,
-                        estado:"pendiente"
-                    });
-
-
-
-                    $http({
-                        method: 'POST',
-                        url: myProvider.postSaveCuotas_credito(),   //Guardar las cuotas de credito
-                        headers: {
-                            // 'Content-Type': 'application/json',
-                            //'Authorization': token
-                        },
-                        data: {
-
+                        console.log({
                             id_credito: response.data._id,
                             numero_cuotas: i,
                             valor_credito: pago,
@@ -2000,29 +1975,50 @@ var porcentaje=($scope.porcentaje/100);
                             id_user: $scope.docenteingresar._id,
                             fragmento_fec:fecha2,
                             estado:"pendiente"
+                        });
 
-                        }
-
-
-                    }).then(function successCallback(response) {
-
-
-
-
-                        console.log(response.data);
-                        var objeto = response.data;
-
-
-
-
-
-
-
-
-                        console.log($scope.docenteingresar._id, response.data.fragmento_fec);
 
 
                         $http({
+                            method: 'POST',
+                            url: myProvider.postSaveCuotas_credito(),   //Guardar las cuotas de credito
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {
+
+                                id_credito: response.data._id,
+                                numero_cuotas: i,
+                                valor_credito: pago,
+                                fecha_max_pago: fecha1,
+                                fecha_pago: fecha,
+                                id_user: $scope.docenteingresar._id,
+                                fragmento_fec:fecha2,
+                                estado:"pendiente"
+
+                            }
+
+
+                        }).then(function successCallback(response) {
+
+
+
+
+                            console.log(response.data);
+                            var objeto = response.data;
+
+
+
+
+
+
+
+
+                            console.log($scope.docenteingresar._id, response.data.fragmento_fec);
+
+
+                            $http({
                                 method: 'POST',
                                 url: myProvider.getEstadoCuentaxLocal1() ,
                                 headers: {
@@ -2039,138 +2035,49 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
-                        }).then(function successCallback(response) {
+                            }).then(function successCallback(response) {
 
-                            console.log(response.data);
+                                console.log(response.data);
 
-                            if (typeof(response.data[0]) !== "undefined") {
-
-
-                                $scope.estado_cuenta = response.data[0]._id;
-                                var total_anterior = response.data[0].valor_x_pagar;
-                                console.log(objeto);
-
-                                $http({
-                                    method: 'POST',
-                                    url: myProvider.postSaveDescuento(),    // guadar descuentos nuevos
-                                    headers: {
-                                        // 'Content-Type': 'application/json',
-                                        //'Authorization': token
-                                    },
-                                    data: {
-
-                                        id_catalogo: "5993682845f4a949eca9bddf",
-                                        id_local: "5993682845f4a949eca9bddf",
-                                        nombre_local: "APUNACH",
-                                        id_estado_cuenta: response.data[0]._id,
-                                        descripcion: "Credito Emergente",
-                                        valor_descuento: objeto.valor_credito,
-                                        cantidad: 0,
-                                        fecha: response.data[0].frac_fecha
+                                if (typeof(response.data[0]) !== "undefined") {
 
 
-                                    }
+                                    $scope.estado_cuenta = response.data[0]._id;
+                                    var total_anterior = response.data[0].valor_x_pagar;
+                                    console.log(objeto);
 
-
-                                }).then(function successCallback(response) {
-                                    console.log(response.data);
-
-
-                                    var total = objeto.valor_credito + total_anterior;
-                                    console.log(total);
                                     $http({
-
-                                        method: 'PUT',
-                                        url: myProvider.putEstado_cuenta() + "/" + response.data.id_estado_cuenta, //MODIFICAR eSTADO CUENTA
+                                        method: 'POST',
+                                        url: myProvider.postSaveDescuento(),    // guadar descuentos nuevos
                                         headers: {
                                             // 'Content-Type': 'application/json',
                                             //'Authorization': token
                                         },
                                         data: {
 
-
-                                            //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
-
-                                            valor_x_pagar: total,
+                                            id_catalogo: "5993682845f4a949eca9bddf",
+                                            id_local: "5993682845f4a949eca9bddf",
+                                            nombre_local: "APUNACH",
+                                            id_estado_cuenta: response.data[0]._id,
+                                            descripcion: "Credito Emergente",
+                                            valor_descuento: objeto.valor_credito,
+                                            cantidad: 0,
+                                            fecha: response.data[0].frac_fecha
 
 
                                         }
 
 
                                     }).then(function successCallback(response) {
-
                                         console.log(response.data);
 
-                                    }, function errorCallback(response) {
 
-                                        alert('error al realizar Ingreso 77');
-
-                                    });
-
-
-                                }, function errorCallback(response) {
-
-                                    alert('error al realizar Ingreso yy');
-
-                                });
-
-
-                            }else {
-
-
-                                console.log("undefined");
-
-
-
-                                console.log(".........................................................................................................................................");
-
-
-
-
-
-
-
-
-
-                                console.log("aqui empnieza al creaciond el nuevo ");
-
-                                $http({
-                                    method: 'POST',
-                                    url: myProvider.postSaveEstado_cuenta(),
-                                    headers: {
-                                        // 'Content-Type': 'application/json',
-                                        //'Authorization': token
-                                    },
-                                    data: {
-
-                                        id_docente: $scope.docenteingresar._id,
-                                        id_usuario: $scope.docenteingresar._id,
-                                        fecha_descuento:fecha2,
-                                        valor_x_pagar: objeto.valor_credito,
-                                        valor_pagado:0,
-                                        valor_acarreo_mes_anterior:0,
-                                        hora:fecha2,
-                                        frac_fecha:objeto.fragmento_fec,
-                                        estado:1
-
-                                    }
-
-
-                                }).then(function successCallback(response) {
-
-
-                                    console.log(response.data);
-
-
-                                    if (response.data.length == 0) {
-
-                                        swal("Error!", "EL descuento no se ingreso correctamente!", "error");
-                                    } else {
-
-
+                                        var total = objeto.valor_credito + total_anterior;
+                                        console.log(total);
                                         $http({
-                                            method: 'POST',
-                                            url: myProvider.postSaveDescuento(),
+
+                                            method: 'PUT',
+                                            url: myProvider.putEstado_cuenta() + "/" + response.data.id_estado_cuenta, //MODIFICAR eSTADO CUENTA
                                             headers: {
                                                 // 'Content-Type': 'application/json',
                                                 //'Authorization': token
@@ -2178,48 +2085,158 @@ var porcentaje=($scope.porcentaje/100);
                                             data: {
 
 
+                                                //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
 
+                                                valor_x_pagar: total,
 
-                                                id_catalogo: "5993682845f4a949eca9bddf",
-                                                id_local: "5993682845f4a949eca9bddf",
-                                                nombre_local: "APUNACH",
-                                                id_estado_cuenta: response.data._id,
-                                                descripcion: "Credito Emergente",
-                                                valor_descuento: objeto.valor_credito,
-                                                cantidad: 0,
-                                                fecha: response.data.frac_fecha
 
                                             }
 
 
                                         }).then(function successCallback(response) {
+
                                             console.log(response.data);
-
-                                            console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
-
 
                                         }, function errorCallback(response) {
 
-                                            alert('error al realizar Ingreso');
+                                            alert('error al realizar Ingreso 77');
 
                                         });
 
 
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso yy');
+
+                                    });
+
+
+                                }else {
+
+
+                                    console.log("undefined");
 
 
 
-                                    }
-
-
-                                }, function errorCallback(response) {
-
-                                    alert('error al realizar Ingreso');
-
-                                });
+                                    console.log(".........................................................................................................................................");
 
 
 
 
+
+
+
+
+
+                                    console.log("aqui empnieza al creaciond el nuevo ");
+
+                                    $http({
+                                        method: 'POST',
+                                        url: myProvider.postSaveEstado_cuenta(),
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            id_docente: $scope.docenteingresar._id,
+                                            id_usuario: $scope.docenteingresar._id,
+                                            fecha_descuento:fecha2,
+                                            valor_x_pagar: objeto.valor_credito,
+                                            valor_pagado:0,
+                                            valor_acarreo_mes_anterior:0,
+                                            hora:fecha2,
+                                            frac_fecha:objeto.fragmento_fec,
+                                            estado:1
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+
+
+                                        console.log(response.data);
+
+
+                                        if (response.data.length == 0) {
+
+                                            swal("Error!", "EL descuento no se ingreso correctamente!", "error");
+                                        } else {
+
+
+                                            $http({
+                                                method: 'POST',
+                                                url: myProvider.postSaveDescuento(),
+                                                headers: {
+                                                    // 'Content-Type': 'application/json',
+                                                    //'Authorization': token
+                                                },
+                                                data: {
+
+
+
+
+                                                    id_catalogo: "5993682845f4a949eca9bddf",
+                                                    id_local: "5993682845f4a949eca9bddf",
+                                                    nombre_local: "APUNACH",
+                                                    id_estado_cuenta: response.data._id,
+                                                    descripcion: "Credito Emergente",
+                                                    valor_descuento: objeto.valor_credito,
+                                                    cantidad: 0,
+                                                    fecha: response.data.frac_fecha
+
+                                                }
+
+
+                                            }).then(function successCallback(response) {
+                                                console.log(response.data);
+
+                                                console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
+
+
+                                            }, function errorCallback(response) {
+
+                                                alert('error al realizar Ingreso');
+
+                                            });
+
+
+
+
+
+                                        }
+
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso');
+
+                                    });
+
+
+
+
+
+                                }
+
+
+
+
+                            }, function errorCallback(response) {
+
+                                alert('error al realizar Ingreso ss');
+
+                            });
+
+
+                            if (response.data.length == 0) {
+
+                                swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
+
+                            } else {
+
+                                swal("Exito!", "El credito emergente se registro correctamente!", "success");
+                                $scope.initListarCreditosEmergentes();
 
                             }
 
@@ -2228,50 +2245,483 @@ var porcentaje=($scope.porcentaje/100);
 
                         }, function errorCallback(response) {
 
-                            alert('error al realizar Ingreso ss');
+                            alert('error al realizar Ingreso por aqui');
 
                         });
 
 
-                        if (response.data.length == 0) {
-
-                            swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
-
-                        } else {
-
-                            swal("Exito!", "El credito emergente se registro correctamente!", "success");
-                            $scope.initListarCreditosEmergentes();
-
-                        }
-
-
-
-
-                    }, function errorCallback(response) {
-
-                        alert('error al realizar Ingreso por aqui');
-
-                    });
+                    }
 
 
                 }
 
 
-            }
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+        }else {
+
+            $http({                                            //Guardar el registro de Credito Emergente
+                method: 'POST',
+                url: myProvider.postSaveCredito_Emergente(),
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                    valor:$scope.valor_pres,
+                    fecha_maxima_pago:new Date(),
+                    numero_cuotas:$scope.val_cuotas,
+                    usuario: $scope.docenteingresar._id,
+                    id_docente:$scope.docenteingresar._id,
+                    valor_a_pagar:pago,
+                    nombre_docente:$scope.docenteingresar.nombres +" "+ $scope.docenteingresar.apellidos,
+                    ci_docente:$scope.docenteingresar.cedula
+
+                }
 
 
-        }, function errorCallback(response) {
 
-            alert('error al realizar Ingreso');
 
-        });
+            }).then(function successCallback(response) {
+
+                console.log(response.data);
+                if (response.data.length == 0) {
+
+                    swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
+                } else {
+
+                    swal("Exito!", "El credito emergente se registro correctamente!", "success");
+
+
+
+
+
+
+
+
+
+
+                    for(var i=0;i<$scope.val_cuotas;i++) {
+
+
+
+                        var hoy = new Date();
+                        var dd = "28";
+
+                        var mm = hoy.getMonth(); //hoy es 0!
+                        var yyyy = hoy.getFullYear();
+                        var yyyy1 = hoy.getFullYear();
+
+
+
+
+                        var mes = mm+i;
+                        var mes1 = mm+i+1;
+
+                        console.log("mes de creacion :" +mes);
+
+
+                        if(dd<10) {
+                            dd='0'+dd
+
+                        }
+
+
+
+                        if(mes1<10) {
+                            mes1='0'+mes1
+
+                        }else {
+
+                            if (mes1>12){
+                                var auxf =mes1-12;
+
+                                var anio= yyyy1+1;
+                                mes1='0'+auxf;
+                                yyyy1=anio;
+
+                            }
+
+
+
+                        }
+
+
+                        if(mes<10) {
+                            mes='0'+mes
+                        }else {
+
+                            if (mes>12){
+                                var auxfr =mes-12;
+
+                                var anio= yyyy+1;
+                                mes='0'+auxfr;
+                                yyyy=anio;
+
+
+                            }
+
+
+                        }
+
+
+                        ///probar q funcione el crear nuevos estados de cuenta segun el mes si se pasa de 12
+
+                        //fecha inicio
+                        var fecha =yyyy+"-"+mes+"-"+15+"T00:00:00.000Z";
+                        //fecha fin
+
+                        var fecha1 =yyyy1+"-"+mes1+"-"+15+"T00:00:00.000Z";
+
+//fech actual q se crea en cada estado cuenta nuevo
+
+                        var fecha2 =yyyy+"-"+mes+'-'+dd+"T00:00:00.000Z";
+
+
+
+
+
+                        console.log(fecha);
+
+                        console.log({
+                            id_credito: response.data._id,
+                            numero_cuotas: i,
+                            valor_credito: pago,
+                            fecha_max_pago: fecha1,
+                            fecha_pago: fecha,
+                            id_user: $scope.docenteingresar._id,
+                            fragmento_fec:fecha2,
+                            estado:"pendiente"
+                        });
+
+
+
+                        $http({
+                            method: 'POST',
+                            url: myProvider.postSaveCuotas_credito(),   //Guardar las cuotas de credito
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                //'Authorization': token
+                            },
+                            data: {
+
+                                id_credito: response.data._id,
+                                numero_cuotas: i,
+                                valor_credito: pago,
+                                fecha_max_pago: fecha1,
+                                fecha_pago: fecha,
+                                id_user: $scope.docenteingresar._id,
+                                fragmento_fec:fecha2,
+                                estado:"pendiente"
+
+                            }
+
+
+                        }).then(function successCallback(response) {
+
+
+
+
+                            console.log(response.data);
+                            var objeto = response.data;
+
+
+
+
+
+
+
+
+                            console.log($scope.docenteingresar._id, response.data.fragmento_fec);
+
+
+                            $http({
+                                method: 'POST',
+                                url: myProvider.getEstadoCuentaxLocal1() ,
+                                headers: {
+                                    // 'Content-Type': 'application/json',
+                                    //'Authorization': token
+                                },
+                                data: {
+
+                                    docente:$scope.docenteingresar._id,
+                                    fecha: response.data.fecha_pago,
+                                    fecha1:response.data.fecha_max_pago
+
+                                }
+
+
+
+                            }).then(function successCallback(response) {
+
+                                console.log(response.data);
+
+                                if (typeof(response.data[0]) !== "undefined") {
+
+
+                                    $scope.estado_cuenta = response.data[0]._id;
+                                    var total_anterior = response.data[0].valor_x_pagar;
+                                    console.log(objeto);
+
+                                    $http({
+                                        method: 'POST',
+                                        url: myProvider.postSaveDescuento(),    // guadar descuentos nuevos
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            id_catalogo: "5993682845f4a949eca9bddf",
+                                            id_local: "5993682845f4a949eca9bddf",
+                                            nombre_local: "APUNACH",
+                                            id_estado_cuenta: response.data[0]._id,
+                                            descripcion: "Credito Emergente",
+                                            valor_descuento: objeto.valor_credito,
+                                            cantidad: 0,
+                                            fecha: response.data[0].frac_fecha
+
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+                                        console.log(response.data);
+
+
+                                        var total = objeto.valor_credito + total_anterior;
+                                        console.log(total);
+                                        $http({
+
+                                            method: 'PUT',
+                                            url: myProvider.putEstado_cuenta() + "/" + response.data.id_estado_cuenta, //MODIFICAR eSTADO CUENTA
+                                            headers: {
+                                                // 'Content-Type': 'application/json',
+                                                //'Authorization': token
+                                            },
+                                            data: {
+
+
+                                                //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+
+                                                valor_x_pagar: total,
+
+
+                                            }
+
+
+                                        }).then(function successCallback(response) {
+
+                                            console.log(response.data);
+
+                                        }, function errorCallback(response) {
+
+                                            alert('error al realizar Ingreso 77');
+
+                                        });
+
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso yy');
+
+                                    });
+
+
+                                }else {
+
+
+                                    console.log("undefined");
+
+
+
+                                    console.log(".........................................................................................................................................");
+
+
+
+
+
+
+
+
+
+                                    console.log("aqui empnieza al creaciond el nuevo ");
+
+                                    $http({
+                                        method: 'POST',
+                                        url: myProvider.postSaveEstado_cuenta(),
+                                        headers: {
+                                            // 'Content-Type': 'application/json',
+                                            //'Authorization': token
+                                        },
+                                        data: {
+
+                                            id_docente: $scope.docenteingresar._id,
+                                            id_usuario: $scope.docenteingresar._id,
+                                            fecha_descuento:fecha2,
+                                            valor_x_pagar: objeto.valor_credito,
+                                            valor_pagado:0,
+                                            valor_acarreo_mes_anterior:0,
+                                            hora:fecha2,
+                                            frac_fecha:objeto.fragmento_fec,
+                                            estado:1
+
+                                        }
+
+
+                                    }).then(function successCallback(response) {
+
+
+                                        console.log(response.data);
+
+
+                                        if (response.data.length == 0) {
+
+                                            swal("Error!", "EL descuento no se ingreso correctamente!", "error");
+                                        } else {
+
+
+                                            $http({
+                                                method: 'POST',
+                                                url: myProvider.postSaveDescuento(),
+                                                headers: {
+                                                    // 'Content-Type': 'application/json',
+                                                    //'Authorization': token
+                                                },
+                                                data: {
+
+
+
+
+                                                    id_catalogo: "5993682845f4a949eca9bddf",
+                                                    id_local: "5993682845f4a949eca9bddf",
+                                                    nombre_local: "APUNACH",
+                                                    id_estado_cuenta: response.data._id,
+                                                    descripcion: "Credito Emergente",
+                                                    valor_descuento: objeto.valor_credito,
+                                                    cantidad: 0,
+                                                    fecha: response.data.frac_fecha
+
+                                                }
+
+
+                                            }).then(function successCallback(response) {
+                                                console.log(response.data);
+
+                                                console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
+
+
+                                            }, function errorCallback(response) {
+
+                                                alert('error al realizar Ingreso');
+
+                                            });
+
+
+
+
+
+                                        }
+
+
+                                    }, function errorCallback(response) {
+
+                                        alert('error al realizar Ingreso');
+
+                                    });
+
+
+
+
+
+                                }
+
+
+
+
+                            }, function errorCallback(response) {
+
+                                alert('error al realizar Ingreso ss');
+
+                            });
+
+
+                            if (response.data.length == 0) {
+
+                                swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
+
+                            } else {
+
+                                swal("Exito!", "El credito emergente se registro correctamente!", "success");
+                                $scope.initListarCreditosEmergentes();
+
+                            }
+
+
+
+
+                        }, function errorCallback(response) {
+
+                            alert('error al realizar Ingreso por aqui');
+
+                        });
+
+
+                    }
+
+
+                }
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+        }
+
+
+
 
 
 
     }
 
     $scope.initListarCreditosEmergentes=function(){
-        console.log("que hay");
+        console.log("Creditos emergentes");
+
+
+
+
+        //inicializar todos los usuarios
+        $http({
+            method: 'GET',
+            url: myProvider.getEstadoCierreMes(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+$scope.cierreMes=response.data.estado;
+            console.log($scope.cierreMes);
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+        
+        
+
 
         //inicializar todos los usuarios
         $http({

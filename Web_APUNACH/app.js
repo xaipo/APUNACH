@@ -222,6 +222,12 @@ function ApiUrl(){
     this.getAllCreditosEmergentes=function(){
         return direccion+'creditoEmergente';
     }
+
+    this.getEstadoCierreMes=function(){
+        return direccion+'EstadoCierreMes';
+    }
+
+
     this.postSaveCuotas_credito=function(){
         return direccion+'cuotascredito';
     }
