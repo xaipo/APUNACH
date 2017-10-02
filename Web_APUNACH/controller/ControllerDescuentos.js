@@ -1893,7 +1893,8 @@ var porcentaje=($scope.porcentaje/100);
 
 
                     var hoy = new Date();
-                    var dd = hoy.getDate();
+                    var dd = "28";
+
                     var mm = hoy.getMonth()+1; //hoy es 0!
                     var yyyy = hoy.getFullYear();
                     var yyyy1 = hoy.getFullYear();
