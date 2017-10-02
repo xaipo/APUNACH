@@ -3894,6 +3894,7 @@ var mes1= mes-1;
         }).then(function successCallback(response) {
 
 
+            console.log(response.data);
         
 
         }, function errorCallback(response) {

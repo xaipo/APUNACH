@@ -153,7 +153,9 @@ router.post('/funexel', function (req, res, next)  {
                     var totalh = 0;
 
 
-                    var writeStream = fs.createWriteStream(file);
+
+
+
                     var workbook = new Excel.Workbook();
                     var worksheet = workbook.addWorksheet('sheet');
 
@@ -258,10 +260,13 @@ router.post('/funexel', function (req, res, next)  {
                         //var file =  "C:\\test\\some.xlsx";
                         var file2="C:\\test\\"+file;
                         console.log(file2);
-                        var filestream = fs.createReadStream(file2);
-                        filestream.pipe(res);
-                        console.log("xls file is written.-----"+ file);
+                        res.json(file2);
+
                     });
+
+
+
+
 
                 }
 
