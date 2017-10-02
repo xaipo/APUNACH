@@ -3522,11 +3522,11 @@ function totales(totalEstado,fecha_del_sistema) {
 
 
 
-    $scope.ReporteCierreMes=function(fecha) {
+    $scope.ReporteCierreMes=function(fecha,fecha1) {
 
         console.log("cierre del mes");
 
-        console.log(fecha);
+        console.log(fecha,fecha1);
 
 
 
@@ -3543,7 +3543,8 @@ function totales(totalEstado,fecha_del_sistema) {
             },
             data: {
 
-                fecha:fecha
+                fecha:fecha,
+                fecha1:fecha1
 
 
 
@@ -3573,7 +3574,9 @@ function totales(totalEstado,fecha_del_sistema) {
             },
             data: {
 
-                fecha:fecha
+                fecha:fecha,
+                fecha1:fecha1
+
 
             }
 
@@ -3610,15 +3613,28 @@ function totales(totalEstado,fecha_del_sistema) {
         var fecha_fin = mes+"/"+año;
         $scope.fecha_global = mes+"-"+año
 
-        console.log(fecha_para_consulta);
 
-var mesFecha = año+"-"+mes+"-";
         
-        $scope.ReporteCierreMes(mesFecha);
+        
+        
+
+var mes1= mes-1;
+
+        if (mes1<10){
+            mes1="0"+mes1;
+        }
+
+
+        var fecha =año+"-"+mes1+"-"+15+"T00:00:00.000Z";
+        var fecha1 =año+"-"+mes+"-"+15+"T00:00:00.000Z";
+
+        console.log(fecha,fecha1);
 
 
 
 
+
+        $scope.ReporteCierreMes(fecha,fecha1);
 
 
         $http({
@@ -3630,7 +3646,8 @@ var mesFecha = año+"-"+mes+"-";
             },
             data: {
 
-                frac_fecha:fecha_fin
+                fecha:fecha,
+                fecha1:fecha1
 
 
 

@@ -60,6 +60,7 @@ router.post('/ingresosMes', function (req, res, next)  {
 router.post('/Ingresos_Mes', function (req, res, next)  {
 
 
+    console.log(req.body);
 
     Ingreso.aggregate(
 
@@ -70,8 +71,8 @@ router.post('/Ingresos_Mes', function (req, res, next)  {
             { "$match":
             {
                 "$and" : [
-                    {    fecha_sistema: {$gte: new Date(req.body.fecha+"01T00:00:00.369Z")}},
-                    {    fecha_sistema: {$lt: new Date(req.body.fecha+"28T00:00:00.369Z")}}
+                    {    fecha_sistema: {$gte: new Date(req.body.fecha)}},
+                    {    fecha_sistema: {$lt: new Date(req.body.fecha1)}}
 
 
     ]
@@ -111,8 +112,8 @@ router.post('/Egresos_Mes', function (req, res, next)  {
             { "$match":
             {
                 "$and" : [
-                    {    fecha_sistema: {$gte: new Date(req.body.fecha+"01T00:00:00.369Z")}},
-                    {    fecha_sistema: {$lt: new Date(req.body.fecha+"28T00:00:00.369Z")}}
+                    {    fecha_sistema: {$gte: new Date(req.body.fecha)}},
+                    {    fecha_sistema: {$lt: new Date(req.body.fecha1)}}
 
 
                 ]

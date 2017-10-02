@@ -67,12 +67,26 @@ router.post('/verEstadcoCuentaDocente', function (req, res, next)  {
 
 router.post('/EstadcoCuentaDocenteFecha', function (req, res, next)  {
 
-console.log(req.body.frac_fecha);
+
+console.log(req.body);
+
+
     TipoUsuario.aggregate(
 
 
         [
-            { "$match": { "frac_fecha": req.body.frac_fecha} },
+
+            { "$match":
+            {
+                "$and" : [
+                    {    frac_fecha: {$gte: new Date( req.body.fecha)}},
+                    {    frac_fecha: {$lte: new Date(req.body.fecha1)}}
+
+                ]
+            }
+
+            }
+            ,
             {"$lookup": {
                 "from": "docente",
                 "localField": "id_docente",

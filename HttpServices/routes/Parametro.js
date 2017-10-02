@@ -67,8 +67,8 @@ router.get('/EstadoMesParametro', function (req, res, next)  {
 
 
 
-    var fechaAnterior =yyyy1+"-"+mes1+"-"+13;
-    var fechaActual = yyyy+"-"+mes+"-"+13;
+    var fechaAnterior =yyyy1+"-"+mes1+"-"+283;
+    var fechaActual = yyyy+"-"+mes+"-"+28;
 
     var estado_mes={};
 
