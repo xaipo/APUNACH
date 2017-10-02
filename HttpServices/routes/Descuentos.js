@@ -473,8 +473,13 @@ router.post('/mesGanancias', function (req, res, next)  {
 
     TipoUsuario.aggregate([
         {
+
+
             $match: {
-                fecha: { $eq: req.body.fecha }
+                "fecha": {
+                    $gte: new Date(req.body.fecha ),
+                    $lte: new Date(req.body.fecha1)
+                }
             }
         },
     {

@@ -259,6 +259,10 @@ function ApiUrl(){
         return direccion+'Ingresos_Mes';
     }
 
+    this.verGanancias=function(){
+        return direccion+'mesGanancias';
+    }
+
     this.VerEgresosMes=function(){
         return direccion+'Egresos_Mes';
     }

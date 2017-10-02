@@ -3521,6 +3521,51 @@ function totales(totalEstado,fecha_del_sistema) {
 
 
 
+    $scope.mesGanancias=function(fecha,fecha1) {
+
+        console.log("Ganancias");
+
+        console.log(fecha,fecha1);
+
+
+
+
+
+
+
+        $http({
+            method: 'POST',
+            url: myProvider.verGanancias(),
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+                fecha:fecha,
+                fecha1:fecha1
+
+
+
+            }
+
+        }).then(function successCallback(response) {
+            console.log(response.data);
+
+
+
+
+        }, function errorCallback(response) {
+
+            alert('error al realizar Ingreso');
+
+        });
+
+
+
+  }
+
+
 
     $scope.ReporteCierreMes=function(fecha,fecha1) {
 
@@ -3637,6 +3682,14 @@ var mes1= mes-1;
         $scope.ReporteCierreMes(fecha,fecha1);
 
 
+
+
+
+        $scope.mesGanancias(fecha,fecha1);
+
+
+
+
         $http({
             method: 'POST',
             url: myProvider.VerEstadoCuentaFecha(),
@@ -3674,6 +3727,7 @@ var mes1= mes-1;
         });
 
     }
+
 
     $scope.genera_tabla=function()  {
 
