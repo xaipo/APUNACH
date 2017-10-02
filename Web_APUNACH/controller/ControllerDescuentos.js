@@ -1907,7 +1907,10 @@ var porcentaje=($scope.porcentaje/100);
                     console.log("mes de creacion :" +mes);
 
 
+                    if(dd<10) {
+                        dd='0'+dd
 
+                    }
 
 
 
@@ -1965,6 +1968,19 @@ var porcentaje=($scope.porcentaje/100);
 
 
                     console.log(fecha);
+
+                    console.log({
+                        id_credito: response.data._id,
+                        numero_cuotas: i,
+                        valor_credito: pago,
+                        fecha_max_pago: fecha1,
+                        fecha_pago: fecha,
+                        id_user: $scope.docenteingresar._id,
+                        fragmento_fec:fecha2,
+                        estado:"pendiente"
+                    });
+
+
 
                     $http({
                         method: 'POST',
