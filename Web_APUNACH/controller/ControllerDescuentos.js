@@ -774,8 +774,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                 id_usuario: $scope.docenteingresar._id,
                 fecha_descuento:new Date(),
                 valor_x_pagar: $scope.total,
-                valor_pagado:100,
-                valor_acarreo_mes_anterior:10,
+                valor_pagado:0,
+                valor_acarreo_mes_anterior:0,
                 hora:new Date(),
                 estado:1
 
@@ -1653,8 +1653,8 @@ var i=0;
 
                 //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
                 valor_x_pagar: $scope.total,
-                valor_pagado:100,
-                valor_acarreo_mes_anterior:10,
+                valor_pagado:0,
+                valor_acarreo_mes_anterior:0,
                 hora:new Date(),
                 estado:1
 
