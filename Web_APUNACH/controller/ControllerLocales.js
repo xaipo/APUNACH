@@ -74,7 +74,11 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
                 estado:"0",
                 fecha_inicio_acuerdo:fecha_acuerdo,
                 telefono:$scope.telefono,
-                porcentaje_ganancia:$scope.porcentage
+                porcentaje_ganancia:$scope.porcentage,
+                nombre_contacto:$scope.nombre_contacto,
+                cargo:$scope.cargo,
+                telefono_contacto:$scope.telefono_contacto,
+                correo_contacto:$scope.correo_contacto
 
 
 
@@ -147,8 +151,11 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
                     credito_max: $scope.local.credito_max,
                     fecha_inicio_acuerdo:fecha_acuerdo,
                     telefono:$scope.local.telefono,
-                    porcentaje_ganancia:$scope.local.porcentaje_ganancia
-
+                    porcentaje_ganancia:$scope.local.porcentaje_ganancia,
+                    nombre_contacto:$scope.local.nombre_contacto,
+                    cargo:$scope.local.cargo,
+                    telefono_contacto:$scope.local.telefono_contacto,
+                    correo_contacto:$scope.local.correo_contacto
 
 
                 }

@@ -30,6 +30,7 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 var aesjs = require('./config/aes');
 
+var parametro = require('./models/Parametro');
 
 var key='1234';
 //AES_Init();
@@ -69,10 +70,28 @@ app.use(bodyParser.json());
 
 var CronJob = require('cron').CronJob;
 var job = new CronJob({
-    cronTime: '*/1 * * * *',
+    cronTime: '0 1 1 * *',
     onTick: function() {
 
-        console.log("cambio de hora");
+
+
+
+        parametro.update(
+            { descripcion: "cierreMes" },
+            {
+                descripcion: "cierreMes",
+                estado: "abierto"
+            },function (err, result) {
+                if (err) { return next(err) }
+              console.log(result);
+                console.log("cambio de hora ",new Date());
+            }
+
+        )
+
+
+
+
     },
     start: false,
 

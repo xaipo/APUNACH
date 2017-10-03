@@ -32,6 +32,24 @@ var Locales = new mongoose.Schema({
     }, "porcentaje_ganancia": {
         type: Number,
         required: true
+    },
+
+    "nombre_contacto": {
+         type: String,
+
+    },
+
+    "cargo": {
+        type: String,
+
+    },
+    "telefono_contacto": {
+        type: String,
+
+    },
+    "correo_contacto": {
+        type: String,
+
     }
 
 }, {
