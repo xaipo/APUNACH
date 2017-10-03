@@ -190,10 +190,11 @@ router.post('/funexel', function (req, res, next)  {
                         var n= locales.length;
                         var aux=JSON.stringify('');
                         var numCedl=parseInt(j)+1;
+                        var ape_nomb = tareas[j].apellidos+" "+tareas[j].nombres;
+                        console.log(ape_nomb );
 
-                        console.log(tareas[j].estadocuenta.valor_x_pagar+"hola");
                         total_total = total_total + tareas[j].estadocuenta.valor_x_pagar;
-                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+tareas[j].nombres+'","Total":"'+tareas[j].estadocuenta.valor_x_pagar+'",';
+                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+ape_nomb+'","Total":"'+tareas[j].estadocuenta.valor_x_pagar+'",';
                         for(var i=0;i<n;i++){
 
                             //console.log(aux);
@@ -233,9 +234,40 @@ router.post('/funexel', function (req, res, next)  {
 
                     }
 
-                    worksheet.getCell('B3').formula === 'E2+E3';
+                worksheet.addRow();
 
-                console.log(total_total.toFixed(2)+"ptm");
+
+               var columna = '{"Cedula":"","N":"","Relacion Laboral":"","Nombre":" ",';
+
+                for(var i=0;i<n;i++){
+
+                    if(i==n-1)
+                    {
+                        columna+='"'+locales[i].nombre+'"'+':"TOTAL",';
+                    }else {
+                        columna+='"'+locales[i].nombre+'"'+':" ",';
+                    }
+
+
+
+
+                }
+
+                columna+='"Total":"'+total_total.toFixed(2)+'"}';
+
+
+
+
+
+
+
+
+                console.log(columna);
+                var columna1=JSON.parse(columna.toString());
+                worksheet.addRow(columna1);
+
+                console.log(total_total.toFixed(2));
+                worksheet.addRow(total_total.toFixed(2).toString());
 
 
 
@@ -781,7 +813,7 @@ if(mm == 1)
 {
     mes1 = 12;
     yyyy1 = yyyy - 1;
- 
+
 }
 
 

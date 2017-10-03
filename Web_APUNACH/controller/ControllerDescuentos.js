@@ -3339,10 +3339,18 @@ function totales(totalEstado,fecha_del_sistema) {
     
     $scope.ReporteCuenta_estado=function(lista){
 
+
+
         if(lista.length == 0)
         {
             swal("Advertencia!", "No existen datos para imprimir!", "warning");
         }else {
+
+            var fecha1 = $scope.fecha_inicial.split("T");
+            var fecha_inicial = fecha1[0];
+
+            var fecha1 = $scope.fecha_final.split("T");
+            var fecha_final = fecha1[0];
 
             console.log(lista[0].fecha_descuento);
 
@@ -3396,7 +3404,7 @@ function totales(totalEstado,fecha_del_sistema) {
             doc.setFontType("bold");
             doc.text("PERIODO: ", x, y + 25);
             doc.setFontType("normal");
-            doc.text("desde " + fecha_init + " hasta " + fecha_fin, x + 15, y + 25);
+            doc.text("desde " + fecha_final + " hasta " + fecha_inicial, x + 15, y + 25);
             doc.setFontType("bold");
             doc.text("FECHA DE IMPRESION: ", x, y + 30);
             doc.setFontType("normal");
@@ -3556,6 +3564,7 @@ function totales(totalEstado,fecha_del_sistema) {
 
         }).then(function successCallback(response) {
             console.log(response.data);
+            $scope.listGanProcenLocal = response.data;
 
 
 
@@ -3680,6 +3689,10 @@ var mes1= mes-1;
 
         var fecha =año+"-"+mes1+"-"+15+"T00:00:00.000Z";
         var fecha1 =año+"-"+mes+"-"+15+"T00:00:00.000Z";
+
+        $scope.fecha_inicial = fecha1;
+        $scope.fecha_final = fecha;
+
 
         console.log(fecha,fecha1);
 
@@ -3879,6 +3892,8 @@ var mes1= mes-1;
 
 
 
+
+
     }
 
 
@@ -3910,82 +3925,292 @@ var mes1= mes-1;
         
     }
 
+    $scope.ReporteGananciaxLocal=function(){
+
+        $scope.listGanProcenLocal;
+        var fecha1 = $scope.fecha_inicial.split("T");
+        var fecha_inicial = fecha1[0];
+
+        var fecha1 = $scope.fecha_final.split("T");
+        var fecha_final = fecha1[0];
+
+        if( $scope.listGanProcenLocal.length == 0)
+        {
+            swal("Advertencia!", "No existen datos para imprimir!", "warning");
+        }else {
+
+
+
+            var fecha = new Date();
+            var año = fecha.getFullYear();
+            var mes = fecha.getMonth() + 1;
+            var dia = fecha.getDate();
+            if (mes < 10) {
+                mes = '0' + mes
+            }
+            if (dia < 10) {
+                dia = '0' + dia
+            }
+
+            var fecha1 = new Date();
+            var año1 = fecha1.getFullYear();
+            var mes1 = fecha1.getMonth() + 1;
+            var dia1 = fecha1.getDate();
+            if (mes1 < 10) {
+                mes1 = '0' + mes1
+            }
+            if (dia1 < 10) {
+                dia1 = '0' + dia1
+            }
+            console.log(dia1);
+
+            var fecha_act = dia1 + '-' + mes1 + '-' + año1;
+            var fecha_init = '01' + '-' + mes + '-' + año;
+            var fecha_fin = '31' + '-' + mes + '-' + año;
+
+
+
+
+            var doc = new jsPDF('p', 'mm', [297, 210]);
+
+            var x = 25;
+            var y = 25;
+
+
+            doc.addImage(img.onload(), 'PNG', x, y - 10, 15, 15);
+            doc.addImage(img1.onload(), 'PNG', x + 148, y - 10, 18, 18);
+            doc.setFontSize(16);
+            doc.setFontType("bold");
+            doc.text("ASOCIACION DE PROFESORES DE LA UNACH ", x + 18, y + 0);
+            doc.rect(x, y + 10, 165, 10, 'S')
+            doc.setFontSize(10);
+            doc.setFontType("bold");
+            doc.text("INGRESO POR LOCALES", x + 60, y + 16);
+
+            doc.setFontSize(8);
+            doc.setFontType("bold");
+            doc.text("PERIODO: ", x, y + 25);
+            doc.setFontType("normal");
+            doc.text("desde " +  fecha_final+ " hasta " + fecha_inicial, x + 15, y + 25);
+            doc.setFontType("bold");
+            doc.text("FECHA DE IMPRESION: ", x, y + 30);
+            doc.setFontType("normal");
+            doc.text(fecha_act, x + 33, y + 30);
+
+            // doc.rect(x, y+35, 165,220, 'S')
+
+            doc.setFontSize(10);
+            doc.setFontType("bold");
+            doc.text("Nombre del local", x + 18, y + 39);
+            doc.text("Total", x + 71, y + 39);
+            doc.text("Porcentage", x + 98, y + 39);
+            doc.text("Ganancia", x + 135, y + 39);
+            doc.line(x, y + 40, x + 165, y + 40);
+            doc.line(x, y + 35, x + 165, y + 35);
+            //verticales estaticas
+            doc.line(x, y + 35, x, y + 40);
+            doc.line(x + 60, y + 35, x + 60, y + 40);
+            doc.line(x + 90, y + 35, x + 90, y + 40);
+            doc.line(x + 125, y + 35, x + 125, y + 40);
+            doc.line(x + 165, y + 35, x + 165, y + 40);
+
+            var z = 44;
+            var num = 1;
+            var aun = 40;
+            var prueba = 300;
+            var b = 1;
+            var registros = 0;
+            var ganancia = 0;
+
+            for (var i = 0; i < $scope.listGanProcenLocal.length; i++) {
+
+                doc.setFontSize(10);
+                doc.setFontType("normal");
+
+                ganancian = ($scope.listGanProcenLocal[i].valor * $scope.listGanProcenLocal[i].local[0].porcentaje_ganancia/100);
+                console.log($scope.listGanProcenLocal[i].valor * $scope.listGanProcenLocal[i].local[0].porcentaje_ganancia/100);
+                console.log(ganancia.toFixed(2).toString());
+
+                doc.text($scope.listGanProcenLocal[i]._id, x + 10, y + z);
+                doc.text($scope.listGanProcenLocal[i].valor.toString(), x + 70, y + z);
+                doc.text($scope.listGanProcenLocal[i].local[0].porcentaje_ganancia.toString() , x + 105, y + z);
+                doc.text(($scope.listGanProcenLocal[i].valor * $scope.listGanProcenLocal[i].local[0].porcentaje_ganancia/100).toFixed(2).toString() , x + 135, y + z);
+                z = z + 5;
+                num = num + 1;
+                doc.line(x, y + aun + 5, x + 165, y + aun + 5)
+                aun = aun + 5;
+
+
+                //lineas vertivales
+                doc.line(x, y + aun - 5, x, y + aun);
+                doc.line(x + 60, y + aun - 5, x + 60, y + aun);
+                doc.line(x + 90, y + aun - 5, x + 90, y + aun);
+                doc.line(x + 125, y + aun - 5, x + 125, y + aun);
+                doc.line(x + 165, y + aun - 5, x + 165, y + aun);
+                registros = registros + 1;
+
+                if (i == 42) {
+
+                    z = -1;
+                    aun = -5;
+                    doc.addPage();
+                    doc.line(x, y + aun, x + 165, y + aun);
+                    registros = 0;
+
+                }
+                if (registros == 50) {
+                    b = b + 1;
+                    z = -1;
+                    aun = -5;
+                    doc.addPage();
+                    doc.line(x, y + aun, x + 165, y + aun);
+                    registros = 0;
+
+
+                }
+
+                ganancia = 0;
+            }
+
+            doc.line(x + 10, y + aun + 30, x + 55, y + aun + 30);
+            doc.text("Tes. de la APUNACH", x + 18, y + aun + 35);
+
+        }
+
+        doc.save('PorcentageXlocal.pdf');
+    }
+
 
     $scope.ReporteCerrar_mes=function(lista){
 
-        var miArrayDeObjetos = [];
+      console.log(lista);
+        console.log($scope.listaMesEgresos);
 
-        for (var i = 0; i < lista.length; i++) {
+        var fecha1 = $scope.fecha_inicial.split("T");
+        var fecha_inicial = fecha1[0];
 
-            miArrayDeObjetos[i]={Num : i + 1,
-                Cedulas: lista[i].R[0].cedula,
-                Nombre_Completo: lista[i].R[0].apellidos + " " + lista[i].R[0].nombres,
-                Monto: lista[i].valor_x_pagar
+        var fecha1 = $scope.fecha_final.split("T");
+        var fecha_final = fecha1[0];
 
-
-            }
-
-
+        var fecha1 = new Date();
+        var año1 = fecha1.getFullYear();
+        var mes1 = fecha1.getMonth() + 1;
+        var dia1 = fecha1.getDate();
+        if (mes1 < 10) {
+            mes1 = '0' + mes1
         }
+        if (dia1 < 10) {
+            dia1 = '0' + dia1
+        }
+        console.log(dia1);
 
+        var fecha_act = dia1 + '-' + mes1 + '-' + año1;
 
-        console.log(miArrayDeObjetos);
-
-        if(window.Blob && (window.URL || window.webkitURL)){
-            var contenido = "",
-                d = new Date(),
-                blob,
-                reader,
-                save,
-                clicEvent;
-            //creamos contenido del archivo
-            for (var i = 0; i < miArrayDeObjetos.length; i++) {
-                //construimos cabecera del csv
-                if (i == 0)
-                    contenido += Object.keys(miArrayDeObjetos[i]).join(";") + "\n";
-                //resto del contenido
-                contenido += Object.keys(miArrayDeObjetos[i]).map(function(key){
-                        return miArrayDeObjetos[i][key];
-                    }).join(";") + "\n";
-            }
-            //creamos el blob
-            blob =  new Blob(["\ufeff", contenido], {type: 'text/csv'});
-            //creamos el reader
-            var reader = new FileReader();
-            reader.onload = function (event) {
-                //escuchamos su evento load y creamos un enlace en dom
-                save = document.createElement('a');
-                save.href = event.target.result;
-                save.target = '_blank';
-                //aquí le damos nombre al archivo
-                save.download = "Estado_cuenta_"+ d.getDate() + "_" + (d.getMonth()+1) + "_" + d.getFullYear() +".csv";
-                try {
-                    //creamos un evento click
-                    clicEvent = new MouseEvent('click', {
-                        'view': window,
-                        'bubbles': true,
-                        'cancelable': true
-                    });
-                } catch (e) {
-                    //si llega aquí es que probablemente implemente la forma antigua de crear un enlace
-                    clicEvent = document.createEvent("MouseEvent");
-                    clicEvent.initEvent('click', true, true);
-                }
-                //disparamos el evento
-                save.dispatchEvent(clicEvent);
-                //liberamos el objeto window.URL
-                (window.URL || window.webkitURL).revokeObjectURL(save.href);
-            }
-            //leemos como url
-            reader.readAsDataURL(blob);
+        if(lista.length == 0)
+        {
+            swal("Advertencia!", "No existen datos para imprimir!", "warning");
         }else {
-            //el navegador no admite esta opción
-            alert("Su navegador no permite esta acción");
+
+
+            console.log(lista);
+
+
+            var doc = new jsPDF('p', 'mm', [297, 210]);
+
+            var x = 25;
+            var y = 25;
+
+
+            doc.addImage(img.onload(), 'PNG', x, y - 10, 15, 15);
+            doc.addImage(img1.onload(), 'PNG', x + 148, y - 10, 18, 18);
+            doc.setFontSize(16);
+            doc.setFontType("bold");
+            doc.text("REPORTE CIERRE DE MES ", x + 45, y + 0);
+            doc.rect(x, y + 10, 165, 10, 'S')
+            doc.setFontSize(10);
+            doc.setFontType("bold");
+            doc.text("LISTADO DE INGRESOS - EGRESOS", x + 50, y + 16);
+
+            doc.setFontSize(8);
+            doc.setFontType("bold");
+            doc.text("PERIODO: ", x, y + 25);
+            doc.setFontType("normal");
+            doc.text("desde " + fecha_final + " hasta " + fecha_inicial, x + 15, y + 25);
+            doc.setFontType("bold");
+            doc.text("FECHA DE IMPRESION: ", x, y + 30);
+            doc.setFontType("normal");
+            doc.text(fecha_act, x + 33, y + 30);
+
+            // doc.rect(x, y+35, 165,220, 'S')
+
+            doc.setFontSize(10);
+            doc.setFontType("bold");
+            doc.text("Ingresos", x + 20, y + 44);
+            doc.text("Egresos", x + 110, y + 44);
+            var z = 0;
+
+            doc.setFontSize(10);
+            doc.setFontType("normal");
+            var total_ingresos = 0;
+            var total_egresos = 0;
+
+            for (var i = 0; i < lista.length; i++) {
+
+                if(i==0)
+                {
+                    lista[i].R[0].descripcion = "TOTAL PRESTAMOS";
+                }
+
+                if(i==1)
+                {
+                    lista[i].R[0].descripcion="CUOTA DOCENTES";
+                }
+                if(i==2)
+                {
+                    lista[i].R[0].descripcion="TOTAL LOCALES";
+
+                }
+
+                doc.text(lista[i].R[0].descripcion, x + 5, y + 54 +z);
+                doc.text(lista[i].valor.toFixed(2).toString(), x + 55, y + 54 +z);
+                z= z + 5;
+                total_ingresos = total_ingresos + lista[i].valor;
+
+
+
+            }
+
+            var l = 0;
+            for (var i = 0; i < $scope.listaMesEgresos.length; i++) {
+
+                doc.text($scope.listaMesEgresos[i].R[0].descripcion, x + 95, y + 54 +l);
+                doc.text($scope.listaMesEgresos[i].valor.toFixed(2).toString(), x + 145, y + 54 +l);
+                l= l + 5;
+                total_egresos = total_egresos + $scope.listaMesEgresos[i].valor;
+
+            }
+            console.log(z);
+
+            doc.setFontType("bold");
+            doc.text("Total ingresos", x + 55, y + 79+z);
+            doc.text(total_ingresos.toFixed(2).toString(), x + 95, y + 79+z);
+            doc.text("-", x + 90, y + 81+z);
+            doc.text("Total egresos", x + 55, y + 84+z);
+            doc.text(total_egresos.toFixed(2).toString(), x + 95, y + 84+z);
+            doc.line(x + 90, y + 85+z, x + 110, y + 85+z)
+            var full_total = total_ingresos + total_egresos;
+            doc.text(full_total.toFixed(2).toString(), x + 95, y + 89+z);
+
+            doc.line(x + 10, y + z + 140, x + 55, y + z + 140);
+            doc.text("Tes. de la APUNACH", x + 16, y + z + 145);
+
+
+
         }
 
+        doc.save('lts.pdf');
 
-
-    }
+        }
 
 
     $scope.AgregarMes=function(){
