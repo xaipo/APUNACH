@@ -41,7 +41,7 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
         
             $http({
                 method: 'GET',
-                url: myProvider.getInformacion()+'?tarjeta='+$scope.tarjeta,
+                url: myProvider.getInformacion()+'?cedula='+$scope.tarjeta,
          
                 headers: {
                     // 'Content-Type': 'application/json',
