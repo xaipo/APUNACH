@@ -280,6 +280,11 @@ app.controller('docentesController', ['$scope', '$http', '$location','myProvider
         $location.path("/ListaDocentes");
 
     }
+    $scope.cancelarModificarDocente1=function(){
+
+       
+
+    }
 
     $('.input-daterange').datepicker({autoclose:true});
 
