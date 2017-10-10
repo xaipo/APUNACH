@@ -1851,6 +1851,7 @@ var i=0;
 
         var id_credito="";
 
+        var id_estadosCuenta=[];
 
         $timeout(function(){
 
@@ -1869,8 +1870,8 @@ var i=0;
                 data: {
 
                     id_cuotas:id_cuotas,
-                    id_descuentos:id_descuentos
-
+                    id_descuentos:id_descuentos,
+                    id_estadosCuenta:id_estadosCuenta
                 }
 
 
@@ -2261,7 +2262,7 @@ var porcentaje=($scope.porcentaje/100);
                                                 var objeto = response.data;
 
                                                 id_descuentos.push(response.data._id);
-
+                                                id_estadosCuenta.push(response.data);
 
                                                 console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
 
@@ -2700,6 +2701,8 @@ var porcentaje=($scope.porcentaje/100);
                                                 var objeto = response.data;
 
                                                 id_descuentos.push(response.data._id);
+                                                id_estadosCuenta.push(response.data);
+
                                                 console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
 
 
@@ -2975,10 +2978,98 @@ $scope.cierreMes=response.data.estado;
 
 
 
-        
         console.log(credito);
 
+        var n=credito.id_estadosCuenta.length;
+        var i=0;
 
+        var limite =n-1;
+        actulizarestado(0,limite);
+
+
+
+        function actulizarestado(contador,limite){
+
+
+
+            $http({
+                method: 'GET',
+                url: myProvider.putEstado_cuenta()+"?_id="+credito.id_estadosCuenta[contador].id_estado_cuenta,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+
+            }).then(function successCallback(response) {
+                console.log(response.data);
+
+
+                var valor= response.data[0].valor_x_pagar-credito.id_estadosCuenta[contador].valor_descuento;
+
+
+                console.log(contador,limite,valor);
+
+
+                if (contador<=limite){
+
+
+
+
+                    $http({
+
+                        method: 'PUT',
+                        url: myProvider.putEstado_cuenta() + "/" + credito.id_estadosCuenta[contador].id_estado_cuenta,
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+                        data: {
+
+                            //id_usuario: $scope.docenteingresar._id, IMPORTANTE INGRESAR
+
+                            valor_x_pagar: valor
+
+                        }
+
+
+                    }).then(function successCallback(response) {
+
+                        console.log("cambio estado 2");
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+
+                    var aux=contador+1;
+                    actulizarestado(aux,limite);
+
+
+                }
+
+
+
+
+
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+
+
+
+
+
+
+        }
 
 
 

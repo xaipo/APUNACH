@@ -44,7 +44,13 @@ var CreditoEmergente = new mongoose.Schema({
         type: Array
 
 
+    },
+    "id_estadosCuenta":{
+        type: Array
     }
+
+    
+
 
 
 },{ collection: 'creditoEmergente'
