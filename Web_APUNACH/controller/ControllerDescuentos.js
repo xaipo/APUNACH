@@ -2880,6 +2880,9 @@ $scope.cierreMes=response.data.estado;
 
     $scope.eliminar=function(credito){
 
+
+
+        
         console.log(credito);
 
 
