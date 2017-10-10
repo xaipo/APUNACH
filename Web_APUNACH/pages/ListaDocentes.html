@@ -44,7 +44,6 @@
 
                                 <th class="column-title" style="text-align:center">Cedula</th>
                                 <th class="column-title" style="text-align:center">Nombres</th>
-                                <th class="column-title" style="text-align:center">Apellidos</th>
                                 <th class="column-title" style="text-align:center">Direccion</th>
                                 <th class="column-title" style="text-align:center">Telefono</th>
                                 <th class="column-title" style="text-align:center">Celular</th>
@@ -59,8 +58,8 @@
                             <tr class="even pointer" ng-repeat="x in listDocentes">
 
                                 <td class=" "> {{x.cedula}}</td>
-                                <td class=" " >{{x.nombres}} </td>
-                                <td class=" " >{{x.apellidos}} </i></td>
+                                <td class=" " >{{x.apellidos}} {{x.nombres}} </td>
+
                                 <td class=" " > {{x.direccion}}</td>
                                 <td class=" " >{{x.telefono}} </td>
                                 <td class=" " >{{x.celular}} </td>

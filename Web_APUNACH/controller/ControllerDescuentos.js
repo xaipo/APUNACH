@@ -32,9 +32,12 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             {
                 $('#Agm').show();
                 $('#Ml').hide();
+                $('#barraprogress').show();
+
             }else {
                 $('#Agm').hide();
                 $('#Ml').show();
+                $('#barraprogress').hide();
             }
 
 
@@ -226,7 +229,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
 
-            cargar_listaDocentes("?estado=0&&miembro_asociacion=Si");
+           // cargar_listaDocentes("?estado=0&&miembro_asociacion=Si");
+        cargar_listaDocentes("?estado=0");
 
 
 
@@ -301,7 +305,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
             if (response.data.length == 0) {
 
-                swal("Advertencia!", "No existen tipo descuentos en la BD!", "warning");
+               // swal("Advertencia!", "No existen tipo descuentos en la BD!", "warning");
             } else {
 
                 $scope.listTipoDescuento = response.data;
@@ -354,6 +358,16 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             } else {
 
                 $scope.listEstado_Docente = response.data;
+                $timeout(function(){
+
+                    $('#tableEstado_cuenta').DataTable({
+                        "language": {
+                            "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                        }
+
+
+                    });
+                }, 500, false);
 
             }
 
@@ -363,17 +377,6 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
             alert('error al realizar Ingreso');
 
         });
-
-        $timeout(function(){
-
-            $('#tableEstado_cuenta').DataTable({
-                "language": {
-                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                }
-
-
-            });
-        }, 500, false);
 
 
 
@@ -462,6 +465,17 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         });
 
+        $timeout(function(){
+
+            $('#tableEstado_cuenta1').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
 
 
 
@@ -506,7 +520,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         $timeout(function(){
 
-            $('#datatableuser').DataTable({
+            $('#tableEstado_cuenta1').DataTable({
                 "language": {
                     "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 }
@@ -558,8 +572,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
-
-    $scope.agreg_newxLocal=function(){
+    $scope.total1 = 0;
+        $scope.agreg_newxLocal=function(){
 
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
 
@@ -580,6 +594,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
             $scope.listAceptado.push(objenew);
+            $scope.total1 = $scope.total1 + $scope.valor_descuento_new;
 
 
 
@@ -665,6 +680,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
     }
 
+    $scope.totalsum = 0;
         $scope.AceptarLista=function(){
 
             console.log($scope.listadoDocentesSelect);
@@ -696,7 +712,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
             $scope.listAceptado.push(objeto1);
-
+            $scope.total1 = $scope.total1 + $scope.listSeleccion[i].valor;
 
         }
             }
@@ -1407,6 +1423,9 @@ var i=0;
             $scope.listadoDocentesSelect.push(docente);
             console.log($scope.listadoDocentesSelect);
 
+
+
+
         }else {
 
 
@@ -1414,7 +1433,9 @@ var i=0;
             $scope.listadoDocentesSelect.splice(index, 1);
             console.log($scope.listadoDocentesSelect);
 
+
         }
+
 
 
     }
@@ -1432,7 +1453,7 @@ var i=0;
 
         window.localStorage["docente"]= JSON.stringify(docente);
         console.log(docente);
-        $scope.nombre_docente = docente.nombres+" "+ docente.apellidos;
+        $scope.nombre_docente = docente.apellidos +" "+ docente.nombres ;
 
 
     }
@@ -1539,6 +1560,9 @@ var i=0;
             $("#button4").show();
 
         }
+
+
+
 
     }
 
@@ -1924,10 +1948,6 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
-
-
-
-
                     for(var i=0;i<$scope.val_cuotas;i++) {
 
 
@@ -2046,8 +2066,10 @@ var porcentaje=($scope.porcentaje/100);
 
                         }).then(function successCallback(response) {
 
-
-
+                            $scope.initListarCreditosEmergentes();
+                            $scope.nombre_docente="";
+                            $scope.valor_pres="";
+                            $scope.val_cuotas="";
 
                             console.log(response.data);
                             var objeto = response.data;
@@ -2350,6 +2372,7 @@ var porcentaje=($scope.porcentaje/100);
                 } else {
 
                     swal("Exito!", "El credito emergente se registro correctamente!", "success");
+                    $scope.initListarCreditosEmergentes();
 
 
 
@@ -2483,8 +2506,10 @@ var porcentaje=($scope.porcentaje/100);
 
                         }).then(function successCallback(response) {
 
-
-
+                            $scope.initListarCreditosEmergentes();
+                            $scope.nombre_docente="";
+                            $scope.valor_pres="";
+                            $scope.val_cuotas="";
 
 
                             console.log(response.data);
@@ -2750,8 +2775,76 @@ var porcentaje=($scope.porcentaje/100);
         }
 
 
+        $scope.InitCreditoEmergente=function(){
 
 
+
+
+
+            //inicializar todos los usuarios
+            $http({
+                method: 'GET',
+                url: myProvider.getEstadoCierreMes(),
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+
+            }).then(function successCallback(response) {
+                console.log(response.data);
+                $scope.cierreMes=response.data.estado;
+                console.log($scope.cierreMes);
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+
+
+
+            //inicializar todos los usuarios
+            $http({
+                method: 'GET',
+                url: myProvider.getAllCreditosEmergentes(),
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+
+            }).then(function successCallback(response) {
+                console.log(response.data);
+
+                if (response.data.length == 0) {
+
+                    swal("Advertencia!", "No existen Creditos Emergentes en la BD!", "warning");
+                } else {
+
+                    $scope.listCreditosEmegentes = response.data;
+
+                }
+
+
+            }, function errorCallback(response) {
+
+                alert('error al realizar Ingreso');
+
+            });
+
+            $timeout(function(){
+
+                $('#tableCreditos').DataTable({
+                    "language": {
+                        "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    }
+
+
+                });
+            }, 500, false);
+
+
+        }
 
 
     }
@@ -3846,15 +3939,11 @@ function totales(totalEstado,fecha_del_sistema) {
         var año = fecha[0];
         var mes = fecha[1];
         var fecha_fin = mes+"/"+año;
-        $scope.fecha_global = mes+"-"+año
+        $scope.fecha_global = mes+"-"+año;
 
 
 
 
-
-        
-        
-        
 
 var mes1= mes-1;
 
@@ -3865,6 +3954,10 @@ var mes1= mes-1;
 
         var fecha =año+"-"+mes1+"-"+15+"T00:00:00.000Z";
         var fecha1 =año+"-"+mes+"-"+15+"T00:00:00.000Z";
+
+        $scope.fecha_mos_ini = 15+"-"+mes1+"-"+año;
+        $scope.fecha_mos_fin = 15+"-"+mes+"-"+año;
+
 
         $scope.fecha_inicial = fecha1;
         $scope.fecha_final = fecha;
@@ -3877,10 +3970,6 @@ var mes1= mes-1;
 
         $scope.ReporteConsolidado(fecha,fecha1);
         $scope.ReporteCierreMes(fecha,fecha1);
-
-
-
-
 
         $scope.mesGanancias(fecha,fecha1);
 
@@ -3914,6 +4003,7 @@ var mes1= mes-1;
 
                 $scope.listEstado_Docente = response.data;
 
+
             }
 
 
@@ -3922,6 +4012,10 @@ var mes1= mes-1;
             alert('error al realizar Ingreso');
 
         });
+
+
+
+
 
     }
 
@@ -4435,6 +4529,12 @@ var mes1= mes-1;
 
                 $scope.listAceptado = response.data;
 
+                var ancho=100/response.data.length;
+
+                console.log(ancho);
+                var progreso=0;
+
+
 
 
                 ////////////////////////Inicio////////////////////////////
@@ -4462,6 +4562,8 @@ var mes1= mes-1;
                 var i=0;
 
                 console.log($scope.listAceptado);
+
+                $scope.NumProfe = $scope.listAceptado.length;
                 
                 forRepetir(i);
 
@@ -4470,14 +4572,21 @@ var mes1= mes-1;
 
                     if(x==$scope.listAceptado.length)
                     {
-                        $scope.initDescuentos()
+                        $scope.initDescuentos();
                         $scope.initListarDescuentos();
+                      //  $('#barraprogress').hide();
+                        swal("Exito!", "Se ingresaron "+x+" de "+$scope.listAceptado.length+" regristros", "success");
+
 
                     }
 
 
 
                     for (i=x;i<n;i++){
+                        $scope.numero_act = i + 1;
+                        progreso += ancho;
+                        $('#barra').css('width', progreso + '%');
+                        $scope.numero+=1;
 
                 
 console.log($scope.listAceptado[i]._id);

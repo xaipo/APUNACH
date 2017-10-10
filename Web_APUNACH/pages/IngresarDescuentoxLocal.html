@@ -50,7 +50,7 @@
 
 
                             <div  class="table-responsive" >
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover" id="table1">
                                     <thead >
                                     <tr class="headings">
                                         <th class="column-title" style="text-align:center">Docente</th>
@@ -114,7 +114,6 @@
                                                     <th class="column-title" style="text-align:center">Seleccionar</th>
                                                     <th class="column-title" style="text-align:center">Cedula</th>
                                                     <th class="column-title" style="text-align:center">Nombres</th>
-                                                    <th class="column-title" style="text-align:center">Apellidos</th>
                                                     <th class="column-title" style="text-align:center">Correo electronico</th>
 
                                                 </tr>
@@ -146,8 +145,7 @@
 
 
                                                     <td class=" "> {{x.cedula}}</td>
-                                                    <td class=" " >{{x.nombres}} </td>
-                                                    <td class=" " >{{x.apellidos}} </i></td>
+                                                    <td class=" " >{{x.apellidos}} {{x.nombres}} </td>
                                                     <td class=" " >{{x.correo_electronico}} </td>
 
                                                 </tr>
@@ -327,7 +325,7 @@
                         <div class="col-sm-6 pull-left">
                             <h4 class="pull-right">
                                 Total :
-                                <span class="red">{{total}}</span>
+                                <span class="red">{{total1}}</span>
                             </h4>
                         </div>
                     </div>

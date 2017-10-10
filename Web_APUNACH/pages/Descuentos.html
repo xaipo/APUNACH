@@ -96,6 +96,22 @@
                     Nuevo por local
                 </button>
 
+                <div id="barraprogress">
+
+                <h5 >Creando estados de cuenta : {{numero_act}} de {{NumProfe }}</h5>
+
+                <div class="progress">
+                    <div id="barra" class="progress-bar progress-bar-success active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                         style="width: 0%">
+
+                    </div>
+                </div>
+
+                </div>
+
+
+
+
                 <div class="modal fade" id="myModal2" role="dialog">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -181,7 +197,7 @@
                          <tr class="even pointer" ng-repeat="x in listEstado_Docente">
 
                              <td class=" "> {{x.R[0].cedula}}</td>
-                             <td class=" " >{{x.R[0].nombres}} {{x.R[0].apellidos}} </td>
+                             <td class=" " >{{x.R[0].apellidos}} {{x.R[0].nombres}} </td>
                              <td class=" " >{{x.frac_fecha | date :  "y-MM-dd"}} </i></td>
                              <td class=" " > {{x.valor_x_pagar | currency}}</td>
 
