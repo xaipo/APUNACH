@@ -34,6 +34,16 @@ var CreditoEmergente = new mongoose.Schema({
     "ci_docente" : {
         type: String,
         required:true
+    },
+    "id_cuotas":{
+        type: Array
+
+    },
+
+    "id_descuentos":{
+        type: Array
+
+
     }
 
 

@@ -1821,7 +1821,48 @@ var i=0;
 
 
 
+        var id_cuotas=[];
+        var id_descuentos=[];
 
+
+        var id_credito="";
+
+
+        $timeout(function(){
+
+            console.log(id_credito,id_cuotas,id_descuentos);
+
+
+
+            $http({                                            //Guardar el registro de Credito Emergente
+                method: 'PUT',
+
+                url: myProvider.postSaveCredito_Emergente()+ "/" + id_credito,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+                    id_cuotas:id_cuotas,
+                    id_descuentos:id_descuentos
+
+                }
+
+
+            }).then(function successCallback(response) {
+
+                console.log(response.data);
+
+            }, function errorCallback(response) {
+
+
+
+            });
+
+
+
+        }, 700, false);
 
 
 
@@ -1868,6 +1909,9 @@ var porcentaje=($scope.porcentaje/100);
             }).then(function successCallback(response) {
 
                 console.log(response.data);
+
+               id_credito= response.data._id;
+
                 if (response.data.length == 0) {
 
                     swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
@@ -2008,6 +2052,7 @@ var porcentaje=($scope.porcentaje/100);
                             console.log(response.data);
                             var objeto = response.data;
 
+                            id_cuotas.push(response.data._id);
 
 
 
@@ -2189,7 +2234,12 @@ var porcentaje=($scope.porcentaje/100);
 
 
                                             }).then(function successCallback(response) {
+
                                                 console.log(response.data);
+                                                var objeto = response.data;
+
+                                                id_descuentos.push(response.data._id);
+
 
                                                 console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
 
@@ -2253,6 +2303,9 @@ var porcentaje=($scope.porcentaje/100);
                     }
 
 
+
+
+
                 }
 
 
@@ -2290,6 +2343,7 @@ var porcentaje=($scope.porcentaje/100);
             }).then(function successCallback(response) {
 
                 console.log(response.data);
+                id_credito= response.data._id;
                 if (response.data.length == 0) {
 
                     swal("Error!", "No se pudo registrar el credito, intentelo nuevamente!", "error");
@@ -2432,10 +2486,11 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
+
                             console.log(response.data);
                             var objeto = response.data;
 
-
+                            id_cuotas.push(response.data._id);
 
 
 
@@ -2617,7 +2672,9 @@ var porcentaje=($scope.porcentaje/100);
 
                                             }).then(function successCallback(response) {
                                                 console.log(response.data);
+                                                var objeto = response.data;
 
+                                                id_descuentos.push(response.data._id);
                                                 console.log("creacion correcta nueva estado de cuenta con insercion del descuento");
 
 
@@ -2816,6 +2873,120 @@ $scope.cierreMes=response.data.estado;
 
 
     }
+
+
+
+
+
+    $scope.eliminar=function(credito){
+
+        console.log(credito);
+
+
+
+
+
+
+
+
+        $http({                                            //Guardar el registro de Credito Emergente
+            method: 'DELETE',
+
+            url: myProvider.postSaveCredito_Emergente()+ "/" + credito._id,
+            headers: {
+                // 'Content-Type': 'application/json',
+                //'Authorization': token
+            },
+            data: {
+
+
+
+            }
+
+
+        }).then(function successCallback(response) {
+
+            console.log(response.data);
+
+        }, function errorCallback(response) {
+
+
+
+        });
+
+
+        for (var i=0;i<credito.id_cuotas.length;i++){
+
+
+            $http({                                            //Guardar el registro de Credito Emergente
+                method: 'DELETE',
+
+                url: myProvider.postSaveCuotas_credito()+ "/" + credito.id_cuotas[i],
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+
+
+                }
+
+
+            }).then(function successCallback(response) {
+
+                console.log(response.data);
+
+            }, function errorCallback(response) {
+
+
+
+            });
+
+
+        }
+
+
+
+
+        for (var i=0;i<credito.id_descuentos.length;i++){
+
+
+            $http({                                            //Guardar el registro de Credito Emergente
+                method: 'DELETE',
+
+                url: myProvider.deleteDescuento()+ "/" + credito.id_descuentos[i],
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    //'Authorization': token
+                },
+                data: {
+
+
+                }
+
+
+            }).then(function successCallback(response) {
+
+                console.log(response.data);
+
+            }, function errorCallback(response) {
+
+
+
+            });
+
+
+        }
+
+
+
+        $scope.listCreditosEmegentes.splice(credito,1);
+        
+
+
+    };
+
 
     $scope.selectCredito=function(credito){
 

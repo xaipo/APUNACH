@@ -164,7 +164,12 @@
                                     <td class=" " > {{x.numero_cuotas}}</td>
                                     <td class=" " > {{x.valor_a_pagar | currency}}</td>
 
-                                    <td class=" " ><div class="hidden-sm hidden-xs action-buttons">
+                                    <td class=" " >
+
+
+                                        <button class="button" ng-click="eliminar(x)">eliminar</button>
+
+                                        <div class="hidden-sm hidden-xs action-buttons">
 
                                         <a class="blue" ng-click="selectCredito(x)" data-toggle="modal" data-target="#myModal7" >
                                             <i class="ace-icon fa fa-eye bigger-130"></i>

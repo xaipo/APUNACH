@@ -29,9 +29,33 @@ app.controller('indexLocal', ['$scope', '$http', '$location','myProvider','$loca
 
 
 
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/parametro',
+        headers: {
+            // 'Content-Type': 'application/json',
+            //'Authorization': token
+        },
 
+    }).then(function successCallback(response) {
+        console.log(response.data);
 
    
+
+var total = JSON.parse(response.data[7].precio.$numberDecimal) + JSON.parse(response.data[9].precio.$numberDecimal);
+
+        console.log(total);
+
+    }, function errorCallback(response) {
+
+        alert('error al realizar Ingreso');
+
+    });
+
+
+
+
+
 
     $scope.buscar = function () {
         

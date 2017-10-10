@@ -4,19 +4,21 @@
 var restful = require("node-restful");
 var mongoose = restful.mongoose;
 
+require('mongoose-big-decimal')(mongoose);
+
 var Parametros = new mongoose.Schema({
 
     "descripcion" : {
         type: String,
-        required:true
+
     },
     "valor" : {
         type: Number,
-        required:true
+
     },
     "estado" : {
         type: String,
-        required:true
+
     }
 
 },{ collection: 'parametros'
