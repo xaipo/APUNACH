@@ -2582,6 +2582,12 @@ var porcentaje=($scope.porcentaje/100);
 
                                         var total = objeto.valor_credito + total_anterior;
                                         console.log(total);
+
+                                        id_descuentos.push(response.data._id);
+                                        id_estadosCuenta.push(response.data);
+
+                                        
+
                                         $http({
 
                                             method: 'PUT',
