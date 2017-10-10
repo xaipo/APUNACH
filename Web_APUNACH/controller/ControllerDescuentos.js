@@ -3095,7 +3095,7 @@ $scope.cierreMes=response.data.estado;
     $scope.SaveDefinitivo=function () {
 
 
-        
+
 
 
 
@@ -3266,6 +3266,8 @@ $scope.cierreMes=response.data.estado;
 
         }).then(function successCallback(response) {
             console.log(response.data);
+
+            window.location ='/APUNACH/Web_APUNACH/Principal.html#!/Descuentos';
 
 
 

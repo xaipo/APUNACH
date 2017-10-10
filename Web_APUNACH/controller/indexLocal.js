@@ -65,7 +65,7 @@ var total = JSON.parse(response.data[7].precio.$numberDecimal) + JSON.parse(resp
         
             $http({
                 method: 'GET',
-                url: myProvider.getInformacion()+'?tarjeta='+$scope.tarjeta,
+                url: myProvider.getInformacion()+'?cedula='+$scope.tarjeta,
          
                 headers: {
                     // 'Content-Type': 'application/json',

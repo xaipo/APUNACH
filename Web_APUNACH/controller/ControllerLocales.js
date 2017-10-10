@@ -101,6 +101,10 @@ app.controller('localesController', ['$scope', '$http', '$location','myProvider'
                 $scope.fecha_acuerdo = "";
                 $scope.telefono = "";
                 $scope.porcentage = "";
+                $scope.nombre_contacto = "",
+                $scope.cargo = "",
+                $scope.telefono_contacto = "",
+                $scope.correo_contacto = ""
 
             }
 
