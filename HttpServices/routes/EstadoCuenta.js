@@ -109,6 +109,7 @@ console.log(req.body);
 
 router.post('/funexel', function (req, res, next)  {
 
+   
     console.log("aca estoy ",req.body);
 
     Docente.aggregate([

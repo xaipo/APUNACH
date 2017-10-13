@@ -465,30 +465,8 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
         });
 
-        $timeout(function(){
-
-            $('#tableEstado_cuenta1').DataTable({
-                "language": {
-                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                }
-
-
-            });
-        }, 500, false);
-
-
-
-
-
-
-    };
-
-
-    $scope.initListarDescuentosImpri=function(){
-
-       // $('#tableEstado_cuenta1').hide();
-
-    console.log("hola");
+        
+        console.log("hola");
 
         $http({
             method: 'GET',
@@ -527,8 +505,22 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
             });
-           // window.print();
+            // window.print();
         }, 500, false);
+
+
+
+
+
+
+    };
+
+
+    $scope.initListarDescuentosImpri=function(){
+
+       // $('#tableEstado_cuenta1').hide();
+
+
 
 
 
@@ -1887,7 +1879,7 @@ var i=0;
 
 
 
-        }, 700, false);
+        }, 900, false);
 
 
 
@@ -2076,9 +2068,6 @@ var porcentaje=($scope.porcentaje/100);
                             var objeto = response.data;
 
                             id_cuotas.push(response.data._id);
-
-
-
 
 
 
