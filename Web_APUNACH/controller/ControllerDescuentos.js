@@ -10,7 +10,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     });
 
     $scope.initDescuentos=function(){
-      /* $('#Agm').hide();
+       $('#Agm').hide();
         $('#Ml').hide();
 
 
@@ -48,7 +48,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
             alert('error al realizar Ingreso');
 
-        });*/
+        });
 
 
 
@@ -3268,7 +3268,7 @@ var mesFecha = año+"-"+mes+"-";
 
         }).then(function successCallback(response) {
             console.log(response.data);
-            $scope.initListarDescuentos();
+
 
 
 
@@ -3325,18 +3325,18 @@ var mesFecha = año+"-"+mes+"-";
                 var i=0;
 
                 console.log($scope.listAceptado);
-
-
-
-
-
-
-
-
+                
                 forRepetir(i);
 
 
                 function forRepetir(x) {
+
+                    if(x==$scope.listAceptado.length)
+                    {
+                        $scope.initDescuentos()
+                        $scope.initListarDescuentos();
+                    }
+
 
 
                     for (i=x;i<n;i++){
@@ -3362,14 +3362,10 @@ var mesFecha = año+"-"+mes+"-";
 
 
 
-
-
                             if (typeof(response.data[0]) !== "undefined"){
 
 
                                 console.log(response.data[0]);
-
-
 
                                 console.log(b);
                                 aux1=aux1-1;
