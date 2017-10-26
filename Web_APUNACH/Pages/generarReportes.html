@@ -45,9 +45,8 @@
 
                 <br>
                 <br>
+<!--
 
-                <!-- PAGE CONTENT BEGINS -->
-                <!-- tabla descuentos estado de cuentas-->
                 <div  class="table-responsive" ng-init="initListarDescuentosImpri()">
                     <table class="table table-striped table-bordered table-hover" id="tableEstado_cuenta1">
                         <thead >
@@ -72,6 +71,7 @@
                         </tbody>
                     </table>
                 </div>
+                -->
                 <div class="col-xs-12">
                     <div class="col-xs-3">
                         <h4 class="blue">
@@ -136,10 +136,11 @@
 
                                 <td class=" "> Reporte Consolidado</td>
                                 <td class=" " >
-                                    <a href="http://localhost:63342/APUNACH/Web_APUNACH/prueba.xlsx" download="reporte.xlsx">Descargar</a>
 
-                                    <button class="btn btn-success btn-xs" ng-click="ReporteConsolidado()">
+
+                                    <button class="btn btn-success btn-xs" >
                                         <i class="ace-icon fa fa-file-excel-o  bigger-110 icon-only"></i>
+                                        <a href="http://localhost:63342/APUNACH/Web_APUNACH/prueba.xlsx" download="reporte.xlsx"></a>
                                     </button> </td> </td>
                                 <td class=" " >Permite imprimir un resumen de todos los movimientos del la Apunach </i></td>
 
@@ -163,7 +164,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <input type="button" value="Genera una tabla" ng-click="genera_tabla()">
+                    <!--<input type="button" value="Genera una tabla" ng-click="genera_tabla()">->
 
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->

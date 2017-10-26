@@ -580,7 +580,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
                 id_catalogo : $scope.localingresar._id,
                 descripcion : $scope.nombre_descuento_new,
                 valor_descuento: $scope.valor_descuento_new,
-                nombre_docente:$scope.listadoDocentesSelect[i].nombres+" "+$scope.listadoDocentesSelect[i].apellidos,
+                nombre_docente:$scope.listadoDocentesSelect[i].apellidos+" "+$scope.listadoDocentesSelect[i].nombres,
                 id_docente:$scope.listadoDocentesSelect[i]._id
             };
 
@@ -1915,7 +1915,7 @@ var porcentaje=($scope.porcentaje/100);
                     usuario: $scope.docenteingresar._id,
                     id_docente:$scope.docenteingresar._id,
                     valor_a_pagar:pago,
-                    nombre_docente:$scope.docenteingresar.nombres +" "+ $scope.docenteingresar.apellidos,
+                    nombre_docente:$scope.docenteingresar.apellidos+" "+$scope.docenteingresar.nombres,
                     ci_docente:$scope.docenteingresar.cedula
 
                 }
@@ -2345,7 +2345,7 @@ var porcentaje=($scope.porcentaje/100);
                     usuario: $scope.docenteingresar._id,
                     id_docente:$scope.docenteingresar._id,
                     valor_a_pagar:pago,
-                    nombre_docente:$scope.docenteingresar.nombres +" "+ $scope.docenteingresar.apellidos,
+                    nombre_docente:$scope.docenteingresar.apellidos+" "+$scope.docenteingresar.nombres,
                     ci_docente:$scope.docenteingresar.cedula
 
                 }
@@ -3373,55 +3373,110 @@ $scope.cierreMes=response.data.estado;
 
         }).then(function successCallback(response) {
             console.log(response.data[0]);
+                if(response.data[0] == undefined)
+                {
+                    var objeto={
+                        id_cuenta:response.data[0]._id,
+                        valor:response.data[0].valor,
+                        fecha:fecha_del_sistema,
+                        fecha_sistema:fecha_del_sistema,
+                        usuario: response.data[0]._id,
+                        estado:1
 
-            var objeto={
-                id_cuenta:response.data[0]._id,
-                valor:response.data[0].valor,
-                fecha:fecha_del_sistema,
-                fecha_sistema:fecha_del_sistema,
-                usuario: response.data[0]._id,
-                estado:1
-                
-            }
+                    }
 
 
-            $scope.cuentas.push(objeto);
+                    $scope.cuentas.push(objeto);
 
-            $http({
-                method: 'GET',
-                url: myProvider.getMesCuotas(),
-                headers: {
-                    // 'Content-Type': 'application/json',
-                    //'Authorization': token
-                },
+                    $http({
+                        method: 'GET',
+                        url: myProvider.getMesCuotas(),
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
 
-            }).then(function successCallback(response) {
-                console.log(response.data[0]);
+                    }).then(function successCallback(response) {
+                        console.log(response.data[0]);
 
-                var objeto={
-                    id_cuenta:response.data[0]._id,
-                    valor:response.data[0].valor,
-                    fecha:fecha_del_sistema,
-                    fecha_sistema:fecha_del_sistema,
-                    usuario: response.data[0]._id,
-                    estado:1
+                        var objeto={
+                            id_cuenta:response.data[0]._id,
+                            valor:response.data[0].valor,
+                            fecha:fecha_del_sistema,
+                            fecha_sistema:fecha_del_sistema,
+                            usuario: response.data[0]._id,
+                            estado:1
+
+                        }
+
+
+                        $scope.cuentas.push(objeto);
+
+
+                        totales(totalEstado,fecha_del_sistema);
+
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
+
+                }else
+                {
+                    var objeto={
+                        id_cuenta:response.data[0]._id,
+                        valor:response.data[0].valor,
+                        fecha:fecha_del_sistema,
+                        fecha_sistema:fecha_del_sistema,
+                        usuario: response.data[0]._id,
+                        estado:1
+
+                    }
+
+
+                    $scope.cuentas.push(objeto);
+
+                    $http({
+                        method: 'GET',
+                        url: myProvider.getMesCuotas(),
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                            //'Authorization': token
+                        },
+
+                    }).then(function successCallback(response) {
+                        console.log(response.data[0]);
+
+                        var objeto={
+                            id_cuenta:response.data[0]._id,
+                            valor:response.data[0].valor,
+                            fecha:fecha_del_sistema,
+                            fecha_sistema:fecha_del_sistema,
+                            usuario: response.data[0]._id,
+                            estado:1
+
+                        }
+
+
+                        $scope.cuentas.push(objeto);
+
+
+                        totales(totalEstado,fecha_del_sistema);
+
+
+
+                    }, function errorCallback(response) {
+
+                        alert('error al realizar Ingreso');
+
+                    });
+
 
                 }
 
-
-                $scope.cuentas.push(objeto);
-
-
-                 totales(totalEstado,fecha_del_sistema);
-
-
-
-            }, function errorCallback(response) {
-
-                alert('error al realizar Ingreso');
-
-            });
-            
 
         }, function errorCallback(response) {
 
@@ -3696,8 +3751,7 @@ function totales(totalEstado,fecha_del_sistema) {
     $scope.ReporteCuenta_estado=function(lista){
 
 
-
-        if(lista.length == 0)
+        if((lista.length == undefined)||(lista.length == 0))
         {
             swal("Advertencia!", "No existen datos para imprimir!", "warning");
         }else {
@@ -3799,7 +3853,7 @@ function totales(totalEstado,fecha_del_sistema) {
 
                 doc.text(num.toString(), x + 4, y + z);
                 doc.text(lista[i].R[0].cedula, x + 18, y + z);
-                doc.text(lista[i].R[0].nombres + " " + lista[i].R[0].apellidos, x + 65, y + z);
+                doc.text(lista[i].R[0].apellidos+ " " +lista[i].R[0].nombres , x + 65, y + z);
                 doc.text(lista[i].valor_x_pagar.toString(), x + 141, y + z);
                 z = z + 5;
                 num = num + 1;
@@ -4294,6 +4348,7 @@ var mes1= mes-1;
         if( $scope.listGanProcenLocal.length == 0)
         {
             swal("Advertencia!", "No existen datos para imprimir!", "warning");
+
         }else {
 
 
@@ -4360,7 +4415,7 @@ var mes1= mes-1;
             doc.setFontType("bold");
             doc.text("Nombre del local", x + 18, y + 39);
             doc.text("Total", x + 71, y + 39);
-            doc.text("Porcentage", x + 98, y + 39);
+            doc.text("Porcentaje", x + 98, y + 39);
             doc.text("Ganancia", x + 135, y + 39);
             doc.line(x, y + 40, x + 165, y + 40);
             doc.line(x, y + 35, x + 165, y + 35);
@@ -4431,10 +4486,11 @@ var mes1= mes-1;
 
             doc.line(x + 10, y + aun + 30, x + 55, y + aun + 30);
             doc.text("Tes. de la APUNACH", x + 18, y + aun + 35);
+            doc.save('PorcentageXlocal.pdf');
 
         }
 
-        doc.save('PorcentageXlocal.pdf');
+
     }
 
 
@@ -4561,11 +4617,11 @@ var mes1= mes-1;
             doc.line(x + 10, y + z + 140, x + 55, y + z + 140);
             doc.text("Tes. de la APUNACH", x + 16, y + z + 145);
 
-
+            doc.save('lts.pdf');
 
         }
 
-        doc.save('lts.pdf');
+
 
         }
 
