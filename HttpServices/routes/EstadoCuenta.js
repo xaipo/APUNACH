@@ -406,6 +406,8 @@ router.post('/EstadoCuentaDocente', function (req, res, next)  {
 
     var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
     var fechaActual = yyyy+"-"+mes+"-"+15;
+    console.log("servidor");
+    console.log(fechaAnterior, fechaActual,req.body.docente);
 
 
 
@@ -621,7 +623,12 @@ if (estado_mes=="cerrado"){
     }
 
 
-
+if(mm == 1)
+{
+    mes1 = 12;
+    yyyy1 = yyyy - 1;
+    
+}
 
 
 

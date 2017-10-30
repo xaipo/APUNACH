@@ -145,6 +145,63 @@ router.post('/ingresoFecha', function (req, res, next)  {
 
     console.log(req.body);
 
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth(); //hoy es 0!
+
+    var mes = mm;
+
+
+    var yyyy = hoy.getFullYear();
+    var yyyy1 = hoy.getFullYear();
+
+
+
+
+
+
+
+    var mes1=mm-1;
+
+    if(mes<10) {
+        mes='0'+mes
+    }
+
+    if(mes1<10) {
+        mes1='0'+mes1
+
+    }else {
+
+        if (mes1>12){
+            var auxf =mes1-12;
+
+            var anio= yyyy1+1;
+            mes1='0'+auxf;
+            yyyy1=anio;
+
+        }
+
+
+
+    }
+
+
+    if(mes == 0)
+    {
+        mes = "01";
+       mes1 = 12;
+        yyyy1 = yyyy - 1;
+
+    }
+
+
+
+    var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
+    var fechaActual = yyyy+"-"+mes+"-"+15;
+
+    var estado_mes={};
+
+    console.log(fechaActual,fechaAnterior);
 
     Ingreso.find(
 
@@ -153,8 +210,8 @@ router.post('/ingresoFecha', function (req, res, next)  {
         {
             "id_cuenta":  req.body.cuenta,
             "fecha": {
-                $gte: new Date(req.body.fecha),
-                $lte: new Date(req.body.fecha1)
+                $gte: new Date(fechaAnterior +"T00:00:00.000Z"),
+                $lte: new Date(fechaActual+"T00:00:00.000Z")
             }
 
         },function (err, datos) {

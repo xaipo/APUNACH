@@ -18,7 +18,13 @@ router.get('/EstadoMesParametro', function (req, res, next)  {
 
     var hoy = new Date();
     var dd = hoy.getDate();
-    var mm = hoy.getMonth()+1; //hoy es 0!
+    var mm = hoy.getMonth(); //hoy es 0!
+
+    if(mm == 0)
+    {
+      mm = 1;
+
+    }
 
     var mes = mm;
 

@@ -3499,7 +3499,7 @@ var mesFecha = año+"-"+mes+"-";
                     for (i=x;i<n;i++){
 
                 
-
+console.log($scope.listAceptado[i]._id);
 
                         $http({
                                 method: 'POST',
@@ -3510,7 +3510,7 @@ var mesFecha = año+"-"+mes+"-";
                                 },
                                 data: {
 
-                                    docente:$scope.listAceptado[i].id_docente
+                                    docente:$scope.listAceptado[i]._id
 
 
                                 }
@@ -3518,6 +3518,7 @@ var mesFecha = año+"-"+mes+"-";
 
 
                         }).then(function successCallback(response) {
+                            console.log(response.data);
 
                             $scope.listEstado_cuenta_consulta = response.data[0];
                             console.log(response.data[0]);

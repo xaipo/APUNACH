@@ -1093,8 +1093,7 @@ app.controller('cuentasController', ['$scope', '$http', '$location','myProvider'
                 data: {
 
                     cuenta:"599f1d9034917b1ea454e64d",
-                    fecha: fecha2,
-                    fecha1:fecha
+                  
 
                 }
 

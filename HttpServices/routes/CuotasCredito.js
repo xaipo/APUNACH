@@ -134,7 +134,13 @@ router.get('/cuotasUpdate', function (req, res, next)  {
 
 
                 }
+                
+                if(mm == 1)
+                {
+                    mes1 = 12;
+                    yyyy1 = yyyy - 1;
 
+                }
 
                 var fechaAnterior = yyyy1 + "-" + mes1 + "-" + 15;
                 var fechaActual = yyyy + "-" + mes + "-" + 15;
