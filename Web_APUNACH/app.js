@@ -174,6 +174,11 @@ function ApiUrl(){
         return direccion+'funexel';
     }
 
+    this.getDescargar=function(){
+        return direccion+'descargarConsolidado';
+    }
+
+
 
     this.getMesPrestamos=function(){
         return direccion+'mesPrestamos';

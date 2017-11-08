@@ -63,7 +63,7 @@ const port = 3000;
 app.use(cors());
 
 //set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'consolidado')));
 
 //body-parser middleware
 app.use(bodyParser.json());

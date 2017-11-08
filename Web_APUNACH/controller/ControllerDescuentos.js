@@ -4326,6 +4326,7 @@ var mes1= mes-1;
 
 
             console.log(response.data);
+            $scope.id=response.data;
         
 
         }, function errorCallback(response) {
@@ -4489,6 +4490,28 @@ var mes1= mes-1;
             doc.save('PorcentageXlocal.pdf');
 
         }
+
+
+    }
+
+
+    $scope.descargarconsolidado=function(id){
+
+        console.log(id);
+        console.log(id.replace(/['"]+/g, ''));
+
+       // localhost:3000/api/descargarConsolidado/1510097705829.xlsx
+
+      //  http://localhost:3000/api/descargarConsolidado/"1510099260377.xlsx"
+
+
+        var urldes =myProvider.getDescargar()+"/"+id.replace(/['"]+/g, '');
+
+
+        console.log(urldes);
+
+
+        window.open(urldes, '_blank', '');
 
 
     }

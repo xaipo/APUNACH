@@ -289,16 +289,22 @@ router.post('/funexel', function (req, res, next)  {
 
 
                     // you can create xlsx file now.
-                    workbook.xlsx.writeFile('C:\\test\\'+file).then(function() {
+                    workbook.xlsx.writeFile('./consolidado/'+file).then(function() {
                         res.setHeader('Content-disposition', 'attachment; filename=file.xlsx');
                         res.setHeader('Content-type', 'application/vnd.ms-excel');
 
                         //var file =  "C:\\test\\some.xlsx";
-                        var file2="C:\\test\\"+file;
+                        var file2=file;
+
                         console.log(file2);
                         res.json(file2);
 
+
+
+
+
                     });
+
 
 
 
@@ -321,6 +327,22 @@ router.post('/funexel', function (req, res, next)  {
 
 });
 
+
+
+
+router.get('/descargarConsolidado/:id', function (req, res, next)  {
+
+res.download('./consolidado/'+req.params.id,
+    req.params.id,function (err) {
+        if (err){
+            console.log(err);
+        }else {
+            console.log("listo");
+        }
+    });
+
+
+});
 
 
 router.get('/estadocuenta_docente1', function (req, res, next)  {
