@@ -4517,6 +4517,7 @@ var mes1= mes-1;
     }
 
 
+
     $scope.ReporteCerrar_mes=function(lista){
 
       console.log(lista);
