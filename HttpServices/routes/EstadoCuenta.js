@@ -107,58 +107,9 @@ console.log(req.body);
 
 //docente estado de cuenta
 
-router.get('/funexel', function (req, res, next)  {
+router.post('/funexel', function (req, res, next)  {
 
-
-
-    var hoy = new Date();
-    var dd = hoy.getDate();
-    var mm = hoy.getMonth()+1; //hoy es 0!
-
-    var mes = mm;
-
-
-    var yyyy = hoy.getFullYear();
-    var yyyy1 = hoy.getFullYear();
-
-
-
-
-
-
-
-    var mes1=mm+1;
-
-    if(mes<10) {
-        mes='0'+mes
-    }
-
-    if(mes1<10) {
-        mes1='0'+mes1
-
-    }else {
-
-        if (mes1>12){
-            var auxf =mes1-12;
-
-            var anio= yyyy1+1;
-            mes1='0'+auxf;
-            yyyy1=anio;
-
-        }
-
-
-
-    }
-
-
-
-
-
-
-    var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
-    var fechaActual = yyyy+"-"+mes+"-"+15;
-
+    console.log("aca estoy ",req.body);
 
     Docente.aggregate([
 
@@ -175,9 +126,9 @@ router.get('/funexel', function (req, res, next)  {
                     path: "$estadocuenta",
                     preserveNullAndEmptyArrays: true
                 }
-            },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha": {
-                $gte: new Date(fechaActual+"T00:00:00.000Z"),
-                $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+            },{ "$match": { "estadocuenta.estado": "2","estadocuenta.frac_fecha": {
+                $gte: new Date(req.body.fecha),
+                $lte: new Date(req.body.fecha1)
             } } },
             {
                 $lookup: {
@@ -219,12 +170,16 @@ router.get('/funexel', function (req, res, next)  {
                         var auxDoc= {header: locales[k].nombre, key: locales[k].nombre, width: 10};
                         array.push(auxDoc);
 
+
                     }
                 array.push({header: 'Total', key: 'Total', width: 20});
                     worksheet.columns=array;
+                
 
-
+                console.log(tareas)
                     console.log(tareas.length)
+
+
                     var r=tareas.length;
                     for(var j=0;j<r;j++){
 
@@ -233,8 +188,8 @@ router.get('/funexel', function (req, res, next)  {
                         var aux=JSON.stringify('');
                         var numCedl=parseInt(j)+1;
 
-                        console.log(tareas[j].valor_x_pagar);
-                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+tareas[j].nombres+'","Total":"'+tareas[j].valor_x_pagar+'",';
+                        console.log(tareas[j].estadocuenta.valor_x_pagar+"hola");
+                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+tareas[j].nombres+'","Total":"'+tareas[j].estadocuenta.valor_x_pagar+'",';
                         for(var i=0;i<n;i++){
 
                             //console.log(aux);
@@ -269,8 +224,13 @@ router.get('/funexel', function (req, res, next)  {
                         aux+='}';
                         console.log(aux);
                         var newAux=JSON.parse(aux.toString());
+                        console.log(aux);
                         worksheet.addRow(newAux);
+
                     }
+
+                worksheet.getCell('B3').formula === 'E2+E3';
+                console.log(worksheet.getCell('B3').formula);
 
 
 

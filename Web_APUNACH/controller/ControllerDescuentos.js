@@ -3659,6 +3659,9 @@ function totales(totalEstado,fecha_del_sistema) {
         $scope.fecha_global = mes+"-"+año
 
 
+
+
+
         
         
         
@@ -3678,7 +3681,7 @@ var mes1= mes-1;
 
 
 
-
+        $scope.ReporteConsolidado(fecha,fecha1);
         $scope.ReporteCierreMes(fecha,fecha1);
 
 
@@ -3874,20 +3877,24 @@ var mes1= mes-1;
     }
 
 
-    $scope.ReporteConsolidado=function(){
+    $scope.ReporteConsolidado=function(fecha,fecha1){
 
         $http({
-            method: 'GET',
+            method: 'POST',
             url: myProvider.getConsolidado(),
             headers: {
                 // 'Content-Type': 'application/json',
                 //'Authorization': token
-            },
+            },data:
+            {
+                fecha:fecha,
+                fecha1:fecha1
+            }
 
         }).then(function successCallback(response) {
 
 
-
+        
 
         }, function errorCallback(response) {
 
