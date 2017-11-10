@@ -12,7 +12,6 @@ var Excel = require('exceljs');
 
 
 
-
 var TipoUsuario = require('../models/EstadoCuenta');
 var Docente = require('../models/Docente');
 var parametros = require('../models/Parametro');
@@ -98,6 +97,55 @@ router.get('/funexel', function (req, res, next)  {
 
 
 
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth()+1; //hoy es 0!
+
+    var mes = mm;
+
+
+    var yyyy = hoy.getFullYear();
+    var yyyy1 = hoy.getFullYear();
+
+
+
+
+
+
+
+    var mes1=mm+1;
+
+    if(mes<10) {
+        mes='0'+mes
+    }
+
+    if(mes1<10) {
+        mes1='0'+mes1
+
+    }else {
+
+        if (mes1>12){
+            var auxf =mes1-12;
+
+            var anio= yyyy1+1;
+            mes1='0'+auxf;
+            yyyy1=anio;
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+    var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
+    var fechaActual = yyyy+"-"+mes+"-"+15;
+
+
     Docente.aggregate([
 
 
@@ -158,7 +206,7 @@ router.get('/funexel', function (req, res, next)  {
                         array.push(auxDoc);
 
                     }
-                array.push({header: 'TOTAL', key: 'totalH', width: 20});
+                array.push({header: 'Total', key: 'Total', width: 20});
                     worksheet.columns=array;
 
 
@@ -170,7 +218,9 @@ router.get('/funexel', function (req, res, next)  {
                         var n= locales.length;
                         var aux=JSON.stringify('');
                         var numCedl=parseInt(j)+1;
-                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+tareas[j].nombres+'",';
+
+                        console.log(tareas[j].valor_x_pagar);
+                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+tareas[j].nombres+'","Total":"'+tareas[j].valor_x_pagar+'",';
                         for(var i=0;i<n;i++){
 
                             //console.log(aux);
@@ -199,7 +249,7 @@ router.get('/funexel', function (req, res, next)  {
                             console.log(locales[i].nombre);
 
                         }
-                        aux+='{"totalH":"'+100+'"}';
+
                         var num= aux.length;
                         aux=aux.substring(2,num-1);
                         aux+='}';
@@ -525,8 +575,8 @@ router.post('/EstadoCuentaDocente', function (req, res, next)  {
                     {
                         "id_docente":  req.body.docente,
                         "frac_fecha": {
-                            $gte: new Date(fechaActual+"T00:00:00.000Z"),
-                            $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+                            $gte: new Date(fechaAnterior+"T00:00:00.000Z"),
+                            $lte: new Date(fechaActual+"T00:00:00.000Z")
                         }
 
                     },function (err, datos) {

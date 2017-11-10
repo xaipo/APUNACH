@@ -3255,7 +3255,7 @@ function totales(totalEstado,fecha_del_sistema) {
 
     $http({
         method: 'PUT',
-        url: myProvider.putParametros()+"/59ceb054488b3a22503027af",
+        url: myProvider.putParametros()+"/59cff18354fe69415890dbc2",
         headers: {
             // 'Content-Type': 'application/json',
             //'Authorization': token
