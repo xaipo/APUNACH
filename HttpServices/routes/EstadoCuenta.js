@@ -92,7 +92,20 @@ console.log(req.body);
                 "localField": "id_docente",
                 "foreignField": "_id",
                 "as": "R"
-            }}
+            }},
+            // Stage 1
+            {
+                $unwind: {
+                    path : "$R"
+                }
+            },
+
+            // Stage 2
+            {
+                $sort: {
+                    'R.apellidos':1
+                }
+            },
 
         ],function (err, tareas) {
             if (err) { return next(err) }
@@ -195,7 +208,7 @@ router.post('/funexel', function (req, res, next)  {
                         console.log(ape_nomb );
 
                         total_total = total_total + tareas[j].estadocuenta.valor_x_pagar;
-                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+ape_nomb+'","Total":"'+tareas[j].estadocuenta.valor_x_pagar+'",';
+                        aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+ape_nomb+'","Total":"'+tareas[j].estadocuenta.valor_x_pagar.toFixed(2)+'",';
                         for(var i=0;i<n;i++){
 
                             //console.log(aux);
@@ -210,12 +223,14 @@ router.post('/funexel', function (req, res, next)  {
                                 aux+='"'+locales[i].nombre+'"'+':"'+0+'",';
                             }else{
                                 if(total<2){
-                                    aux+='"'+locales[i].nombre+'":"'+resultado[0].valor_descuento+'",';
+                                    aux+='"'+locales[i].nombre+'":"'+resultado[0].valor_descuento.toFixed(2)+'",';
                                 }else{
                                     var sum=0;
                                     for(var s=0; s<total;s++){
                                         sum+=resultado[s].valor_descuento;
+
                                     }
+                                    sum = sum.toFixed(2);
                                     aux+='"'+locales[i].nombre+'":"'+sum+'",';
                                 }
 

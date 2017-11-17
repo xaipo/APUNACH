@@ -673,6 +673,7 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
     }
 
     $scope.totalsum = 0;
+
         $scope.AceptarLista=function(){
 
             console.log($scope.listadoDocentesSelect);
@@ -685,31 +686,31 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
             for (var j=0;j<$scope.listadoDocentesSelect.length;j++){
 
+                        for (var i=0; i < $scope.listSeleccion.length;i++)
+                        {
 
 
-        for (var i=0; i < $scope.listSeleccion.length;i++)
-        {
+                            var objeto1 ={
+                                id_local:$scope.localingresar._id,
+                                nombre_local: $scope.localingresar.nombre,
+                                id_catalogo : $scope.localingresar._id,
+                                descripcion : $scope.listSeleccion[i].descripcion,
+                                valor_descuento: $scope.listSeleccion[i].valor,
+                                nombre_docente:$scope.listadoDocentesSelect[j].nombres+" "+$scope.listadoDocentesSelect[j].apellidos,
+                                id_docente:$scope.listadoDocentesSelect[j]._id,
+
+                            };
 
 
-            var objeto1 ={
-                id_local:$scope.localingresar._id,
-                nombre_local: $scope.localingresar.nombre,
-                id_catalogo : $scope.localingresar._id,
-                descripcion : $scope.listSeleccion[i].descripcion,
-                valor_descuento: $scope.listSeleccion[i].valor,
-                nombre_docente:$scope.listadoDocentesSelect[j].nombres+" "+$scope.listadoDocentesSelect[j].apellidos,
-                id_docente:$scope.listadoDocentesSelect[j]._id,
+                            $scope.listAceptado.push(objeto1);
+                            $scope.total1 = $scope.total1 + $scope.listSeleccion[i].valor;
 
-            };
-
-
-            $scope.listAceptado.push(objeto1);
-            $scope.total1 = $scope.total1 + $scope.listSeleccion[i].valor;
-
-        }
+                        }
             }
         $scope.listSeleccion = [];
         $scope.initListarTipoDescuento_Des();
+
+
 
     }
 
@@ -736,33 +737,45 @@ app.controller('descuentosController', ['$scope', '$http', '$location','myProvid
 
 
     $scope.AceptarListaDocente=function(){
-        console.log($scope.listSeleccion);
 
 
-        for (var i=0; i < $scope.listSeleccion.length;i++)
-        {
 
-            $scope.listAceptado.push($scope.listSeleccion[i]);
-            $scope.total = $scope.total + $scope.listSeleccion[i].valor_descuento;
+        $scope.listadoDocentesSelect1 = $scope.listadoDocentesSelect;
 
-        }
-        console.log( $scope.listdescuentosBorrar);
 
-        console.log($scope.listAceptado);
-        $scope.listSeleccion = [];
-        $scope.initListarTipoDescuento_Des();
+    $timeout(function(){
 
-    }
+        $('#table1').DataTable({
+            "language": {
+                "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+
+
+        });
+    }, 500, false);
+
+
+
+
+
+}
+
+
+
 
     $scope.eliminarDescuentolist=function(x){
         console.log(x);
+
 
         var index = $scope.listAceptado.indexOf(x);
 
                   $scope.listAceptado.splice(index, 1);
 
+           $scope.total1 = $scope.total1 - x.valor_descuento;
 
           }
+
+
 
     $scope.AceptarDescuentos=function(){
         $scope.localingresar = JSON.parse(window.localStorage.getItem('local'));
@@ -1354,6 +1367,7 @@ var i=0;
                 {
 
                     $scope.total = $scope.total + $scope.listAceptado[i].valor_descuento;
+                    $scope.total1 = $scope.total.toFixed(2);
 
                 }
 
@@ -1418,6 +1432,7 @@ var i=0;
 
 
 
+
         }else {
 
 
@@ -1426,7 +1441,59 @@ var i=0;
             console.log($scope.listadoDocentesSelect);
 
 
+
         }
+
+
+
+
+
+    }
+
+    $scope.seleccionarTodo=function(list){
+
+
+
+console.log(list);
+
+        var index = $scope.listadoDocentesSelect.indexOf(list[0]);
+
+        console.log(index);
+
+
+
+        if (index==-1){
+
+
+            $scope.listadoDocentesSelect1 = list;
+            $scope.listadoDocentesSelect = list;
+            console.log($scope.listadoDocentesSelect1);
+
+
+
+
+        }else {
+
+
+            $scope.listadoDocentesSelect = [];
+            $scope.listadoDocentesSelect1 = [];
+
+
+
+
+        }
+
+        $timeout(function(){
+
+            $('#table1').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
+
 
 
 
@@ -1437,6 +1504,16 @@ var i=0;
 
         var index = $scope.listadoDocentesSelect.indexOf(docente);
         $scope.listadoDocentesSelect.splice(index, 1);
+        $timeout(function(){
+
+            $('#table1').DataTable({
+                "language": {
+                    "url": "http://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+
+
+            });
+        }, 500, false);
 
     }
 
@@ -1691,7 +1768,7 @@ var i=0;
 
                 for (var i = 0; i<$scope.listAceptado.length;i++)
                 {
-
+                  console.log($scope.listAceptado[i].valor_descuento);
                     $http({
                         method: 'POST',
                         url: myProvider.postSaveDescuento(),
@@ -1706,7 +1783,7 @@ var i=0;
                             nombre_local:$scope.listAceptado[i].nombre_local,
                             id_estado_cuenta:response.data._id,
                             descripcion:$scope.listAceptado[i].descripcion,
-                            valor_descuento:$scope.listAceptado[i].valor_descuento,
+                            valor_descuento:$scope.listAceptado[i].valor_descuento.toFixed(2),
                             cantidad:0,
                             fecha:response.data.frac_fecha
 
@@ -3216,7 +3293,7 @@ $scope.cierreMes=response.data.estado;
     }
 
     $scope.selectEstado_cuenta=function(list_estado){
-        $scope.total = 0;
+        $scope.totalx = 0;
         $http({
             method: 'GET',
             url: myProvider.getAllDescuentos()+"?id_estado_cuenta="+list_estado._id,
@@ -3237,7 +3314,8 @@ $scope.cierreMes=response.data.estado;
                 for (var i=0; i < $scope.listAceptado.length;i++)
                 {
 
-                    $scope.total = $scope.total + $scope.listAceptado[i].valor_descuento;
+                    $scope.totalx = $scope.totalx + $scope.listAceptado[i].valor_descuento;
+                    $scope.total = $scope.totalx.toFixed(2);
 
                 }
 
@@ -3848,13 +3926,15 @@ function totales(totalEstado,fecha_del_sistema) {
 
             for (var i = 0; i < lista.length; i++) {
 
+                var valor_pagar = lista[i].valor_x_pagar.toFixed(2);
+
                 var fecha1 = lista[i].fecha_descuento.split("T");
                 var fecha2 = fecha1[0];
 
                 doc.text(num.toString(), x + 4, y + z);
-                doc.text(lista[i].R[0].cedula, x + 18, y + z);
-                doc.text(lista[i].R[0].apellidos+ " " +lista[i].R[0].nombres , x + 65, y + z);
-                doc.text(lista[i].valor_x_pagar.toString(), x + 141, y + z);
+                doc.text(lista[i].R.cedula, x + 18, y + z);
+                doc.text(lista[i].R.apellidos+ " " +lista[i].R.nombres , x + 55, y + z);
+                doc.text(valor_pagar.toString(), x + 141, y + z);
                 z = z + 5;
                 num = num + 1;
                 doc.line(x, y + aun + 5, x + 165, y + aun + 5)
@@ -4236,9 +4316,9 @@ var mes1= mes-1;
         for (var i = 0; i < lista.length; i++) {
 
             miArrayDeObjetos[i]={Num : i + 1,
-                Cedulas: lista[i].R[0].cedula,
-                Nombre_Completo: lista[i].R[0].apellidos + " " + lista[i].R[0].nombres,
-                Monto: lista[i].valor_x_pagar
+                Cedulas: lista[i].R.cedula,
+                Nombre_Completo: lista[i].R.apellidos + " " + lista[i].R.nombres,
+                Monto: lista[i].valor_x_pagar.toFixed(2)
 
 
             }
@@ -4415,16 +4495,16 @@ var mes1= mes-1;
             doc.setFontSize(10);
             doc.setFontType("bold");
             doc.text("Nombre del local", x + 18, y + 39);
-            doc.text("Total", x + 71, y + 39);
-            doc.text("Porcentaje", x + 98, y + 39);
-            doc.text("Ganancia", x + 135, y + 39);
+            doc.text("Total", x + 81, y + 39);
+            doc.text("Porcentaje", x + 108, y + 39);
+            doc.text("Ganancia", x + 145, y + 39);
             doc.line(x, y + 40, x + 165, y + 40);
             doc.line(x, y + 35, x + 165, y + 35);
             //verticales estaticas
             doc.line(x, y + 35, x, y + 40);
-            doc.line(x + 60, y + 35, x + 60, y + 40);
-            doc.line(x + 90, y + 35, x + 90, y + 40);
-            doc.line(x + 125, y + 35, x + 125, y + 40);
+            doc.line(x + 70, y + 35, x + 70, y + 40);
+            doc.line(x + 100, y + 35, x + 100, y + 40);
+            doc.line(x + 135, y + 35, x + 135, y + 40);
             doc.line(x + 165, y + 35, x + 165, y + 40);
 
             var z = 44;
@@ -4443,11 +4523,12 @@ var mes1= mes-1;
                 ganancian = ($scope.listGanProcenLocal[i].valor * $scope.listGanProcenLocal[i].local[0].porcentaje_ganancia/100);
                 console.log($scope.listGanProcenLocal[i].valor * $scope.listGanProcenLocal[i].local[0].porcentaje_ganancia/100);
                 console.log(ganancia.toFixed(2).toString());
-
-                doc.text($scope.listGanProcenLocal[i]._id, x + 10, y + z);
-                doc.text($scope.listGanProcenLocal[i].valor.toString(), x + 70, y + z);
-                doc.text($scope.listGanProcenLocal[i].local[0].porcentaje_ganancia.toString() , x + 105, y + z);
-                doc.text(($scope.listGanProcenLocal[i].valor * $scope.listGanProcenLocal[i].local[0].porcentaje_ganancia/100).toFixed(2).toString() , x + 135, y + z);
+                doc.setFontSize(6);
+                doc.text($scope.listGanProcenLocal[i]._id, x + 2, y + z);
+                doc.setFontSize(8);
+                doc.text($scope.listGanProcenLocal[i].valor.toString(), x + 80, y + z);
+                doc.text($scope.listGanProcenLocal[i].local[0].porcentaje_ganancia.toString() , x + 115, y + z);
+                doc.text(($scope.listGanProcenLocal[i].valor * $scope.listGanProcenLocal[i].local[0].porcentaje_ganancia/100).toFixed(2).toString() , x + 145, y + z);
                 z = z + 5;
                 num = num + 1;
                 doc.line(x, y + aun + 5, x + 165, y + aun + 5)
@@ -4456,9 +4537,9 @@ var mes1= mes-1;
 
                 //lineas vertivales
                 doc.line(x, y + aun - 5, x, y + aun);
-                doc.line(x + 60, y + aun - 5, x + 60, y + aun);
-                doc.line(x + 90, y + aun - 5, x + 90, y + aun);
-                doc.line(x + 125, y + aun - 5, x + 125, y + aun);
+                doc.line(x + 70, y + aun - 5, x + 70, y + aun);
+                doc.line(x + 100, y + aun - 5, x + 100, y + aun);
+                doc.line(x + 135, y + aun - 5, x + 135, y + aun);
                 doc.line(x + 165, y + aun - 5, x + 165, y + aun);
                 registros = registros + 1;
 
@@ -4484,7 +4565,7 @@ var mes1= mes-1;
 
                 ganancia = 0;
             }
-
+            doc.setFontSize(10);
             doc.line(x + 10, y + aun + 30, x + 55, y + aun + 30);
             doc.text("Tes. de la APUNACH", x + 18, y + aun + 35);
             doc.save('PorcentageXlocal.pdf');

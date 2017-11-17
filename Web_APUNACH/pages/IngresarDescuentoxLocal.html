@@ -62,7 +62,7 @@
                                     </thead>
 
                                     <tbody style="text-align:center;">
-                                    <tr class="even pointer" ng-repeat="x in listadoDocentesSelect ">
+                                    <tr class="even pointer" ng-repeat="x in listadoDocentesSelect1 ">
 
                                         <td class=" "> {{x.apellidos}} {{x.nombres}}  </td>
 
@@ -111,7 +111,11 @@
                                             <table class="table table-striped table-bordered table-hover" id="datatabledocentes">
                                                 <thead >
                                                 <tr class="headings">
-                                                    <th class="column-title" style="text-align:center">Seleccionar</th>
+
+                                                    <th class="column-title" style="text-align:center">Todo <label>
+                                                        <input type="checkbox" class="ace" ng-click="seleccionarTodo(listDocentes)" data-dismiss="modal"/>
+                                                        <span class="lbl"></span>
+                                                    </label></th>
                                                     <th class="column-title" style="text-align:center">Cedula</th>
                                                     <th class="column-title" style="text-align:center">Nombres</th>
                                                     <th class="column-title" style="text-align:center">Correo electronico</th>
@@ -157,7 +161,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-info" type="button" ng-click="AceptarListaDocente()" data-dismiss="modal">
-                                            Agregar
+                                            Cerrar
                                         </button>
 
 
@@ -192,10 +196,7 @@
                                                 <thead >
                                                 <tr class="headings">
                                                     <th class="center">
-                                                        <label class="pos-rel">
-                                                            <input type="checkbox" class="ace" />
-                                                            <span class="lbl"></span>
-                                                        </label>
+                                                        Check
                                                     </th>
                                                     <th class="column-title" style="text-align:center">Descripcion</th>
                                                     <th class="column-title" style="text-align:center">Valor</th>

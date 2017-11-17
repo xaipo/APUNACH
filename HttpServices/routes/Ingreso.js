@@ -73,9 +73,14 @@ router.post('/Ingresos_Mes', function (req, res, next)  {
                 "$and" : [
                     {    fecha_sistema: {$gte: new Date(req.body.fecha)}},
                     {    fecha_sistema: {$lt: new Date(req.body.fecha1)}}
-
-
     ]
+
+                "$and" : [
+                    {    frac_fecha: {$gte: new Date( req.body.fecha)}},
+                    {    frac_fecha: {$lte: new Date(req.body.fecha1)}}
+
+                ]
+
             }
 
             },
