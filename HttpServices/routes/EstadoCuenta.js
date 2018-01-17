@@ -14,8 +14,14 @@ TipoUsuario.register(router,'/estadocuenta');
 var hoy = new Date();
 var dd = hoy.getDate();
 var mm = hoy.getMonth()+1; //hoy es 0!
-var yyyy = hoy.getFullYear();
+
 var mes = mm;
+
+
+var yyyy = hoy.getFullYear();
+var yyyy1 = hoy.getFullYear();
+
+
 
 var mes1=mm+1;
 
@@ -23,20 +29,20 @@ if(mes<10) {
     mes='0'+mes
 }
 
-
 if(mes1<10) {
     mes1='0'+mes1
+
 }else {
 
     if (mes1>12){
-        var auxfr =mes1-12;
+        var auxf =mes1-12;
 
-        var anio= yyyy+1;
-        mes1='0'+auxfr;
-        yyyy=anio;
-
+        var anio= yyyy1+1;
+        mes1='0'+auxf;
+        yyyy1=anio;
 
     }
+
 
 
 }
@@ -44,7 +50,7 @@ if(mes1<10) {
 
 
 
-var fechaAnterior =yyyy+"-"+mes1+"-"+15;
+var fechaAnterior =yyyy1+"-"+mes1+"-"+15;
 var fechaActual = yyyy+"-"+mes+"-"+15;
 
 var fecha1 = mes+'/'+yyyy;
@@ -52,12 +58,6 @@ var fecha1 = mes+'/'+yyyy;
 
 
 console.log(fechaActual,fechaAnterior);
-
-
-
-
-
-
 
 
 
@@ -133,7 +133,7 @@ console.log(req.body.frac_fecha);
 
 //docente estado de cuenta
 
-router.get('/estadocuenta_docente1', function (req, res, next)  {
+router.get('/funexel', function (req, res, next)  {
 
     Docente.aggregate([
 
@@ -165,6 +165,46 @@ router.get('/estadocuenta_docente1', function (req, res, next)  {
         if (err) { return next(err) }
         res.json(tareas);
     }
+
+    );
+
+
+});
+
+
+
+router.get('/estadocuenta_docente1', function (req, res, next)  {
+
+    Docente.aggregate([
+
+
+            {
+                $lookup: {
+                    from: "estadocuenta",
+                    localField: "_id",
+                    foreignField: "id_docente",
+                    as: "estadocuenta"
+                }
+            }, {
+                $unwind: {
+                    path: "$estadocuenta",
+                    preserveNullAndEmptyArrays: true
+                }
+            },{ "$match": { "estadocuenta.estado": "1","estadocuenta.frac_fecha": {
+                $gte: new Date(fechaActual+"T00:00:00.000Z"),
+                $lte: new Date(fechaAnterior+"T00:00:00.000Z")
+            } } },
+            {
+                $lookup: {
+                    from: "descuentos",
+                    localField: "estadocuenta._id",
+                    foreignField: "id_estado_cuenta",
+                    as: "estadocuenta.descuentos",
+                }
+            }],function (err, tareas) {
+            if (err) { return next(err) }
+            res.json(tareas);
+        }
 
     );
 
