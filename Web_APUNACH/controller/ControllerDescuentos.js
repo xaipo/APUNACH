@@ -2319,12 +2319,17 @@ var porcentaje=($scope.porcentaje/100);
 
 
 
+                        if(mm==0)
+                        {
+                            mm = 12;
+                            yyyy1=yyyy1-1;
+                            yyyy=yyyy-1;
+                        }
 
                         var mes = mm+i;
                         var mes1 = mm+i+1;
 
                         console.log("mes de creacion :" +mes);
-
 
                         if(dd<10) {
                             dd='0'+dd

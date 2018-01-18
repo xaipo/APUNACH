@@ -174,15 +174,16 @@ router.post('/funexel', function (req, res, next)  {
 
 
                     }
-                array.push({header: 'Total', key: 'Total', width: 20});
+                    array.push({header: 'Total', key: 'Total', width: 20});
                     worksheet.columns=array;
-                
 
-                console.log(tareas)
+
+                    console.log(tareas)
                     console.log(tareas.length)
 
 
                     var r=tareas.length;
+                var total_total = 0;
                     for(var j=0;j<r;j++){
 
 
@@ -191,6 +192,7 @@ router.post('/funexel', function (req, res, next)  {
                         var numCedl=parseInt(j)+1;
 
                         console.log(tareas[j].estadocuenta.valor_x_pagar+"hola");
+                        total_total = total_total + tareas[j].estadocuenta.valor_x_pagar;
                         aux+='{"Cedula":"'+tareas[j].cedula+'","N":"'+numCedl+'","Relacion Laboral":"'+tareas[j].id_tipo_contrato.tipo+'","Nombre":"'+tareas[j].nombres+'","Total":"'+tareas[j].estadocuenta.valor_x_pagar+'",';
                         for(var i=0;i<n;i++){
 
@@ -231,8 +233,9 @@ router.post('/funexel', function (req, res, next)  {
 
                     }
 
-                worksheet.getCell('B3').formula === 'E2+E3';
-                console.log(worksheet.getCell('B3').formula);
+                    worksheet.getCell('B3').formula === 'E2+E3';
+
+                console.log(total_total.toFixed(2)+"ptm");
 
 
 
@@ -778,7 +781,7 @@ if(mm == 1)
 {
     mes1 = 12;
     yyyy1 = yyyy - 1;
-    
+ 
 }
 
 
